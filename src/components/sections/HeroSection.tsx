@@ -65,10 +65,10 @@ function StatCounter({ stat, isVisible }: { stat: StatItem; isVisible: boolean }
     <div className="flex flex-col items-center gap-1">
       {isTextLabel ? (
         <>
-          <span className="font-montserrat text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          <span className="font-montserrat text-lg font-bold text-white md:text-2xl lg:text-3xl">
             {isVisible ? stat.label : ''}
           </span>
-          <span className="text-sm font-medium text-gold-400/80 md:text-base">
+          <span className="text-xs font-medium text-gold-400/80 md:text-sm">
             국제 인증 보유
           </span>
         </>
