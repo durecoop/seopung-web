@@ -9,8 +9,10 @@ const PAGE_NAMES: Record<string, string> = {
   technology: '기술·설비',
   certification: '품질·인증',
   vision: '비전',
+  products: '제품',
   gulbi: '영광굴비',
   resources: '자료실',
+  news: '소식',
   contact: '문의',
   admin: '관리자',
 };

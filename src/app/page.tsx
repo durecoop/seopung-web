@@ -6,6 +6,7 @@ import Navbar from '@/components/ui/Navbar';
 import HeroSection from '@/components/sections/HeroSection';
 import Footer from '@/components/ui/Footer';
 import FadeIn from '@/components/ui/FadeIn';
+import CardGlow from '@/components/ui/CardGlow';
 import { getImagePath } from '@/lib/utils';
 
 /* ─── Process steps data ─── */
@@ -298,7 +299,7 @@ export default function Home() {
                 { number: '66개', label: '운영중' },
                 { number: '400억', label: '매출목표' },
               ].map((stat) => (
-                <div
+                <CardGlow
                   key={stat.label}
                   className="group rounded-2xl border border-navy-700/50 bg-navy-900/60 px-4 py-8 text-center transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
                 >
@@ -306,6 +307,36 @@ export default function Home() {
                     {stat.number}
                   </span>
                   <span className="mt-2 block text-sm text-white/60">{stat.label}</span>
+                </CardGlow>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── 4.7 신뢰의 파트너 (Client Logos) ── */}
+      <section className="border-t border-navy-800 bg-navy-900/30 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <FadeIn>
+            <div className="mb-12 text-center">
+              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                Trusted Partners
+              </span>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">신뢰의 파트너</h2>
+              <p className="mt-4 text-base text-white/60">10년 이상 함께한 파트너사</p>
+            </div>
+          </FadeIn>
+
+          <FadeIn>
+            <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+              {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
+                <div
+                  key={name}
+                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-navy-700/50 bg-navy-900/60 transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+                >
+                  <span className="text-lg font-bold text-white/40 transition-colors duration-500 group-hover:text-gold-400">
+                    {name}
+                  </span>
                 </div>
               ))}
             </div>
@@ -313,13 +344,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5. Gulbi Teaser ── */}
+      {/* ── 5. Product Lineup Teaser ── */}
       <section className="relative overflow-hidden border-t border-navy-800">
         <FadeIn className="relative">
           <div className="relative h-[50vh] min-h-[400px] md:h-[60vh]">
             <Image
-              src={getImagePath('/images/gulbi/tying.jpg')}
-              alt="영광 굴비 엮기"
+              src={getImagePath('/images/process/04-tunnel-freezer.jpg')}
+              alt="수산 가공 제품 라인업"
               fill
               className="object-cover"
               sizes="100vw"
@@ -332,21 +363,21 @@ export default function Home() {
               <div className="mx-auto w-full max-w-7xl px-6">
                 <div className="max-w-lg">
                   <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
-                    Premium Gulbi
+                    Product Lineup
                   </span>
                   <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-                    영광 굴비,<br />
-                    <span className="text-gold-400">장인의 손길</span>
+                    제품 라인업,<br />
+                    <span className="text-gold-400">134+ 품목</span>
                   </h2>
                   <p className="mb-8 max-w-md text-base text-white/60 md:text-lg">
-                    전통 방식 그대로, 한 마리 한 마리 정성을 담아
-                    대한민국 최고의 굴비를 만들어갑니다.
+                    냉동수산가공부터 밀키트, 프리미엄 굴비까지.
+                    9개 어종, OEM 맞춤 생산의 모든 것.
                   </p>
                   <Link
-                    href="/gulbi"
+                    href="/products"
                     className="group inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3 text-sm font-bold text-navy-950 shadow-lg shadow-gold-500/20 transition-all duration-300 hover:bg-gold-400 hover:shadow-gold-500/30"
                   >
-                    영광굴비 보기
+                    제품 보기
                     <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                   </Link>
                 </div>

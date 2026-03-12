@@ -163,6 +163,113 @@ export default function ContactPage() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
       </section>
 
+      {/* ── OEM Process Flow ── */}
+      <section className="relative py-24 md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+          <Reveal>
+            <div className="mb-16 text-center">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+                OEM Process
+              </p>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">OEM 협력 프로세스</h2>
+              <p className="mt-4 text-base text-white/60">체계적인 프로세스로 최적의 OEM 솔루션을 제공합니다</p>
+            </div>
+          </Reveal>
+
+          {/* Desktop horizontal / Mobile vertical */}
+          <Reveal delay={100}>
+            <div className="relative">
+              {/* Desktop connecting line */}
+              <div className="absolute left-[8.33%] right-[8.33%] top-[28px] hidden h-0.5 bg-navy-700 md:block">
+                <div className="h-full w-full bg-gradient-to-r from-gold-500/60 via-gold-400/40 to-gold-500/60" />
+              </div>
+              {/* Mobile connecting line */}
+              <div className="absolute left-[28px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500/60 via-gold-400/40 to-gold-500/60 md:hidden" />
+
+              <div className="grid gap-8 md:grid-cols-6">
+                {[
+                  {
+                    step: 1,
+                    title: '문의 접수',
+                    desc: '전화/이메일/홈페이지를 통한 초기 상담',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    step: 2,
+                    title: '요구사항 분석',
+                    desc: '제품 스펙, 물량, 납기 등 상세 협의',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    step: 3,
+                    title: '샘플 개발',
+                    desc: '무상 샘플 제작 및 시식 평가',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A18.684 18.684 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    step: 4,
+                    title: '시생산',
+                    desc: '소량 테스트 생산 및 품질 검증',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.1-5.1a1.5 1.5 0 010-2.12l.88-.88a1.5 1.5 0 012.12 0l2.1 2.1 5.1-5.1a1.5 1.5 0 012.12 0l.88.88a1.5 1.5 0 010 2.12l-7.98 7.98a1.5 1.5 0 01-2.12.02z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    step: 5,
+                    title: '양산 계약',
+                    desc: '가격, 물량, 납기 조건 확정',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    step: 6,
+                    title: '정기 납품',
+                    desc: '안정적 공급 및 품질 관리',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.079-.481 1.09-1.102.434-8.674-.655-15.648-15.648-15.648H3.375c-.621 0-1.125.504-1.125 1.125v11.25" />
+                      </svg>
+                    ),
+                  },
+                ].map((item) => (
+                  <div key={item.step} className="relative flex items-start gap-4 md:flex-col md:items-center md:text-center">
+                    {/* Numbered circle */}
+                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-gold-500 bg-navy-950 text-gold-400 shadow-lg shadow-gold-500/10">
+                      <span className="font-montserrat text-lg font-bold">{item.step}</span>
+                    </div>
+                    <div className="pt-1 md:pt-0">
+                      <div className="mb-2 flex items-center gap-2 text-gold-400 md:justify-center">
+                        {item.icon}
+                        <h3 className="text-base font-bold text-white">{item.title}</h3>
+                      </div>
+                      <p className="text-sm leading-relaxed text-white/60">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── 1. Contact form + info ── */}
       <section className="relative py-24 md:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-40" />

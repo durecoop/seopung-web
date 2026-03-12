@@ -17,19 +17,26 @@ const NAV_ITEMS: NavItem[] = [
   { label: '기술·설비', href: '/technology' },
   { label: '품질·인증', href: '/certification' },
   { label: '비전', href: '/vision' },
-  { label: '영광굴비', href: '/gulbi' },
+  { label: '제품', href: '/products' },
   { label: '자료실', href: '/resources' },
+  { label: '소식', href: '/news' },
   { label: '문의', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(progress, 100));
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
@@ -56,6 +63,16 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${bgClass}`}
     >
+      {/* Scroll progress bar */}
+      <div
+        className="absolute top-0 left-0 h-[2px] z-[60]"
+        style={{
+          width: `${scrollProgress}%`,
+          background: 'linear-gradient(to right, var(--color-gold-400), var(--color-gold-500))',
+          transition: 'width 50ms linear',
+          opacity: scrollProgress > 0 ? 1 : 0,
+        }}
+      />
       <nav className={`mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-500 ${
         isExpanded ? 'py-5' : 'py-3'
       }`}>

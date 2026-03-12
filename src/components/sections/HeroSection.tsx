@@ -154,6 +154,53 @@ export default function HeroSection() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy-950/60 via-navy-950/40 to-navy-950/80" />
 
+      {/* Floating particle animation */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {[
+          { size: 3, left: 10, delay: 0, duration: 14, opacity: 0.15 },
+          { size: 5, left: 20, delay: 2, duration: 18, opacity: 0.1 },
+          { size: 2, left: 35, delay: 5, duration: 12, opacity: 0.2 },
+          { size: 4, left: 45, delay: 1, duration: 16, opacity: 0.12 },
+          { size: 6, left: 55, delay: 7, duration: 20, opacity: 0.1 },
+          { size: 3, left: 65, delay: 3, duration: 10, opacity: 0.25 },
+          { size: 2, left: 75, delay: 6, duration: 15, opacity: 0.18 },
+          { size: 5, left: 85, delay: 4, duration: 17, opacity: 0.13 },
+          { size: 4, left: 30, delay: 8, duration: 13, opacity: 0.2 },
+          { size: 3, left: 90, delay: 9, duration: 11, opacity: 0.15 },
+        ].map((p, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: p.size,
+              height: p.size,
+              left: `${p.left}%`,
+              bottom: '-10px',
+              opacity: p.opacity,
+              animation: `heroParticleFloat ${p.duration}s ${p.delay}s linear infinite`,
+            }}
+          />
+        ))}
+      </div>
+      <style jsx>{`
+        @keyframes heroParticleFloat {
+          0% {
+            transform: translateY(0) translateX(0);
+            opacity: 0;
+          }
+          10% {
+            opacity: var(--tw-opacity, 1);
+          }
+          90% {
+            opacity: var(--tw-opacity, 1);
+          }
+          100% {
+            transform: translateY(-100vh) translateX(30px);
+            opacity: 0;
+          }
+        }
+      `}</style>
+
       {/* Content */}
       <div className="relative flex h-full flex-col items-center justify-center px-6">
         {/* Main slogan */}

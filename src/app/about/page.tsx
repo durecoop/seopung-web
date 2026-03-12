@@ -147,38 +147,56 @@ export default function AboutPage() {
       {/* ── 1. 인사말 ── */}
       <section className="relative py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            {/* Photo */}
-            <Reveal>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <Image
-                  src={getImagePath('/images/team/director-interview-1.jpg')}
-                  alt="대표이사 인터뷰"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
-              </div>
-            </Reveal>
+          <Reveal>
+            <div className="overflow-hidden rounded-3xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm">
+              <div className="grid items-center gap-0 lg:grid-cols-[2fr_3fr]">
+                {/* Photo – left */}
+                <div className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:h-full">
+                  <div className="absolute inset-0 border-b-4 border-gold-500/40 lg:border-b-0 lg:border-r-4">
+                    <Image
+                      src={getImagePath('/images/team/director-interview-1.jpg')}
+                      alt="대표이사 서순심"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-navy-950/30" />
+                  </div>
+                </div>
 
-            {/* Quote */}
-            <Reveal delay={200}>
-              <div>
-                <p className="mb-6 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
-                  CEO Message
-                </p>
-                <div className="relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:rounded-full before:bg-gold-500">
-                  <p className="text-lg leading-relaxed text-white/80 md:text-xl md:leading-relaxed">
-                    &ldquo;매출 성장을 현장과 품질에 환원하는 선순환 재투자 경영을 실천합니다. 기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.&rdquo;
+                {/* Content – right */}
+                <div className="p-8 md:p-12 lg:p-16">
+                  <p className="mb-2 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-400">
+                    CEO MESSAGE
                   </p>
-                </div>
-                <div className="mt-10">
-                  <p className="text-xl font-bold text-white">영어조합법인 서풍</p>
-                  <p className="mt-1 text-white/60">대표이사</p>
+                  <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">대표 인사말</h2>
+
+                  <div className="relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:rounded-full before:bg-gold-500">
+                    <p className="text-lg leading-relaxed text-white/80 md:text-xl md:leading-relaxed">
+                      &ldquo;매출 성장을 현장과 품질에 환원하는 선순환 재투자 경영을 실천합니다. 기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.&rdquo;
+                    </p>
+                  </div>
+
+                  <div className="mt-10">
+                    <p className="text-2xl font-bold text-white md:text-3xl">대표이사 서순심</p>
+                    {/* Signature area */}
+                    <div className="mt-4 inline-block">
+                      <span className="font-serif text-2xl italic text-white/70">서순심</span>
+                      <div className="mt-1 h-[2px] w-full rounded-full bg-gradient-to-r from-gold-500 to-gold-500/0" />
+                    </div>
+                  </div>
+
+                  {/* Philosophy keywords */}
+                  <div className="mt-8 flex items-center gap-4 text-sm font-medium tracking-wide text-white/50">
+                    <span>신뢰</span>
+                    <span className="text-gold-500/60">|</span>
+                    <span>혁신</span>
+                    <span className="text-gold-500/60">|</span>
+                    <span>동반성장</span>
+                  </div>
                 </div>
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -336,6 +354,37 @@ export default function AboutPage() {
                   원료 매입, 저장, 제조, 유통까지 <span className="font-semibold text-gold-400">One 플랫폼 운영</span>으로 가격 및 품질 안정화 확보
                 </p>
               </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── 4.3 신뢰의 파트너 (Client Logos) ── */}
+      <section className="relative py-24 md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <Reveal>
+            <div className="mb-12 text-center">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+                Trusted Partners
+              </p>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">신뢰의 파트너</h2>
+              <p className="mt-4 text-base text-white/60">10년 이상 함께한 파트너사</p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+              {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
+                <div
+                  key={name}
+                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+                >
+                  <span className="text-lg font-bold text-white/40 transition-colors duration-500 group-hover:text-gold-400">
+                    {name}
+                  </span>
+                </div>
+              ))}
             </div>
           </Reveal>
         </div>

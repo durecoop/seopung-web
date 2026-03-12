@@ -1,10 +1,12 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import FadeIn from '@/components/ui/FadeIn';
+import { useReveal } from '@/hooks/useReveal';
 import { getImagePath } from '@/lib/utils';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
@@ -128,6 +130,48 @@ const QUALITY_TIMELINE = [
   { year: '2024', title: 'ASC & MSC 지속가능 수산물 인증 획득', desc: '' },
   { year: '2026', title: 'FSSC 22000 및 글로벌 HACCP 추진 예정', desc: '', upcoming: true },
 ];
+
+/* ─── KPI CountUp component ─── */
+function KpiCard({ value, label }: { value: string; label: string }) {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  const numericMatch = value.match(/^([\d.]+)(.*)$/);
+  const targetNum = numericMatch ? parseFloat(numericMatch[1]) : 0;
+  const suffix = numericMatch ? numericMatch[2] : value;
+  const isInteger = numericMatch ? !numericMatch[1].includes('.') : true;
+  const hasNumeric = !!numericMatch;
+  const [display, setDisplay] = useState('0');
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (!visible || !hasNumeric || hasAnimated.current) return;
+    hasAnimated.current = true;
+    const duration = 1600;
+    const startTime = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * targetNum;
+      setDisplay(isInteger ? Math.round(current).toString() : current.toFixed(1));
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }, [visible, targetNum, isInteger, hasNumeric]);
+
+  return (
+    <div
+      ref={ref}
+      className="group rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+    >
+      <span className="block font-montserrat text-3xl font-bold text-gold-400 md:text-4xl">
+        {numericMatch ? display + suffix : value}
+      </span>
+      <span className="mt-3 block text-sm text-white/80">{label}</span>
+    </div>
+  );
+}
 
 export default function CertificationPage() {
   return (
@@ -253,6 +297,64 @@ export default function CertificationPage() {
               ※ HACCP, 수산물품질인증 등 추가 인증서는 사무실에서 확인 가능합니다
             </p>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════ */}
+      {/* 1-C. 인증서 다운로드                    */}
+      {/* ══════════════════════════════════════ */}
+      <section className="border-t border-navy-800 bg-navy-900/40 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <FadeIn>
+            <div className="mb-14 text-center">
+              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                Downloads
+              </span>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">
+                인증서 <span className="text-gold-400">다운로드</span>
+              </h2>
+            </div>
+          </FadeIn>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { name: 'HACCP', desc: '식품안전관리인증기준' },
+              { name: 'ASC', desc: '양식 수산물 지속가능성 인증' },
+              { name: 'MSC', desc: '자연산 수산물 지속가능 어업 인증' },
+              { name: '수산물이력추적', desc: '수산물이력추적관리 등록' },
+              { name: '수산물품질인증', desc: '국립수산물품질관리원 인증' },
+            ].map((cert) => (
+              <FadeIn key={cert.name}>
+                <div className="group overflow-hidden rounded-2xl border border-navy-700/40 bg-navy-800/60 p-6 transition-all duration-300 hover:border-gold-500/40 hover:shadow-lg hover:shadow-gold-500/5">
+                  <div className="mb-4 flex items-start gap-4">
+                    {/* Cert icon */}
+                    <div className="flex-shrink-0 rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-white">{cert.name}</h3>
+                      <p className="mt-1 text-sm text-white/60">{cert.desc}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-white/40">PDF</span>
+                    <button
+                      type="button"
+                      onClick={() => alert('준비 중입니다')}
+                      className="inline-flex items-center gap-2 rounded-lg border border-gold-500/30 bg-gold-500/5 px-4 py-2 text-sm font-medium text-gold-400 transition-all duration-300 hover:border-gold-500/60 hover:bg-gold-500/10"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                      </svg>
+                      다운로드
+                    </button>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -394,6 +496,37 @@ export default function CertificationPage() {
                     <p className="text-sm font-medium text-white/60">{photo.caption}</p>
                   </div>
                 </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════ */}
+      {/* 2-C. Quality KPI Metrics              */}
+      {/* ══════════════════════════════════════ */}
+      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <FadeIn>
+            <div className="mb-14 text-center">
+              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                Quality KPI
+              </span>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">
+                품질 <span className="text-gold-400">지표</span>
+              </h2>
+            </div>
+          </FadeIn>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { value: '0.02%', label: '불량률' },
+              { value: '99.7%', label: '납기 준수율' },
+              { value: '95%+', label: '재계약률' },
+              { value: '15톤', label: '일일 처리량' },
+            ].map((kpi) => (
+              <FadeIn key={kpi.label}>
+                <KpiCard value={kpi.value} label={kpi.label} />
               </FadeIn>
             ))}
           </div>
