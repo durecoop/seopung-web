@@ -46,7 +46,9 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
-  const bgClass = !isHome || scrolled
+  const isExpanded = isHome && !scrolled;
+
+  const bgClass = !isExpanded
     ? 'bg-navy-900/95 backdrop-blur-md shadow-lg'
     : 'bg-transparent';
 
@@ -54,20 +56,36 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${bgClass}`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
+      <nav className={`mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-500 ${
+        isExpanded ? 'py-5' : 'py-3'
+      }`}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <Image
-            src={getImagePath('/images/logo.png')}
-            alt="서풍 로고"
-            width={48}
-            height={48}
-            className="h-12 w-auto rounded-full bg-white/90 p-0.5 shadow-md"
-            priority
-          />
-          <span className="hidden text-lg font-semibold tracking-wide text-white sm:inline">
-            서풍
-          </span>
+          <div className={`relative transition-all duration-500 ${
+            isExpanded ? 'h-16 w-16' : 'h-11 w-11'
+          }`}>
+            <Image
+              src={getImagePath('/images/logo.png')}
+              alt="서풍 로고"
+              fill
+              className="rounded-full bg-white p-0.5 shadow-lg object-contain"
+              priority
+            />
+          </div>
+          <div className={`hidden transition-all duration-500 sm:flex flex-col ${
+            isExpanded ? 'gap-0.5' : 'gap-0'
+          }`}>
+            <span className={`font-bold tracking-wide text-white transition-all duration-500 ${
+              isExpanded ? 'text-xl' : 'text-lg'
+            }`}>
+              서풍
+            </span>
+            <span className={`text-gold-400/80 font-medium transition-all duration-500 overflow-hidden ${
+              isExpanded ? 'text-xs max-h-6 opacity-100' : 'text-[0px] max-h-0 opacity-0'
+            }`}>
+              No.1 수산 가공 파트너
+            </span>
+          </div>
         </Link>
 
         {/* Desktop menu */}
@@ -118,7 +136,7 @@ export default function Navbar() {
       {/* Gold accent line */}
       <div
         className={`h-[1px] w-full transition-opacity duration-500 ${
-          !isHome || scrolled ? 'opacity-100' : 'opacity-0'
+          !isExpanded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
           background:
