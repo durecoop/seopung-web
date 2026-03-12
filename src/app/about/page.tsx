@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
@@ -76,10 +76,13 @@ function CountUpCard({ number, label, sub }: { number: string; label: string; su
   const targetNum = numericMatch ? parseFloat(numericMatch[1]) : 0;
   const suffix = numericMatch ? numericMatch[2] : number;
   const isInteger = numericMatch ? !numericMatch[1].includes('.') : true;
+  const hasNumeric = !!numericMatch;
   const [display, setDisplay] = useState('0');
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!visible || !numericMatch) return;
+    if (!visible || !hasNumeric || hasAnimated.current) return;
+    hasAnimated.current = true;
     const duration = 1600;
     const startTime = performance.now();
 
@@ -93,7 +96,7 @@ function CountUpCard({ number, label, sub }: { number: string; label: string; su
     }
 
     requestAnimationFrame(tick);
-  }, [visible, targetNum, isInteger, numericMatch]);
+  }, [visible, targetNum, isInteger, hasNumeric]);
 
   return (
     <div
