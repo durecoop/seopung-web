@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === "production" ? "/Seopung" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/Seopung/" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/seopung-web" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/seopung-web/" : "",
 };
 
 export default nextConfig;
