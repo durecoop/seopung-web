@@ -68,7 +68,7 @@ export default function Navbar() {
               src={getImagePath('/images/logo.png')}
               alt="서풍 로고"
               fill
-              className="scale-[1.35] object-contain"
+              className="scale-[1.75] object-contain"
               priority
             />
           </div>
