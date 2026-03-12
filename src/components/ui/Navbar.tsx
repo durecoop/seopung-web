@@ -60,9 +60,9 @@ export default function Navbar() {
           <Image
             src={getImagePath('/images/logo.png')}
             alt="서풍 로고"
-            width={40}
-            height={40}
-            className="h-10 w-auto"
+            width={48}
+            height={48}
+            className="h-12 w-auto rounded-full bg-white/90 p-0.5 shadow-md"
             priority
           />
           <span className="hidden text-lg font-semibold tracking-wide text-white sm:inline">

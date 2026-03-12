@@ -1,5 +1,8 @@
 'use client';
 
+import Image from 'next/image';
+import { getImagePath } from '@/lib/utils';
+
 const AFFILIATES = [
   '영어조합법인 서풍',
   '㈜여수유통',
@@ -24,26 +27,13 @@ export default function Footer() {
           {/* Col 1: Brand */}
           <div>
             <div className="mb-4 flex items-center gap-3">
-              {/* Simple logo mark */}
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-ocean-500/10">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="h-5 w-5 text-ocean-400"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 3C7.5 3 3 7.03 3 12c0 2.1.7 4.2 2 5.5C6.8 19.3 9 21 12 21s5.2-1.7 7-3.5c1.3-1.3 2-3.4 2-5.5 0-4.97-4.5-9-9-9z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    d="M3 12h18M7.5 7c1.5 2 1.5 8 0 10M16.5 7c-1.5 2-1.5 8 0 10"
-                  />
-                </svg>
-              </div>
+              <Image
+                src={getImagePath('/images/logo.png')}
+                alt="서풍 로고"
+                width={40}
+                height={40}
+                className="h-10 w-auto rounded-full bg-white/90 p-0.5"
+              />
               <span className="text-lg font-bold text-white">서풍</span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-white/60">
