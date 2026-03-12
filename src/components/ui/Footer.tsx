@@ -27,13 +27,14 @@ export default function Footer() {
           {/* Col 1: Brand */}
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <Image
-                src={getImagePath('/images/logo.png')}
-                alt="서풍 로고"
-                width={40}
-                height={40}
-                className="h-10 w-auto rounded-full bg-white/90 p-0.5"
-              />
+              <div className="relative h-10 w-10 overflow-hidden rounded-full bg-white/90">
+                <Image
+                  src={getImagePath('/images/logo.png')}
+                  alt="서풍 로고"
+                  fill
+                  className="scale-[1.35] object-contain"
+                />
+              </div>
               <span className="text-lg font-bold text-white">서풍</span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-white/60">

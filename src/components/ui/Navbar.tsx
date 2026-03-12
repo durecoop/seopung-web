@@ -61,14 +61,14 @@ export default function Navbar() {
       }`}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <div className={`relative transition-all duration-500 ${
+          <div className={`relative overflow-hidden rounded-full bg-white shadow-lg transition-all duration-500 ${
             isExpanded ? 'h-16 w-16' : 'h-11 w-11'
           }`}>
             <Image
               src={getImagePath('/images/logo.png')}
               alt="서풍 로고"
               fill
-              className="rounded-full bg-white p-0.5 shadow-lg object-contain"
+              className="scale-[1.35] object-contain"
               priority
             />
           </div>
