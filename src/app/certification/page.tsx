@@ -78,6 +78,7 @@ const CERTIFICATIONS = [
     year: '2008년 최초 인증',
     desc: '식품안전관리인증기준(HACCP) 적용업소 인증. 전 식품유형 인증 완료. 냉동수산식품(어류) 세척공정, 급속감출공정 중요관리.',
     photo: null,
+    logo: null,
     badge: null,
   },
   {
@@ -86,6 +87,7 @@ const CERTIFICATIONS = [
     year: '2013년',
     desc: '수산물이력추적관리 등록 제1164호. 참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어. 현재 전품목 확대 적용.',
     photo: '/images/certification/traceability-cert.jpg',
+    logo: '/images/certification/logos/traceability-logo.jpg',
     badge: null,
   },
   {
@@ -94,6 +96,7 @@ const CERTIFICATIONS = [
     year: '',
     desc: '국립수산물품질관리원 인증',
     photo: null,
+    logo: null,
     badge: null,
   },
   {
@@ -102,6 +105,7 @@ const CERTIFICATIONS = [
     year: '2024년',
     desc: 'ASC(Aquaculture Stewardship Council) 양식 수산물 지속가능성 인증',
     photo: null,
+    logo: null,
     badge: null,
   },
   {
@@ -110,6 +114,7 @@ const CERTIFICATIONS = [
     year: '2024년',
     desc: 'MSC(Marine Stewardship Council) 자연산 수산물 지속가능 어업 인증',
     photo: null,
+    logo: null,
     badge: null,
   },
   {
@@ -118,6 +123,7 @@ const CERTIFICATIONS = [
     year: '2026년 추진 예정',
     desc: '글로벌 식품안전 인증. 글로벌 HACCP과 함께 추진 예정',
     photo: null,
+    logo: null,
     badge: 'COMING SOON',
   },
 ];
@@ -227,7 +233,13 @@ export default function CertificationPage() {
                   )}
 
                   <div className="mb-5 flex items-start gap-5">
-                    <div className="flex-shrink-0">{cert.icon}</div>
+                    <div className="flex-shrink-0">
+                      {cert.logo ? (
+                        <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white p-1">
+                          <Image src={getImagePath(cert.logo)} alt={cert.name} fill className="object-contain" />
+                        </div>
+                      ) : cert.icon}
+                    </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-white">{cert.name}</h3>
                       {cert.year && (
@@ -273,24 +285,45 @@ export default function CertificationPage() {
             </div>
           </FadeIn>
 
-          <FadeIn>
-            <div className="mx-auto max-w-lg overflow-hidden rounded-2xl border border-navy-700/30 bg-white/[0.03] p-4 shadow-lg backdrop-blur-sm">
-              <div className="overflow-hidden rounded-xl bg-white/95 p-3">
-                <div className="relative aspect-[3/4]">
-                  <Image
-                    src={getImagePath('/images/certification/traceability-cert.jpg')}
-                    alt="수산물이력추적관리 등록증 제1164호"
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 100vw, 512px"
-                  />
+          <div className="grid gap-6 md:grid-cols-2">
+            <FadeIn>
+              <div className="overflow-hidden rounded-2xl border border-navy-700/30 bg-white/[0.03] p-4 shadow-lg backdrop-blur-sm">
+                <div className="overflow-hidden rounded-xl bg-white/95 p-3">
+                  <div className="relative aspect-[3/4]">
+                    <Image
+                      src={getImagePath('/images/certification/traceability-cert.jpg')}
+                      alt="수산물이력추적관리 등록증 제1164호"
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
+                <p className="mt-3 text-center text-sm font-medium text-white/80">
+                  수산물이력추적관리 등록증 제1164호
+                </p>
               </div>
-              <p className="mt-3 text-center text-sm font-medium text-white/80">
-                수산물이력추적관리 등록증 제1164호
-              </p>
-            </div>
-          </FadeIn>
+            </FadeIn>
+
+            <FadeIn>
+              <div className="overflow-hidden rounded-2xl border border-navy-700/30 bg-white/[0.03] p-4 shadow-lg backdrop-blur-sm">
+                <div className="overflow-hidden rounded-xl bg-white/95 p-3">
+                  <div className="relative aspect-[3/4]">
+                    <Image
+                      src={getImagePath('/images/certification/traceability-cert-2.jpg')}
+                      alt="수산물이력추적관리 인증서"
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+                <p className="mt-3 text-center text-sm font-medium text-white/80">
+                  수산물이력추적관리 인증서
+                </p>
+              </div>
+            </FadeIn>
+          </div>
 
           <FadeIn className="mt-8">
             <p className="text-center text-sm text-white/60">
@@ -475,10 +508,10 @@ export default function CertificationPage() {
 
           <div className="grid grid-cols-2 gap-4 md:gap-6">
             {[
-              { image: '/images/facility/radiation-testing.jpg', caption: '방사능 측정 검사 진행' },
-              { image: '/images/facility/warehouse-labels.jpg', caption: '원료 식별표시 관리' },
-              { image: '/images/facility/warehouse-boxes.jpg', caption: '체계적 원료 보관' },
-              { image: '/images/facility/safety-sign.jpg', caption: '이물 주의 안전 관리' },
+              { image: '/images/facility/raw-material-label.jpg', caption: '원료 식별표시' },
+              { image: '/images/facility/raw-material-label-2.jpg', caption: '원료 관리' },
+              { image: '/images/facility/cold-storage-boxes.jpg', caption: '냉동 보관' },
+              { image: '/images/facility/cold-storage-detail.jpg', caption: '선내급속냉동' },
             ].map((photo) => (
               <FadeIn key={photo.caption}>
                 <div className="group overflow-hidden rounded-xl border border-navy-700/40 bg-navy-950/60 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5">

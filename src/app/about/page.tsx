@@ -154,7 +154,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:h-full">
                   <div className="absolute inset-0 border-b-4 border-gold-500/40 lg:border-b-0 lg:border-r-4">
                     <Image
-                      src={getImagePath('/images/team/director-interview-1.jpg')}
+                      src={getImagePath('/images/team/director-writing.jpg')}
                       alt="대표이사 서순심"
                       fill
                       className="object-cover"
