@@ -1,0 +1,158 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { getImagePath } from '@/lib/utils';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { label: '회사소개', href: '/about' },
+  { label: '생산공정', href: '/process' },
+  { label: '기술·설비', href: '/technology' },
+  { label: '품질·인증', href: '/certification' },
+  { label: '비전', href: '/vision' },
+  { label: '영광굴비', href: '/gulbi' },
+  { label: '자료실', href: '/resources' },
+  { label: '문의', href: '/contact' },
+];
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  const bgClass = !isHome || scrolled
+    ? 'bg-navy-900/95 backdrop-blur-md shadow-lg'
+    : 'bg-transparent';
+
+  return (
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${bgClass}`}
+    >
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src={getImagePath('/images/logo.png')}
+            alt="서풍 로고"
+            width={40}
+            height={40}
+            className="h-10 w-auto"
+            priority
+          />
+          <span className="hidden text-lg font-semibold tracking-wide text-white sm:inline">
+            서풍
+          </span>
+        </Link>
+
+        {/* Desktop menu */}
+        <ul className="hidden items-center gap-1 lg:flex">
+          {NAV_ITEMS.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors
+                  after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2
+                  after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-3/4
+                  ${pathname === item.href
+                    ? 'text-gold-400 after:w-3/4'
+                    : 'text-white/80 hover:text-gold-400'
+                  }`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+          aria-label="메뉴 열기"
+        >
+          <span
+            className={`h-0.5 w-6 rounded bg-white transition-all duration-300 ${
+              mobileOpen ? 'translate-y-2 rotate-45' : ''
+            }`}
+          />
+          <span
+            className={`h-0.5 w-6 rounded bg-white transition-all duration-300 ${
+              mobileOpen ? 'opacity-0' : ''
+            }`}
+          />
+          <span
+            className={`h-0.5 w-6 rounded bg-white transition-all duration-300 ${
+              mobileOpen ? '-translate-y-2 -rotate-45' : ''
+            }`}
+          />
+        </button>
+      </nav>
+
+      {/* Gold accent line */}
+      <div
+        className={`h-[1px] w-full transition-opacity duration-500 ${
+          !isHome || scrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          background:
+            'linear-gradient(to right, transparent, var(--color-gold-500), transparent)',
+        }}
+      />
+
+      {/* Mobile menu overlay */}
+      <div
+        className={`fixed inset-0 z-40 bg-navy-950/98 backdrop-blur-lg transition-all duration-500 lg:hidden ${
+          mobileOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="flex h-full flex-col items-center justify-center gap-2">
+          {NAV_ITEMS.map((item, i) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`py-3 text-2xl font-medium transition-all duration-300 ${
+                pathname === item.href ? 'text-gold-400' : 'text-white/80 hover:text-gold-400'
+              }`}
+              style={{
+                transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms',
+                opacity: mobileOpen ? 1 : 0,
+                transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </header>
+  );
+}

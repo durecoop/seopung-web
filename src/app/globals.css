@@ -1,0 +1,131 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy-950: #050a18;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0f2240;
+  --color-navy-700: #162d52;
+  --color-navy-600: #1e3a6a;
+  --color-ocean-500: #1e6aa1;
+  --color-ocean-400: #2d8ac7;
+  --color-ocean-300: #4da6e0;
+  --color-gold-500: #c8a45c;
+  --color-gold-400: #d4b872;
+  --color-gold-300: #e0cc88;
+  --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+:root {
+  --background: #050a18;
+  --foreground: #f0f0f0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-pretendard);
+  overflow-x: hidden;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-navy-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ocean-500);
+  border-radius: 3px;
+}
+
+/* Number font */
+.font-number {
+  font-family: var(--font-montserrat);
+}
+
+/* Gradient overlays */
+.gradient-dark-bottom {
+  background: linear-gradient(to bottom, transparent 0%, rgba(5, 10, 24, 0.8) 100%);
+}
+.gradient-dark-top {
+  background: linear-gradient(to top, transparent 0%, rgba(5, 10, 24, 0.8) 100%);
+}
+.gradient-dark-full {
+  background: linear-gradient(to bottom, rgba(5, 10, 24, 0.6) 0%, rgba(5, 10, 24, 0.4) 50%, rgba(5, 10, 24, 0.7) 100%);
+}
+
+/* Section divider wave */
+.wave-divider {
+  position: relative;
+}
+.wave-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23050a18' d='M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E") no-repeat bottom center;
+  background-size: cover;
+}
+
+/* Animate on scroll base */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold underline */
+.gold-line {
+  position: relative;
+  display: inline-block;
+}
+.gold-line::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-gold-500);
+}
+
+/* Parallax image container */
+.parallax-img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ── Accessibility: focus states ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-ocean-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
