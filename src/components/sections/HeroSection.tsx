@@ -205,7 +205,7 @@ export default function HeroSection() {
       <div className="relative flex h-full flex-col items-center justify-center px-6">
         {/* Main slogan */}
         <div className="text-center">
-          <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-7xl">
+          <h1 className="mb-4 text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-7xl">
             지속가능한 바다
             <br />
             <span className="text-gold-400">책임 있는 먹거리의 약속</span>
@@ -221,7 +221,7 @@ export default function HeroSection() {
           className="absolute bottom-24 left-0 w-full md:bottom-28"
         >
           <div className="mx-auto max-w-5xl px-6">
-            <div className="grid grid-cols-2 gap-6 rounded-2xl border border-white/10 bg-navy-900/60 px-6 py-6 backdrop-blur-md md:grid-cols-4 md:gap-8 md:px-10 md:py-8">
+            <div className="relative grid grid-cols-2 gap-3 sm:gap-6 rounded-2xl border border-white/10 bg-gradient-to-b from-navy-900/70 to-navy-900/50 px-6 py-6 backdrop-blur-md md:grid-cols-4 md:gap-8 md:px-10 md:py-8">
               {STATS.map((stat) => (
                 <StatCounter
                   key={stat.label}

@@ -124,7 +124,7 @@ export default function ProductsPage() {
             </div>
           </FadeIn>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {CATEGORIES.map((cat, i) => (
               <FadeIn key={cat.id} delay={i * 120}>
                 <div className="group relative overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60">
@@ -183,7 +183,7 @@ export default function ProductsPage() {
           </FadeIn>
 
           <FadeIn>
-            <div className="grid grid-cols-3 gap-4 md:grid-cols-5 lg:grid-cols-9">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-9">
               {FISH_SPECIES.map((fish, i) => (
                 <FadeIn key={fish.name} delay={i * 60}>
                   <div className="group flex flex-col items-center gap-3 rounded-2xl border border-navy-700/50 bg-navy-900/60 px-3 py-6 text-center backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60">

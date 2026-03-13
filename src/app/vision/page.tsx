@@ -179,7 +179,7 @@ export default function VisionPage() {
             </div>
           </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PRIORITIES.map((p, i) => (
               <Reveal key={p.title} delay={i * 100}>
                 <div
@@ -228,7 +228,7 @@ export default function VisionPage() {
           <Reveal delay={100}>
             <div className="mb-8 overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 md:p-12">
               <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-ocean-400">총 매출</p>
-              <div className="grid gap-8 md:grid-cols-3">
+              <div className="grid grid-cols-3 gap-4 md:gap-8">
                 {[
                   { year: '2024', value: '376', unit: '억', highlight: false },
                   { year: '2025', value: '379', unit: '억', highlight: false },
@@ -236,19 +236,19 @@ export default function VisionPage() {
                 ].map((item, i) => (
                   <div key={item.year} className="relative text-center">
                     {i > 0 && (
-                      <div className="absolute -left-4 top-1/2 hidden -translate-y-1/2 text-white/20 md:block">
+                      <div className="absolute -left-2 top-1/2 hidden -translate-y-1/2 text-white/20 md:-left-4 md:block">
                         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </div>
                     )}
-                    <p className="mb-2 font-montserrat text-sm text-white/60">{item.year}</p>
-                    <p className={`font-montserrat text-5xl font-bold md:text-6xl ${item.highlight ? 'text-gold-400' : 'text-white'}`}>
+                    <p className="mb-2 font-montserrat text-xs text-white/60 sm:text-sm">{item.year}</p>
+                    <p className={`font-montserrat text-3xl font-bold sm:text-4xl md:text-6xl ${item.highlight ? 'text-gold-400' : 'text-white'}`}>
                       {item.value}
-                      <span className="ml-1 text-lg font-normal text-white/60">{item.unit}</span>
+                      <span className="ml-0.5 text-sm font-normal text-white/60 md:ml-1 md:text-lg">{item.unit}</span>
                     </p>
                     {item.badge && (
-                      <span className="mt-3 inline-block rounded-full bg-gold-500/15 px-3 py-1 font-montserrat text-sm font-bold text-gold-400">
+                      <span className="mt-2 inline-block rounded-full bg-gold-500/15 px-2 py-0.5 font-montserrat text-xs font-bold text-gold-400 sm:mt-3 sm:px-3 sm:py-1 sm:text-sm">
                         {item.badge}
                       </span>
                     )}

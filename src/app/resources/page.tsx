@@ -145,7 +145,7 @@ function Lightbox({ photo, onClose }: { photo: GalleryPhoto | null; onClose: () 
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 pb-[env(safe-area-inset-bottom)]"
       onClick={onClose}
     >
       <div
@@ -154,7 +154,7 @@ function Lightbox({ photo, onClose }: { photo: GalleryPhoto | null; onClose: () 
       >
         <button
           onClick={onClose}
-          className="absolute -top-10 right-0 text-white/80 hover:text-white transition-colors text-sm font-medium flex items-center gap-1"
+          className="absolute -top-12 right-0 min-h-[44px] min-w-[44px] flex items-center justify-center text-white/80 hover:text-white transition-colors text-sm font-medium gap-1"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -275,7 +275,7 @@ export default function ResourcesPage() {
 
                   {/* Download button */}
                   <button
-                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/40 px-4 py-2.5 text-sm font-medium text-gold-400 transition-all duration-300 hover:bg-gold-500/10 hover:border-gold-400"
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/40 px-4 py-2.5 min-h-[44px] text-sm font-medium text-gold-400 transition-all duration-300 hover:bg-gold-500/10 hover:border-gold-400"
                   >
                     <DownloadIcon className="h-4 w-4" />
                     다운로드
@@ -309,7 +309,7 @@ export default function ResourcesPage() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+                  className={`rounded-full px-5 py-2 min-h-[44px] text-sm font-medium transition-all duration-300 ${
                     activeTab === tab
                       ? 'bg-ocean-500 text-white shadow-lg shadow-ocean-500/25'
                       : 'bg-navy-800 text-white/60 hover:text-white/80 hover:bg-navy-700'
@@ -322,7 +322,7 @@ export default function ResourcesPage() {
           </Reveal>
 
           {/* Photo grid */}
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-5">
             {filteredPhotos.map((photo, i) => (
               <Reveal key={photo.src} delay={i * 60}>
                 <button
@@ -339,7 +339,7 @@ export default function ResourcesPage() {
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {/* Category badge */}
-                  <span className="absolute top-2 left-2 rounded-full bg-navy-950/70 px-2.5 py-0.5 text-[10px] font-medium text-white/80 backdrop-blur-sm md:text-xs">
+                  <span className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 rounded-full bg-navy-950/70 px-2 sm:px-2.5 py-0.5 text-[10px] font-medium text-white/80 backdrop-blur-sm md:text-xs">
                     {photo.category}
                   </span>
                   {/* Label on hover */}
@@ -376,7 +376,7 @@ export default function ResourcesPage() {
 
               {/* Large download button */}
               <button
-                className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 px-8 py-3.5 text-base font-semibold text-navy-950 shadow-lg shadow-gold-500/20 transition-all duration-300 hover:shadow-gold-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 px-8 py-3.5 min-h-[44px] text-base font-semibold text-navy-950 shadow-lg shadow-gold-500/20 transition-all duration-300 hover:shadow-gold-500/40 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <DownloadIcon className="h-5 w-5" />
                 PDF 다운로드

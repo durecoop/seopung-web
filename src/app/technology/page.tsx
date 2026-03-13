@@ -256,8 +256,8 @@ export default function TechnologyPage() {
           </FadeIn>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {EQUIPMENT.map((eq) => (
-              <FadeIn key={eq.name}>
+            {EQUIPMENT.map((eq, i) => (
+              <FadeIn key={eq.name} delay={i * 100}>
                 <div className="group overflow-hidden rounded-xl border border-navy-700/40 bg-navy-900/50 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
@@ -363,9 +363,9 @@ export default function TechnologyPage() {
           <FadeIn>
             <div className="relative">
               {/* Horizontal line */}
-              <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-gradient-to-r from-navy-700 via-ocean-500/40 to-navy-700 md:block" />
+              <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-gradient-to-r from-navy-700 via-ocean-500/40 to-navy-700 lg:block" />
 
-              <div className="grid gap-8 md:grid-cols-5">
+              <div className="grid gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
                 {TIMELINE.map((t) => (
                   <div key={t.year} className="relative text-center">
                     {/* Dot */}

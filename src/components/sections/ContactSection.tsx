@@ -31,8 +31,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative bg-navy-800 py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="contact" className="relative bg-navy-800 py-16 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* ── Header ── */}
         <div
           ref={header.ref}
@@ -75,7 +75,7 @@ export default function ContactSection() {
                   name={field.name}
                   type={field.type}
                   placeholder={field.placeholder}
-                  className="w-full rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30"
+                  className="w-full rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-base text-white placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30 min-h-[44px]"
                 />
               </div>
             ))}
@@ -89,13 +89,13 @@ export default function ContactSection() {
                 name="message"
                 rows={5}
                 placeholder="문의 내용을 입력해 주세요"
-                className="w-full resize-none rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30"
+                className="w-full resize-none rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-base text-white placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-gold-500 px-6 py-3.5 text-sm font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20 active:scale-[0.98]"
+              className="w-full rounded-lg bg-gold-500 px-6 py-3.5 text-sm font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20 active:scale-[0.98] min-h-[44px]"
             >
               문의 보내기
             </button>

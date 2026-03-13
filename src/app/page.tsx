@@ -152,30 +152,34 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn>
-            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide md:gap-6">
-              {PROCESS_STEPS.map((step) => (
-                <div
-                  key={step.step}
-                  className="group flex-shrink-0 w-44 md:w-52"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-navy-700/50">
-                    <Image
-                      src={getImagePath(step.image)}
-                      alt={step.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 176px, 208px"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-3">
-                      <span className="font-montserrat text-xs font-bold text-gold-400">
-                        STEP {step.step}
-                      </span>
-                      <p className="text-sm font-medium text-white">{step.title}</p>
+            <div className="relative">
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide md:gap-6">
+                {PROCESS_STEPS.map((step) => (
+                  <div
+                    key={step.step}
+                    className="group flex-shrink-0 w-44 md:w-52"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-navy-700/50">
+                      <Image
+                        src={getImagePath(step.image)}
+                        alt={step.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 176px, 208px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
+                      <div className="absolute bottom-0 left-0 p-3">
+                        <span className="font-montserrat text-xs font-bold text-gold-400">
+                          STEP {step.step}
+                        </span>
+                        <p className="text-sm font-medium text-white">{step.title}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              {/* Scroll fade indicator */}
+              <div className="pointer-events-none absolute right-0 top-0 h-[calc(100%-16px)] w-16 bg-gradient-to-l from-navy-900/80 to-transparent md:hidden" />
             </div>
           </FadeIn>
 
@@ -292,7 +296,7 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
               {[
                 { number: '10년+', label: '협력기간' },
                 { number: '134+', label: '개발품목' },
@@ -366,7 +370,7 @@ export default function Home() {
                     Product Lineup
                   </span>
                   <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-                    제품 라인업,<br />
+                    <span className="inline md:block">제품 라인업,</span>{' '}
                     <span className="text-gold-400">134+ 품목</span>
                   </h2>
                   <p className="mb-8 max-w-md text-base text-white/60 md:text-lg">
@@ -401,7 +405,7 @@ export default function Home() {
               </p>
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-ocean-500 to-ocean-400 px-8 py-4 text-base font-bold text-white shadow-xl shadow-ocean-500/20 transition-all duration-300 hover:shadow-ocean-500/40 hover:brightness-110"
+                className="group inline-flex min-h-[44px] items-center gap-3 rounded-full bg-gradient-to-r from-ocean-500 to-ocean-400 px-8 py-4 text-base font-bold text-white shadow-xl shadow-ocean-500/20 transition-all duration-300 hover:shadow-ocean-500/40 hover:brightness-110"
               >
                 문의하기
                 <svg

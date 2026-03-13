@@ -129,7 +129,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+          className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden"
           aria-label="메뉴 열기"
         >
           <span
@@ -174,7 +174,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`py-3 text-2xl font-medium transition-all duration-300 ${
+              className={`py-3 text-xl sm:text-2xl font-medium transition-all duration-300 ${
                 pathname === item.href ? 'text-gold-400' : 'text-white/80 hover:text-gold-400'
               }`}
               style={{

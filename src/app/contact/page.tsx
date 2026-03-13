@@ -185,7 +185,7 @@ export default function ContactPage() {
                 <div className="h-full w-full bg-gradient-to-r from-gold-500/60 via-gold-400/40 to-gold-500/60" />
               </div>
               {/* Mobile connecting line */}
-              <div className="absolute left-[28px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500/60 via-gold-400/40 to-gold-500/60 md:hidden" />
+              <div className="absolute left-6 sm:left-[28px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500/60 via-gold-400/40 to-gold-500/60 md:hidden" />
 
               <div className="grid gap-8 md:grid-cols-6">
                 {[
@@ -289,7 +289,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/60">
+                    <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/60 py-1">
                       회사명
                     </label>
                     <input
@@ -304,7 +304,7 @@ export default function ContactPage() {
                     {errors.company && <p className="mt-1.5 text-xs text-red-400">{errors.company}</p>}
                   </div>
                   <div>
-                    <label htmlFor="person" className="mb-2 block text-sm font-medium text-white/60">
+                    <label htmlFor="person" className="mb-2 block text-sm font-medium text-white/60 py-1">
                       담당자명
                     </label>
                     <input
@@ -322,7 +322,7 @@ export default function ContactPage() {
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/60">
+                    <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/60 py-1">
                       연락처
                     </label>
                     <input
@@ -337,7 +337,7 @@ export default function ContactPage() {
                     {errors.phone && <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>}
                   </div>
                   <div>
-                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/60">
+                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/60 py-1">
                       이메일
                     </label>
                     <input
@@ -354,7 +354,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/60">
+                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/60 py-1">
                     문의 내용
                   </label>
                   <textarea
@@ -377,7 +377,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="group relative w-full overflow-hidden rounded-xl bg-gold-500 px-8 py-4 font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20"
+                  className="group relative w-full overflow-hidden rounded-xl bg-gold-500 px-8 py-4 min-h-[44px] font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20"
                 >
                   <span className="relative z-10">문의하기</span>
                   <div className="absolute inset-0 -translate-x-full bg-gold-400 transition-transform duration-300 group-hover:translate-x-0" />
@@ -423,7 +423,7 @@ export default function ContactPage() {
             </div>
           </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {AFFILIATES.map((affiliate, i) => (
               <Reveal key={affiliate.name} delay={i * 100}>
                 <div className="group relative overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30 hover:bg-navy-800/60">

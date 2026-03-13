@@ -120,7 +120,7 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
   return (
     <div className="relative py-16 md:py-24">
       {/* Step number watermark */}
-      <div className="pointer-events-none absolute left-6 top-8 font-montserrat text-[120px] font-black leading-none text-navy-800/30 md:text-[180px] lg:left-12">
+      <div className="pointer-events-none absolute left-6 top-8 font-montserrat text-[80px] font-black leading-none text-navy-800/30 sm:text-[100px] md:text-[180px] lg:left-12">
         {step.number}
       </div>
 
@@ -174,7 +174,7 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
         {/* Extra photo gallery */}
         {step.gallery && step.gallery.length > 0 && (
           <Reveal delay={450}>
-            <div className={`mt-10 grid gap-3 ${step.gallery.length >= 4 ? 'grid-cols-2 md:grid-cols-4' : step.gallery.length === 3 ? 'grid-cols-2 md:grid-cols-3' : 'grid-cols-2'}`}>
+            <div className={`mt-10 grid gap-3 ${step.gallery.length >= 4 ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4' : step.gallery.length === 3 ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-2'}`}>
               {step.gallery.map((g) => (
                 <div
                   key={g.src}
@@ -305,7 +305,7 @@ export default function ProcessPage() {
 
           {/* Panorama */}
           <Reveal className="mt-10">
-            <div className="relative aspect-[21/9] overflow-hidden rounded-2xl">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl md:aspect-[21/9]">
               <Image
                 src={getImagePath('/images/auction/auction-panorama.jpg')}
                 alt="위판장 전경"

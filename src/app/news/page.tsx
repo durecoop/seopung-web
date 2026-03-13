@@ -76,13 +76,13 @@ export default function NewsPage() {
       {/* ── News List ── */}
       <section className="relative py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-5 sm:gap-8">
             {NEWS_ITEMS.map((item, i) => (
               <Reveal key={item.title} delay={i * 100}>
                 <article className="group overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30">
                   <div className="grid gap-0 md:grid-cols-[280px_1fr]">
                     {/* Image */}
-                    <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:h-full">
+                    <div className="relative aspect-[16/9] overflow-hidden md:aspect-auto md:h-full">
                       <Image
                         src={getImagePath(item.image)}
                         alt={item.title}
@@ -94,7 +94,7 @@ export default function NewsPage() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 md:p-8">
+                    <div className="p-5 sm:p-6 md:p-8">
                       <div className="mb-3 flex items-center gap-3">
                         <span className="inline-block rounded-full bg-ocean-500/15 px-3 py-1 text-xs font-semibold text-ocean-400">
                           {item.category}

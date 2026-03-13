@@ -122,7 +122,7 @@ export default function AboutPage() {
       <Breadcrumb />
 
       {/* ── Hero ── */}
-      <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
+      <section className="relative flex h-[35vh] min-h-[320px] items-center justify-center overflow-hidden md:h-[40vh]">
         <Image
           src={getImagePath('/images/team/factory-team.jpg')}
           alt="서풍 공장 팀"
@@ -284,7 +284,7 @@ export default function AboutPage() {
               const isRight = i % 2 === 0;
               return (
                 <Reveal key={item.year} delay={i * 80}>
-                  <div className={`relative mb-12 flex items-start gap-8 pl-16 md:pl-0 ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                  <div className={`relative mb-12 flex items-start gap-8 pl-12 sm:pl-16 md:pl-0 ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Content */}
                     <div className={`md:w-1/2 ${isRight ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
                       <span className="font-montserrat text-2xl font-bold text-gold-400 md:text-3xl">{item.year}</span>
@@ -378,7 +378,7 @@ export default function AboutPage() {
               {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
                 <div
                   key={name}
-                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 bg-navy-900/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/40 hover:bg-navy-800/60 hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-0.5"
                 >
                   <span className="text-lg font-bold text-white/40 transition-colors duration-500 group-hover:text-gold-400">
                     {name}
