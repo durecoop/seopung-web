@@ -178,10 +178,8 @@ export default function AboutPage() {
 
                   <div className="mt-10">
                     <p className="text-2xl font-bold text-white md:text-3xl">상무이사 김태환</p>
-                    {/* Signature area */}
                     <div className="mt-4 inline-block">
-                      <span className="font-serif text-2xl italic text-white/70">김태환</span>
-                      <div className="mt-1 h-[2px] w-full rounded-full bg-gradient-to-r from-gold-500 to-gold-500/0" />
+                      <div className="h-[2px] w-24 rounded-full bg-gradient-to-r from-gold-500 to-gold-500/0" />
                     </div>
                   </div>
 
