@@ -14,7 +14,7 @@ import Breadcrumb from '@/components/ui/Breadcrumb';
    ────────────────────────────────────────────── */
 const COMPANY_INFO = [
   { label: '회사명', value: '영어조합법인 서풍' },
-  { label: '대표', value: '서순심' },
+  { label: '대표', value: '김태환' },
   { label: '주소', value: '전라남도 여수시 석교로 121 (화양면)' },
   { label: '사업자번호', value: '417-81-41979' },
   { label: '취급어종', value: '참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어' },

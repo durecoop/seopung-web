@@ -62,7 +62,7 @@ const PLATFORM_STEPS = [
 
 const COMPANY_INFO = [
   { label: '회사명', value: '영어조합법인 서풍' },
-  { label: '대표', value: '대표이사' },
+  { label: '대표', value: '상무이사 김태환' },
   { label: '주소', value: '전라남도 여수시 석교로 121 화양면' },
   { label: '사업자번호', value: '417-81-41979' },
 ];
@@ -155,7 +155,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 border-b-4 border-gold-500/40 lg:border-b-0 lg:border-r-4">
                     <Image
                       src={getImagePath('/images/team/director-writing.jpg')}
-                      alt="대표이사 서순심"
+                      alt="상무이사 김태환"
                       fill
                       className="object-cover"
                     />
@@ -177,10 +177,10 @@ export default function AboutPage() {
                   </div>
 
                   <div className="mt-10">
-                    <p className="text-2xl font-bold text-white md:text-3xl">대표이사 서순심</p>
+                    <p className="text-2xl font-bold text-white md:text-3xl">상무이사 김태환</p>
                     {/* Signature area */}
                     <div className="mt-4 inline-block">
-                      <span className="font-serif text-2xl italic text-white/70">서순심</span>
+                      <span className="font-serif text-2xl italic text-white/70">김태환</span>
                       <div className="mt-1 h-[2px] w-full rounded-full bg-gradient-to-r from-gold-500 to-gold-500/0" />
                     </div>
                   </div>

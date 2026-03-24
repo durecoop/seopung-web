@@ -8,7 +8,7 @@ import { useReveal } from '@/hooks/useReveal';
    ────────────────────────────────────────────── */
 const INFO_ITEMS = [
   { label: '회사명', value: '영어조합법인 서풍' },
-  { label: '대표', value: '서순심' },
+  { label: '대표', value: '김태환' },
   { label: '주소', value: '전라남도 여수시 석교로 121 (화양면)' },
   { label: '전화', value: '061-XXX-XXXX' },
   { label: '사업자번호', value: '417-81-41979' },
