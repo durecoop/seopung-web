@@ -123,6 +123,16 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              href="https://durecoop.github.io/seopung-shop/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 rounded-lg bg-gold-500 px-4 py-1.5 text-sm font-semibold text-navy-950 transition-all hover:bg-gold-400"
+            >
+              쇼핑몰
+            </a>
+          </li>
         </ul>
 
         {/* Mobile hamburger */}
@@ -186,6 +196,19 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          <a
+            href="https://durecoop.github.io/seopung-shop/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 rounded-xl bg-gold-500 px-8 py-3 text-lg font-semibold text-navy-950 transition-all hover:bg-gold-400"
+            style={{
+              transitionDelay: mobileOpen ? `${NAV_ITEMS.length * 60}ms` : '0ms',
+              opacity: mobileOpen ? 1 : 0,
+              transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
+            }}
+          >
+            쇼핑몰 바로가기
+          </a>
         </div>
       </div>
     </header>
