@@ -28,6 +28,12 @@ const QUICK_LINKS = [
   { label: '문의', href: '/contact' },
 ];
 
+const CROSS_LINKS = [
+  { label: '서풍몰 쇼핑하기', href: 'https://seopung-shop.vercel.app', icon: '🛒' },
+  { label: '쇼핑몰 관리자', href: 'https://seopung-shop.vercel.app/admin', icon: '⚙' },
+  { label: '홈페이지 관리자', href: '/admin', icon: '🔑', internal: true },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-navy-800 bg-navy-950">
@@ -132,7 +138,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Contact */}
+          {/* Col 4: Contact + Cross Links */}
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold-400/60">
               연락처
@@ -141,6 +147,38 @@ export default function Footer() {
               <li className="py-1">전라남도 여수시 석교로 121</li>
               <li className="py-1">061-XXX-XXXX</li>
               <li className="py-1">seopung@example.com</li>
+            </ul>
+
+            <h4 className="mb-3 mt-6 text-sm font-semibold uppercase tracking-wider text-gold-400/60">
+              바로가기
+            </h4>
+            <ul className="space-y-2">
+              {CROSS_LINKS.map((link) =>
+                link.internal ? (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-gold-400"
+                    >
+                      <span className="text-xs">{link.icon}</span>
+                      {link.label}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-gold-400"
+                    >
+                      <span className="text-xs">{link.icon}</span>
+                      {link.label}
+                      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
