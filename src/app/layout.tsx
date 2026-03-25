@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: 'https://seopung.co.kr',
+  },
 };
 
 export default function RootLayout({
@@ -49,6 +52,17 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: '영어조합법인 서풍',
+          url: 'https://seopung.co.kr',
+          logo: 'https://seopung.co.kr/images/logo.png',
+          description: '지속가능한 바다, 책임 있는 먹거리의 약속. 기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출합니다.',
+          address: { '@type': 'PostalAddress', addressLocality: '여수시', addressRegion: '전라남도', addressCountry: 'KR', streetAddress: '석교로 121' },
+          contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', availableLanguage: 'Korean' },
+          sameAs: ['https://shop.seopung.co.kr']
+        }) }} />
         <PageViewTracker />
         {children}
         <ScrollToTop />

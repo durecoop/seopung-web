@@ -137,7 +137,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="bg-navy-950 font-pretendard">
+    <main id="main-content" className="bg-navy-950 font-pretendard">
       <Navbar />
       <Breadcrumb />
 

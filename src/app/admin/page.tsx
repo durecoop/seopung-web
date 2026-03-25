@@ -4,8 +4,11 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { getImagePath } from '@/lib/utils';
 import { getAnalytics, type DailyStats } from '@/lib/analytics';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 import {
-  checkPassword,
+  adminLogin,
+  adminLogout,
   getNotices,
   saveNotice,
   deleteNotice as removeNotice,
@@ -35,16 +38,18 @@ const SITE_PAGES = [
 /* ──────────────────────────────────────────────
    Login Screen
    ────────────────────────────────────────────── */
-function LoginScreen({ onLogin }: { onLogin: () => void }) {
+function LoginScreen() {
+  const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (checkPassword(pw)) {
-      sessionStorage.setItem('seopung_admin_auth', 'true');
-      onLogin();
-    } else {
+    setLoading(true);
+    const success = await adminLogin(email, pw);
+    setLoading(false);
+    if (!success) {
       setError(true);
       setTimeout(() => setError(false), 2000);
     }
@@ -61,8 +66,17 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
             <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" width={64} height={64} className="h-full w-full object-cover" />
           </div>
           <h1 className="text-2xl font-bold text-white">서풍 관리자</h1>
-          <p className="mt-2 text-sm text-white/60">관리자 비밀번호를 입력하세요</p>
+          <p className="mt-2 text-sm text-white/60">관리자 계정으로 로그인하세요</p>
         </div>
+
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="이메일"
+          className="mb-3 w-full rounded-xl border border-navy-700/50 bg-navy-800 px-5 py-3.5 text-white placeholder-white/30 outline-none transition-all focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500"
+          autoFocus
+        />
 
         <input
           type="password"
@@ -70,18 +84,18 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
           onChange={(e) => setPw(e.target.value)}
           placeholder="비밀번호"
           className="mb-4 w-full rounded-xl border border-navy-700/50 bg-navy-800 px-5 py-3.5 text-white placeholder-white/30 outline-none transition-all focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500"
-          autoFocus
         />
 
         {error && (
-          <p className="mb-4 text-center text-sm text-red-400">비밀번호가 올바르지 않습니다.</p>
+          <p className="mb-4 text-center text-sm text-red-400">이메일 또는 비밀번호가 올바르지 않습니다.</p>
         )}
 
         <button
           type="submit"
-          className="w-full rounded-xl bg-gold-500 px-6 py-3.5 font-semibold text-navy-950 transition-colors hover:bg-gold-400"
+          disabled={loading}
+          className="w-full rounded-xl bg-gold-500 px-6 py-3.5 font-semibold text-navy-950 transition-colors hover:bg-gold-400 disabled:opacity-50"
         >
-          로그인
+          {loading ? '로그인 중...' : '로그인'}
         </button>
       </form>
     </div>
@@ -726,6 +740,7 @@ function MenuItem({
    ────────────────────────────────────────────── */
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [notices, setNotices] = useState<Notice[]>([]);
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
@@ -737,22 +752,36 @@ export default function AdminPage() {
   }, []);
 
   useEffect(() => {
-    if (sessionStorage.getItem('seopung_admin_auth') === 'true') {
-      setAuthed(true);
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthed(true);
+      } else {
+        setAuthed(false);
+      }
+      setAuthLoading(false);
+    });
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
     if (authed) refreshData();
   }, [authed, refreshData]);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('seopung_admin_auth');
+  const handleLogout = async () => {
+    await adminLogout();
     setAuthed(false);
   };
 
+  if (authLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-navy-950">
+        <p className="text-white/60">로딩 중...</p>
+      </div>
+    );
+  }
+
   if (!authed) {
-    return <LoginScreen onLogin={() => setAuthed(true)} />;
+    return <LoginScreen />;
   }
 
   const unreadCount = inquiries.filter((i) => !i.read).length;

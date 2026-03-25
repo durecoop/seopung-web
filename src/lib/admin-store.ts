@@ -18,11 +18,21 @@ export interface Inquiry {
   read: boolean;
 }
 
-// Admin password (simple, client-side only — not real security)
-const ADMIN_PASSWORD = 'seopung2026';
+// Firebase Auth login/logout
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { auth } from './firebase';
 
-export function checkPassword(pw: string): boolean {
-  return pw === ADMIN_PASSWORD;
+export async function adminLogin(email: string, password: string): Promise<boolean> {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function adminLogout(): Promise<void> {
+  await signOut(auth);
 }
 
 // Notice CRUD

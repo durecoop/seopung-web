@@ -76,6 +76,9 @@ export default function Navbar() {
       <nav className={`mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-500 ${
         isExpanded ? 'py-5' : 'py-3'
       }`}>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-[60] focus:rounded-lg focus:bg-ocean-500 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white">
+          본문으로 건너뛰기
+        </a>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className={`relative overflow-hidden rounded-full bg-white shadow-lg transition-all duration-500 ${

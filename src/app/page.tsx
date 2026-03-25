@@ -34,7 +34,7 @@ const CERT_BADGES = [
 /* ═══════════════════════════════════════ */
 export default function Home() {
   return (
-    <main className="bg-navy-950 font-pretendard">
+    <main id="main-content" className="bg-navy-950 font-pretendard">
       <Navbar />
       <HeroSection />
 

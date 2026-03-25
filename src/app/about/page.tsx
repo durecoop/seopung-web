@@ -117,7 +117,7 @@ function CountUpCard({ number, label, sub }: { number: string; label: string; su
    ────────────────────────────────────────────── */
 export default function AboutPage() {
   return (
-    <main className="bg-navy-950 font-pretendard">
+    <main id="main-content" className="bg-navy-950 font-pretendard">
       <Navbar />
       <Breadcrumb />
 
