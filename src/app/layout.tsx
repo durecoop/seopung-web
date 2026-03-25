@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import PageViewTracker from "@/components/ui/PageViewTracker";
 
 const BASE_URL = "https://durecoop.github.io/Seopung";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="antialiased">
+        <PageViewTracker />
         {children}
         <ScrollToTop />
       </body>

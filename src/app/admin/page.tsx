@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { getImagePath } from '@/lib/utils';
+import { getAnalytics, type DailyStats } from '@/lib/analytics';
 import {
   checkPassword,
   getNotices,
@@ -101,6 +102,14 @@ function DashboardTab({
 }) {
   const unreadCount = inquiries.filter((i) => !i.read).length;
 
+  const [webStats, setWebStats] = useState<{ daily: DailyStats[]; total: number; today: number }>({ daily: [], total: 0, today: 0 });
+  const [shopStats, setShopStats] = useState<{ daily: DailyStats[]; total: number; today: number }>({ daily: [], total: 0, today: 0 });
+
+  useEffect(() => {
+    getAnalytics('web', 7).then(setWebStats).catch(() => {});
+    getAnalytics('shop', 7).then(setShopStats).catch(() => {});
+  }, []);
+
   const statCards = [
     {
       label: '공지사항',
@@ -152,6 +161,38 @@ function DashboardTab({
   return (
     <div>
       <h2 className="mb-6 text-2xl font-bold text-white">대시보드</h2>
+
+      {/* 방문자 통계 */}
+      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-5">
+          <p className="text-xs font-medium text-emerald-300">홈페이지 오늘 방문</p>
+          <p className="mt-1 font-montserrat text-3xl font-bold text-emerald-400">{webStats.today.toLocaleString()}</p>
+          <p className="mt-1 text-xs text-white/40">누적 {webStats.total.toLocaleString()}회</p>
+        </div>
+        <div className="rounded-xl border border-ocean-500/20 bg-ocean-500/10 p-5">
+          <p className="text-xs font-medium text-ocean-300">쇼핑몰 오늘 방문</p>
+          <p className="mt-1 font-montserrat text-3xl font-bold text-ocean-400">{shopStats.today.toLocaleString()}</p>
+          <p className="mt-1 text-xs text-white/40">누적 {shopStats.total.toLocaleString()}회</p>
+        </div>
+        <div className="rounded-xl border border-navy-700/50 bg-navy-900/80 p-5">
+          <p className="text-xs text-white/40">홈페이지 최근 7일</p>
+          <div className="mt-2 flex items-end gap-1" style={{ height: 36 }}>
+            {(webStats.daily.length > 0 ? webStats.daily.slice(0, 7).reverse() : Array(7).fill({ views: 0 })).map((d, i) => {
+              const max = Math.max(...webStats.daily.map(x => x.views), 1);
+              return <div key={i} className="flex-1 rounded-sm bg-emerald-400" style={{ height: `${Math.max((d.views / max) * 100, 6)}%` }} title={`${d.date || ''}: ${d.views}회`} />;
+            })}
+          </div>
+        </div>
+        <div className="rounded-xl border border-navy-700/50 bg-navy-900/80 p-5">
+          <p className="text-xs text-white/40">쇼핑몰 최근 7일</p>
+          <div className="mt-2 flex items-end gap-1" style={{ height: 36 }}>
+            {(shopStats.daily.length > 0 ? shopStats.daily.slice(0, 7).reverse() : Array(7).fill({ views: 0 })).map((d, i) => {
+              const max = Math.max(...shopStats.daily.map(x => x.views), 1);
+              return <div key={i} className="flex-1 rounded-sm bg-ocean-400" style={{ height: `${Math.max((d.views / max) * 100, 6)}%` }} title={`${d.date || ''}: ${d.views}회`} />;
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* Stat cards */}
       <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
