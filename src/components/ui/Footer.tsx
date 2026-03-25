@@ -29,8 +29,8 @@ const QUICK_LINKS = [
 ];
 
 const CROSS_LINKS = [
-  { label: '서풍몰 쇼핑하기', href: 'https://seopung-shop.vercel.app', icon: '🛒' },
-  { label: '쇼핑몰 관리자', href: 'https://seopung-shop.vercel.app/admin', icon: '⚙' },
+  { label: '서풍몰 쇼핑하기', href: 'https://shop.seopung.co.kr', icon: '🛒' },
+  { label: '쇼핑몰 관리자', href: 'https://shop.seopung.co.kr/admin', icon: '⚙' },
   { label: '홈페이지 관리자', href: '/admin', icon: '🔑', internal: true },
 ];
 

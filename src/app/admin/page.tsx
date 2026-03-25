@@ -856,7 +856,7 @@ export default function AdminPage() {
             홈페이지 보기
           </a>
           <a
-            href="https://seopung-shop.vercel.app"
+            href="https://shop.seopung.co.kr"
             target="_blank"
             rel="noopener noreferrer"
             className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm text-white/60 transition-colors hover:bg-navy-800 hover:text-white/80"
@@ -867,7 +867,7 @@ export default function AdminPage() {
             서풍몰 쇼핑몰
           </a>
           <a
-            href="https://seopung-shop.vercel.app/admin"
+            href="https://shop.seopung.co.kr/admin"
             target="_blank"
             rel="noopener noreferrer"
             className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm text-white/60 transition-colors hover:bg-navy-800 hover:text-white/80"
