@@ -3,7 +3,7 @@ import "./globals.css";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import PageViewTracker from "@/components/ui/PageViewTracker";
 
-const BASE_URL = "https://durecoop.github.io/Seopung";
+const BASE_URL = "https://seopung.co.kr";
 
 export const metadata: Metadata = {
   title: {

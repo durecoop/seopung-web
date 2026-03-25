@@ -128,7 +128,7 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href="https://durecoop.github.io/seopung-shop/"
+              href="https://shop.seopung.co.kr"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-2 rounded-lg bg-gold-500 px-4 py-1.5 text-sm font-semibold text-navy-950 transition-all hover:bg-gold-400"
@@ -200,7 +200,7 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="https://durecoop.github.io/seopung-shop/"
+            href="https://shop.seopung.co.kr"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 rounded-xl bg-gold-500 px-8 py-3 text-lg font-semibold text-navy-950 transition-all hover:bg-gold-400"
