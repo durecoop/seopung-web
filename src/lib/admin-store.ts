@@ -19,6 +19,7 @@ export interface Notice {
   content: string;
   date: string;
   pinned: boolean;
+  attachments?: { name: string; url: string }[];
 }
 
 export interface Inquiry {
@@ -175,6 +176,7 @@ export async function saveNotice(notice: Notice): Promise<void> {
     content: notice.content,
     date: notice.date,
     pinned: notice.pinned,
+    attachments: notice.attachments || [],
   });
 }
 

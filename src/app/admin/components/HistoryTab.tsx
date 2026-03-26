@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ContentForm, { type FieldDef } from './ContentForm';
 import DeleteConfirm from './DeleteConfirm';
+import PageLocation from './PageLocation';
 import { historyCrud, generateId, type HistoryItem } from '@/lib/admin-store';
 
 const FIELDS: FieldDef[] = [
@@ -36,6 +37,7 @@ export default function HistoryTab({ items, refresh }: { items: HistoryItem[]; r
 
   return (
     <div>
+      <PageLocation tab="history" />
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-white">회사 연혁 관리</h2>
         <button onClick={() => { setEditing(null); setShowForm(true); }} className="rounded-lg bg-gold-500 px-5 py-2.5 text-sm font-semibold text-navy-950 hover:bg-gold-400">새 연혁</button>

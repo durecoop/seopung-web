@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import PageLocation from './PageLocation';
 import { getCompanyInfo, saveCompanyInfo, type CompanyInfo } from '@/lib/admin-store';
 
 export default function CompanyInfoTab() {
@@ -32,6 +33,7 @@ export default function CompanyInfoTab() {
 
   return (
     <div>
+      <PageLocation tab="company" />
       <h2 className="mb-6 text-2xl font-bold text-white">회사 정보 관리</h2>
       <div className="max-w-lg space-y-4 rounded-2xl border border-navy-700/30 bg-navy-900/80 p-6">
         <div>

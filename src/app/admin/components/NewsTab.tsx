@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ContentForm, { type FieldDef } from './ContentForm';
 import DeleteConfirm from './DeleteConfirm';
+import PageLocation from './PageLocation';
 import { newsCrud, generateId, type NewsItem } from '@/lib/admin-store';
 
 const FIELDS: FieldDef[] = [
@@ -45,6 +46,7 @@ export default function NewsTab({ items, refresh }: { items: NewsItem[]; refresh
 
   return (
     <div>
+      <PageLocation tab="news" />
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-white">뉴스 관리</h2>
         <button onClick={openNew} className="rounded-lg bg-gold-500 px-5 py-2.5 text-sm font-semibold text-navy-950 hover:bg-gold-400">새 뉴스</button>

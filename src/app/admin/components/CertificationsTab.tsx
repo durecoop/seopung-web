@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ContentForm, { type FieldDef } from './ContentForm';
 import DeleteConfirm from './DeleteConfirm';
+import PageLocation from './PageLocation';
 import { certCrud, generateId, type Certification } from '@/lib/admin-store';
 
 const FIELDS: FieldDef[] = [
@@ -40,6 +41,7 @@ export default function CertificationsTab({ items, refresh }: { items: Certifica
 
   return (
     <div>
+      <PageLocation tab="certifications" />
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-white">인증/수상 관리</h2>
         <button onClick={() => { setEditing(null); setShowForm(true); }} className="rounded-lg bg-gold-500 px-5 py-2.5 text-sm font-semibold text-navy-950 hover:bg-gold-400">새 인증</button>

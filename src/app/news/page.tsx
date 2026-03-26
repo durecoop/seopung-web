@@ -117,6 +117,16 @@ export default function NewsPage() {
                     </div>
                     <h3 className="mb-2 text-lg font-bold text-white">{notice.title}</h3>
                     <p className="whitespace-pre-line leading-relaxed text-white/70">{notice.content}</p>
+                    {notice.attachments && notice.attachments.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {notice.attachments.map((file, fi) => (
+                          <a key={fi} href={file.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-navy-700/50 bg-navy-800/50 px-3 py-1.5 text-xs text-ocean-400 transition-colors hover:border-ocean-500/50">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-3.5 w-3.5"><path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" /></svg>
+                            {file.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </article>
                 </Reveal>
               ))}

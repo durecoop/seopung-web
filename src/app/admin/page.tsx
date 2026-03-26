@@ -6,6 +6,7 @@ import { getImagePath } from '@/lib/utils';
 import { getAnalytics, type DailyStats } from '@/lib/analytics';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+import { seedAllData } from '@/lib/seed-data';
 import {
   adminLogin,
   adminLogout,
@@ -31,6 +32,7 @@ import {
   type HistoryItem,
   type GalleryItem,
 } from '@/lib/admin-store';
+import PageLocation from './components/PageLocation';
 import NewsTab from './components/NewsTab';
 import CertificationsTab from './components/CertificationsTab';
 import EquipmentTab from './components/EquipmentTab';
@@ -333,6 +335,8 @@ function NoticesTab({
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [pinned, setPinned] = useState(false);
+  const [attachments, setAttachments] = useState<{ name: string; url: string }[]>([]);
+  const [uploading, setUploading] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
   const openNew = () => {
@@ -340,6 +344,7 @@ function NoticesTab({
     setTitle('');
     setContent('');
     setPinned(false);
+    setAttachments([]);
     setShowForm(true);
   };
 
@@ -348,7 +353,30 @@ function NoticesTab({
     setTitle(n.title);
     setContent(n.content);
     setPinned(n.pinned);
+    setAttachments(n.attachments || []);
     setShowForm(true);
+  };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    setUploading(true);
+    try {
+      const { uploadFile } = await import('@/lib/storage');
+      const results = await Promise.all(
+        Array.from(files).map(f => uploadFile(f, 'notices'))
+      );
+      setAttachments(prev => [...prev, ...results]);
+    } catch {
+      alert('파일 업로드에 실패했습니다.');
+    } finally {
+      setUploading(false);
+      e.target.value = '';
+    }
+  };
+
+  const removeAttachment = (idx: number) => {
+    setAttachments(prev => prev.filter((_, i) => i !== idx));
   };
 
   const handleSave = async () => {
@@ -359,6 +387,7 @@ function NoticesTab({
       content: content.trim(),
       date: editing?.date || new Date().toISOString(),
       pinned,
+      attachments,
     };
     await saveNotice(notice);
     setShowForm(false);
@@ -373,6 +402,7 @@ function NoticesTab({
 
   return (
     <div>
+      <PageLocation tab="notices" />
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-white">공지사항 관리</h2>
         <button
@@ -386,7 +416,7 @@ function NoticesTab({
       {/* Form modal */}
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="w-full max-w-lg rounded-2xl border border-navy-700/50 bg-navy-900 p-6 shadow-2xl">
+          <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-navy-700/50 bg-navy-900 p-6 shadow-2xl">
             <h3 className="mb-5 text-lg font-bold text-white">
               {editing ? '공지사항 수정' : '새 공지사항'}
             </h3>
@@ -411,6 +441,34 @@ function NoticesTab({
                 placeholder="공지사항 내용을 입력하세요"
               />
             </div>
+
+            {/* 첨부파일 */}
+            <div className="mb-4">
+              <label className="mb-1.5 block text-sm font-medium text-white/60">첨부파일</label>
+              {attachments.length > 0 && (
+                <div className="mb-2 space-y-1">
+                  {attachments.map((file, idx) => (
+                    <div key={idx} className="flex items-center gap-2 rounded-lg border border-navy-700/50 bg-navy-800 px-3 py-2">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4 shrink-0 text-ocean-400">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                      </svg>
+                      <span className="flex-1 truncate text-sm text-white/70">{file.name}</span>
+                      <button onClick={() => removeAttachment(idx)} className="shrink-0 text-red-400 hover:text-red-300">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <label className={`flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-dashed border-navy-700/50 px-4 py-3 text-sm transition-colors hover:border-ocean-500/50 ${uploading ? 'opacity-50' : ''}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4 text-white/40">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                <span className="text-white/40">{uploading ? '업로드 중...' : '파일 첨부 (PDF, 이미지, 문서)'}</span>
+                <input type="file" multiple className="hidden" onChange={handleFileUpload} disabled={uploading} />
+              </label>
+            </div>
+
             <label className="mb-6 flex items-center gap-2 text-sm text-white/80">
               <input
                 type="checkbox"
@@ -481,6 +539,12 @@ function NoticesTab({
                   </span>
                 )}
                 <span className="text-white/90">{n.title}</span>
+                {n.attachments && n.attachments.length > 0 && (
+                  <span className="rounded bg-navy-700/50 px-1.5 py-0.5 text-xs text-white/40">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="mr-0.5 inline h-3 w-3"><path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" /></svg>
+                    {n.attachments.length}
+                  </span>
+                )}
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-sm text-white/60">
@@ -797,7 +861,10 @@ export default function AdminPage() {
   }, []);
 
   useEffect(() => {
-    if (authed) refreshData();
+    if (authed) {
+      // 최초 로그인 시 시드 데이터 자동 등록 (비어있는 컬렉션만)
+      seedAllData().then(() => refreshData()).catch(() => refreshData());
+    }
   }, [authed, refreshData]);
 
   const handleLogout = async () => {
