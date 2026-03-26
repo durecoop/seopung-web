@@ -16,9 +16,29 @@ import {
   markInquiryRead,
   deleteInquiry as removeInquiry,
   generateId,
+  newsCrud,
+  certCrud,
+  equipCrud,
+  investCrud,
+  historyCrud,
+  galleryCrud,
   type Notice,
   type Inquiry,
+  type NewsItem,
+  type Certification,
+  type Equipment,
+  type Investment,
+  type HistoryItem,
+  type GalleryItem,
 } from '@/lib/admin-store';
+import NewsTab from './components/NewsTab';
+import CertificationsTab from './components/CertificationsTab';
+import EquipmentTab from './components/EquipmentTab';
+import InvestmentsTab from './components/InvestmentsTab';
+import HistoryTab from './components/HistoryTab';
+import GalleryTab from './components/GalleryTab';
+import CompanyInfoTab from './components/CompanyInfoTab';
+import SettingsTab from './components/SettingsTab';
 
 /* ──────────────────────────────────────────────
    Pages data for 사이트 관리 tab
@@ -331,7 +351,7 @@ function NoticesTab({
     setShowForm(true);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!title.trim()) return;
     const notice: Notice = {
       id: editing?.id || generateId(),
@@ -340,13 +360,13 @@ function NoticesTab({
       date: editing?.date || new Date().toISOString(),
       pinned,
     };
-    saveNotice(notice);
+    await saveNotice(notice);
     setShowForm(false);
     refresh();
   };
 
-  const handleDelete = (id: string) => {
-    removeNotice(id);
+  const handleDelete = async (id: string) => {
+    await removeNotice(id);
     setDeleteTarget(null);
     refresh();
   };
@@ -744,11 +764,24 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [notices, setNotices] = useState<Notice[]>([]);
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
+  const [news, setNews] = useState<NewsItem[]>([]);
+  const [certs, setCerts] = useState<Certification[]>([]);
+  const [equips, setEquips] = useState<Equipment[]>([]);
+  const [invests, setInvests] = useState<Investment[]>([]);
+  const [history, setHistory] = useState<HistoryItem[]>([]);
+  const [gallery, setGallery] = useState<GalleryItem[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const refreshData = useCallback(() => {
-    setNotices(getNotices());
+  const refreshData = useCallback(async () => {
+    const n = await getNotices();
+    setNotices(n);
     setInquiries(getInquiries());
+    newsCrud.getAll('sortOrder', 'asc').then(setNews).catch(() => {});
+    certCrud.getAll('sortOrder', 'asc').then(setCerts).catch(() => {});
+    equipCrud.getAll('sortOrder', 'asc').then(setEquips).catch(() => {});
+    investCrud.getAll('sortOrder', 'asc').then(setInvests).catch(() => {});
+    historyCrud.getAll('sortOrder', 'asc').then(setHistory).catch(() => {});
+    galleryCrud.getAll('sortOrder', 'asc').then(setGallery).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -816,6 +849,41 @@ export default function AdminPage() {
       ),
     },
     {
+      id: 'news',
+      label: '뉴스',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" /></svg>),
+    },
+    {
+      id: 'certifications',
+      label: '인증/수상',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>),
+    },
+    {
+      id: 'equipment',
+      label: '설비/장비',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.1-5.1a1.5 1.5 0 010-2.12l.71-.71a1.5 1.5 0 012.12 0l3.57 3.57 3.57-3.57a1.5 1.5 0 012.12 0l.71.71a1.5 1.5 0 010 2.12l-5.1 5.1a1.5 1.5 0 01-2.12 0z" /></svg>),
+    },
+    {
+      id: 'investments',
+      label: '투자 타임라인',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>),
+    },
+    {
+      id: 'history',
+      label: '회사 연혁',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>),
+    },
+    {
+      id: 'gallery',
+      label: '갤러리',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" /></svg>),
+    },
+    {
+      id: 'company',
+      label: '회사 정보',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>),
+    },
+    {
       id: 'site',
       label: '사이트 관리',
       icon: (
@@ -824,6 +892,11 @@ export default function AdminPage() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
+    },
+    {
+      id: 'settings',
+      label: '설정',
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.204-.107-.397.165-.71.505-.78.929l-.15.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>),
     },
   ];
 
@@ -943,7 +1016,15 @@ export default function AdminPage() {
           )}
           {activeTab === 'notices' && <NoticesTab notices={notices} refresh={refreshData} />}
           {activeTab === 'inquiries' && <InquiriesTab inquiries={inquiries} refresh={refreshData} />}
+          {activeTab === 'news' && <NewsTab items={news} refresh={refreshData} />}
+          {activeTab === 'certifications' && <CertificationsTab items={certs} refresh={refreshData} />}
+          {activeTab === 'equipment' && <EquipmentTab items={equips} refresh={refreshData} />}
+          {activeTab === 'investments' && <InvestmentsTab items={invests} refresh={refreshData} />}
+          {activeTab === 'history' && <HistoryTab items={history} refresh={refreshData} />}
+          {activeTab === 'gallery' && <GalleryTab items={gallery} refresh={refreshData} />}
+          {activeTab === 'company' && <CompanyInfoTab />}
           {activeTab === 'site' && <SiteTab />}
+          {activeTab === 'settings' && <SettingsTab />}
         </main>
       </div>
     </div>

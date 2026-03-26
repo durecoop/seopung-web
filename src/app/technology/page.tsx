@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/ui/Navbar';
@@ -7,6 +8,7 @@ import Footer from '@/components/ui/Footer';
 import FadeIn from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import { equipCrud, investCrud, type Equipment as EquipType, type Investment as InvestType } from '@/lib/admin-store';
 
 /* ─── Equipment data ─── */
 const EQUIPMENT = [
@@ -86,6 +88,18 @@ const INVEST_2026 = [
 ];
 
 export default function TechnologyPage() {
+  const [equipment, setEquipment] = useState(EQUIPMENT);
+  const [timeline, setTimeline] = useState(TIMELINE);
+
+  useEffect(() => {
+    equipCrud.getAll('sortOrder', 'asc').then((items: EquipType[]) => {
+      if (items.length > 0) setEquipment(items.map(e => ({ name: e.name, image: e.imageUrl, desc: e.desc })));
+    }).catch(() => {});
+    investCrud.getAll('sortOrder', 'asc').then((items: InvestType[]) => {
+      if (items.length > 0) setTimeline(items.map(inv => ({ year: inv.year, label: inv.label, items: inv.items, amount: inv.amount, highlight: inv.highlight })));
+    }).catch(() => {});
+  }, []);
+
   return (
     <main className="bg-navy-950 font-pretendard">
       <Navbar />
@@ -256,7 +270,7 @@ export default function TechnologyPage() {
           </FadeIn>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {EQUIPMENT.map((eq, i) => (
+            {equipment.map((eq, i) => (
               <FadeIn key={eq.name} delay={i * 100}>
                 <div className="group overflow-hidden rounded-xl border border-navy-700/40 bg-navy-900/50 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5">
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -366,7 +380,7 @@ export default function TechnologyPage() {
               <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-gradient-to-r from-navy-700 via-ocean-500/40 to-navy-700 lg:block" />
 
               <div className="grid gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
-                {TIMELINE.map((t) => (
+                {timeline.map((t) => (
                   <div key={t.year} className="relative text-center">
                     {/* Dot */}
                     <div

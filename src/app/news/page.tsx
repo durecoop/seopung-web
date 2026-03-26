@@ -1,13 +1,15 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import { getNotices, newsCrud, type Notice, type NewsItem } from '@/lib/admin-store';
 
-const NEWS_ITEMS = [
+const FALLBACK_NEWS = [
   {
     date: '2026.01',
     category: '설비투자',
@@ -51,6 +53,20 @@ const NEWS_ITEMS = [
 ];
 
 export default function NewsPage() {
+  const [notices, setNotices] = useState<Notice[]>([]);
+  const [newsItems, setNewsItems] = useState(FALLBACK_NEWS);
+
+  useEffect(() => {
+    getNotices().then(setNotices);
+    newsCrud.getAll('sortOrder', 'asc').then((items: NewsItem[]) => {
+      if (items.length > 0) setNewsItems(items.map(n => ({ date: n.date, category: n.category, title: n.title, summary: n.summary, image: n.imageUrl })));
+    }).catch(() => {});
+  }, []);
+
+  // 고정 공지 먼저, 나머지는 날짜순
+  const pinnedNotices = notices.filter(n => n.pinned);
+  const normalNotices = notices.filter(n => !n.pinned);
+
   return (
     <main className="bg-navy-950 font-pretendard">
       <Navbar />
@@ -73,11 +89,52 @@ export default function NewsPage() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
       </section>
 
+      {/* ── 공지사항 (Firestore) ── */}
+      {notices.length > 0 && (
+        <section className="relative py-16 md:py-20">
+          <div className="mx-auto max-w-5xl px-6 lg:px-8">
+            <Reveal>
+              <h2 className="mb-8 text-2xl font-bold text-white">
+                <span className="mr-2 text-gold-400">&#9632;</span>공지사항
+              </h2>
+            </Reveal>
+            <div className="flex flex-col gap-4">
+              {[...pinnedNotices, ...normalNotices].map((notice, i) => (
+                <Reveal key={notice.id} delay={i * 80}>
+                  <article className="rounded-2xl border border-navy-700/50 bg-navy-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-gold-500/30">
+                    <div className="mb-2 flex items-center gap-3">
+                      {notice.pinned && (
+                        <span className="inline-block rounded-full bg-gold-500/20 px-2.5 py-0.5 text-xs font-semibold text-gold-400">
+                          고정
+                        </span>
+                      )}
+                      <span className="inline-block rounded-full bg-ocean-500/15 px-3 py-1 text-xs font-semibold text-ocean-400">
+                        공지
+                      </span>
+                      <span className="font-montserrat text-sm text-white/50">
+                        {new Date(notice.date).toLocaleDateString('ko-KR')}
+                      </span>
+                    </div>
+                    <h3 className="mb-2 text-lg font-bold text-white">{notice.title}</h3>
+                    <p className="whitespace-pre-line leading-relaxed text-white/70">{notice.content}</p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── News List ── */}
       <section className="relative py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <Reveal>
+            <h2 className="mb-8 text-2xl font-bold text-white">
+              <span className="mr-2 text-ocean-400">&#9632;</span>뉴스
+            </h2>
+          </Reveal>
           <div className="flex flex-col gap-5 sm:gap-8">
-            {NEWS_ITEMS.map((item, i) => (
+            {newsItems.map((item, i) => (
               <Reveal key={item.title} delay={i * 100}>
                 <article className="group overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30">
                   <div className="grid gap-0 md:grid-cols-[280px_1fr]">

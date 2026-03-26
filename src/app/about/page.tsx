@@ -8,6 +8,7 @@ import Reveal from '@/components/ui/FadeIn';
 import { useReveal } from '@/hooks/useReveal';
 import { getImagePath } from '@/lib/utils';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import { historyCrud, getCompanyInfo, type HistoryItem as HistType } from '@/lib/admin-store';
 
 /* ──────────────────────────────────────────────
    Data
@@ -116,6 +117,23 @@ function CountUpCard({ number, label, sub }: { number: string; label: string; su
    Page component
    ────────────────────────────────────────────── */
 export default function AboutPage() {
+  const [historyData, setHistoryData] = useState(HISTORY);
+  const [companyData, setCompanyData] = useState(COMPANY_INFO);
+
+  useEffect(() => {
+    historyCrud.getAll('sortOrder', 'asc').then((items: HistType[]) => {
+      if (items.length > 0) setHistoryData(items.map(h => ({ year: h.year, text: h.text })));
+    }).catch(() => {});
+    getCompanyInfo().then(info => {
+      if (info) setCompanyData([
+        { label: '회사명', value: info.companyName },
+        { label: '대표', value: info.ceo },
+        { label: '주소', value: info.address },
+        { label: '사업자번호', value: info.bizNumber },
+      ]);
+    }).catch(() => {});
+  }, []);
+
   return (
     <main id="main-content" className="bg-navy-950 font-pretendard">
       <Navbar />
@@ -278,7 +296,7 @@ export default function AboutPage() {
             {/* Vertical line */}
             <div className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-gold-500/60 via-ocean-500/40 to-transparent md:left-1/2 md:-translate-x-px" />
 
-            {HISTORY.map((item, i) => {
+            {historyData.map((item, i) => {
               const isRight = i % 2 === 0;
               return (
                 <Reveal key={item.year} delay={i * 80}>
@@ -451,11 +469,11 @@ export default function AboutPage() {
             {/* Info grid */}
             <Reveal>
               <div className="overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60">
-                {COMPANY_INFO.map((info, i) => (
+                {companyData.map((info, i) => (
                   <div
                     key={info.label}
                     className={`flex items-center gap-6 px-8 py-5 ${
-                      i < COMPANY_INFO.length - 1 ? 'border-b border-navy-700/30' : ''
+                      i < companyData.length - 1 ? 'border-b border-navy-700/30' : ''
                     }`}
                   >
                     <span className="w-24 shrink-0 text-sm font-semibold text-gold-400">{info.label}</span>

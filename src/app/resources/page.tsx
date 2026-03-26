@@ -8,6 +8,7 @@ import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import { galleryCrud, type GalleryItem as GalleryType } from '@/lib/admin-store';
 
 /* ──────────────────────────────────────────────
    Section heading
@@ -187,12 +188,19 @@ function Lightbox({ photo, onClose }: { photo: GalleryPhoto | null; onClose: () 
 export default function ResourcesPage() {
   const [activeTab, setActiveTab] = useState<string>('전체');
   const [lightboxPhoto, setLightboxPhoto] = useState<GalleryPhoto | null>(null);
+  const [galleryPhotos, setGalleryPhotos] = useState(GALLERY_PHOTOS);
+
+  useEffect(() => {
+    galleryCrud.getAll('sortOrder', 'asc').then((items: GalleryType[]) => {
+      if (items.length > 0) setGalleryPhotos(items.map(g => ({ src: g.imageUrl.replace('/images/', ''), label: g.label, category: g.category as GalleryPhoto['category'] })));
+    }).catch(() => {});
+  }, []);
 
   const closeLightbox = useCallback(() => setLightboxPhoto(null), []);
 
   const filteredPhotos = activeTab === '전체'
-    ? GALLERY_PHOTOS
-    : GALLERY_PHOTOS.filter((p) => p.category === activeTab);
+    ? galleryPhotos
+    : galleryPhotos.filter((p) => p.category === activeTab);
 
   return (
     <>
