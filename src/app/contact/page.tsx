@@ -465,15 +465,28 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={200}>
-            <div className="mx-auto mb-12 max-w-4xl overflow-hidden rounded-2xl border border-navy-700/50">
+            <div className="mx-auto mb-6 max-w-5xl overflow-hidden rounded-2xl border border-navy-700/50 shadow-2xl shadow-black/20">
               <iframe
-                src="https://map.kakao.com/?urlX=623886.0&urlY=227994.0&itemId=1946753965&q=%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84+%EC%97%AC%EC%88%98%EC%8B%9C+%EC%84%9D%EA%B5%90%EB%A1%9C+121&srcid=1946753965&map_type=TYPE_MAP"
-                className="aspect-video w-full"
-                style={{ border: 0 }}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.5!2d127.662!3d34.7396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356dd2a2a2a2a2a2%3A0x0!2z7KCE652864mE64-EIOyXrOyImOyLnCDshJ3qt5Dsho8gMTIx!5e0!3m2!1sko!2skr!4v1"
+                className="w-full"
+                style={{ border: 0, height: '480px' }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
                 title="서풍 위치 - 전라남도 여수시 석교로 121"
               />
+            </div>
+            <div className="mx-auto mb-12 flex max-w-5xl flex-wrap items-center justify-center gap-3">
+              <a href="https://map.kakao.com/link/search/전라남도 여수시 석교로 121" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-navy-600 bg-navy-800/80 px-5 py-2.5 text-sm font-medium text-white/80 transition-all hover:border-gold-500/40 hover:text-gold-400">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+                카카오맵에서 보기
+              </a>
+              <a href="https://map.naver.com/v5/search/전라남도 여수시 석교로 121" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-navy-600 bg-navy-800/80 px-5 py-2.5 text-sm font-medium text-white/80 transition-all hover:border-gold-500/40 hover:text-gold-400">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" /></svg>
+                네이버지도에서 보기
+              </a>
             </div>
           </Reveal>
 
