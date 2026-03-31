@@ -42,6 +42,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://seopung.co.kr',
   },
+  verification: {
+    google: 'scy9uDmR68Nd0RbB63aB6tDuR_k84OsUrcbuAhDc0XM',
+  },
 };
 
 export default function RootLayout({
