@@ -16,12 +16,12 @@ import { galleryCrud, type GalleryItem as GalleryType } from '@/lib/admin-store'
 function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <div className="mb-12 text-center">
-      <h2 className="font-pretendard text-3xl font-bold text-white md:text-4xl">
+      <h2 className="font-pretendard text-3xl font-bold text-gray-900 md:text-4xl">
         {title}
       </h2>
       <div className="mx-auto mt-3 h-[2px] w-16 bg-gradient-to-r from-gold-500 to-gold-300" />
       {subtitle && (
-        <p className="mt-4 text-base text-white/60 md:text-lg">{subtitle}</p>
+        <p className="mt-4 text-base text-gray-600 md:text-lg">{subtitle}</p>
       )}
     </div>
   );
@@ -155,7 +155,7 @@ function Lightbox({ photo, onClose }: { photo: GalleryPhoto | null; onClose: () 
       >
         <button
           onClick={onClose}
-          className="absolute -top-12 right-0 min-h-[44px] min-w-[44px] flex items-center justify-center text-white/80 hover:text-white transition-colors text-sm font-medium gap-1"
+          className="absolute -top-12 right-0 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-gray-900 transition-colors text-sm font-medium gap-1"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -170,7 +170,7 @@ function Lightbox({ photo, onClose }: { photo: GalleryPhoto | null; onClose: () 
           className="max-h-[80vh] w-auto rounded-lg object-contain"
         />
         <div className="mt-3 text-center">
-          <span className="inline-block rounded-full bg-navy-800/80 px-4 py-1.5 text-sm font-medium text-white">
+          <span className="inline-block rounded-full bg-gray-100/80 px-4 py-1.5 text-sm font-medium text-gray-900">
             {photo.label}
           </span>
           <span className="ml-2 inline-block rounded-full bg-ocean-500/30 px-3 py-1 text-xs text-ocean-300">
@@ -216,12 +216,12 @@ export default function ResourcesPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-950/70 via-navy-950/50 to-navy-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white" />
         <div className="relative z-10 text-center px-6">
-          <h1 className="font-montserrat text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+          <h1 className="font-montserrat text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
             자료실
           </h1>
-          <p className="mt-3 text-lg text-white/60 md:text-xl">
+          <p className="mt-3 text-lg text-gray-600 md:text-xl">
             인증서, 사진 갤러리 및 회사 자료
           </p>
         </div>
@@ -230,7 +230,7 @@ export default function ResourcesPage() {
       {/* ══════════════════════════════════════
          Section 1: 인증서 다운로드
          ══════════════════════════════════════ */}
-      <section className="bg-navy-950 py-24 md:py-32 px-6">
+      <section className="bg-white py-24 md:py-32 px-6">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <SectionHeading
@@ -242,15 +242,15 @@ export default function ResourcesPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             {CERTIFICATIONS.map((cert, i) => (
               <Reveal key={cert.name} delay={i * 100}>
-                <div className="group relative rounded-2xl border border-white/5 bg-navy-800 p-6 transition-all duration-300 hover:border-gold-500/20 hover:shadow-lg hover:shadow-gold-500/5">
+                <div className="group relative rounded-2xl border border-white/5 bg-gray-100 p-6 transition-all duration-300 hover:border-gold-500/20 hover:shadow-lg hover:shadow-gold-500/5">
                   {/* Header row */}
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gold-500/10 text-gold-400">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-ocean-500/10 text-ocean-500">
                       <ShieldIcon />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="text-lg font-bold text-white">{cert.name}</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{cert.name}</h3>
                         <span
                           className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
                             cert.status === '유효'
@@ -261,9 +261,9 @@ export default function ResourcesPage() {
                           {cert.status}
                         </span>
                       </div>
-                      <p className="mt-1 text-sm text-white/60">{cert.description}</p>
+                      <p className="mt-1 text-sm text-gray-600">{cert.description}</p>
                       {cert.detail && (
-                        <p className="mt-1 text-xs text-white/60">{cert.detail}</p>
+                        <p className="mt-1 text-xs text-gray-600">{cert.detail}</p>
                       )}
                     </div>
                   </div>
@@ -283,7 +283,7 @@ export default function ResourcesPage() {
 
                   {/* Download button */}
                   <button
-                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/40 px-4 py-2.5 min-h-[44px] text-sm font-medium text-gold-400 transition-all duration-300 hover:bg-gold-500/10 hover:border-gold-400"
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/40 px-4 py-2.5 min-h-[44px] text-sm font-medium text-ocean-500 transition-all duration-300 hover:bg-ocean-500/10 hover:border-gold-400"
                   >
                     <DownloadIcon className="h-4 w-4" />
                     다운로드
@@ -294,7 +294,7 @@ export default function ResourcesPage() {
           </div>
 
           <Reveal delay={500}>
-            <p className="mt-8 text-center text-sm text-white/60">
+            <p className="mt-8 text-center text-sm text-gray-600">
               ※ 원본 인증서가 필요하신 경우 문의 바랍니다
             </p>
           </Reveal>
@@ -304,7 +304,7 @@ export default function ResourcesPage() {
       {/* ══════════════════════════════════════
          Section 2: 포토 갤러리
          ══════════════════════════════════════ */}
-      <section className="bg-navy-900 py-24 md:py-32 px-6">
+      <section className="bg-gray-50 py-24 md:py-32 px-6">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <SectionHeading title="포토 갤러리" />
@@ -320,7 +320,7 @@ export default function ResourcesPage() {
                   className={`rounded-full px-5 py-2 min-h-[44px] text-sm font-medium transition-all duration-300 ${
                     activeTab === tab
                       ? 'bg-ocean-500 text-white shadow-lg shadow-ocean-500/25'
-                      : 'bg-navy-800 text-white/60 hover:text-white/80 hover:bg-navy-700'
+                      : 'bg-gray-100 text-gray-600 hover:text-gray-700 hover:bg-navy-700'
                   }`}
                 >
                   {tab}
@@ -335,7 +335,7 @@ export default function ResourcesPage() {
               <Reveal key={photo.src} delay={i * 60}>
                 <button
                   onClick={() => setLightboxPhoto(photo)}
-                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl focus:outline-none focus:ring-2 focus:ring-gold-500/50"
+                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl focus:outline-none focus:ring-2 focus:ring-ocean-500/50"
                 >
                   <Image
                     src={getImagePath(`/images/${photo.src}`)}
@@ -345,13 +345,13 @@ export default function ResourcesPage() {
                     sizes="(max-width: 768px) 50vw, 33vw"
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {/* Category badge */}
-                  <span className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 rounded-full bg-navy-950/70 px-2 sm:px-2.5 py-0.5 text-[10px] font-medium text-white/80 backdrop-blur-sm md:text-xs">
+                  <span className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 rounded-full bg-white/70 px-2 sm:px-2.5 py-0.5 text-[10px] font-medium text-gray-700 backdrop-blur-sm md:text-xs">
                     {photo.category}
                   </span>
                   {/* Label on hover */}
-                  <span className="absolute bottom-0 left-0 right-0 translate-y-full p-3 text-center text-sm font-medium text-white transition-transform duration-300 group-hover:translate-y-0">
+                  <span className="absolute bottom-0 left-0 right-0 translate-y-full p-3 text-center text-sm font-medium text-gray-900 transition-transform duration-300 group-hover:translate-y-0">
                     {photo.label}
                   </span>
                 </button>
@@ -364,34 +364,34 @@ export default function ResourcesPage() {
       {/* ══════════════════════════════════════
          Section 3: 회사소개서
          ══════════════════════════════════════ */}
-      <section className="bg-navy-950 py-24 md:py-32 px-6">
+      <section className="bg-white py-24 md:py-32 px-6">
         <div className="mx-auto max-w-2xl">
           <Reveal>
-            <div className="rounded-2xl border border-white/5 bg-navy-800 p-8 text-center md:p-12">
+            <div className="rounded-2xl border border-white/5 bg-gray-100 p-8 text-center md:p-12">
               {/* Icon */}
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gold-500/10">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8 text-gold-400">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-ocean-500/10">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8 text-ocean-500">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                 </svg>
               </div>
 
-              <h2 className="font-pretendard text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-pretendard text-2xl font-bold text-gray-900 md:text-3xl">
                 회사소개서 다운로드
               </h2>
-              <p className="mt-3 text-white/60">
+              <p className="mt-3 text-gray-600">
                 영어조합법인 서풍의 회사소개서를 PDF로 다운로드하세요
               </p>
 
               {/* Large download button */}
               <button
-                className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 px-8 py-3.5 min-h-[44px] text-base font-semibold text-navy-950 shadow-lg shadow-gold-500/20 transition-all duration-300 hover:shadow-gold-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-ocean-500 to-ocean-400 px-8 py-3.5 min-h-[44px] text-base font-semibold text-white shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:shadow-ocean-500/40 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <DownloadIcon className="h-5 w-5" />
                 PDF 다운로드
               </button>
 
               {/* Notice */}
-              <p className="mt-6 text-sm text-white/60">
+              <p className="mt-6 text-sm text-gray-600">
                 ※ 준비 중입니다.{' '}
                 <Link href="/contact" className="text-ocean-400 underline underline-offset-2 hover:text-ocean-300 transition-colors">
                   문의 페이지

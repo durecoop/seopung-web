@@ -130,13 +130,13 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
           <Reveal delay={100} className={!isEven ? 'lg:order-2' : ''}>
             <div>
               <div className="mb-4 flex items-center gap-4">
-                <span className="font-montserrat text-4xl font-black text-gold-500 md:text-5xl">
+                <span className="font-montserrat text-4xl font-black text-ocean-500 md:text-5xl">
                   {step.number}
                 </span>
                 <div className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
               </div>
-              <h3 className="mb-6 text-2xl font-bold text-white md:text-3xl">{step.title}</h3>
-              <p className="max-w-lg text-lg leading-relaxed text-white/60">{step.desc}</p>
+              <h3 className="mb-6 text-2xl font-bold text-gray-900 md:text-3xl">{step.title}</h3>
+              <p className="max-w-lg text-lg leading-relaxed text-gray-600">{step.desc}</p>
             </div>
           </Reveal>
 
@@ -152,8 +152,8 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
-                    <p className="absolute bottom-3 left-4 text-sm font-medium text-white/80">{img.alt}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
+                    <p className="absolute bottom-3 left-4 text-sm font-medium text-gray-700">{img.alt}</p>
                   </div>
                 ))}
               </div>
@@ -165,7 +165,7 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
               </div>
             )}
           </Reveal>
@@ -178,7 +178,7 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
               {step.gallery.map((g) => (
                 <div
                   key={g.src}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-navy-800"
+                  className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-gray-200"
                 >
                   <Image
                     src={getImagePath(g.src)}
@@ -186,8 +186,8 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent" />
-                  <p className="absolute bottom-2 left-3 text-xs text-white/60">{g.caption}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
+                  <p className="absolute bottom-2 left-3 text-xs text-gray-600">{g.caption}</p>
                 </div>
               ))}
             </div>
@@ -203,7 +203,7 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
    ────────────────────────────────────────────── */
 export default function ProcessPage() {
   return (
-    <main className="bg-navy-950 font-pretendard">
+    <main className="bg-white font-pretendard">
       <Navbar />
       <Breadcrumb />
 
@@ -216,17 +216,17 @@ export default function ProcessPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-navy-950/70" />
+        <div className="absolute inset-0 bg-white/70" />
         <div className="relative z-10 text-center">
-          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-gold-400">
+          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
             Production Process
           </p>
-          <h1 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">생산 공정</h1>
-          <p className="mt-4 text-lg text-white/60">
+          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">생산 공정</h1>
+          <p className="mt-4 text-lg text-gray-600">
             원물에서 완제품까지, One-Way 생산라인
           </p>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* ── 1. 원료 수매 ── */}
@@ -235,11 +235,11 @@ export default function ProcessPage() {
           {/* Section header */}
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Raw Material Sourcing
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">원료 수매</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-white/60">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">원료 수매</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
                 새벽 위판장에서 시작되는 신선함. 30년 이상의 경험을 가진 중매인이 최고의 원료만을 선별합니다.
               </p>
             </div>
@@ -255,11 +255,11 @@ export default function ProcessPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
                 {/* Badge */}
-                <div className="absolute bottom-6 left-6 rounded-xl bg-navy-950/80 px-4 py-2 backdrop-blur-sm">
-                  <p className="font-montserrat text-sm font-bold text-gold-400">No.49</p>
-                  <p className="text-xs text-white/60">중매인</p>
+                <div className="absolute bottom-6 left-6 rounded-xl bg-white/80 px-4 py-2 backdrop-blur-sm">
+                  <p className="font-montserrat text-sm font-bold text-ocean-500">No.49</p>
+                  <p className="text-xs text-gray-600">중매인</p>
                 </div>
               </div>
             </Reveal>
@@ -268,15 +268,15 @@ export default function ProcessPage() {
               <div>
                 <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-ocean-500/10 px-5 py-2">
                   <span className="font-montserrat text-sm font-bold text-ocean-400">49호</span>
-                  <span className="text-sm text-white/60">중매인 30년+ 경력</span>
+                  <span className="text-sm text-gray-600">중매인 30년+ 경력</span>
                 </div>
-                <h3 className="mb-4 text-2xl font-bold text-white md:text-3xl">
+                <h3 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
                   새벽 위판장, 최적의 원료 수매
                 </h3>
-                <p className="mb-6 text-lg leading-relaxed text-white/60">
+                <p className="mb-6 text-lg leading-relaxed text-gray-600">
                   매일 새벽 여수 수산시장 위판장에서 30년 이상의 경험을 가진 49호 중매인이 직접 원료를 감별하고 수매합니다. 어체의 탄력, 색택, 비늘 상태를 하나하나 확인하여 최상급 원료만을 선별합니다.
                 </p>
-                <p className="text-lg leading-relaxed text-white/60">
+                <p className="text-lg leading-relaxed text-gray-600">
                   산지 직매입을 통해 유통 단계를 최소화하고, 수매 즉시 공장으로 이송하여 신선도를 극대화합니다.
                 </p>
               </div>
@@ -294,9 +294,9 @@ export default function ProcessPage() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-5">
-                    <p className="text-lg font-bold text-white">{fish.label}</p>
+                    <p className="text-lg font-bold text-gray-900">{fish.label}</p>
                   </div>
                 </div>
               </Reveal>
@@ -312,9 +312,9 @@ export default function ProcessPage() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
               <div className="absolute bottom-6 left-8">
-                <p className="text-sm font-medium text-white/80">여수 수산시장 위판장 전경</p>
+                <p className="text-sm font-medium text-gray-700">여수 수산시장 위판장 전경</p>
               </div>
             </div>
           </Reveal>
@@ -322,15 +322,15 @@ export default function ProcessPage() {
       </section>
 
       {/* ── 취급 어종 ── */}
-      <section className="relative border-t border-navy-800/40 py-24 md:py-32">
+      <section className="relative border-t border-gray-200/40 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Fish Species
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">다양한 어종, 전문적인 취급</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-white/60">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">다양한 어종, 전문적인 취급</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
                 참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어 등 9종 이상의 어종을 전문적으로 취급합니다.
               </p>
             </div>
@@ -343,16 +343,16 @@ export default function ProcessPage() {
               { src: '/images/auction/fish-variety.jpg', label: '다양한 어종' },
             ].map((fish, i) => (
               <Reveal key={fish.label} delay={i * 120}>
-                <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-navy-800">
+                <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-gray-200">
                   <Image
                     src={getImagePath(fish.src)}
                     alt={fish.label}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-5">
-                    <p className="text-lg font-bold text-white">{fish.label}</p>
+                    <p className="text-lg font-bold text-gray-900">{fish.label}</p>
                   </div>
                 </div>
               </Reveal>
@@ -367,11 +367,11 @@ export default function ProcessPage() {
         <div className="py-24 md:py-32">
           <Reveal>
             <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 6-Step Process
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">6단계 생산 공정</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-white/60">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">6단계 생산 공정</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
                 원물 입고에서 출하까지, 철저한 위생관리와 최신 설비로 완벽한 품질을 보장합니다.
               </p>
 
@@ -380,13 +380,13 @@ export default function ProcessPage() {
                 {STEPS.map((step, i) => (
                   <div key={step.number} className="flex items-center">
                     <div className="flex flex-col items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/40 bg-navy-900 font-montserrat text-sm font-bold text-gold-400 md:h-12 md:w-12 md:text-base">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/40 bg-gray-50 font-montserrat text-sm font-bold text-ocean-500 md:h-12 md:w-12 md:text-base">
                         {step.number}
                       </div>
-                      <p className="mt-2 hidden text-xs text-white/60 sm:block">{step.title}</p>
+                      <p className="mt-2 hidden text-xs text-gray-600 sm:block">{step.title}</p>
                     </div>
                     {i < STEPS.length - 1 && (
-                      <div className="mx-1 h-px w-4 bg-gold-500/20 md:mx-2 md:w-8 lg:w-16" />
+                      <div className="mx-1 h-px w-4 bg-ocean-500/20 md:mx-2 md:w-8 lg:w-16" />
                     )}
                   </div>
                 ))}
@@ -399,7 +399,7 @@ export default function ProcessPage() {
         {STEPS.map((step, i) => (
           <div
             key={step.number}
-            className={i % 2 === 0 ? 'bg-navy-950' : 'bg-navy-900/30'}
+            className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'}
           >
             <ProcessStepSection step={step} index={i} />
           </div>
@@ -414,10 +414,10 @@ export default function ProcessPage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-navy-950/75" />
+        <div className="absolute inset-0 bg-white/75" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <Reveal>
-            <blockquote className="text-2xl font-bold leading-snug text-white md:text-3xl lg:text-4xl">
+            <blockquote className="text-2xl font-bold leading-snug text-gray-900 md:text-3xl lg:text-4xl">
               &ldquo;새벽부터 시작되는 서풍의 하루,
               <br className="hidden sm:block" />
               대한민국 수산물의 미래를 만듭니다&rdquo;
@@ -426,7 +426,7 @@ export default function ProcessPage() {
           <Reveal delay={200}>
             <a
               href="/technology"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold-500 px-8 py-3 font-semibold text-navy-950 transition-colors duration-300 hover:bg-gold-400"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-ocean-500 px-8 py-3 font-semibold text-white transition-colors duration-300 hover:bg-ocean-400"
             >
               기술·설비 보기 &rarr;
             </a>

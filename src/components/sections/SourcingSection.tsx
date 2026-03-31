@@ -51,7 +51,7 @@ export default function SourcingSection() {
     <section
       id="sourcing"
       ref={sectionRef}
-      className="relative overflow-hidden bg-navy-950 py-24 md:py-32"
+      className="relative overflow-hidden bg-white py-24 md:py-32"
     >
       {/* Subtle background gradient accent */}
       <div
@@ -65,7 +65,7 @@ export default function SourcingSection() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section header */}
         <div data-reveal className="reveal mb-16 text-center md:mb-20">
-          <h2 className="gold-line mb-4 inline-block font-montserrat text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
+          <h2 className="gold-line mb-4 inline-block font-montserrat text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             원료 수매
           </h2>
           <p className="mt-6 text-lg font-light tracking-wide text-ocean-300 md:text-xl">
@@ -90,12 +90,12 @@ export default function SourcingSection() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent" />
             </div>
             {/* Caption badge */}
-            <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-navy-900/80 px-4 py-2 backdrop-blur-sm">
-              <span className="font-montserrat text-sm font-bold text-gold-400">49</span>
-              <span className="text-sm text-white/80">호 중매인</span>
+            <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-gray-50/80 px-4 py-2 backdrop-blur-sm">
+              <span className="font-montserrat text-sm font-bold text-ocean-500">49</span>
+              <span className="text-sm text-gray-700">호 중매인</span>
             </div>
           </div>
 
@@ -108,24 +108,24 @@ export default function SourcingSection() {
             <div className="mb-6 flex items-center gap-3">
               <div className="h-px flex-1 bg-gradient-to-r from-gold-500/60 to-transparent" />
             </div>
-            <p className="text-lg leading-relaxed text-white/85 md:text-xl md:leading-relaxed">
-              <span className="font-semibold text-gold-400">49호 중매인</span>으로서
+            <p className="text-lg leading-relaxed text-gray-700 md:text-xl md:leading-relaxed">
+              <span className="font-semibold text-ocean-500">49호 중매인</span>으로서
               30년 이상의 경험을 바탕으로 새벽 위판장에서 직접 원료를 확인하고 수매합니다.
             </p>
-            <p className="mt-6 text-base leading-relaxed text-white/60 md:text-lg md:leading-relaxed">
+            <p className="mt-6 text-base leading-relaxed text-gray-600 md:text-lg md:leading-relaxed">
               참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어 등
               다양한 어종을 취급합니다.
             </p>
             {/* Decorative stat */}
             <div className="mt-10 flex gap-8">
               <div>
-                <span className="font-montserrat text-3xl font-bold text-gold-500">30+</span>
-                <p className="mt-1 text-sm text-white/60">년 경력</p>
+                <span className="font-montserrat text-3xl font-bold text-ocean-500">30+</span>
+                <p className="mt-1 text-sm text-gray-600">년 경력</p>
               </div>
               <div className="h-12 w-px bg-navy-700" />
               <div>
-                <span className="font-montserrat text-3xl font-bold text-gold-500">9+</span>
-                <p className="mt-1 text-sm text-white/60">주요 어종</p>
+                <span className="font-montserrat text-3xl font-bold text-ocean-500">9+</span>
+                <p className="mt-1 text-sm text-gray-600">주요 어종</p>
               </div>
             </div>
           </div>
@@ -149,12 +149,12 @@ export default function SourcingSection() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 {/* Dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-navy-950/20 to-transparent" />
               </div>
               {/* Label */}
               <div className="absolute inset-x-0 bottom-0 p-4">
-                <h3 className="text-lg font-semibold text-white">{item.label}</h3>
-                <div className="mt-1 h-0.5 w-8 bg-gold-500 transition-all duration-500 group-hover:w-12" />
+                <h3 className="text-lg font-semibold text-gray-900">{item.label}</h3>
+                <div className="mt-1 h-0.5 w-8 bg-ocean-500 transition-all duration-500 group-hover:w-12" />
               </div>
               {/* Hover border */}
               <div className="pointer-events-none absolute inset-0 rounded-xl border border-white/0 transition-colors duration-500 group-hover:border-gold-500/30" />

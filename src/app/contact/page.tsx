@@ -137,7 +137,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main id="main-content" className="bg-navy-950 font-pretendard">
+    <main id="main-content" className="bg-white font-pretendard">
       <Navbar />
       <Breadcrumb />
 
@@ -150,17 +150,17 @@ export default function ContactPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-navy-950/70" />
+        <div className="absolute inset-0 bg-white/70" />
         <div className="relative z-10 text-center">
-          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-gold-400">
+          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
             Contact
           </p>
-          <h1 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">문의하기</h1>
-          <p className="mt-4 text-lg text-white/60">
+          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">문의하기</h1>
+          <p className="mt-4 text-lg text-gray-600">
             OEM 납품 및 협력 문의
           </p>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* ── OEM Process Flow ── */}
@@ -169,11 +169,11 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 OEM Process
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">OEM 협력 프로세스</h2>
-              <p className="mt-4 text-base text-white/60">체계적인 프로세스로 최적의 OEM 솔루션을 제공합니다</p>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">OEM 협력 프로세스</h2>
+              <p className="mt-4 text-base text-gray-600">체계적인 프로세스로 최적의 OEM 솔루션을 제공합니다</p>
             </div>
           </Reveal>
 
@@ -252,15 +252,15 @@ export default function ContactPage() {
                 ].map((item) => (
                   <div key={item.step} className="relative flex items-start gap-4 md:flex-col md:items-center md:text-center">
                     {/* Numbered circle */}
-                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-gold-500 bg-navy-950 text-gold-400 shadow-lg shadow-gold-500/10">
+                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-gold-500 bg-white text-ocean-500 shadow-lg shadow-gold-500/10">
                       <span className="font-montserrat text-lg font-bold">{item.step}</span>
                     </div>
                     <div className="pt-1 md:pt-0">
-                      <div className="mb-2 flex items-center gap-2 text-gold-400 md:justify-center">
+                      <div className="mb-2 flex items-center gap-2 text-ocean-500 md:justify-center">
                         {item.icon}
-                        <h3 className="text-base font-bold text-white">{item.title}</h3>
+                        <h3 className="text-base font-bold text-gray-900">{item.title}</h3>
                       </div>
-                      <p className="text-sm leading-relaxed text-white/60">{item.desc}</p>
+                      <p className="text-sm leading-relaxed text-gray-600">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -276,10 +276,10 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Get in Touch
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">문의 및 회사 정보</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">문의 및 회사 정보</h2>
             </div>
           </Reveal>
 
@@ -289,7 +289,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/60 py-1">
+                    <label htmlFor="company" className="mb-2 block text-sm font-medium text-gray-600 py-1">
                       회사명
                     </label>
                     <input
@@ -299,12 +299,12 @@ export default function ContactPage() {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="회사명을 입력하세요"
-                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-white placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.company ? 'border-red-500/60' : 'border-navy-700/50'}`}
+                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-gray-900 placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.company ? 'border-red-500/60' : 'border-gray-300/50'}`}
                     />
                     {errors.company && <p className="mt-1.5 text-xs text-red-400">{errors.company}</p>}
                   </div>
                   <div>
-                    <label htmlFor="person" className="mb-2 block text-sm font-medium text-white/60 py-1">
+                    <label htmlFor="person" className="mb-2 block text-sm font-medium text-gray-600 py-1">
                       담당자명
                     </label>
                     <input
@@ -314,7 +314,7 @@ export default function ContactPage() {
                       value={formData.person}
                       onChange={handleChange}
                       placeholder="담당자명을 입력하세요"
-                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-white placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.person ? 'border-red-500/60' : 'border-navy-700/50'}`}
+                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-gray-900 placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.person ? 'border-red-500/60' : 'border-gray-300/50'}`}
                     />
                     {errors.person && <p className="mt-1.5 text-xs text-red-400">{errors.person}</p>}
                   </div>
@@ -322,7 +322,7 @@ export default function ContactPage() {
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/60 py-1">
+                    <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-600 py-1">
                       연락처
                     </label>
                     <input
@@ -332,12 +332,12 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="010-0000-0000"
-                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-white placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.phone ? 'border-red-500/60' : 'border-navy-700/50'}`}
+                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-gray-900 placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.phone ? 'border-red-500/60' : 'border-gray-300/50'}`}
                     />
                     {errors.phone && <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>}
                   </div>
                   <div>
-                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/60 py-1">
+                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-600 py-1">
                       이메일
                     </label>
                     <input
@@ -347,14 +347,14 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="email@company.com"
-                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-white placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.email ? 'border-red-500/60' : 'border-navy-700/50'}`}
+                      className={`w-full rounded-xl border bg-navy-700 px-5 py-3.5 text-gray-900 placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.email ? 'border-red-500/60' : 'border-gray-300/50'}`}
                     />
                     {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/60 py-1">
+                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-600 py-1">
                     문의 내용
                   </label>
                   <textarea
@@ -364,7 +364,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     rows={6}
                     placeholder="문의 내용을 자유롭게 작성해 주세요"
-                    className={`w-full resize-none rounded-xl border bg-navy-700 px-5 py-3.5 text-white placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.message ? 'border-red-500/60' : 'border-navy-700/50'}`}
+                    className={`w-full resize-none rounded-xl border bg-navy-700 px-5 py-3.5 text-gray-900 placeholder-white/30 outline-none transition-all duration-300 focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500 ${errors.message ? 'border-red-500/60' : 'border-gray-300/50'}`}
                   />
                   {errors.message && <p className="mt-1.5 text-xs text-red-400">{errors.message}</p>}
                 </div>
@@ -377,7 +377,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="group relative w-full overflow-hidden rounded-xl bg-gold-500 px-8 py-4 min-h-[44px] font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20"
+                  className="group relative w-full overflow-hidden rounded-xl bg-ocean-500 px-8 py-4 min-h-[44px] font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
                 >
                   <span className="relative z-10">문의하기</span>
                   <div className="absolute inset-0 -translate-x-full bg-gold-400 transition-transform duration-300 group-hover:translate-x-0" />
@@ -387,20 +387,20 @@ export default function ContactPage() {
 
             {/* Company info card */}
             <Reveal delay={200}>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm">
-                <div className="border-b border-navy-700/30 bg-navy-800/50 px-8 py-6">
-                  <p className="font-montserrat text-sm font-semibold uppercase tracking-wider text-gold-500">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 backdrop-blur-sm">
+                <div className="border-b border-gray-300/30 bg-gray-100/50 px-8 py-6">
+                  <p className="font-montserrat text-sm font-semibold uppercase tracking-wider text-ocean-500">
                     Company Information
                   </p>
-                  <h3 className="mt-2 text-xl font-bold text-white">회사 정보</h3>
+                  <h3 className="mt-2 text-xl font-bold text-gray-900">회사 정보</h3>
                 </div>
                 <div className="divide-y divide-navy-700/30">
                   {COMPANY_INFO.map((info) => (
                     <div key={info.label} className="flex items-start gap-6 px-8 py-5">
-                      <span className="w-20 shrink-0 pt-0.5 text-sm font-semibold text-gold-400">
+                      <span className="w-20 shrink-0 pt-0.5 text-sm font-semibold text-ocean-500">
                         {info.label}
                       </span>
-                      <span className="text-white/80">{info.value}</span>
+                      <span className="text-gray-700">{info.value}</span>
                     </div>
                   ))}
                 </div>
@@ -416,27 +416,27 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Affiliates
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">관계사 정보</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">관계사 정보</h2>
             </div>
           </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {AFFILIATES.map((affiliate, i) => (
               <Reveal key={affiliate.name} delay={i * 100}>
-                <div className="group relative overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30 hover:bg-navy-800/60">
+                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30 hover:bg-gray-100/60">
                   <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative">
                     <div className="mx-auto mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
                       {affiliate.icon}
                     </div>
-                    <p className="mb-1 font-montserrat text-xs font-medium uppercase tracking-wider text-gold-400">
+                    <p className="mb-1 font-montserrat text-xs font-medium uppercase tracking-wider text-ocean-500">
                       {affiliate.role}
                     </p>
-                    <h3 className="mb-3 text-lg font-bold text-white">{affiliate.name}</h3>
-                    <p className="text-sm text-white/60">{affiliate.desc}</p>
+                    <h3 className="mb-3 text-lg font-bold text-gray-900">{affiliate.name}</h3>
+                    <p className="text-sm text-gray-600">{affiliate.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -451,21 +451,21 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Location
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">찾아오시는 길</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">찾아오시는 길</h2>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
             <div className="mb-8 text-center">
-              <p className="text-lg text-white/80">전라남도 여수시 석교로 121 (화양면)</p>
+              <p className="text-lg text-gray-700">전라남도 여수시 석교로 121 (화양면)</p>
             </div>
           </Reveal>
 
           <Reveal delay={200}>
-            <div className="mx-auto mb-6 max-w-5xl overflow-hidden rounded-2xl border border-navy-700/50 shadow-2xl shadow-black/20">
+            <div className="mx-auto mb-6 max-w-5xl overflow-hidden rounded-2xl border border-gray-300/50 shadow-2xl shadow-black/20">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.5!2d127.662!3d34.7396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356dd2a2a2a2a2a2%3A0x0!2z7KCE652864mE64-EIOyXrOyImOyLnCDshJ3qt5Dsho8gMTIx!5e0!3m2!1sko!2skr!4v1"
                 className="w-full"
@@ -478,12 +478,12 @@ export default function ContactPage() {
             </div>
             <div className="mx-auto mb-12 flex max-w-5xl flex-wrap items-center justify-center gap-3">
               <a href="https://map.kakao.com/link/search/전라남도 여수시 석교로 121" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-navy-600 bg-navy-800/80 px-5 py-2.5 text-sm font-medium text-white/80 transition-all hover:border-gold-500/40 hover:text-gold-400">
+                className="inline-flex items-center gap-2 rounded-full border border-navy-600 bg-gray-100/80 px-5 py-2.5 text-sm font-medium text-gray-700 transition-all hover:border-gold-500/40 hover:text-ocean-500">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
                 카카오맵에서 보기
               </a>
               <a href="https://map.naver.com/v5/search/전라남도 여수시 석교로 121" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-navy-600 bg-navy-800/80 px-5 py-2.5 text-sm font-medium text-white/80 transition-all hover:border-gold-500/40 hover:text-gold-400">
+                className="inline-flex items-center gap-2 rounded-full border border-navy-600 bg-gray-100/80 px-5 py-2.5 text-sm font-medium text-gray-700 transition-all hover:border-gold-500/40 hover:text-ocean-500">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" /></svg>
                 네이버지도에서 보기
               </a>
@@ -492,26 +492,26 @@ export default function ContactPage() {
 
           <div className="mx-auto grid max-w-2xl gap-6 md:grid-cols-2">
             <Reveal delay={300}>
-              <div className="group rounded-2xl border border-navy-700/50 bg-navy-900/60 p-6 backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30 hover:bg-navy-800/60">
+              <div className="group rounded-2xl border border-gray-300/50 bg-gray-50/60 p-6 backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30 hover:bg-gray-100/60">
                 <div className="mb-4 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.079-.481 1.09-1.102.434-8.674-.655-15.648-15.648-15.648H3.375c-.621 0-1.125.504-1.125 1.125v11.25" />
                   </svg>
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-white">자가용</h3>
-                <p className="text-white/60">여수시내에서 약 30분</p>
+                <h3 className="mb-2 text-lg font-bold text-gray-900">자가용</h3>
+                <p className="text-gray-600">여수시내에서 약 30분</p>
               </div>
             </Reveal>
 
             <Reveal delay={400}>
-              <div className="group rounded-2xl border border-navy-700/50 bg-navy-900/60 p-6 backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30 hover:bg-navy-800/60">
+              <div className="group rounded-2xl border border-gray-300/50 bg-gray-50/60 p-6 backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30 hover:bg-gray-100/60">
                 <div className="mb-4 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-white">대중교통</h3>
-                <p className="text-white/60">여수엑스포역에서 버스 이용</p>
+                <h3 className="mb-2 text-lg font-bold text-gray-900">대중교통</h3>
+                <p className="text-gray-600">여수엑스포역에서 버스 이용</p>
               </div>
             </Reveal>
           </div>
@@ -524,10 +524,10 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Our Promise
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">우리의 약속</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">우리의 약속</h2>
             </div>
           </Reveal>
 
@@ -563,12 +563,12 @@ export default function ContactPage() {
               },
             ].map((promise, i) => (
               <Reveal key={promise.title} delay={i * 120}>
-                <div className="group rounded-2xl border border-navy-700 bg-navy-900/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60 md:p-10">
-                  <div className="mb-6 inline-flex rounded-xl bg-gold-500/10 p-3 text-gold-400 transition-colors duration-300 group-hover:bg-gold-500/20">
+                <div className="group rounded-2xl border border-gray-300 bg-gray-50/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60 md:p-10">
+                  <div className="mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-500 transition-colors duration-300 group-hover:bg-ocean-500/20">
                     {promise.icon}
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-white">{promise.title}</h3>
-                  <p className="leading-relaxed text-white/60">{promise.desc}</p>
+                  <h3 className="mb-3 text-xl font-bold text-gray-900">{promise.title}</h3>
+                  <p className="leading-relaxed text-gray-600">{promise.desc}</p>
                 </div>
               </Reveal>
             ))}

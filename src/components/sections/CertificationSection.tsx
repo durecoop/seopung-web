@@ -134,7 +134,7 @@ export default function CertificationSection() {
     <section
       id="certification"
       ref={sectionRef}
-      className="relative overflow-hidden bg-navy-900 py-24 md:py-32"
+      className="relative overflow-hidden bg-gray-50 py-24 md:py-32"
     >
       {/* Background accent */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ocean-500/[0.03] blur-3xl" />
@@ -146,10 +146,10 @@ export default function CertificationSection() {
             sectionVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <h2 className="gold-line mb-4 inline-block text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          <h2 className="gold-line mb-4 inline-block text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
             품질 인증
           </h2>
-          <p className="mt-6 text-base text-white/60 md:text-lg">
+          <p className="mt-6 text-base text-gray-600 md:text-lg">
             글로벌 수준의 품질·위생 관리 체계
           </p>
         </div>
@@ -165,14 +165,14 @@ export default function CertificationSection() {
             {CERTIFICATIONS.map((cert, i) => (
               <div
                 key={cert.name}
-                className="group relative flex min-w-[240px] max-w-[260px] shrink-0 flex-col items-center rounded-2xl border border-white/10 bg-navy-800/50 px-6 py-8 text-center backdrop-blur-sm transition-all duration-300 hover:border-ocean-500/30 hover:shadow-[0_0_30px_-5px_rgba(30,106,161,0.25)]"
+                className="group relative flex min-w-[240px] max-w-[260px] shrink-0 flex-col items-center rounded-2xl border border-white/10 bg-gray-100/50 px-6 py-8 text-center backdrop-blur-sm transition-all duration-300 hover:border-ocean-500/30 hover:shadow-[0_0_30px_-5px_rgba(30,106,161,0.25)]"
                 style={{
                   transitionDelay: cardsVisible ? `${i * 100}ms` : '0ms',
                 }}
               >
                 {/* Coming soon badge */}
                 {cert.comingSoon && (
-                  <span className="absolute -top-3 right-4 rounded-full bg-gold-500 px-3 py-0.5 font-montserrat text-[10px] font-bold tracking-wider text-navy-950">
+                  <span className="absolute -top-3 right-4 rounded-full bg-ocean-500 px-3 py-0.5 font-montserrat text-[10px] font-bold tracking-wider text-white">
                     COMING SOON
                   </span>
                 )}
@@ -183,7 +183,7 @@ export default function CertificationSection() {
                 </div>
 
                 {/* Name */}
-                <h3 className="mb-1 text-lg font-bold text-white">{cert.name}</h3>
+                <h3 className="mb-1 text-lg font-bold text-gray-900">{cert.name}</h3>
 
                 {/* Year */}
                 {cert.year && (
@@ -193,7 +193,7 @@ export default function CertificationSection() {
                 )}
 
                 {/* Description */}
-                <p className="text-sm text-white/60">{cert.description}</p>
+                <p className="text-sm text-gray-600">{cert.description}</p>
               </div>
             ))}
           </div>
@@ -206,7 +206,7 @@ export default function CertificationSection() {
             timelineVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <h3 className="mb-10 text-center text-lg font-semibold text-white/80 md:text-xl">
+          <h3 className="mb-10 text-center text-lg font-semibold text-gray-700 md:text-xl">
             품질 인증 연혁
           </h3>
 
@@ -226,7 +226,7 @@ export default function CertificationSection() {
                 >
                   {/* Dot */}
                   <div className="absolute left-6 top-1.5 z-10 -translate-x-1/2 md:left-1/2">
-                    <div className="h-3 w-3 rounded-full border-2 border-ocean-400 bg-navy-900" />
+                    <div className="h-3 w-3 rounded-full border-2 border-ocean-400 bg-gray-50" />
                   </div>
 
                   {/* Content — mobile: always right; desktop: alternating */}
@@ -240,7 +240,7 @@ export default function CertificationSection() {
                     <span className="font-montserrat text-xl font-bold text-ocean-300">
                       {item.year}
                     </span>
-                    <p className="mt-1 text-sm text-white/60 md:text-base">{item.description}</p>
+                    <p className="mt-1 text-sm text-gray-600 md:text-base">{item.description}</p>
                   </div>
                 </div>
               );

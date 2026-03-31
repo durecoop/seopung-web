@@ -90,7 +90,7 @@ export default function VisionSection() {
   return (
     <section
       id="vision"
-      className="relative overflow-hidden bg-navy-950 py-24 md:py-32"
+      className="relative overflow-hidden bg-white py-24 md:py-32"
     >
       {/* Subtle gradient overlay */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-900/40 via-transparent to-navy-900/60" />
@@ -103,10 +103,10 @@ export default function VisionSection() {
             header.visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <h2 className="gold-line mb-4 inline-block text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          <h2 className="gold-line mb-4 inline-block text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
             비전
           </h2>
-          <p className="mt-6 text-base text-white/60 md:text-lg">
+          <p className="mt-6 text-base text-gray-600 md:text-lg">
             No.1 수산 가공 파트너를 향한 로드맵
           </p>
         </div>
@@ -118,7 +118,7 @@ export default function VisionSection() {
             pentagon.visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <h3 className="mb-10 text-center text-xl font-semibold text-gold-400 md:text-2xl">
+          <h3 className="mb-10 text-center text-xl font-semibold text-ocean-500 md:text-2xl">
             5대 추진 과제
           </h3>
 
@@ -187,18 +187,18 @@ export default function VisionSection() {
                     <div
                       className={`flex h-16 w-16 items-center justify-center rounded-xl border transition-all duration-300 ${
                         isActive
-                          ? 'border-gold-500 bg-gold-500/20 text-gold-400 shadow-lg shadow-gold-500/20'
-                          : 'border-ocean-500/30 bg-navy-800/80 text-ocean-400'
+                          ? 'border-gold-500 bg-ocean-500/20 text-ocean-500 shadow-lg shadow-gold-500/20'
+                          : 'border-ocean-500/30 bg-gray-100/80 text-ocean-400'
                       }`}
                     >
                       {icons[item.icon]}
                     </div>
-                    <span className="whitespace-nowrap text-sm font-semibold text-white">
+                    <span className="whitespace-nowrap text-sm font-semibold text-gray-900">
                       {item.title}
                     </span>
                     <span
                       className={`max-w-[180px] text-center text-xs leading-relaxed transition-all duration-300 ${
-                        isActive ? 'text-white/80' : 'text-white/60'
+                        isActive ? 'text-gray-700' : 'text-gray-600'
                       }`}
                     >
                       {item.desc}
@@ -214,15 +214,15 @@ export default function VisionSection() {
             {INITIATIVES.map((item, i) => (
               <div
                 key={item.title}
-                className="flex items-start gap-4 rounded-xl border border-navy-700/50 bg-navy-900/60 p-5 backdrop-blur-sm"
+                className="flex items-start gap-4 rounded-xl border border-gray-300/50 bg-gray-50/60 p-5 backdrop-blur-sm"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-ocean-500/30 bg-navy-800 text-ocean-400">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-ocean-500/30 bg-gray-100 text-ocean-400">
                   {icons[item.icon]}
                 </div>
                 <div>
-                  <h4 className="mb-1 text-base font-semibold text-white">{item.title}</h4>
-                  <p className="text-sm leading-relaxed text-white/60">{item.desc}</p>
+                  <h4 className="mb-1 text-base font-semibold text-gray-900">{item.title}</h4>
+                  <p className="text-sm leading-relaxed text-gray-600">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -236,7 +236,7 @@ export default function VisionSection() {
             platform.visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <h3 className="mb-10 text-center text-xl font-semibold text-white md:text-2xl">
+          <h3 className="mb-10 text-center text-xl font-semibold text-gray-900 md:text-2xl">
             <span className="font-montserrat font-bold text-ocean-400">One Platform</span>{' '}
             통합 운영
           </h3>
@@ -250,15 +250,15 @@ export default function VisionSection() {
                     <div
                       className={`flex h-20 w-44 items-center justify-center rounded-xl border px-4 text-center transition-all duration-500 ${
                         i === 1
-                          ? 'border-gold-500/60 bg-gold-500/10 shadow-lg shadow-gold-500/10'
-                          : 'border-navy-600/50 bg-navy-800/70'
+                          ? 'border-gold-500/60 bg-ocean-500/10 shadow-lg shadow-gold-500/10'
+                          : 'border-navy-600/50 bg-gray-100/70'
                       }`}
                       style={{ transitionDelay: `${i * 150}ms` }}
                     >
                       <div>
                         <p
                           className={`text-sm font-bold ${
-                            i === 1 ? 'text-gold-400' : 'text-white'
+                            i === 1 ? 'text-ocean-500' : 'text-gray-900'
                           }`}
                         >
                           {step.name}
@@ -289,14 +289,14 @@ export default function VisionSection() {
                   <div
                     className={`flex w-64 items-center justify-center rounded-xl border px-4 py-4 text-center ${
                       i === 1
-                        ? 'border-gold-500/60 bg-gold-500/10'
-                        : 'border-navy-600/50 bg-navy-800/70'
+                        ? 'border-gold-500/60 bg-ocean-500/10'
+                        : 'border-navy-600/50 bg-gray-100/70'
                     }`}
                   >
                     <div>
                       <p
                         className={`text-sm font-bold ${
-                          i === 1 ? 'text-gold-400' : 'text-white'
+                          i === 1 ? 'text-ocean-500' : 'text-gray-900'
                         }`}
                       >
                         {step.name}
@@ -326,15 +326,15 @@ export default function VisionSection() {
             quote.visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <div className="relative rounded-2xl border border-navy-700/30 bg-navy-900/40 px-8 py-10 backdrop-blur-sm md:px-14 md:py-12">
+          <div className="relative rounded-2xl border border-gray-300/30 bg-gray-50/40 px-8 py-10 backdrop-blur-sm md:px-14 md:py-12">
             <svg
-              className="absolute left-6 top-6 h-8 w-8 text-gold-500/20"
+              className="absolute left-6 top-6 h-8 w-8 text-ocean-500/20"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
               <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z" />
             </svg>
-            <p className="text-base leading-relaxed text-white/80 md:text-lg">
+            <p className="text-base leading-relaxed text-gray-700 md:text-lg">
               기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고,
               <br className="hidden md:block" />
               품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.

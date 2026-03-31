@@ -127,7 +127,7 @@ const FEATURES = [
    ────────────────────────────────────────────── */
 export default function GulbiPage() {
   return (
-    <main className="bg-navy-950 font-pretendard">
+    <main className="bg-white font-pretendard">
       <Navbar />
       <Breadcrumb />
 
@@ -140,17 +140,17 @@ export default function GulbiPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-navy-950/70" />
+        <div className="absolute inset-0 bg-white/70" />
         <div className="relative z-10 text-center">
-          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-gold-400">
+          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
             Yeongkwang Gulbi
           </p>
-          <h1 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">영광 굴비</h1>
-          <p className="mt-4 text-lg text-white/60">
+          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">영광 굴비</h1>
+          <p className="mt-4 text-lg text-gray-600">
             전통의 맛, 장인의 손길
           </p>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* ── 1. 소개 ── */}
@@ -158,11 +158,11 @@ export default function GulbiPage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <Reveal>
             <div className="text-center">
-              <p className="mb-6 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-6 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Introduction
               </p>
               <div className="relative mx-auto max-w-3xl pl-0">
-                <p className="text-xl leading-relaxed text-white/80 md:text-2xl md:leading-relaxed">
+                <p className="text-xl leading-relaxed text-gray-700 md:text-2xl md:leading-relaxed">
                   영어조합법인 서풍의 영광 굴비는 여수 위판장에서 직접 수매한 생물 참조기를 사용하여 전통 방식으로 제조합니다.
                 </p>
               </div>
@@ -177,24 +177,24 @@ export default function GulbiPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Why Seopung Gulbi
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">왜 서풍의 영광 굴비인가</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">왜 서풍의 영광 굴비인가</h2>
             </div>
           </Reveal>
 
           <div className="grid gap-8 md:grid-cols-3">
             {WHY_GULBI.map((item, i) => (
               <Reveal key={item.title} delay={i * 120}>
-                <div className="group relative overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60 md:p-10">
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60 md:p-10">
+                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative">
-                    <div className="mb-6 inline-flex rounded-xl bg-gold-500/10 p-3 text-gold-400 transition-colors duration-300 group-hover:bg-gold-500/20">
+                    <div className="mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-500 transition-colors duration-300 group-hover:bg-ocean-500/20">
                       {item.icon}
                     </div>
-                    <h3 className="mb-4 text-xl font-bold text-white">{item.title}</h3>
-                    <p className="leading-relaxed text-white/60">{item.desc}</p>
+                    <h3 className="mb-4 text-xl font-bold text-gray-900">{item.title}</h3>
+                    <p className="leading-relaxed text-gray-600">{item.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -209,10 +209,10 @@ export default function GulbiPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Manufacturing Process
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">굴비 제조 공정</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">굴비 제조 공정</h2>
             </div>
           </Reveal>
 
@@ -234,7 +234,7 @@ export default function GulbiPage() {
                             fill
                             className="object-cover transition-transform duration-700 hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
                         </div>
                         {/* Second image for step 4 */}
                         {'image2' in step && step.image2 && (
@@ -245,7 +245,7 @@ export default function GulbiPage() {
                               fill
                               className="object-cover transition-transform duration-700 hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
                           </div>
                         )}
                         {step.extraImages && step.extraImages.length > 0 && (
@@ -258,7 +258,7 @@ export default function GulbiPage() {
                                   fill
                                   className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/30 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent" />
                               </div>
                             ))}
                           </div>
@@ -269,19 +269,19 @@ export default function GulbiPage() {
                     {/* Text side */}
                     <div className={`${!hasImage ? 'mx-auto max-w-2xl text-center' : ''}`}>
                       <div className="mb-4 flex items-center gap-4">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10">
-                          <span className="font-montserrat text-xl font-bold text-gold-400">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/30 bg-ocean-500/10">
+                          <span className="font-montserrat text-xl font-bold text-ocean-500">
                             {String(step.step).padStart(2, '0')}
                           </span>
                         </div>
                         <div>
-                          <p className="font-montserrat text-xs font-medium uppercase tracking-wider text-white/60">
+                          <p className="font-montserrat text-xs font-medium uppercase tracking-wider text-gray-600">
                             Step {step.step}
                           </p>
-                          <h3 className="text-2xl font-bold text-white md:text-3xl">{step.title}</h3>
+                          <h3 className="text-2xl font-bold text-gray-900 md:text-3xl">{step.title}</h3>
                         </div>
                       </div>
-                      <p className="mt-4 text-lg leading-relaxed text-white/80">{step.desc}</p>
+                      <p className="mt-4 text-lg leading-relaxed text-gray-700">{step.desc}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -296,21 +296,21 @@ export default function GulbiPage() {
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Features
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">서풍 굴비의 특징</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">서풍 굴비의 특징</h2>
             </div>
           </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2">
             {FEATURES.map((f, i) => (
               <Reveal key={f.text} delay={i * 100}>
-                <div className="group flex items-start gap-5 rounded-2xl border border-navy-700/50 bg-navy-900/60 p-6 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60 md:p-8">
-                  <div className="shrink-0 rounded-xl bg-gold-500/10 p-3 text-gold-400 transition-colors duration-300 group-hover:bg-gold-500/20">
+                <div className="group flex items-start gap-5 rounded-2xl border border-gray-300/50 bg-gray-50/60 p-6 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60 md:p-8">
+                  <div className="shrink-0 rounded-xl bg-ocean-500/10 p-3 text-ocean-500 transition-colors duration-300 group-hover:bg-ocean-500/20">
                     {f.icon}
                   </div>
-                  <p className="text-lg leading-relaxed text-white/80">{f.text}</p>
+                  <p className="text-lg leading-relaxed text-gray-700">{f.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -326,18 +326,18 @@ export default function GulbiPage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/40" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <Reveal>
-            <svg className="mx-auto mb-8 h-8 w-8 text-gold-500/40" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="mx-auto mb-8 h-8 w-8 text-ocean-500/40" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
-            <p className="mb-10 text-2xl font-medium leading-relaxed text-white/90 md:text-3xl md:leading-relaxed">
+            <p className="mb-10 text-2xl font-medium leading-relaxed text-gray-700 md:text-3xl md:leading-relaxed">
               바다의 정성을 식탁까지, 영광 굴비의 진심을 전합니다
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-gold-500 px-8 py-4 font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20"
+              className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
             >
               주문 문의하기 &rarr;
             </Link>

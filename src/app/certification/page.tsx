@@ -239,12 +239,12 @@ function KpiCard({ value, label }: { value: string; label: string }) {
   return (
     <div
       ref={ref}
-      className="group rounded-2xl border border-navy-700/50 bg-navy-900/60 p-5 sm:p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+      className="group rounded-2xl border border-gray-300/50 bg-gray-50/60 p-5 sm:p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60"
     >
-      <span className="block font-montserrat text-2xl font-bold text-gold-400 sm:text-3xl md:text-4xl">
+      <span className="block font-montserrat text-2xl font-bold text-ocean-500 sm:text-3xl md:text-4xl">
         {numericMatch ? display + suffix : value}
       </span>
-      <span className="mt-2 sm:mt-3 block text-xs sm:text-sm text-white/80">{label}</span>
+      <span className="mt-2 sm:mt-3 block text-xs sm:text-sm text-gray-700">{label}</span>
     </div>
   );
 }
@@ -254,7 +254,7 @@ export default function CertificationPage() {
   const preparingCount = CERTIFICATIONS.filter((c) => c.status === 'preparing').length;
 
   return (
-    <main className="bg-navy-950 font-pretendard">
+    <main className="bg-white font-pretendard">
       <Navbar />
       <Breadcrumb />
 
@@ -268,28 +268,28 @@ export default function CertificationPage() {
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/30" />
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
           <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
             Quality &amp; Certification
           </span>
-          <h1 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">품질·인증</h1>
-          <p className="mt-3 text-lg text-white/60">글로벌 수준의 품질·위생 관리 체계</p>
+          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">품질·인증</h1>
+          <p className="mt-3 text-lg text-gray-600">글로벌 수준의 품질·위생 관리 체계</p>
         </div>
       </section>
 
       {/* ══════════════════════════════════════ */}
       {/* 1. Certification Cards                */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-900/40 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Certifications
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                인증 <span className="text-gold-400">현황</span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                인증 <span className="text-ocean-500">현황</span>
               </h2>
 
               {/* Certificate count summary */}
@@ -298,9 +298,9 @@ export default function CertificationPage() {
                   <div className="h-2 w-2 rounded-full bg-ocean-400" />
                   <span className="text-sm font-medium text-ocean-400">취득 {acquiredCount}건</span>
                 </div>
-                <div className="flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-2">
+                <div className="flex items-center gap-2 rounded-full border border-gold-500/30 bg-ocean-500/10 px-4 py-2">
                   <div className="h-2 w-2 rounded-full bg-gold-400" />
-                  <span className="text-sm font-medium text-gold-400">준비중 {preparingCount}건</span>
+                  <span className="text-sm font-medium text-ocean-500">준비중 {preparingCount}건</span>
                 </div>
               </div>
             </div>
@@ -317,7 +317,7 @@ export default function CertificationPage() {
           <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mb-10">
             {CERTIFICATIONS.filter((c) => c.status === 'acquired').map((cert) => (
               <FadeIn key={cert.name}>
-                <div className="group relative overflow-hidden rounded-2xl border border-navy-700/40 bg-navy-950/60 p-5 sm:p-7 transition-all duration-300 hover:border-ocean-500/40 hover:shadow-[0_0_30px_-5px_rgba(56,189,248,0.12)] md:p-8">
+                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/40 bg-white/60 p-5 sm:p-7 transition-all duration-300 hover:border-ocean-500/40 hover:shadow-[0_0_30px_-5px_rgba(56,189,248,0.12)] md:p-8">
                   {/* Acquired status indicator */}
                   <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-2.5 py-1">
                     <div className="h-1.5 w-1.5 rounded-full bg-ocean-400" />
@@ -333,14 +333,14 @@ export default function CertificationPage() {
                       ) : cert.icon}
                     </div>
                     <div className="min-w-0 flex-1 pr-14 sm:pr-16">
-                      <h3 className="text-lg sm:text-xl font-bold text-white truncate">{cert.name}</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 truncate">{cert.name}</h3>
                       {cert.year && (
                         <p className="mt-1 font-montserrat text-sm font-medium text-ocean-400">{cert.year}</p>
                       )}
                     </div>
                   </div>
 
-                  <p className="text-sm sm:text-base leading-relaxed text-white/60">{cert.desc}</p>
+                  <p className="text-sm sm:text-base leading-relaxed text-gray-600">{cert.desc}</p>
 
                   {/* Extra logos row */}
                   {cert.extraLogos && cert.extraLogos.length > 0 && (
@@ -355,7 +355,7 @@ export default function CertificationPage() {
 
                   {/* Optional cert photo */}
                   {cert.photo && (
-                    <div className="relative mt-5 aspect-[16/10] overflow-hidden rounded-xl border border-navy-700/30">
+                    <div className="relative mt-5 aspect-[16/10] overflow-hidden rounded-xl border border-gray-300/30">
                       <Image
                         src={getImagePath(cert.photo)}
                         alt={`${cert.name} 인증서`}
@@ -373,24 +373,24 @@ export default function CertificationPage() {
           {/* Preparing certifications */}
           <FadeIn>
             <div className="mb-4 flex items-center gap-3">
-              <div className="h-px flex-1 bg-gold-500/20" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-gold-400">준비중</span>
-              <div className="h-px flex-1 bg-gold-500/20" />
+              <div className="h-px flex-1 bg-ocean-500/20" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-ocean-500">준비중</span>
+              <div className="h-px flex-1 bg-ocean-500/20" />
             </div>
           </FadeIn>
           <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {CERTIFICATIONS.filter((c) => c.status === 'preparing').map((cert) => (
               <FadeIn key={cert.name}>
-                <div className="group relative overflow-hidden rounded-2xl border border-navy-700/30 border-dashed bg-navy-950/40 p-5 sm:p-7 transition-all duration-300 hover:border-gold-500/30 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.08)] md:p-8">
+                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/30 border-dashed bg-white/40 p-5 sm:p-7 transition-all duration-300 hover:border-gold-500/30 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.08)] md:p-8">
                   {/* Badge */}
                   {cert.badge ? (
-                    <div className="absolute right-3 top-3 sm:right-4 sm:top-4 rounded-full border border-gold-500/40 bg-gold-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-gold-400">
+                    <div className="absolute right-3 top-3 sm:right-4 sm:top-4 rounded-full border border-gold-500/40 bg-ocean-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-ocean-500">
                       {cert.badge}
                     </div>
                   ) : (
-                    <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-2.5 py-1">
+                    <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 rounded-full border border-gold-500/30 bg-ocean-500/10 px-2.5 py-1">
                       <div className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-gold-400">준비중</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-ocean-500">준비중</span>
                     </div>
                   )}
 
@@ -399,14 +399,14 @@ export default function CertificationPage() {
                       {cert.icon}
                     </div>
                     <div className="min-w-0 flex-1 pr-14 sm:pr-16">
-                      <h3 className="text-lg sm:text-xl font-bold text-white/80 truncate">{cert.name}</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-700 truncate">{cert.name}</h3>
                       {cert.year && (
-                        <p className="mt-1 font-montserrat text-sm font-medium text-gold-400">{cert.year}</p>
+                        <p className="mt-1 font-montserrat text-sm font-medium text-ocean-500">{cert.year}</p>
                       )}
                     </div>
                   </div>
 
-                  <p className="text-sm sm:text-base leading-relaxed text-white/40">{cert.desc}</p>
+                  <p className="text-sm sm:text-base leading-relaxed text-gray-900/40">{cert.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -417,22 +417,22 @@ export default function CertificationPage() {
       {/* ══════════════════════════════════════ */}
       {/* 1-B. 인증서 실물 갤러리               */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
         <div className="mx-auto max-w-4xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Certificate Gallery
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                인증서 <span className="text-gold-400">갤러리</span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                인증서 <span className="text-ocean-500">갤러리</span>
               </h2>
             </div>
           </FadeIn>
 
           <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             <FadeIn>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/30 bg-white/[0.03] p-3 sm:p-4 shadow-lg backdrop-blur-sm">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/30 bg-white/[0.03] p-3 sm:p-4 shadow-lg backdrop-blur-sm">
                 <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
                   <div className="relative aspect-[3/4]">
                     <Image
@@ -444,14 +444,14 @@ export default function CertificationPage() {
                     />
                   </div>
                 </div>
-                <p className="mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium text-white/80">
+                <p className="mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-700">
                   수산물이력추적관리 등록증 제1164호
                 </p>
               </div>
             </FadeIn>
 
             <FadeIn>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/30 bg-white/[0.03] p-3 sm:p-4 shadow-lg backdrop-blur-sm">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/30 bg-white/[0.03] p-3 sm:p-4 shadow-lg backdrop-blur-sm">
                 <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
                   <div className="relative aspect-[3/4]">
                     <Image
@@ -463,7 +463,7 @@ export default function CertificationPage() {
                     />
                   </div>
                 </div>
-                <p className="mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium text-white/80">
+                <p className="mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-700">
                   수산물이력추적관리 인증서
                 </p>
               </div>
@@ -471,7 +471,7 @@ export default function CertificationPage() {
           </div>
 
           <FadeIn className="mt-8">
-            <p className="text-center text-xs sm:text-sm text-white/60">
+            <p className="text-center text-xs sm:text-sm text-gray-600">
               ※ HACCP, 수산물품질인증 등 추가 인증서는 사무실에서 확인 가능합니다
             </p>
           </FadeIn>
@@ -481,17 +481,17 @@ export default function CertificationPage() {
       {/* ══════════════════════════════════════ */}
       {/* 1-C. 인증서 다운로드                    */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-900/40 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Downloads
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                인증서 <span className="text-gold-400">다운로드</span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                인증서 <span className="text-ocean-500">다운로드</span>
               </h2>
-              <p className="mt-3 text-sm text-white/50">필요한 인증서를 다운로드하세요</p>
+              <p className="mt-3 text-sm text-gray-900/50">필요한 인증서를 다운로드하세요</p>
             </div>
           </FadeIn>
 
@@ -504,7 +504,7 @@ export default function CertificationPage() {
               { name: '수산물품질인증', desc: '국립수산물품질관리원 인증' },
             ].map((cert) => (
               <FadeIn key={cert.name}>
-                <div className="group overflow-hidden rounded-2xl border border-navy-700/40 bg-gradient-to-br from-navy-800/60 to-navy-900/60 p-5 sm:p-6 transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.1)]">
+                <div className="group overflow-hidden rounded-2xl border border-gray-300/40 bg-gradient-to-br from-navy-800/60 to-navy-900/60 p-5 sm:p-6 transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.1)]">
                   <div className="mb-4 flex items-start gap-3 sm:gap-4">
                     {/* Cert icon */}
                     <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-ocean-500/15 to-ocean-600/10 p-2.5 sm:p-3 text-ocean-400 ring-1 ring-ocean-500/20">
@@ -513,12 +513,12 @@ export default function CertificationPage() {
                       </svg>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-base sm:text-lg font-bold text-white truncate">{cert.name}</h3>
-                      <p className="mt-1 text-xs sm:text-sm text-white/60 line-clamp-2">{cert.desc}</p>
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 truncate">{cert.name}</h3>
+                      <p className="mt-1 text-xs sm:text-sm text-gray-600 line-clamp-2">{cert.desc}</p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between border-t border-navy-700/30 pt-4">
-                    <span className="flex items-center gap-1.5 text-xs text-white/40">
+                  <div className="flex items-center justify-between border-t border-gray-300/30 pt-4">
+                    <span className="flex items-center gap-1.5 text-xs text-gray-900/40">
                       <svg viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5 text-red-400/60">
                         <path d="M4 1h8a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1zm2 3v2h4V4H6zm0 3v1h4V7H6z" />
                       </svg>
@@ -527,7 +527,7 @@ export default function CertificationPage() {
                     <button
                       type="button"
                       onClick={() => alert('준비 중입니다')}
-                      className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-gold-500/30 bg-gold-500/5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gold-400 transition-all duration-300 hover:border-gold-500/60 hover:bg-gold-500/10 hover:shadow-lg hover:shadow-gold-500/5"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-gold-500/30 bg-ocean-500/5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-ocean-500 transition-all duration-300 hover:border-gold-500/60 hover:bg-ocean-500/10 hover:shadow-lg hover:shadow-gold-500/5"
                     >
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -545,15 +545,15 @@ export default function CertificationPage() {
       {/* ══════════════════════════════════════ */}
       {/* 2. Quality Management System          */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Quality Management
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                품질 관리 <span className="text-gold-400">체계</span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                품질 관리 <span className="text-ocean-500">체계</span>
               </h2>
             </div>
           </FadeIn>
@@ -561,7 +561,7 @@ export default function CertificationPage() {
           <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
             {/* Radiation testing */}
             <FadeIn>
-              <div className="group overflow-hidden rounded-2xl border border-navy-700/40 bg-navy-900/50 transition-all duration-300 hover:border-ocean-500/30">
+              <div className="group overflow-hidden rounded-2xl border border-gray-300/40 bg-gray-50/50 transition-all duration-300 hover:border-ocean-500/30">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={getImagePath('/images/facility/radiation-tester.jpg')}
@@ -570,11 +570,11 @@ export default function CertificationPage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
                 </div>
                 <div className="p-4 sm:p-6">
-                  <h3 className="mb-2 text-lg font-bold text-white">방사능 검사</h3>
-                  <p className="text-xs sm:text-sm leading-relaxed text-white/60">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900">방사능 검사</h3>
+                  <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
                     Gamma Radiation Spectrometer를 활용하여 전 원료의 방사능 오염 여부를 상시 검사합니다.
                     입고 원료 전수 검사를 통해 안전한 원료만 생산 라인에 투입됩니다.
                   </p>
@@ -584,7 +584,7 @@ export default function CertificationPage() {
 
             {/* Foreign material management */}
             <FadeIn>
-              <div className="group overflow-hidden rounded-2xl border border-navy-700/40 bg-navy-900/50 transition-all duration-300 hover:border-ocean-500/30">
+              <div className="group overflow-hidden rounded-2xl border border-gray-300/40 bg-gray-50/50 transition-all duration-300 hover:border-ocean-500/30">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={getImagePath('/images/facility/safety-sign.jpg')}
@@ -593,11 +593,11 @@ export default function CertificationPage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
                 </div>
                 <div className="p-4 sm:p-6">
-                  <h3 className="mb-2 text-lg font-bold text-white">이물 관리</h3>
-                  <p className="text-xs sm:text-sm leading-relaxed text-white/60">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900">이물 관리</h3>
+                  <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
                     생산 현장 전 구역에 이물 주의 관리 체계를 운영합니다.
                     금속검출기, 이물선별 공정 등 다단계 이물 방지 시스템을 갖추고 있습니다.
                   </p>
@@ -607,7 +607,7 @@ export default function CertificationPage() {
 
             {/* AI X-ray link */}
             <FadeIn>
-              <div className="group flex flex-col overflow-hidden rounded-2xl border border-navy-700/40 bg-navy-900/50 transition-all duration-300 hover:border-gold-500/30">
+              <div className="group flex flex-col overflow-hidden rounded-2xl border border-gray-300/40 bg-gray-50/50 transition-all duration-300 hover:border-gold-500/30">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={getImagePath('/images/facility/ai-xray-process.png')}
@@ -616,14 +616,14 @@ export default function CertificationPage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
-                  <div className="absolute left-4 top-4 rounded-full bg-gold-500/90 px-3 py-1 text-[10px] font-bold text-navy-950">
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
+                  <div className="absolute left-4 top-4 rounded-full bg-ocean-500/90 px-3 py-1 text-[10px] font-bold text-white">
                     2026 도입
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col p-4 sm:p-6">
-                  <h3 className="mb-2 text-lg font-bold text-white">AI 엑스레이 검출</h3>
-                  <p className="mb-4 flex-1 text-xs sm:text-sm leading-relaxed text-white/60">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900">AI 엑스레이 검출</h3>
+                  <p className="mb-4 flex-1 text-xs sm:text-sm leading-relaxed text-gray-600">
                     인공지능 기반 X-ray 이물질 검출 시스템으로 미세 이물까지 자동 감별합니다.
                     2026년 4월 현장 도입 예정입니다.
                   </p>
@@ -644,15 +644,15 @@ export default function CertificationPage() {
       {/* ══════════════════════════════════════ */}
       {/* 2-B. 현장 품질 관리 사진              */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-900/40 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 On-Site Quality Control
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                현장 품질 <span className="text-gold-400">관리</span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                현장 품질 <span className="text-ocean-500">관리</span>
               </h2>
             </div>
           </FadeIn>
@@ -665,7 +665,7 @@ export default function CertificationPage() {
               { image: '/images/facility/cold-storage-detail.jpg', caption: '선내급속냉동' },
             ].map((photo) => (
               <FadeIn key={photo.caption}>
-                <div className="group overflow-hidden rounded-xl border border-navy-700/40 bg-navy-950/60 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5">
+                <div className="group overflow-hidden rounded-xl border border-gray-300/40 bg-white/60 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={getImagePath(photo.image)}
@@ -674,10 +674,10 @@ export default function CertificationPage() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/70 to-transparent" />
                   </div>
                   <div className="p-2 sm:p-4">
-                    <p className="text-xs sm:text-sm font-medium text-white/60 truncate">{photo.caption}</p>
+                    <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">{photo.caption}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -689,15 +689,15 @@ export default function CertificationPage() {
       {/* ══════════════════════════════════════ */}
       {/* 2-C. Quality KPI Metrics              */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Quality KPI
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                품질 <span className="text-gold-400">지표</span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                품질 <span className="text-ocean-500">지표</span>
               </h2>
             </div>
           </FadeIn>
@@ -720,15 +720,15 @@ export default function CertificationPage() {
       {/* ══════════════════════════════════════ */}
       {/* 3. Quality History Timeline           */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-900/40 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Quality History
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                품질 <span className="text-gold-400">연혁</span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                품질 <span className="text-ocean-500">연혁</span>
               </h2>
             </div>
           </FadeIn>
@@ -747,7 +747,7 @@ export default function CertificationPage() {
                       <div
                         className={`h-3 w-3 rounded-full border-2 ${
                           item.upcoming
-                            ? 'border-gold-500 bg-gold-500/20 shadow-lg shadow-gold-500/30'
+                            ? 'border-gold-500 bg-ocean-500/20 shadow-lg shadow-gold-500/30'
                             : 'border-ocean-400 bg-ocean-400/20'
                         }`}
                       />
@@ -757,15 +757,15 @@ export default function CertificationPage() {
                     <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
                       <span
                         className={`font-montserrat text-2xl font-bold ${
-                          item.upcoming ? 'text-gold-400' : 'text-ocean-400'
+                          item.upcoming ? 'text-ocean-500' : 'text-ocean-400'
                         }`}
                       >
                         {item.year}
                       </span>
-                      <h3 className="mt-1 text-lg font-semibold text-white">{item.title}</h3>
-                      {item.desc && <p className="mt-1 text-sm text-white/60">{item.desc}</p>}
+                      <h3 className="mt-1 text-lg font-semibold text-gray-900">{item.title}</h3>
+                      {item.desc && <p className="mt-1 text-sm text-gray-600">{item.desc}</p>}
                       {item.upcoming && (
-                        <span className="mt-2 inline-block rounded-full border border-gold-500/30 bg-gold-500/10 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-gold-400">
+                        <span className="mt-2 inline-block rounded-full border border-gold-500/30 bg-ocean-500/10 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-ocean-500">
                           Upcoming
                         </span>
                       )}
@@ -781,13 +781,13 @@ export default function CertificationPage() {
       {/* ══════════════════════════════════════ */}
       {/* CTA — 기술·설비 링크                  */}
       {/* ══════════════════════════════════════ */}
-      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <div className="text-center">
               <Link
                 href="/technology"
-                className="inline-flex items-center gap-2 rounded-full bg-ocean-400 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-500 hover:shadow-ocean-500/30"
+                className="inline-flex items-center gap-2 rounded-full bg-ocean-400 px-8 py-3.5 text-base font-bold text-gray-900 shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-500 hover:shadow-ocean-500/30"
               >
                 기술·설비도 확인해보세요
                 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>

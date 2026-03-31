@@ -36,24 +36,24 @@ const CROSS_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-navy-800 bg-navy-950">
+    <footer className="border-t border-gray-200 bg-gray-50">
       {/* Gold accent divider */}
       <div
         className="h-px w-full"
         style={{
           background:
-            'linear-gradient(to right, transparent, var(--color-gold-500), transparent)',
+            'linear-gradient(to right, transparent, var(--color-ocean-500, #3b82f6), transparent)',
         }}
       />
 
       {/* Certification badges row */}
-      <div className="border-b border-navy-800/60 bg-navy-900/30 py-6">
+      <div className="border-b border-gray-200/60 bg-gray-100/30 py-6">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {CERTIFICATIONS.map((cert) => (
               <span
                 key={cert}
-                className="rounded-full border border-navy-600/40 bg-navy-800/30 px-4 py-1.5 font-montserrat text-[11px] font-semibold tracking-wide text-white/50"
+                className="rounded-full border border-gray-300/40 bg-gray-100/30 px-4 py-1.5 font-montserrat text-[11px] font-semibold tracking-wide text-gray-500"
               >
                 {cert}
               </span>
@@ -76,9 +76,9 @@ export default function Footer() {
                   className="scale-[1.75] object-contain"
                 />
               </div>
-              <span className="text-lg font-bold text-white">서풍</span>
+              <span className="text-lg font-bold text-gray-900">서풍</span>
             </div>
-            <p className="max-w-xs text-sm leading-relaxed text-white/60">
+            <p className="max-w-xs text-sm leading-relaxed text-gray-500">
               지속가능한 바다, 책임 있는 먹거리의 약속
             </p>
 
@@ -87,7 +87,7 @@ export default function Footer() {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold-400/60">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ocean-500/60">
               바로가기
             </h4>
             <ul className="space-y-2.5">
@@ -95,7 +95,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-block py-1 text-sm text-white/50 transition-colors duration-300 hover:text-gold-400"
+                    className="inline-block py-1 text-sm text-gray-500 transition-colors duration-300 hover:text-ocean-500"
                   >
                     {link.label}
                   </Link>
@@ -106,12 +106,12 @@ export default function Footer() {
 
           {/* Col 3: Affiliates */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold-400/60">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ocean-500/60">
               관계사
             </h4>
             <ul className="space-y-2.5">
               {AFFILIATES.map((name) => (
-                <li key={name} className="py-1 text-sm text-white/50">
+                <li key={name} className="py-1 text-sm text-gray-500">
                   {name}
                 </li>
               ))}
@@ -120,16 +120,16 @@ export default function Footer() {
 
           {/* Col 4: Contact + Cross Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold-400/60">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ocean-500/60">
               연락처
             </h4>
-            <ul className="space-y-2.5 text-sm text-white/50">
+            <ul className="space-y-2.5 text-sm text-gray-500">
               <li className="py-1">전라남도 여수시 석교로 121</li>
               <li className="py-1">061-686-0508</li>
               <li className="py-1">seopung@naver.com</li>
             </ul>
 
-            <h4 className="mb-3 mt-6 text-sm font-semibold uppercase tracking-wider text-gold-400/60">
+            <h4 className="mb-3 mt-6 text-sm font-semibold uppercase tracking-wider text-ocean-500/60">
               바로가기
             </h4>
             <ul className="space-y-2">
@@ -138,7 +138,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-gold-400"
+                      className="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-ocean-500"
                     >
                       <span className="text-xs">{link.icon}</span>
                       {link.label}
@@ -150,7 +150,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-gold-400"
+                      className="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-ocean-500"
                     >
                       <span className="text-xs">{link.icon}</span>
                       {link.label}
@@ -169,14 +169,14 @@ export default function Footer() {
         className="h-px w-full"
         style={{
           background:
-            'linear-gradient(to right, transparent, var(--color-gold-500)/40, transparent)',
+            'linear-gradient(to right, transparent, var(--color-ocean-500, #3b82f6)/40, transparent)',
         }}
       />
 
       {/* Bottom bar */}
-      <div className="border-t border-navy-800/60">
+      <div className="border-t border-gray-200/60">
         <div className="mx-auto max-w-7xl px-6 py-5">
-          <p className="text-center text-xs text-white/40">
+          <p className="text-center text-xs text-gray-400">
             Copyright &copy; 2026 영어조합법인 서풍. All rights reserved.
           </p>
         </div>

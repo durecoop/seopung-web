@@ -140,7 +140,7 @@ export default function VisionPage() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <main className="bg-navy-950 font-pretendard">
+    <main className="bg-white font-pretendard">
       <Navbar />
       <Breadcrumb />
 
@@ -153,17 +153,17 @@ export default function VisionPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-navy-950/70" />
+        <div className="absolute inset-0 bg-white/70" />
         <div className="relative z-10 text-center">
-          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-gold-400">
+          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
             Vision
           </p>
-          <h1 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">비전</h1>
-          <p className="mt-4 text-lg text-white/60">
+          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">비전</h1>
+          <p className="mt-4 text-lg text-gray-600">
             No.1 수산 가공 파트너를 향한 로드맵
           </p>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* ── 1. 5대 중점 추진 과제 ── */}
@@ -172,10 +172,10 @@ export default function VisionPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Key Initiatives
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">5대 중점 추진 과제</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">5대 중점 추진 과제</h2>
             </div>
           </Reveal>
 
@@ -183,27 +183,27 @@ export default function VisionPage() {
             {PRIORITIES.map((p, i) => (
               <Reveal key={p.title} delay={i * 100}>
                 <div
-                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border bg-navy-900/60 p-8 backdrop-blur-sm transition-all duration-500 md:p-10 ${
+                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border bg-gray-50/60 p-8 backdrop-blur-sm transition-all duration-500 md:p-10 ${
                     activeCard === i
-                      ? 'border-gold-500/50 bg-navy-800/80 shadow-lg shadow-gold-500/5'
-                      : 'border-navy-700/50 hover:border-ocean-400/30 hover:bg-navy-800/60'
+                      ? 'border-gold-500/50 bg-gray-100/80 shadow-lg shadow-gold-500/5'
+                      : 'border-gray-300/50 hover:border-ocean-400/30 hover:bg-gray-100/60'
                   } ${i >= 3 ? 'lg:col-span-1' : ''}`}
                   onClick={() => setActiveCard(activeCard === i ? null : i)}
                 >
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative">
                     <div className={`mb-6 inline-flex rounded-xl p-3 transition-colors duration-300 ${
-                      activeCard === i ? 'bg-gold-500/15 text-gold-400' : 'bg-ocean-500/10 text-ocean-400'
+                      activeCard === i ? 'bg-ocean-500/15 text-ocean-500' : 'bg-ocean-500/10 text-ocean-400'
                     }`}>
                       {p.icon}
                     </div>
                     <div className="mb-2 flex items-center gap-3">
-                      <span className="font-montserrat text-xs font-bold text-gold-500/60">
+                      <span className="font-montserrat text-xs font-bold text-ocean-500/60">
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="text-xl font-bold text-white">{p.title}</h3>
+                      <h3 className="text-xl font-bold text-gray-900">{p.title}</h3>
                     </div>
-                    <p className="leading-relaxed text-white/60">{p.desc}</p>
+                    <p className="leading-relaxed text-gray-600">{p.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -217,16 +217,16 @@ export default function VisionPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Financial Overview
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">매출 현황</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">매출 현황</h2>
             </div>
           </Reveal>
 
           {/* Total Sales */}
           <Reveal delay={100}>
-            <div className="mb-8 overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 md:p-12">
+            <div className="mb-8 overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-12">
               <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-ocean-400">총 매출</p>
               <div className="grid grid-cols-3 gap-4 md:gap-8">
                 {[
@@ -236,19 +236,19 @@ export default function VisionPage() {
                 ].map((item, i) => (
                   <div key={item.year} className="relative text-center">
                     {i > 0 && (
-                      <div className="absolute -left-2 top-1/2 hidden -translate-y-1/2 text-white/20 md:-left-4 md:block">
+                      <div className="absolute -left-2 top-1/2 hidden -translate-y-1/2 text-gray-900/20 md:-left-4 md:block">
                         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </div>
                     )}
-                    <p className="mb-2 font-montserrat text-xs text-white/60 sm:text-sm">{item.year}</p>
-                    <p className={`font-montserrat text-3xl font-bold sm:text-4xl md:text-6xl ${item.highlight ? 'text-gold-400' : 'text-white'}`}>
+                    <p className="mb-2 font-montserrat text-xs text-gray-600 sm:text-sm">{item.year}</p>
+                    <p className={`font-montserrat text-3xl font-bold sm:text-4xl md:text-6xl ${item.highlight ? 'text-ocean-500' : 'text-gray-900'}`}>
                       {item.value}
-                      <span className="ml-0.5 text-sm font-normal text-white/60 md:ml-1 md:text-lg">{item.unit}</span>
+                      <span className="ml-0.5 text-sm font-normal text-gray-600 md:ml-1 md:text-lg">{item.unit}</span>
                     </p>
                     {item.badge && (
-                      <span className="mt-2 inline-block rounded-full bg-gold-500/15 px-2 py-0.5 font-montserrat text-xs font-bold text-gold-400 sm:mt-3 sm:px-3 sm:py-1 sm:text-sm">
+                      <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-2 py-0.5 font-montserrat text-xs font-bold text-ocean-500 sm:mt-3 sm:px-3 sm:py-1 sm:text-sm">
                         {item.badge}
                       </span>
                     )}
@@ -261,21 +261,21 @@ export default function VisionPage() {
           {/* ASC/MSC & Investment */}
           <div className="grid gap-8 md:grid-cols-2">
             <Reveal delay={200}>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 md:p-10">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-10">
                 <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">ASC / MSC 매출</p>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center">
-                    <p className="mb-2 font-montserrat text-sm text-white/60">2025년</p>
-                    <p className="font-montserrat text-3xl font-bold text-white">
-                      3.6<span className="ml-1 text-sm font-normal text-white/60">억</span>
+                    <p className="mb-2 font-montserrat text-sm text-gray-600">2025년</p>
+                    <p className="font-montserrat text-3xl font-bold text-gray-900">
+                      3.6<span className="ml-1 text-sm font-normal text-gray-600">억</span>
                     </p>
                   </div>
                   <div className="text-center">
-                    <p className="mb-2 font-montserrat text-sm text-white/60">2026 목표</p>
-                    <p className="font-montserrat text-3xl font-bold text-gold-400">
-                      12<span className="ml-1 text-sm font-normal text-white/60">억</span>
+                    <p className="mb-2 font-montserrat text-sm text-gray-600">2026 목표</p>
+                    <p className="font-montserrat text-3xl font-bold text-ocean-500">
+                      12<span className="ml-1 text-sm font-normal text-gray-600">억</span>
                     </p>
-                    <span className="mt-2 inline-block rounded-full bg-gold-500/15 px-3 py-1 font-montserrat text-xs font-bold text-gold-400">
+                    <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-3 py-1 font-montserrat text-xs font-bold text-ocean-500">
                       +330%
                     </span>
                   </div>
@@ -284,7 +284,7 @@ export default function VisionPage() {
             </Reveal>
 
             <Reveal delay={300}>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 md:p-10">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-10">
                 <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">설비 투자</p>
                 <div className="grid grid-cols-3 gap-4">
                   {[
@@ -293,8 +293,8 @@ export default function VisionPage() {
                     { year: '2026', value: '~9억', highlight: true },
                   ].map((item) => (
                     <div key={item.year} className="text-center">
-                      <p className="mb-2 font-montserrat text-sm text-white/60">{item.year}</p>
-                      <p className={`font-montserrat text-2xl font-bold ${item.highlight ? 'text-gold-400' : 'text-white'}`}>
+                      <p className="mb-2 font-montserrat text-sm text-gray-600">{item.year}</p>
+                      <p className={`font-montserrat text-2xl font-bold ${item.highlight ? 'text-ocean-500' : 'text-gray-900'}`}>
                         {item.value}
                       </p>
                     </div>
@@ -312,18 +312,18 @@ export default function VisionPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Strategic Growth
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">전략적 성장 동력</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">전략적 성장 동력</h2>
             </div>
           </Reveal>
 
           <div className="grid gap-8 md:grid-cols-2">
             <Reveal delay={100}>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/50 border-l-ocean-500 border-l-4 bg-navy-900/60 p-8 backdrop-blur-sm md:p-10">
-                <h3 className="mb-4 text-xl font-bold text-white">MG 품목 운영 확산</h3>
-                <ul className="space-y-3 text-white/60">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/50 border-l-ocean-500 border-l-4 bg-gray-50/60 p-8 backdrop-blur-sm md:p-10">
+                <h3 className="mb-4 text-xl font-bold text-gray-900">MG 품목 운영 확산</h3>
+                <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
                     <span>푸드머스 전용 MG 품목군 확대 운영</span>
@@ -341,9 +341,9 @@ export default function VisionPage() {
             </Reveal>
 
             <Reveal delay={200}>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/50 border-l-ocean-500 border-l-4 bg-navy-900/60 p-8 backdrop-blur-sm md:p-10">
-                <h3 className="mb-4 text-xl font-bold text-white">지속가능 브랜드 확대</h3>
-                <ul className="space-y-3 text-white/60">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/50 border-l-ocean-500 border-l-4 bg-gray-50/60 p-8 backdrop-blur-sm md:p-10">
+                <h3 className="mb-4 text-xl font-bold text-gray-900">지속가능 브랜드 확대</h3>
+                <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
                     <span>ASC·MSC 인증 어종 확대 (임연수어, 대구 등)</span>
@@ -369,10 +369,10 @@ export default function VisionPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Product Development
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">제품 개발 성과</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">제품 개발 성과</h2>
             </div>
           </Reveal>
 
@@ -385,10 +385,10 @@ export default function VisionPage() {
                 { number: '~1천만', label: '제품당 투자액', sub: '원' },
                 { number: '~5개월', label: '신제품 개발 소요', sub: '' },
               ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-navy-700/50 bg-navy-900/60 p-6 text-center backdrop-blur-sm">
+                <div key={stat.label} className="rounded-2xl border border-gray-300/50 bg-gray-50/60 p-6 text-center backdrop-blur-sm">
                   <p className="font-montserrat text-3xl font-bold text-ocean-400 md:text-4xl">{stat.number}</p>
-                  {stat.sub && <p className="text-xs text-white/60">{stat.sub}</p>}
-                  <p className="mt-2 text-sm text-white/60">{stat.label}</p>
+                  {stat.sub && <p className="text-xs text-gray-600">{stat.sub}</p>}
+                  <p className="mt-2 text-sm text-gray-600">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -396,7 +396,7 @@ export default function VisionPage() {
 
           {/* Brand History */}
           <Reveal delay={200}>
-            <div className="overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 md:p-12">
+            <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-12">
               <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-ocean-400">브랜드 히스토리</p>
               <div className="relative">
                 {/* Timeline line */}
@@ -405,17 +405,17 @@ export default function VisionPage() {
                   {BRANDS.map((brand, i) => (
                     <div key={brand.name} className="relative pt-8 text-center">
                       {/* Dot on timeline */}
-                      <div className="absolute left-1/2 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-gold-500 bg-navy-950" />
-                      <p className="mb-1 font-montserrat text-sm font-bold text-gold-400">{brand.year}</p>
-                      <p className="mb-1 text-sm font-semibold text-white">{brand.name}</p>
-                      <p className="text-xs text-white/60">{brand.sales}</p>
+                      <div className="absolute left-1/2 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-gold-500 bg-white" />
+                      <p className="mb-1 font-montserrat text-sm font-bold text-ocean-500">{brand.year}</p>
+                      <p className="mb-1 text-sm font-semibold text-gray-900">{brand.name}</p>
+                      <p className="text-xs text-gray-600">{brand.sales}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="mt-8 rounded-xl bg-navy-800/50 px-6 py-4 text-center">
-                <p className="text-sm text-white/60">
-                  연간 <span className="font-montserrat font-bold text-gold-400">20</span>회 제안 추진
+              <div className="mt-8 rounded-xl bg-gray-100/50 px-6 py-4 text-center">
+                <p className="text-sm text-gray-600">
+                  연간 <span className="font-montserrat font-bold text-ocean-500">20</span>회 제안 추진
                 </p>
               </div>
             </div>
@@ -429,20 +429,20 @@ export default function VisionPage() {
         <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Our Vision
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">비전 선언</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">비전 선언</h2>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="mb-16 rounded-2xl border border-gold-500/20 bg-navy-900/80 p-10 text-center backdrop-blur-sm md:p-16">
+            <div className="mb-16 rounded-2xl border border-gold-500/20 bg-gray-50/80 p-10 text-center backdrop-blur-sm md:p-16">
               <div className="relative pl-0">
-                <svg className="mx-auto mb-6 h-8 w-8 text-gold-500/40" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="mx-auto mb-6 h-8 w-8 text-ocean-500/40" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-                <p className="text-xl leading-relaxed text-white/80 md:text-2xl md:leading-relaxed">
+                <p className="text-xl leading-relaxed text-gray-700 md:text-2xl md:leading-relaxed">
                   기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.
                 </p>
               </div>
@@ -453,14 +453,14 @@ export default function VisionPage() {
           <div className="grid gap-8 md:grid-cols-3">
             {VISION_PILLARS.map((p, i) => (
               <Reveal key={p.title} delay={i * 150 + 200}>
-                <div className="group relative overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60 md:p-10">
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60 md:p-10">
+                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative">
                     <div className="mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
                       {p.icon}
                     </div>
-                    <h3 className="mb-4 text-xl font-bold text-white">{p.title}</h3>
-                    <p className="leading-relaxed text-white/60">{p.desc}</p>
+                    <h3 className="mb-4 text-xl font-bold text-gray-900">{p.title}</h3>
+                    <p className="leading-relaxed text-gray-600">{p.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -470,18 +470,18 @@ export default function VisionPage() {
       </section>
 
       {/* ── Closing CTA ── */}
-      <section className="relative py-24 md:py-32 bg-navy-900/80">
+      <section className="relative py-24 md:py-32 bg-gray-50/80">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-60" />
         <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
           <Reveal>
-            <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">서풍과 함께 성장하세요</h2>
-            <p className="mb-10 text-lg leading-relaxed text-white/60">
+            <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">서풍과 함께 성장하세요</h2>
+            <p className="mb-10 text-lg leading-relaxed text-gray-600">
               OEM 납품, 신제품 개발, 브랜드 협업 등 다양한 형태의 파트너십을 환영합니다
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-gold-500 px-8 py-4 font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20"
+                className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
               >
                 문의하기 &rarr;
               </Link>

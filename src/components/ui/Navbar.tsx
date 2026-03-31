@@ -16,10 +16,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: '생산공정', href: '/process' },
   { label: '기술·설비', href: '/technology' },
   { label: '품질·인증', href: '/certification' },
-  { label: '비전', href: '/vision' },
   { label: '제품', href: '/products' },
-  { label: '자료실', href: '/resources' },
-  { label: '소식', href: '/news' },
   { label: '문의', href: '/contact' },
 ];
 
@@ -56,7 +53,7 @@ export default function Navbar() {
   const isExpanded = isHome && !scrolled;
 
   const bgClass = !isExpanded
-    ? 'bg-navy-900/95 backdrop-blur-md shadow-lg'
+    ? 'bg-white/95 backdrop-blur-md shadow-lg'
     : 'bg-transparent';
 
   return (
@@ -68,7 +65,7 @@ export default function Navbar() {
         className="absolute top-0 left-0 h-[2px] z-[60]"
         style={{
           width: `${scrollProgress}%`,
-          background: 'linear-gradient(to right, var(--color-gold-400), var(--color-gold-500))',
+          background: 'linear-gradient(to right, var(--color-ocean-400), var(--color-ocean-500))',
           transition: 'width 50ms linear',
           opacity: scrollProgress > 0 ? 1 : 0,
         }}
@@ -95,12 +92,12 @@ export default function Navbar() {
           <div className={`hidden transition-all duration-500 sm:flex flex-col ${
             isExpanded ? 'gap-0.5' : 'gap-0'
           }`}>
-            <span className={`font-bold tracking-wide text-white transition-all duration-500 ${
+            <span className={`font-bold tracking-wide text-gray-900 transition-all duration-500 ${
               isExpanded ? 'text-xl' : 'text-lg'
             }`}>
               서풍
             </span>
-            <span className={`text-gold-400/80 font-medium transition-all duration-500 overflow-hidden ${
+            <span className={`text-ocean-500/80 font-medium transition-all duration-500 overflow-hidden ${
               isExpanded ? 'text-xs max-h-6 opacity-100' : 'text-[0px] max-h-0 opacity-0'
             }`}>
               No.1 수산 가공 파트너
@@ -116,10 +113,10 @@ export default function Navbar() {
                 href={item.href}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors
                   after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2
-                  after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-3/4
+                  after:bg-ocean-500 after:transition-all after:duration-300 hover:after:w-3/4
                   ${pathname === item.href
-                    ? 'text-gold-400 after:w-3/4'
-                    : 'text-white/80 hover:text-gold-400'
+                    ? 'text-ocean-500 after:w-3/4'
+                    : 'text-gray-800 hover:text-ocean-500'
                   }`}
               >
                 {item.label}
@@ -131,7 +128,7 @@ export default function Navbar() {
               href="https://shop.seopung.co.kr"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 rounded-lg bg-gold-500 px-4 py-1.5 text-sm font-semibold text-navy-950 transition-all hover:bg-gold-400"
+              className="ml-2 rounded-lg bg-ocean-500 px-4 py-1.5 text-sm font-semibold text-white transition-all hover:bg-ocean-400"
             >
               쇼핑몰
             </a>
@@ -146,17 +143,17 @@ export default function Navbar() {
           aria-label="메뉴 열기"
         >
           <span
-            className={`h-0.5 w-6 rounded bg-white transition-all duration-300 ${
+            className={`h-0.5 w-6 rounded bg-gray-800 transition-all duration-300 ${
               mobileOpen ? 'translate-y-2 rotate-45' : ''
             }`}
           />
           <span
-            className={`h-0.5 w-6 rounded bg-white transition-all duration-300 ${
+            className={`h-0.5 w-6 rounded bg-gray-800 transition-all duration-300 ${
               mobileOpen ? 'opacity-0' : ''
             }`}
           />
           <span
-            className={`h-0.5 w-6 rounded bg-white transition-all duration-300 ${
+            className={`h-0.5 w-6 rounded bg-gray-800 transition-all duration-300 ${
               mobileOpen ? '-translate-y-2 -rotate-45' : ''
             }`}
           />
@@ -170,13 +167,13 @@ export default function Navbar() {
         }`}
         style={{
           background:
-            'linear-gradient(to right, transparent, var(--color-gold-500), transparent)',
+            'linear-gradient(to right, transparent, var(--color-ocean-500), transparent)',
         }}
       />
 
       {/* Mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-navy-950/98 backdrop-blur-lg transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 z-40 bg-white/98 backdrop-blur-lg transition-all duration-500 lg:hidden ${
           mobileOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -188,7 +185,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               className={`py-3 text-xl sm:text-2xl font-medium transition-all duration-300 ${
-                pathname === item.href ? 'text-gold-400' : 'text-white/80 hover:text-gold-400'
+                pathname === item.href ? 'text-ocean-500' : 'text-gray-800 hover:text-ocean-500'
               }`}
               style={{
                 transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms',
@@ -203,7 +200,7 @@ export default function Navbar() {
             href="https://shop.seopung.co.kr"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 rounded-xl bg-gold-500 px-8 py-3 text-lg font-semibold text-navy-950 transition-all hover:bg-gold-400"
+            className="mt-4 rounded-xl bg-ocean-500 px-8 py-3 text-lg font-semibold text-white transition-all hover:bg-ocean-400"
             style={{
               transitionDelay: mobileOpen ? `${NAV_ITEMS.length * 60}ms` : '0ms',
               opacity: mobileOpen ? 1 : 0,

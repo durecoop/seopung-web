@@ -34,26 +34,26 @@ const CERT_BADGES = [
 /* ═══════════════════════════════════════ */
 export default function Home() {
   return (
-    <main id="main-content" className="bg-navy-950 font-pretendard">
+    <main id="main-content" className="bg-white font-pretendard">
       <Navbar />
       <HeroSection />
 
       {/* ── 1. Overview Strip ── */}
-      <section id="overview" className="relative overflow-hidden border-t border-navy-800 bg-navy-950">
+      <section id="overview" className="relative overflow-hidden border-t border-gray-200 bg-white">
         {/* Subtle background glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-ocean-500)/6%,_transparent_70%)]" />
 
         <div className="relative mx-auto max-w-5xl px-6 py-24 md:py-32">
           <FadeIn>
-            <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-white/80 md:text-xl lg:text-2xl">
-              <span className="font-semibold text-white">영어조합법인 서풍</span>은 전라남도 여수에서{' '}
-              <span className="text-gold-400">30년 이상의 경력</span>을 바탕으로
+            <p className="mx-auto max-w-3xl text-center text-xl leading-relaxed text-gray-700 md:text-2xl lg:text-3xl">
+              <span className="font-semibold text-gray-900">영어조합법인 서풍</span>은 전라남도 여수에서{' '}
+              <span className="text-ocean-500">30년 이상의 경력</span>을 바탕으로
               대한민국 수산물의 미래를 만들어가고 있습니다.
             </p>
           </FadeIn>
 
           <FadeIn className="mt-8">
-            <p className="mx-auto max-w-2xl text-center text-base text-white/60 md:text-lg">
+            <p className="mx-auto max-w-2xl text-center text-lg text-gray-600 md:text-xl">
               매출 성장을 현장과 품질에 환원하는{' '}
               <span className="text-ocean-300">선순환 재투자 경영</span>
             </p>
@@ -63,7 +63,7 @@ export default function Home() {
             <div className="flex justify-center">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/5 px-6 py-3 text-sm font-medium text-gold-400 transition-all duration-300 hover:border-gold-500/60 hover:bg-gold-500/10 hover:shadow-lg hover:shadow-gold-500/5"
+                className="group inline-flex items-center gap-2 rounded-full border border-ocean-500/30 bg-ocean-500/5 px-6 py-3 text-base font-medium text-ocean-500 transition-all duration-300 hover:border-ocean-500/60 hover:bg-ocean-500/10 hover:shadow-lg hover:shadow-ocean-500/5"
               >
                 회사소개 보기
                 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
@@ -74,17 +74,17 @@ export default function Home() {
       </section>
 
       {/* ── 1.5 수산물 공급 스토리 ── */}
-      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-gray-50 py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-12 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Supply Story
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                수산물 공급 <span className="text-gold-400">스토리</span>
+              <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">
+                수산물 공급 <span className="text-ocean-500">스토리</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-base text-white/60">
+              <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
                 새벽 위판장에서 완제품 출하까지, 당일 원료를 당일 가공합니다.
               </p>
             </div>
@@ -93,7 +93,7 @@ export default function Home() {
           <FadeIn>
             <div className="relative flex flex-col items-center gap-8 md:flex-row md:gap-0">
               {/* Connecting line (desktop) */}
-              <div className="absolute left-[16.67%] right-[16.67%] top-[28px] hidden h-px bg-gradient-to-r from-gold-500/60 via-gold-400/40 to-gold-500/60 md:block" />
+              <div className="absolute left-[16.67%] right-[16.67%] top-[28px] hidden h-px bg-gradient-to-r from-ocean-500/60 via-ocean-400/40 to-ocean-500/60 md:block" />
 
               {[
                 { time: '04:00', image: '/images/hero/dawn-boats.jpg', caption: '새벽 4시, 여수 위판장' },
@@ -103,12 +103,12 @@ export default function Home() {
                 <div key={item.time} className="relative flex w-full flex-col items-center md:w-1/3 md:px-4">
                   {/* Time indicator */}
                   <div className="relative z-10 mb-4 flex flex-col items-center">
-                    <span className="font-montserrat text-lg font-bold text-gold-400">{item.time}</span>
-                    <div className="mt-1 h-3 w-3 rounded-full bg-gold-500 ring-4 ring-navy-950" />
+                    <span className="font-montserrat text-lg font-bold text-ocean-500">{item.time}</span>
+                    <div className="mt-1 h-3 w-3 rounded-full bg-ocean-500 ring-4 ring-white" />
                   </div>
 
                   {/* Photo */}
-                  <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-navy-700/50">
+                  <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-gray-200 shadow-sm">
                     <Image
                       src={getImagePath(item.image)}
                       alt={item.caption}
@@ -116,15 +116,15 @@ export default function Home() {
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent" />
                   </div>
 
                   {/* Caption */}
-                  <p className="mt-3 text-center text-sm font-medium text-white/80">{item.caption}</p>
+                  <p className="mt-3 text-center text-base font-medium text-gray-700">{item.caption}</p>
 
                   {/* Mobile arrow */}
                   {i < 2 && (
-                    <div className="my-2 text-gold-500/60 md:hidden">
+                    <div className="my-2 text-ocean-500/60 md:hidden">
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                       </svg>
@@ -138,15 +138,15 @@ export default function Home() {
       </section>
 
       {/* ── 2. Process Preview ── */}
-      <section className="border-t border-navy-800 bg-navy-900/50 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-gray-100 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <div className="mb-12 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Production Process
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                원료에서 출하까지, <span className="text-gold-400">6단계 공정</span>
+              <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">
+                원료에서 출하까지, <span className="text-ocean-500">6단계 공정</span>
               </h2>
             </div>
           </FadeIn>
@@ -159,7 +159,7 @@ export default function Home() {
                     key={step.step}
                     className="group flex-shrink-0 w-44 md:w-52"
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-navy-700/50">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-gray-200 shadow-sm">
                       <Image
                         src={getImagePath(step.image)}
                         alt={step.title}
@@ -167,19 +167,19 @@ export default function Home() {
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         sizes="(max-width: 768px) 176px, 208px"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
                       <div className="absolute bottom-0 left-0 p-3">
-                        <span className="font-montserrat text-xs font-bold text-gold-400">
+                        <span className="font-montserrat text-sm font-bold text-ocean-300">
                           STEP {step.step}
                         </span>
-                        <p className="text-sm font-medium text-white">{step.title}</p>
+                        <p className="text-base font-medium text-white">{step.title}</p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
               {/* Scroll fade indicator */}
-              <div className="pointer-events-none absolute right-0 top-0 h-[calc(100%-16px)] w-16 bg-gradient-to-l from-navy-900/80 to-transparent md:hidden" />
+              <div className="pointer-events-none absolute right-0 top-0 h-[calc(100%-16px)] w-16 bg-gradient-to-l from-gray-100/80 to-transparent md:hidden" />
             </div>
           </FadeIn>
 
@@ -187,7 +187,7 @@ export default function Home() {
             <div className="flex justify-center">
               <Link
                 href="/process"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-ocean-400 transition-colors hover:text-ocean-300"
+                className="group inline-flex items-center gap-2 text-base font-medium text-ocean-400 transition-colors hover:text-ocean-300"
               >
                 자세히 보기
                 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
@@ -197,68 +197,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 3. Technology Highlight ── */}
-      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <FadeIn>
-            <div className="overflow-hidden rounded-2xl border border-navy-700/40 bg-navy-900/60 md:flex">
-              {/* Image */}
-              <div className="relative aspect-[16/10] md:aspect-auto md:w-1/2">
-                <Image
-                  src={getImagePath('/images/facility/ai-xray-process.png')}
-                  alt="AI X-ray 이물질 검출 시스템"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Investment badge */}
-                <div className="absolute left-4 top-4 rounded-full bg-gold-500/90 px-4 py-1.5 text-xs font-bold text-navy-950 shadow-lg backdrop-blur-sm">
-                  2026년 약 9억원 설비 투자
-                </div>
-              </div>
-
-              {/* Text */}
-              <div className="flex flex-col justify-center p-8 md:w-1/2 md:p-12">
-                <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                  Technology
-                </span>
-                <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-                  AI가 지키는 <span className="text-gold-400">품질</span>
-                </h2>
-                <p className="mb-8 leading-relaxed text-white/60">
-                  최첨단 AI X-ray 이물질 검출 시스템으로 수산물의 안전성을 보장합니다.
-                  기계가 보지 못하는 미세 이물질까지 AI가 감별하여 소비자의 식탁을 지킵니다.
-                </p>
-                <Link
-                  href="/technology"
-                  className="group inline-flex w-fit items-center gap-2 rounded-full border border-ocean-500/30 bg-ocean-500/5 px-6 py-3 text-sm font-medium text-ocean-400 transition-all duration-300 hover:border-ocean-500/60 hover:bg-ocean-500/10"
-                >
-                  기술·설비 더 보기
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-                </Link>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ── 4. Certification Badges ── */}
-      <section className="border-t border-navy-800 bg-navy-900/30 py-24 md:py-32">
+      {/* ── 3. Certification Badges (인증 현황) ── */}
+      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6">
           <FadeIn>
-            <div className="mb-8 text-center">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+            <div className="mb-4 text-center">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Certifications
               </span>
+              <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">
+                인증 <span className="text-ocean-500">현황</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
+                국내외 주요 인증을 취득하여 품질과 안전성을 보장합니다.
+              </p>
             </div>
           </FadeIn>
 
           <FadeIn>
-            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 md:gap-4">
               {CERT_BADGES.map((cert) => (
                 <span
                   key={cert}
-                  className="rounded-full border border-navy-600/60 bg-navy-800/40 px-5 py-2.5 font-montserrat text-xs font-semibold tracking-wide text-white/80 transition-all duration-300 hover:border-gold-500/40 hover:text-gold-400 md:text-sm"
+                  className="rounded-full border border-gray-300 bg-gray-50 px-6 py-3 font-montserrat text-sm font-semibold tracking-wide text-gray-700 transition-all duration-300 hover:border-ocean-500/40 hover:text-ocean-500 md:text-base"
                 >
                   {cert}
                 </span>
@@ -270,7 +231,7 @@ export default function Home() {
             <div className="flex justify-center">
               <Link
                 href="/certification"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-ocean-400 transition-colors hover:text-ocean-300"
+                className="group inline-flex items-center gap-2 text-base font-medium text-ocean-400 transition-colors hover:text-ocean-300"
               >
                 인증 현황 보기
                 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
@@ -280,17 +241,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4.5 파트너와 함께 ── */}
-      <section className="border-t border-navy-800 bg-navy-950 py-24 md:py-32">
+      {/* ── 4. 파트너십 Stats ── */}
+      <section className="border-t border-gray-200 bg-gray-50 py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-12 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Partnership
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">파트너와 함께</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-white/60">
-                <span className="text-gold-400">10년간 134품목</span>을 함께 개발한 신뢰의 파트너
+              <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">신뢰 협력</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-xl text-gray-600">
+                <span className="text-ocean-500">10년간 134품목</span>을 함께 개발한 신뢰의 파트너
               </p>
             </div>
           </FadeIn>
@@ -305,12 +266,12 @@ export default function Home() {
               ].map((stat) => (
                 <CardGlow
                   key={stat.label}
-                  className="group rounded-2xl border border-navy-700/50 bg-navy-900/60 px-4 py-8 text-center transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+                  className="group rounded-2xl border border-gray-200 bg-white px-4 py-8 text-center shadow-sm transition-all duration-500 hover:border-ocean-500/30 hover:shadow-md"
                 >
-                  <span className="block font-montserrat text-3xl font-bold text-gold-400 md:text-4xl">
+                  <span className="block font-montserrat text-3xl font-bold text-ocean-500 md:text-4xl">
                     {stat.number}
                   </span>
-                  <span className="mt-2 block text-sm text-white/60">{stat.label}</span>
+                  <span className="mt-2 block text-base text-gray-600">{stat.label}</span>
                 </CardGlow>
               ))}
             </div>
@@ -319,15 +280,15 @@ export default function Home() {
       </section>
 
       {/* ── 4.7 신뢰의 파트너 (Client Logos) ── */}
-      <section className="border-t border-navy-800 bg-navy-900/30 py-24 md:py-32">
+      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-12 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400">
                 Trusted Partners
               </span>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">신뢰의 파트너</h2>
-              <p className="mt-4 text-base text-white/60">10년 이상 함께한 파트너사</p>
+              <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">신뢰의 파트너</h2>
+              <p className="mt-4 text-lg text-gray-600">10년 이상 함께한 파트너사</p>
             </div>
           </FadeIn>
 
@@ -336,9 +297,9 @@ export default function Home() {
               {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
                 <div
                   key={name}
-                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-navy-700/50 bg-navy-900/60 transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 transition-all duration-500 hover:border-ocean-500/30 hover:shadow-md"
                 >
-                  <span className="text-lg font-bold text-white/40 transition-colors duration-500 group-hover:text-gold-400">
+                  <span className="text-lg font-bold text-gray-400 transition-colors duration-500 group-hover:text-ocean-500">
                     {name}
                   </span>
                 </div>
@@ -349,7 +310,7 @@ export default function Home() {
       </section>
 
       {/* ── 5. Product Lineup Teaser ── */}
-      <section className="relative overflow-hidden border-t border-navy-800">
+      <section className="relative overflow-hidden border-t border-gray-200">
         <FadeIn className="relative">
           <div className="relative h-[50vh] min-h-[400px] md:h-[60vh]">
             <Image
@@ -360,26 +321,26 @@ export default function Home() {
               sizes="100vw"
             />
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/60 to-navy-950/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/60 to-gray-900/30" />
 
             {/* Content */}
             <div className="absolute inset-0 flex items-center">
               <div className="mx-auto w-full max-w-7xl px-6">
                 <div className="max-w-lg">
-                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
+                  <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-300">
                     Product Lineup
                   </span>
-                  <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+                  <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
                     <span className="inline md:block">제품 라인업,</span>{' '}
-                    <span className="text-gold-400">134+ 품목</span>
+                    <span className="text-ocean-300">134+ 품목</span>
                   </h2>
-                  <p className="mb-8 max-w-md text-base text-white/60 md:text-lg">
+                  <p className="mb-8 max-w-md text-lg text-white/80 md:text-xl">
                     냉동수산가공부터 밀키트, 프리미엄 굴비까지.
                     9개 어종, OEM 맞춤 생산의 모든 것.
                   </p>
                   <Link
                     href="/products"
-                    className="group inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3 text-sm font-bold text-navy-950 shadow-lg shadow-gold-500/20 transition-all duration-300 hover:bg-gold-400 hover:shadow-gold-500/30"
+                    className="group inline-flex items-center gap-2 rounded-full bg-ocean-500 px-7 py-3 text-base font-bold text-white shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-400 hover:shadow-ocean-500/30"
                   >
                     제품 보기
                     <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
@@ -392,20 +353,20 @@ export default function Home() {
       </section>
 
       {/* ── 6. Contact CTA ── */}
-      <section className="border-t border-navy-800 bg-navy-950">
+      <section className="border-t border-gray-200 bg-gray-50">
         <div className="mx-auto max-w-4xl px-6 py-24 md:py-32">
           <FadeIn>
             <div className="text-center">
-              <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-                OEM 납품 및 <span className="text-gold-400">협력 문의</span>
+              <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
+                OEM 납품 및 <span className="text-ocean-500">협력 문의</span>
               </h2>
-              <p className="mx-auto mb-10 max-w-xl text-base text-white/60 md:text-lg">
+              <p className="mx-auto mb-10 max-w-xl text-lg text-gray-600 md:text-xl">
                 대형마트, 외식 프랜차이즈, 밀키트 브랜드 등 다양한 파트너와 함께합니다.
                 귀사의 요구에 맞는 최적의 솔루션을 제안드립니다.
               </p>
               <Link
                 href="/contact"
-                className="group inline-flex min-h-[44px] items-center gap-3 rounded-full bg-gradient-to-r from-ocean-500 to-ocean-400 px-8 py-4 text-base font-bold text-white shadow-xl shadow-ocean-500/20 transition-all duration-300 hover:shadow-ocean-500/40 hover:brightness-110"
+                className="group inline-flex min-h-[44px] items-center gap-3 rounded-full bg-gradient-to-r from-ocean-500 to-ocean-400 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-ocean-500/20 transition-all duration-300 hover:shadow-ocean-500/40 hover:brightness-110"
               >
                 문의하기
                 <svg

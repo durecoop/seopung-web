@@ -38,7 +38,7 @@ const PILLARS = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
       </svg>
     ),
-    title: '동반성장',
+    title: '신뢰 협력',
     desc: '풀무원 ESG 경영 방향과 일치하는 친환경 생산 체계 구축',
   },
 ];
@@ -102,13 +102,13 @@ function CountUpCard({ number, label, sub }: { number: string; label: string; su
   return (
     <div
       ref={ref}
-      className="group rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60"
+      className="group rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60"
     >
-      <span className="block font-montserrat text-4xl font-bold text-gold-400 md:text-5xl">
+      <span className="block font-montserrat text-4xl font-bold text-ocean-500 md:text-5xl">
         {numericMatch ? display + suffix : number}
       </span>
-      <span className="mt-3 block text-lg font-semibold text-white">{label}</span>
-      <span className="mt-1 block text-sm text-white/60">{sub}</span>
+      <span className="mt-3 block text-lg font-semibold text-gray-900">{label}</span>
+      <span className="mt-1 block text-sm text-gray-600">{sub}</span>
     </div>
   );
 }
@@ -135,7 +135,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <main id="main-content" className="bg-navy-950 font-pretendard">
+    <main id="main-content" className="bg-white font-pretendard">
       <Navbar />
       <Breadcrumb />
 
@@ -148,25 +148,25 @@ export default function AboutPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-navy-950/70" />
+        <div className="absolute inset-0 bg-white/70" />
         <div className="relative z-10 text-center">
-          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-gold-400">
+          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
             About Us
           </p>
-          <h1 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">회사소개</h1>
-          <p className="mt-4 text-lg text-white/60">
+          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">회사소개</h1>
+          <p className="mt-4 text-lg text-gray-600">
             지속가능한 수산업을 위한 성장 파트너
           </p>
         </div>
         {/* Bottom gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* ── 1. 인사말 ── */}
       <section className="relative py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
-            <div className="overflow-hidden rounded-3xl border border-navy-700/50 bg-navy-900/60 backdrop-blur-sm">
+            <div className="overflow-hidden rounded-3xl border border-gray-300/50 bg-gray-50/60 backdrop-blur-sm">
               <div className="grid items-center gap-0 lg:grid-cols-[2fr_3fr]">
                 {/* Photo – left */}
                 <div className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:h-full">
@@ -177,7 +177,7 @@ export default function AboutPage() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-navy-950/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-white/30" />
                   </div>
                 </div>
 
@@ -186,28 +186,28 @@ export default function AboutPage() {
                   <p className="mb-2 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-400">
                     CEO MESSAGE
                   </p>
-                  <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">대표 인사말</h2>
+                  <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">대표 인사말</h2>
 
-                  <div className="relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:rounded-full before:bg-gold-500">
-                    <p className="text-lg leading-relaxed text-white/80 md:text-xl md:leading-relaxed">
+                  <div className="relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:rounded-full before:bg-ocean-500">
+                    <p className="text-lg leading-relaxed text-gray-700 md:text-xl md:leading-relaxed">
                       &ldquo;매출 성장을 현장과 품질에 환원하는 선순환 재투자 경영을 실천합니다. 기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.&rdquo;
                     </p>
                   </div>
 
                   <div className="mt-10">
-                    <p className="text-2xl font-bold text-white md:text-3xl">상무이사 김태환</p>
+                    <p className="text-2xl font-bold text-gray-900 md:text-3xl">상무이사 김태환</p>
                     <div className="mt-4 inline-block">
                       <div className="h-[2px] w-24 rounded-full bg-gradient-to-r from-gold-500 to-gold-500/0" />
                     </div>
                   </div>
 
                   {/* Philosophy keywords */}
-                  <div className="mt-8 flex items-center gap-4 text-sm font-medium tracking-wide text-white/50">
+                  <div className="mt-8 flex items-center gap-4 text-sm font-medium tracking-wide text-gray-900/50">
                     <span>신뢰</span>
-                    <span className="text-gold-500/60">|</span>
+                    <span className="text-ocean-500/60">|</span>
                     <span>혁신</span>
-                    <span className="text-gold-500/60">|</span>
-                    <span>동반성장</span>
+                    <span className="text-ocean-500/60">|</span>
+                    <span>신뢰 협력</span>
                   </div>
                 </div>
               </div>
@@ -222,10 +222,10 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 By The Numbers
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">숫자로 보는 서풍</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">숫자로 보는 서풍</h2>
             </div>
           </Reveal>
 
@@ -253,25 +253,25 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Management Philosophy
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">경영 철학</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">경영 철학</h2>
             </div>
           </Reveal>
 
           <div className="grid gap-8 md:grid-cols-3">
             {PILLARS.map((p, i) => (
               <Reveal key={p.title} delay={i * 150}>
-                <div className="group relative overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-navy-800/60 md:p-10">
+                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60 md:p-10">
                   {/* Hover glow */}
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative">
                     <div className="mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
                       {p.icon}
                     </div>
-                    <h3 className="mb-4 text-xl font-bold text-white">{p.title}</h3>
-                    <p className="leading-relaxed text-white/60">{p.desc}</p>
+                    <h3 className="mb-4 text-xl font-bold text-gray-900">{p.title}</h3>
+                    <p className="leading-relaxed text-gray-600">{p.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -285,10 +285,10 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 History
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">연혁</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">연혁</h2>
             </div>
           </Reveal>
 
@@ -303,13 +303,13 @@ export default function AboutPage() {
                   <div className={`relative mb-12 flex items-start gap-8 pl-12 sm:pl-16 md:pl-0 ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Content */}
                     <div className={`md:w-1/2 ${isRight ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
-                      <span className="font-montserrat text-2xl font-bold text-gold-400 md:text-3xl">{item.year}</span>
-                      <p className="mt-2 text-white/80">{item.text}</p>
+                      <span className="font-montserrat text-2xl font-bold text-ocean-500 md:text-3xl">{item.year}</span>
+                      <p className="mt-2 text-gray-700">{item.text}</p>
                     </div>
 
                     {/* Dot */}
                     <div className="absolute left-4 top-1 flex h-5 w-5 items-center justify-center md:left-1/2 md:-translate-x-1/2">
-                      <div className="h-3 w-3 rounded-full bg-gold-500 ring-4 ring-navy-950" />
+                      <div className="h-3 w-3 rounded-full bg-ocean-500 ring-4 ring-navy-950" />
                     </div>
 
                     {/* Spacer for desktop */}
@@ -328,10 +328,10 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Integrated System
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">One Platform</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">One Platform</h2>
             </div>
           </Reveal>
 
@@ -341,20 +341,20 @@ export default function AboutPage() {
               <div className="grid gap-6 md:grid-cols-4">
                 {PLATFORM_STEPS.map((step, i) => (
                   <div key={step.entity} className="relative">
-                    <div className="group relative overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/80 p-6 text-center backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30">
+                    <div className="group relative overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/80 p-6 text-center backdrop-blur-sm transition-all duration-500 hover:border-ocean-400/30">
                       {/* Step number */}
                       <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-ocean-500/10 font-montserrat text-lg font-bold text-ocean-400">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                      <p className="mb-1 font-montserrat text-xs font-medium uppercase tracking-wider text-gold-400">
+                      <p className="mb-1 font-montserrat text-xs font-medium uppercase tracking-wider text-ocean-500">
                         {step.role}
                       </p>
-                      <h3 className="mb-2 text-lg font-bold text-white">{step.entity}</h3>
-                      <p className="text-sm text-white/60">{step.desc}</p>
+                      <h3 className="mb-2 text-lg font-bold text-gray-900">{step.entity}</h3>
+                      <p className="text-sm text-gray-600">{step.desc}</p>
                     </div>
                     {/* Arrow connector */}
                     {i < PLATFORM_STEPS.length - 1 && (
-                      <div className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-gold-500/60 md:block">
+                      <div className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-ocean-500/60 md:block">
                         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
@@ -365,9 +365,9 @@ export default function AboutPage() {
               </div>
 
               {/* Description */}
-              <div className="mt-12 rounded-xl border border-navy-700/30 bg-navy-900/40 px-8 py-6 text-center">
-                <p className="text-lg leading-relaxed text-white/80">
-                  원료 매입, 저장, 제조, 유통까지 <span className="font-semibold text-gold-400">One 플랫폼 운영</span>으로 가격 및 품질 안정화 확보
+              <div className="mt-12 rounded-xl border border-gray-300/30 bg-gray-50/40 px-8 py-6 text-center">
+                <p className="text-lg leading-relaxed text-gray-700">
+                  원료 매입, 저장, 제조, 유통까지 <span className="font-semibold text-ocean-500">One 플랫폼 운영</span>으로 가격 및 품질 안정화 확보
                 </p>
               </div>
             </div>
@@ -381,11 +381,11 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-12 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Trusted Partners
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">신뢰의 파트너</h2>
-              <p className="mt-4 text-base text-white/60">10년 이상 함께한 파트너사</p>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">신뢰의 파트너</h2>
+              <p className="mt-4 text-base text-gray-600">10년 이상 함께한 파트너사</p>
             </div>
           </Reveal>
 
@@ -394,9 +394,9 @@ export default function AboutPage() {
               {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
                 <div
                   key={name}
-                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 bg-navy-900/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/40 hover:bg-navy-800/60 hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-0.5"
+                  className="group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 bg-gray-50/60 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/40 hover:bg-gray-100/60 hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-0.5"
                 >
-                  <span className="text-lg font-bold text-white/40 transition-colors duration-500 group-hover:text-gold-400">
+                  <span className="text-lg font-bold text-gray-900/40 transition-colors duration-500 group-hover:text-ocean-500">
                     {name}
                   </span>
                 </div>
@@ -411,10 +411,10 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Our Team
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">서풍을 만드는 사람들</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">서풍을 만드는 사람들</h2>
             </div>
           </Reveal>
 
@@ -425,7 +425,7 @@ export default function AboutPage() {
               { image: '/images/team/office-meeting.jpg', caption: '사무실', desc: '품질관리와 제품개발' },
             ].map((member, i) => (
               <Reveal key={member.caption} delay={i * 150}>
-                <div className="group overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60 transition-all duration-500 hover:border-ocean-400/30">
+                <div className="group overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 transition-all duration-500 hover:border-ocean-400/30">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={getImagePath(member.image)}
@@ -434,11 +434,11 @@ export default function AboutPage() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-lg font-bold text-white">{member.caption}</h3>
-                    <p className="mt-1 text-sm text-white/60">{member.desc}</p>
+                    <h3 className="text-lg font-bold text-gray-900">{member.caption}</h3>
+                    <p className="mt-1 text-sm text-gray-600">{member.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -446,7 +446,7 @@ export default function AboutPage() {
           </div>
 
           <Reveal delay={300}>
-            <p className="mx-auto mt-12 max-w-2xl text-center text-base leading-relaxed text-white/60">
+            <p className="mx-auto mt-12 max-w-2xl text-center text-base leading-relaxed text-gray-600">
               영어조합법인 서풍은 원료 수매부터 생산, 품질관리까지 각 분야의 전문가들이 함께합니다.
             </p>
           </Reveal>
@@ -458,26 +458,26 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                 Company Info
               </p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">회사 정보</h2>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">회사 정보</h2>
             </div>
           </Reveal>
 
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Info grid */}
             <Reveal>
-              <div className="overflow-hidden rounded-2xl border border-navy-700/50 bg-navy-900/60">
+              <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60">
                 {companyData.map((info, i) => (
                   <div
                     key={info.label}
                     className={`flex items-center gap-6 px-8 py-5 ${
-                      i < companyData.length - 1 ? 'border-b border-navy-700/30' : ''
+                      i < companyData.length - 1 ? 'border-b border-gray-300/30' : ''
                     }`}
                   >
-                    <span className="w-24 shrink-0 text-sm font-semibold text-gold-400">{info.label}</span>
-                    <span className="text-white/80">{info.value}</span>
+                    <span className="w-24 shrink-0 text-sm font-semibold text-ocean-500">{info.label}</span>
+                    <span className="text-gray-700">{info.value}</span>
                   </div>
                 ))}
               </div>
@@ -493,8 +493,8 @@ export default function AboutPage() {
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
-                  <p className="absolute bottom-4 left-6 text-sm font-medium text-white/80">경영지원팀</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
+                  <p className="absolute bottom-4 left-6 text-sm font-medium text-gray-700">경영지원팀</p>
                 </div>
                 <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
                   <Image
@@ -503,8 +503,8 @@ export default function AboutPage() {
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
-                  <p className="absolute bottom-4 left-6 text-sm font-medium text-white/80">수매팀</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
+                  <p className="absolute bottom-4 left-6 text-sm font-medium text-gray-700">수매팀</p>
                 </div>
               </div>
             </Reveal>

@@ -84,7 +84,7 @@ export default function ProcessSection() {
     <section
       id="process"
       ref={sectionRef}
-      className="relative overflow-hidden bg-navy-900 py-24 md:py-32"
+      className="relative overflow-hidden bg-gray-50 py-24 md:py-32"
     >
       {/* Subtle background accents */}
       <div
@@ -98,7 +98,7 @@ export default function ProcessSection() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section header */}
         <div data-reveal className="reveal mb-16 text-center md:mb-24">
-          <h2 className="gold-line mb-4 inline-block font-montserrat text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
+          <h2 className="gold-line mb-4 inline-block font-montserrat text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             생산 공정
           </h2>
           <p className="mt-6 text-lg font-light tracking-wide text-ocean-300 md:text-xl">
@@ -115,7 +115,7 @@ export default function ProcessSection() {
           <div className="grid gap-16 md:gap-0">
             {STEPS.map((step, index) => {
               const isEven = index % 2 === 0;
-              const bgColor = isEven ? 'bg-navy-950' : 'bg-navy-900/80';
+              const bgColor = isEven ? 'bg-white' : 'bg-gray-50/80';
 
               return (
                 <div
@@ -155,7 +155,7 @@ export default function ProcessSection() {
                         <div
                           className={`absolute inset-0 ${
                             isEven
-                              ? 'bg-gradient-to-r from-transparent to-navy-950/40'
+                              ? 'bg-gradient-to-r from-transparent to-white/40'
                               : 'bg-gradient-to-l from-transparent to-navy-900/40'
                           }`}
                         />
@@ -169,18 +169,18 @@ export default function ProcessSection() {
                       >
                         {/* Step number */}
                         <div className="mb-6 flex items-center gap-4">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 bg-gold-500/10">
-                            <span className="font-montserrat text-lg font-bold text-gold-400">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 bg-ocean-500/10">
+                            <span className="font-montserrat text-lg font-bold text-ocean-500">
                               {String(step.number).padStart(2, '0')}
                             </span>
                           </div>
                           <div className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
                         </div>
 
-                        <h3 className="mb-3 text-2xl font-bold text-white lg:text-3xl">
+                        <h3 className="mb-3 text-2xl font-bold text-gray-900 lg:text-3xl">
                           {step.title}
                         </h3>
-                        <p className="text-base leading-relaxed text-white/60 lg:text-lg">
+                        <p className="text-base leading-relaxed text-gray-600 lg:text-lg">
                           {step.description}
                         </p>
                       </div>
@@ -191,8 +191,8 @@ export default function ProcessSection() {
                   <div className="md:hidden">
                     <div className="ml-14 overflow-hidden rounded-xl">
                       {/* Step number (positioned on the timeline) */}
-                      <div className="absolute left-0 top-0 z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 bg-navy-950">
-                        <span className="font-montserrat text-sm font-bold text-gold-400">
+                      <div className="absolute left-0 top-0 z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 bg-white">
+                        <span className="font-montserrat text-sm font-bold text-ocean-500">
                           {String(step.number).padStart(2, '0')}
                         </span>
                       </div>
@@ -208,15 +208,15 @@ export default function ProcessSection() {
                             sizes="100vw"
                             className="object-cover"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
                         </div>
 
                         {/* Text */}
                         <div className="p-5">
-                          <h3 className="mb-2 text-lg font-bold text-white">
+                          <h3 className="mb-2 text-lg font-bold text-gray-900">
                             {step.title}
                           </h3>
-                          <p className="text-sm leading-relaxed text-white/60">
+                          <p className="text-sm leading-relaxed text-gray-600">
                             {step.description}
                           </p>
                         </div>

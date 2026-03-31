@@ -31,7 +31,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative bg-navy-800 py-16 sm:py-24 md:py-32">
+    <section id="contact" className="relative bg-gray-100 py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* ── Header ── */}
         <div
@@ -40,10 +40,10 @@ export default function ContactSection() {
             header.visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <h2 className="gold-line mb-4 inline-block text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          <h2 className="gold-line mb-4 inline-block text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
             문의하기
           </h2>
-          <p className="mt-6 text-base text-white/60 md:text-lg">
+          <p className="mt-6 text-base text-gray-600 md:text-lg">
             OEM 납품 및 협력 문의
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function ContactSection() {
               <div key={field.name}>
                 <label
                   htmlFor={field.name}
-                  className="mb-2 block text-sm font-medium text-white/60"
+                  className="mb-2 block text-sm font-medium text-gray-600"
                 >
                   {field.label}
                 </label>
@@ -75,13 +75,13 @@ export default function ContactSection() {
                   name={field.name}
                   type={field.type}
                   placeholder={field.placeholder}
-                  className="w-full rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-base text-white placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30 min-h-[44px]"
+                  className="w-full rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-base text-gray-900 placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30 min-h-[44px]"
                 />
               </div>
             ))}
 
             <div>
-              <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/60">
+              <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-600">
                 문의 내용
               </label>
               <textarea
@@ -89,29 +89,29 @@ export default function ContactSection() {
                 name="message"
                 rows={5}
                 placeholder="문의 내용을 입력해 주세요"
-                className="w-full resize-none rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-base text-white placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30"
+                className="w-full resize-none rounded-lg border border-navy-600/50 bg-navy-700 px-4 py-3 text-base text-gray-900 placeholder-white/30 outline-none transition-colors focus:border-ocean-500 focus:ring-1 focus:ring-ocean-500/30"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-gold-500 px-6 py-3.5 text-sm font-semibold text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/20 active:scale-[0.98] min-h-[44px]"
+              className="w-full rounded-lg bg-ocean-500 px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20 active:scale-[0.98] min-h-[44px]"
             >
               문의 보내기
             </button>
           </form>
 
           {/* ── Company Info Card ── */}
-          <div className="rounded-2xl border border-navy-600/30 bg-navy-900/60 p-8 backdrop-blur-sm md:p-10">
-            <h3 className="mb-6 text-lg font-bold text-white md:text-xl">회사 정보</h3>
+          <div className="rounded-2xl border border-navy-600/30 bg-gray-50/60 p-8 backdrop-blur-sm md:p-10">
+            <h3 className="mb-6 text-lg font-bold text-gray-900 md:text-xl">회사 정보</h3>
 
             <dl className="space-y-4">
               {INFO_ITEMS.map((item) => (
                 <div key={item.label} className="flex gap-4">
-                  <dt className="w-20 shrink-0 text-sm font-medium text-white/60">
+                  <dt className="w-20 shrink-0 text-sm font-medium text-gray-600">
                     {item.label}
                   </dt>
-                  <dd className="text-sm text-white/80">{item.value}</dd>
+                  <dd className="text-sm text-gray-700">{item.value}</dd>
                 </div>
               ))}
             </dl>
@@ -121,12 +121,12 @@ export default function ContactSection() {
 
             {/* Fish species */}
             <div>
-              <h4 className="mb-3 text-sm font-medium text-white/60">취급 어종</h4>
+              <h4 className="mb-3 text-sm font-medium text-gray-600">취급 어종</h4>
               <div className="flex flex-wrap gap-2">
                 {FISH_SPECIES.map((fish) => (
                   <span
                     key={fish}
-                    className="rounded-full border border-ocean-500/20 bg-navy-800/60 px-3 py-1 text-xs font-medium text-ocean-300"
+                    className="rounded-full border border-ocean-500/20 bg-gray-100/60 px-3 py-1 text-xs font-medium text-ocean-300"
                   >
                     {fish}
                   </span>
@@ -138,7 +138,7 @@ export default function ContactSection() {
             <div className="my-6 h-px bg-navy-700/60" />
 
             {/* Location hint */}
-            <div className="flex items-start gap-3 text-white/60">
+            <div className="flex items-start gap-3 text-gray-600">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"

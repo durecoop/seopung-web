@@ -65,24 +65,24 @@ function StatCounter({ stat, isVisible }: { stat: StatItem; isVisible: boolean }
     <div className="flex flex-col items-center gap-1">
       {isTextLabel ? (
         <>
-          <span className="font-montserrat text-lg font-bold text-white md:text-2xl lg:text-3xl">
+          <span className="font-montserrat text-lg font-bold text-gray-900 md:text-2xl lg:text-3xl">
             {isVisible ? stat.label : ''}
           </span>
-          <span className="text-xs font-medium text-gold-400/80 md:text-sm">
+          <span className="text-xs font-medium text-ocean-500/80 md:text-sm">
             국제 인증 보유
           </span>
         </>
       ) : (
         <>
           <div className="flex items-baseline gap-1">
-            <span className="font-montserrat text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+            <span className="font-montserrat text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
               {count}
             </span>
-            <span className="text-lg font-medium text-gold-400 md:text-xl">
+            <span className="text-lg font-medium text-ocean-500 md:text-xl">
               {stat.suffix}
             </span>
           </div>
-          <span className="text-sm font-medium text-white/60 md:text-base">
+          <span className="text-sm font-medium text-gray-600 md:text-base">
             {stat.label}
           </span>
         </>
@@ -151,8 +151,8 @@ export default function HeroSection() {
         </div>
       ))}
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-950/60 via-navy-950/40 to-navy-950/80" />
+      {/* Light overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-white/50" />
 
       {/* Floating particle animation */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -208,7 +208,7 @@ export default function HeroSection() {
           <h1 className="mb-4 text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-7xl">
             지속가능한 바다
             <br />
-            <span className="text-gold-400">책임 있는 먹거리의 약속</span>
+            <span className="text-ocean-500">책임 있는 먹거리의 약속</span>
           </h1>
           <p className="mx-auto max-w-2xl text-base font-light tracking-wide text-white/80 md:text-lg lg:text-xl">
             No.1 수산 가공 파트너, 영어조합법인 서풍
@@ -221,7 +221,7 @@ export default function HeroSection() {
           className="absolute bottom-24 left-0 w-full md:bottom-28"
         >
           <div className="mx-auto max-w-5xl px-6">
-            <div className="relative grid grid-cols-2 gap-3 sm:gap-6 rounded-2xl border border-white/10 bg-gradient-to-b from-navy-900/70 to-navy-900/50 px-6 py-6 backdrop-blur-md md:grid-cols-4 md:gap-8 md:px-10 md:py-8">
+            <div className="relative grid grid-cols-2 gap-3 sm:gap-6 rounded-2xl border border-white/20 bg-gradient-to-b from-white/60 to-white/40 px-6 py-6 backdrop-blur-md md:grid-cols-4 md:gap-8 md:px-10 md:py-8">
               {STATS.map((stat) => (
                 <StatCounter
                   key={stat.label}
@@ -236,7 +236,7 @@ export default function HeroSection() {
         {/* Scroll down arrow */}
         <button
           onClick={scrollDown}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/60 transition-colors hover:text-gold-400"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/60 transition-colors hover:text-ocean-500"
           aria-label="아래로 스크롤"
         >
           <svg

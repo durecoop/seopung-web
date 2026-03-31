@@ -36,7 +36,7 @@ export default function Breadcrumb() {
         <li>
           <Link
             href="/"
-            className="text-white/60 transition-colors hover:text-gold-400"
+            className="text-gray-600 transition-colors hover:text-ocean-500"
           >
             홈
           </Link>
@@ -49,7 +49,7 @@ export default function Breadcrumb() {
           return (
             <li key={href} className="flex items-center gap-2">
               <svg
-                className="h-3 w-3 text-white/60"
+                className="h-3 w-3 text-gray-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -58,11 +58,11 @@ export default function Breadcrumb() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
               {isLast ? (
-                <span className="font-medium text-gold-400">{label}</span>
+                <span className="font-medium text-ocean-500">{label}</span>
               ) : (
                 <Link
                   href={href}
-                  className="text-white/60 transition-colors hover:text-gold-400"
+                  className="text-gray-600 transition-colors hover:text-ocean-500"
                 >
                   {label}
                 </Link>

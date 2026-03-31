@@ -3,24 +3,24 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy-950: #050a18;
-  --color-navy-900: #0a1628;
-  --color-navy-800: #0f2240;
-  --color-navy-700: #162d52;
-  --color-navy-600: #1e3a6a;
-  --color-ocean-500: #1e6aa1;
-  --color-ocean-400: #2d8ac7;
-  --color-ocean-300: #4da6e0;
-  --color-gold-500: #c8a45c;
-  --color-gold-400: #d4b872;
-  --color-gold-300: #e0cc88;
+  --color-navy-950: #ffffff;
+  --color-navy-900: #f8fafc;
+  --color-navy-800: #e2e8f0;
+  --color-navy-700: #cbd5e1;
+  --color-navy-600: #94a3b8;
+  --color-ocean-500: #0066cc;
+  --color-ocean-400: #0088ee;
+  --color-ocean-300: #33aaff;
+  --color-gold-500: #0066cc;
+  --color-gold-400: #0088ee;
+  --color-gold-300: #33aaff;
   --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
 }
 
 :root {
-  --background: #050a18;
-  --foreground: #f0f0f0;
+  --background: #ffffff;
+  --foreground: #1a1a2e;
 }
 
 body {
@@ -40,10 +40,10 @@ html {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-navy-950);
+  background: #f8fafc;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-ocean-500);
+  background: #0066cc;
   border-radius: 3px;
 }
 
@@ -54,13 +54,13 @@ html {
 
 /* Gradient overlays */
 .gradient-dark-bottom {
-  background: linear-gradient(to bottom, transparent 0%, rgba(5, 10, 24, 0.8) 100%);
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.8) 100%);
 }
 .gradient-dark-top {
-  background: linear-gradient(to top, transparent 0%, rgba(5, 10, 24, 0.8) 100%);
+  background: linear-gradient(to top, transparent 0%, rgba(255, 255, 255, 0.8) 100%);
 }
 .gradient-dark-full {
-  background: linear-gradient(to bottom, rgba(5, 10, 24, 0.6) 0%, rgba(5, 10, 24, 0.4) 50%, rgba(5, 10, 24, 0.7) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.7) 100%);
 }
 
 /* Section divider wave */
@@ -74,7 +74,7 @@ html {
   left: 0;
   width: 100%;
   height: 80px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23050a18' d='M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E") no-repeat bottom center;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23ffffff' d='M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E") no-repeat bottom center;
   background-size: cover;
 }
 
@@ -101,7 +101,7 @@ html {
   left: 0;
   width: 60px;
   height: 3px;
-  background: var(--color-gold-500);
+  background: var(--color-ocean-500);
 }
 
 /* Parallax image container */
