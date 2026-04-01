@@ -5,9 +5,9 @@ import Image from 'next/image';
 import { getImagePath } from '@/lib/utils';
 
 const HERO_IMAGES = [
-  '/images/hero/night-harbor.jpg',
-  '/images/hero/dawn-unloading.jpg',
-  '/images/hero/auction-crowd.jpg',
+  '/images/stock/hero-seafood.jpg',
+  '/images/stock/seafood-platter.jpg',
+  '/images/stock/fish-market.jpg',
 ] as const;
 
 const CROSSFADE_INTERVAL = 5000;

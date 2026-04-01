@@ -146,9 +146,9 @@ export default function Home() {
               <div className="absolute left-[16.67%] right-[16.67%] top-[28px] hidden h-px bg-gradient-to-r from-ocean-500/60 via-ocean-400/40 to-ocean-500/60 md:block" />
 
               {[
-                { time: '04:00', image: '/images/hero/dawn-boats.jpg', caption: '새벽 4시, 여수 위판장' },
-                { time: '08:00', image: '/images/process/02-cutting-machine.jpg', caption: '당일 입고, 즉시 가공' },
-                { time: '12:00', image: '/images/process/06-cold-storage.jpg', caption: '체계적 냉동 관리' },
+                { time: '04:00', image: '/images/stock/fish-market.jpg', caption: '새벽 4시, 여수 위판장' },
+                { time: '08:00', image: '/images/stock/factory-clean.jpg', caption: '당일 입고, 즉시 가공' },
+                { time: '12:00', image: '/images/stock/hero-seafood.jpg', caption: '체계적 품질 관리' },
               ].map((item, i) => (
                 <div key={item.time} className="relative flex w-full flex-col items-center md:w-1/3 md:px-4">
                   {/* Time indicator */}
@@ -320,7 +320,7 @@ export default function Home() {
         <FadeIn className="relative">
           <div className="relative h-[50vh] min-h-[400px] md:h-[60vh]">
             <Image
-              src={getImagePath('/images/process/04-tunnel-freezer.jpg')}
+              src={getImagePath('/images/stock/seafood-platter.jpg')}
               alt="수산 가공 제품 라인업"
               fill
               className="object-cover"
