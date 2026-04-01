@@ -4,23 +4,50 @@
 
 @theme inline {
   --color-navy-950: #ffffff;
-  --color-navy-900: #f8fafc;
-  --color-navy-800: #e2e8f0;
-  --color-navy-700: #cbd5e1;
-  --color-navy-600: #94a3b8;
-  --color-ocean-500: #0066cc;
-  --color-ocean-400: #0088ee;
-  --color-ocean-300: #33aaff;
-  --color-gold-500: #0066cc;
-  --color-gold-400: #0088ee;
-  --color-gold-300: #33aaff;
+  --color-navy-900: #fafbfc;
+  --color-navy-800: #f0f2f5;
+  --color-navy-700: #dde1e7;
+  --color-navy-600: #a0aab8;
+  --color-ocean-600: #1a6b8a;
+  --color-ocean-500: #0e7490;
+  --color-ocean-400: #22a1c4;
+  --color-ocean-300: #5cc8e0;
+  --color-ocean-200: #a5e1ef;
+  --color-ocean-50: #ecfbff;
+  --color-gold-500: #e8a317;
+  --color-gold-400: #f0b840;
+  --color-gold-300: #f5cc66;
+  --color-gold-200: #fae0a0;
+  --color-gold-50: #fef9ec;
+  --color-coral-500: #ef6c57;
+  --color-coral-400: #f28a78;
+  --color-coral-300: #f5a99e;
+  --color-coral-50: #fef2f0;
+  --color-fresh-600: #16a34a;
+  --color-fresh-500: #22c55e;
+  --color-fresh-400: #4ade80;
+  --color-fresh-300: #86efac;
+  --color-fresh-50: #f0fdf4;
+  --color-warm-50: #fffbf5;
+  --color-warm-100: #fff7eb;
+  --color-warm-200: #ffedd5;
+  --color-gray-50: #fafbfc;
+  --color-gray-100: #f3f5f7;
+  --color-gray-200: #e5e8ec;
+  --color-gray-300: #cdd2d9;
+  --color-gray-400: #98a2b0;
+  --color-gray-500: #6b7688;
+  --color-gray-600: #4a5568;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
   --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #1a1a2e;
+  --foreground: #1f2937;
 }
 
 body {
@@ -43,7 +70,7 @@ html {
   background: #f8fafc;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0066cc;
+  background: var(--color-ocean-400);
   border-radius: 3px;
 }
 
@@ -101,7 +128,7 @@ html {
   left: 0;
   width: 60px;
   height: 3px;
-  background: var(--color-ocean-500);
+  background: var(--color-gold-500);
 }
 
 /* Parallax image container */

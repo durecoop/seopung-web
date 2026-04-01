@@ -152,7 +152,7 @@ export default function HeroSection() {
       ))}
 
       {/* Light overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-white/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/20 to-white/70" />
 
       {/* Floating particle animation */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -170,7 +170,7 @@ export default function HeroSection() {
         ].map((p, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-white"
+            className="absolute rounded-full bg-ocean-300"
             style={{
               width: p.size,
               height: p.size,
@@ -205,12 +205,12 @@ export default function HeroSection() {
       <div className="relative flex h-full flex-col items-center justify-center px-6">
         {/* Main slogan */}
         <div className="text-center">
-          <h1 className="mb-4 text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-7xl">
+          <h1 className="mb-4 text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-5xl lg:text-7xl">
             지속가능한 바다
             <br />
             <span className="text-ocean-500">책임 있는 먹거리의 약속</span>
           </h1>
-          <p className="mx-auto max-w-2xl text-base font-light tracking-wide text-white/80 md:text-lg lg:text-xl">
+          <p className="mx-auto max-w-2xl text-base font-light tracking-wide text-gray-700 md:text-lg lg:text-xl">
             No.1 수산 가공 파트너, 영어조합법인 서풍
           </p>
         </div>
@@ -221,7 +221,7 @@ export default function HeroSection() {
           className="absolute bottom-24 left-0 w-full md:bottom-28"
         >
           <div className="mx-auto max-w-5xl px-6">
-            <div className="relative grid grid-cols-2 gap-3 sm:gap-6 rounded-2xl border border-white/20 bg-gradient-to-b from-white/60 to-white/40 px-6 py-6 backdrop-blur-md md:grid-cols-4 md:gap-8 md:px-10 md:py-8">
+            <div className="relative grid grid-cols-2 gap-3 sm:gap-6 rounded-2xl border border-white/40 bg-gradient-to-b from-white/90 to-white/80 px-6 py-6 backdrop-blur-md md:grid-cols-4 md:gap-8 md:px-10 md:py-8">
               {STATS.map((stat) => (
                 <StatCounter
                   key={stat.label}
@@ -236,7 +236,7 @@ export default function HeroSection() {
         {/* Scroll down arrow */}
         <button
           onClick={scrollDown}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/60 transition-colors hover:text-ocean-500"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gray-400 transition-colors hover:text-ocean-500"
           aria-label="아래로 스크롤"
         >
           <svg
