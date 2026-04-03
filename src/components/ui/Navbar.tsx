@@ -92,13 +92,13 @@ export default function Navbar() {
           <div className={`hidden transition-all duration-500 sm:flex flex-col ${
             isExpanded ? 'gap-0.5' : 'gap-0'
           }`}>
-            <span className={`font-bold tracking-wide text-gray-900 transition-all duration-500 ${
-              isExpanded ? 'text-xl' : 'text-lg'
+            <span className={`font-bold tracking-wide transition-all duration-500 ${
+              isExpanded ? 'text-xl text-white' : 'text-lg text-gray-900'
             }`}>
               서풍
             </span>
-            <span className={`text-ocean-500/80 font-medium transition-all duration-500 overflow-hidden ${
-              isExpanded ? 'text-xs max-h-6 opacity-100' : 'text-[0px] max-h-0 opacity-0'
+            <span className={`font-medium transition-all duration-500 overflow-hidden ${
+              isExpanded ? 'text-xs max-h-6 opacity-100 text-white/80' : 'text-[0px] max-h-0 opacity-0 text-ocean-500/80'
             }`}>
               No.1 수산 가공 파트너
             </span>
@@ -115,8 +115,8 @@ export default function Navbar() {
                   after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2
                   after:bg-ocean-500 after:transition-all after:duration-300 hover:after:w-3/4
                   ${pathname === item.href
-                    ? 'text-ocean-500 after:w-3/4'
-                    : 'text-gray-800 hover:text-ocean-500'
+                    ? (isExpanded ? 'text-ocean-300 after:w-3/4 after:bg-ocean-300' : 'text-ocean-500 after:w-3/4')
+                    : (isExpanded ? 'text-white/90 hover:text-white after:bg-white' : 'text-gray-800 hover:text-ocean-500')
                   }`}
               >
                 {item.label}
@@ -143,19 +143,19 @@ export default function Navbar() {
           aria-label="메뉴 열기"
         >
           <span
-            className={`h-0.5 w-6 rounded bg-gray-800 transition-all duration-300 ${
-              mobileOpen ? 'translate-y-2 rotate-45' : ''
-            }`}
+            className={`h-0.5 w-6 rounded transition-all duration-300 ${
+              isExpanded && !mobileOpen ? 'bg-white' : 'bg-gray-800'
+            } ${mobileOpen ? 'translate-y-2 rotate-45' : ''}`}
           />
           <span
-            className={`h-0.5 w-6 rounded bg-gray-800 transition-all duration-300 ${
-              mobileOpen ? 'opacity-0' : ''
-            }`}
+            className={`h-0.5 w-6 rounded transition-all duration-300 ${
+              isExpanded && !mobileOpen ? 'bg-white' : 'bg-gray-800'
+            } ${mobileOpen ? 'opacity-0' : ''}`}
           />
           <span
-            className={`h-0.5 w-6 rounded bg-gray-800 transition-all duration-300 ${
-              mobileOpen ? '-translate-y-2 -rotate-45' : ''
-            }`}
+            className={`h-0.5 w-6 rounded transition-all duration-300 ${
+              isExpanded && !mobileOpen ? 'bg-white' : 'bg-gray-800'
+            } ${mobileOpen ? '-translate-y-2 -rotate-45' : ''}`}
           />
         </button>
       </nav>

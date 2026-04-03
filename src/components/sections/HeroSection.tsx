@@ -2,101 +2,22 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getImagePath } from '@/lib/utils';
 
 const HERO_IMAGES = [
-  '/images/stock/hero-seafood.jpg',
-  '/images/stock/seafood-platter.jpg',
-  '/images/stock/fish-market.jpg',
+  '/images/food-web/td06120004185.jpg',
+  '/images/food-web/pc0031187199.jpg',
+  '/images/food-web/tica034m19010001.jpg',
+  '/images/food-web/td06120004172.jpg',
+  '/images/food-web/pc0031187509.jpg',
 ] as const;
 
 const CROSSFADE_INTERVAL = 5000;
 
-interface StatItem {
-  value: number;
-  suffix: string;
-  prefix?: string;
-  label: string;
-  unit?: string;
-}
-
-const STATS: StatItem[] = [
-  { value: 400, suffix: '억원', prefix: '', label: '연매출', unit: '' },
-  { value: 134, suffix: '품목', prefix: '', label: '개발', unit: '' },
-  { value: 66, suffix: '개', prefix: '', label: '운영품목', unit: '' },
-  { value: 3, suffix: '개', prefix: '', label: 'HACCP·ASC·MSC', unit: '' },
-];
-
-function useCountUp(target: number, isVisible: boolean, duration = 2000): number {
-  const [count, setCount] = useState(0);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    if (!isVisible || hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    const startTime = performance.now();
-    let rafId: number;
-
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
-
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      }
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [isVisible, target, duration]);
-
-  return count;
-}
-
-function StatCounter({ stat, isVisible }: { stat: StatItem; isVisible: boolean }) {
-  const count = useCountUp(stat.value, isVisible);
-  const isTextLabel = stat.label === 'HACCP·ASC·MSC';
-
-  return (
-    <div className="flex flex-col items-center gap-1">
-      {isTextLabel ? (
-        <>
-          <span className="font-montserrat text-lg font-bold text-gray-900 md:text-2xl lg:text-3xl">
-            {isVisible ? stat.label : ''}
-          </span>
-          <span className="text-xs font-medium text-ocean-500/80 md:text-sm">
-            국제 인증 보유
-          </span>
-        </>
-      ) : (
-        <>
-          <div className="flex items-baseline gap-1">
-            <span className="font-montserrat text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
-              {count}
-            </span>
-            <span className="text-lg font-medium text-ocean-500 md:text-xl">
-              {stat.suffix}
-            </span>
-          </div>
-          <span className="text-sm font-medium text-gray-600 md:text-base">
-            {stat.label}
-          </span>
-        </>
-      )}
-    </div>
-  );
-}
-
 export default function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [statsVisible, setStatsVisible] = useState(false);
-  const statsRef = useRef<HTMLDivElement>(null);
 
-  // Crossfade timer
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % HERO_IMAGES.length);
@@ -104,27 +25,8 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, []);
 
-  // IntersectionObserver for stat counters
-  useEffect(() => {
-    const el = statsRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStatsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   const scrollDown = useCallback(() => {
-    const nextSection = document.querySelector('#overview');
+    const nextSection = document.querySelector('#certifications');
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -151,92 +53,48 @@ export default function HeroSection() {
         </div>
       ))}
 
-      {/* Light overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/20 to-white/70" />
-
-      {/* Floating particle animation */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {[
-          { size: 3, left: 10, delay: 0, duration: 14, opacity: 0.15 },
-          { size: 5, left: 20, delay: 2, duration: 18, opacity: 0.1 },
-          { size: 2, left: 35, delay: 5, duration: 12, opacity: 0.2 },
-          { size: 4, left: 45, delay: 1, duration: 16, opacity: 0.12 },
-          { size: 6, left: 55, delay: 7, duration: 20, opacity: 0.1 },
-          { size: 3, left: 65, delay: 3, duration: 10, opacity: 0.25 },
-          { size: 2, left: 75, delay: 6, duration: 15, opacity: 0.18 },
-          { size: 5, left: 85, delay: 4, duration: 17, opacity: 0.13 },
-          { size: 4, left: 30, delay: 8, duration: 13, opacity: 0.2 },
-          { size: 3, left: 90, delay: 9, duration: 11, opacity: 0.15 },
-        ].map((p, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-ocean-300"
-            style={{
-              width: p.size,
-              height: p.size,
-              left: `${p.left}%`,
-              bottom: '-10px',
-              opacity: p.opacity,
-              animation: `heroParticleFloat ${p.duration}s ${p.delay}s linear infinite`,
-            }}
-          />
-        ))}
-      </div>
-      <style jsx>{`
-        @keyframes heroParticleFloat {
-          0% {
-            transform: translateY(0) translateX(0);
-            opacity: 0;
-          }
-          10% {
-            opacity: var(--tw-opacity, 1);
-          }
-          90% {
-            opacity: var(--tw-opacity, 1);
-          }
-          100% {
-            transform: translateY(-100vh) translateX(30px);
-            opacity: 0;
-          }
-        }
-      `}</style>
+      {/* Dark overlay - 금호통상 style */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-ocean-600/70" />
 
       {/* Content */}
       <div className="relative flex h-full flex-col items-center justify-center px-6">
-        {/* Main slogan */}
         <div className="text-center">
-          <h1 className="mb-4 text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-5xl lg:text-7xl">
-            지속가능한 바다
+          <span className="mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-6 py-2 font-montserrat text-sm font-semibold uppercase tracking-[0.3em] text-white/90 backdrop-blur-sm">
+            Since 1995
+          </span>
+          <h1 className="mb-6 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-6xl lg:text-7xl">
+            바다의 가치를
             <br />
-            <span className="text-ocean-500">책임 있는 먹거리의 약속</span>
+            <span className="text-ocean-300">세상의 식탁으로</span>
           </h1>
-          <p className="mx-auto max-w-2xl text-base font-light tracking-wide text-gray-700 md:text-lg lg:text-xl">
-            No.1 수산 가공 파트너, 영어조합법인 서풍
+          <p className="mx-auto mb-10 max-w-2xl text-lg font-light leading-relaxed text-white/85 md:text-xl lg:text-2xl">
+            국내외 6대 인증을 보유한 대한민국 No.1 수산 OEM 파트너
+            <br className="hidden md:block" />
+            영어조합법인 서풍이 안전한 바다 먹거리를 약속합니다
           </p>
-        </div>
 
-        {/* Stats bar */}
-        <div
-          ref={statsRef}
-          className="absolute bottom-24 left-0 w-full md:bottom-28"
-        >
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="relative grid grid-cols-2 gap-3 sm:gap-6 rounded-2xl border border-white/40 bg-gradient-to-b from-white/90 to-white/80 px-6 py-6 backdrop-blur-md md:grid-cols-4 md:gap-8 md:px-10 md:py-8">
-              {STATS.map((stat) => (
-                <StatCounter
-                  key={stat.label}
-                  stat={stat}
-                  isVisible={statsVisible}
-                />
-              ))}
-            </div>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/products"
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-ocean-600 shadow-xl transition-all duration-300 hover:bg-ocean-50 hover:shadow-2xl"
+            >
+              제품 보기
+              <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 rounded-full border-2 border-white/50 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:border-white hover:bg-white/10"
+            >
+              문의하기
+              <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+            </Link>
           </div>
         </div>
 
         {/* Scroll down arrow */}
         <button
           onClick={scrollDown}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gray-400 transition-colors hover:text-ocean-500"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/60 transition-colors hover:text-white"
           aria-label="아래로 스크롤"
         >
           <svg
@@ -247,11 +105,7 @@ export default function HeroSection() {
             stroke="currentColor"
             strokeWidth={1.5}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 9l-7 7-7-7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
       </div>

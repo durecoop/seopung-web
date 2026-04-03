@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <circle cx="100" cy="100" r="95" fill="#00857C" stroke="#006B63" stroke-width="2"/>
+  <circle cx="100" cy="100" r="78" fill="none" stroke="white" stroke-width="2" opacity="0.3"/>
+  <!-- Fish icon -->
+  <g transform="translate(100,72)">
+    <ellipse cx="0" cy="0" rx="32" ry="18" fill="white"/>
+    <polygon points="28,-16 42,0 28,16" fill="white"/>
+    <circle cx="-14" cy="-4" r="4" fill="#00857C"/>
+  </g>
+  <!-- ASC Text -->
+  <text x="100" y="122" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="white" letter-spacing="6">ASC</text>
+  <!-- Subtitle -->
+  <text x="100" y="145" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="white" letter-spacing="1.5" opacity="0.9">CERTIFIED</text>
+  <text x="100" y="157" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" fill="white" letter-spacing="1" opacity="0.8">SUSTAINABLE AQUACULTURE</text>
+</svg>
