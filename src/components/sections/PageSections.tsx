@@ -5,6 +5,7 @@ import Link from 'next/link';
 import FadeIn from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
 import type { SiteTheme } from '@/lib/themes';
+import { SKIN_COPY } from '@/lib/skin-copy';
 
 const CERT_BADGES = [
   { name: 'HACCP', icon: '/images/certs/haccp.png', desc: '식품안전관리인증', detail: '위해요소 중점관리 기준 적합' },
@@ -22,45 +23,37 @@ const PRODUCTS = [
   { name: '수산 선물세트', image: '/images/food-web/pc0031187499.jpg', desc: '명절 프리미엄 세트' },
 ];
 
-interface Props {
-  theme: SiteTheme;
-}
+interface Props { theme: SiteTheme; }
 
 export default function PageSections({ theme: t }: Props) {
+  const copy = SKIN_COPY[t.id] || SKIN_COPY[0];
   const isDark = t.id !== 0;
-  const textPrimary = isDark ? 'text-white' : 'text-gray-900';
-  const textSecondary = isDark ? 'text-white/70' : 'text-gray-600';
-  const textMuted = isDark ? 'text-white/50' : 'text-gray-500';
-  const cardBg = isDark ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200';
-  const cardText = isDark ? 'text-white' : 'text-gray-900';
-  const btnPrimary = isDark ? 'bg-white text-gray-900 hover:bg-white/90' : `${t.accent} text-white ${t.accentHover}`;
-  const btnSecondary = isDark
-    ? 'border-white/30 text-white hover:bg-white/10 hover:border-white/50'
-    : 'border-ocean-500/30 text-ocean-500 hover:bg-ocean-500/10';
+  const tp = isDark ? 'text-white' : 'text-gray-900';
+  const ts = isDark ? 'text-white/70' : 'text-gray-600';
+  const tm = isDark ? 'text-white/50' : 'text-gray-500';
+  const cardCls = isDark ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200';
+  const btnP = isDark ? 'bg-white text-gray-900 hover:bg-white/90' : `${t.accent} text-white ${t.accentHover}`;
+  const ringColor = isDark ? 'ring-[#0a1628]' : 'ring-white';
 
   return (
     <>
       {/* ── CERTIFICATIONS ── */}
       <section id="certifications" className={`relative overflow-hidden ${t.certBg} py-24 md:py-32`}>
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }} />
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
         </div>
         <div className="relative mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-16 text-center">
               <span className="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-5 py-1.5 font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-200">
-                Certifications
+                {copy.certLabel}
               </span>
               <h2 className={`mt-4 text-4xl font-bold ${t.certText} md:text-5xl lg:text-6xl`}>
-                국내외 <span className="text-ocean-300">6대 인증</span> 보유
+                {copy.certTitle} <span className="text-ocean-300">{copy.certTitleAccent}</span>
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-xl text-ocean-200 md:text-2xl">
-                안전하고 지속가능한 수산물 공급을 위한
-                <br className="hidden md:block" />
-                <span className="font-semibold text-white">대한민국 최고 수준의 인증 체계</span>
+                {copy.certDesc}<br className="hidden md:block" />
+                <span className="font-semibold text-white">{copy.certDescBold}</span>
               </p>
             </div>
           </FadeIn>
@@ -81,7 +74,7 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn className="mt-12">
             <div className="flex justify-center">
               <Link href="/certification" className="group inline-flex items-center gap-2 rounded-full border-2 border-white/40 bg-white/10 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-ocean-600">
-                인증 현황 자세히 보기 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                {copy.certCta} <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
               </Link>
             </div>
           </FadeIn>
@@ -94,16 +87,13 @@ export default function PageSections({ theme: t }: Props) {
           <div className="grid items-center gap-12 md:grid-cols-2">
             <FadeIn>
               <div>
-                <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">About Seopung</span>
-                <h2 className={`mb-6 text-4xl font-bold leading-tight ${textPrimary} md:text-5xl`}>
-                  30년 경력,<br /><span className="text-ocean-500">끊임없는 혁신</span>
+                <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.aboutLabel}</span>
+                <h2 className={`mb-6 text-4xl font-bold leading-tight ${tp} md:text-5xl`}>
+                  {copy.aboutTitle1}<br /><span className="text-ocean-500">{copy.aboutTitle2}</span>
                 </h2>
-                <p className={`mb-6 text-lg leading-relaxed ${textSecondary} md:text-xl`}>
-                  1995년 전라남도 여수에서 시작한 서풍은 대한민국 수산 가공 산업의 새로운 기준을 만들어가고 있습니다.
-                </p>
-                <p className={`mb-8 text-lg leading-relaxed ${textSecondary} md:text-xl`}>
-                  <span className={`font-semibold ${textPrimary}`}>매출 성장을 현장과 품질에 환원하는 선순환 경영.</span>
-                  {' '}단순한 OEM을 넘어 파트너의 성공을 설계합니다.
+                <p className={`mb-6 text-lg leading-relaxed ${ts} md:text-xl`}>{copy.aboutDesc1}</p>
+                <p className={`mb-8 text-lg leading-relaxed ${ts} md:text-xl`}>
+                  <span className={`font-semibold ${tp}`}>{copy.aboutDesc2Bold}</span>{' '}{copy.aboutDesc2}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   {[
@@ -112,14 +102,14 @@ export default function PageSections({ theme: t }: Props) {
                     { num: '66개', label: '운영 품목' },
                     { num: '10년+', label: '핵심 파트너' },
                   ].map((s) => (
-                    <div key={s.label} className={`rounded-xl border ${cardBg} px-4 py-4 text-center`}>
+                    <div key={s.label} className={`rounded-xl border ${cardCls} px-4 py-4 text-center`}>
                       <span className="block font-montserrat text-2xl font-bold text-ocean-500 md:text-3xl">{s.num}</span>
-                      <span className={`mt-1 block text-sm ${textMuted}`}>{s.label}</span>
+                      <span className={`mt-1 block text-sm ${tm}`}>{s.label}</span>
                     </div>
                   ))}
                 </div>
                 <Link href="/about" className="group mt-8 inline-flex items-center gap-2 text-lg font-semibold text-ocean-500 transition-colors hover:text-ocean-400">
-                  회사소개 보기 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                  {copy.aboutCta} <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                 </Link>
               </div>
             </FadeIn>
@@ -138,25 +128,23 @@ export default function PageSections({ theme: t }: Props) {
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
-              <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">Products</span>
-              <h2 className={`text-4xl font-bold ${textPrimary} md:text-5xl lg:text-6xl`}>
-                <span className="text-ocean-500">134+</span> 품목의 제품 라인업
+              <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.prodLabel}</span>
+              <h2 className={`text-4xl font-bold ${tp} md:text-5xl lg:text-6xl`}>
+                {copy.prodTitle} <span className="text-ocean-500">{copy.prodTitleAccent}</span>
               </h2>
-              <p className={`mx-auto mt-5 max-w-xl text-xl ${textSecondary}`}>
-                냉동수산가공부터 프리미엄 굴비, 밀키트까지<br />맞춤형 OEM 솔루션을 제공합니다
-              </p>
+              <p className={`mx-auto mt-5 max-w-xl text-xl ${ts} whitespace-pre-line`}>{copy.prodDesc}</p>
             </div>
           </FadeIn>
           <FadeIn>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-              {PRODUCTS.map((product) => (
-                <Link key={product.name} href="/products" className={`group overflow-hidden rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white'} shadow-sm transition-all duration-300 hover:shadow-xl`}>
+              {PRODUCTS.map((p) => (
+                <Link key={p.name} href="/products" className={`group overflow-hidden rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white'} shadow-sm transition-all duration-300 hover:shadow-xl`}>
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image src={getImagePath(product.image)} alt={product.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 50vw, 25vw" />
+                    <Image src={getImagePath(p.image)} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 50vw, 25vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute bottom-0 left-0 p-4">
-                      <h3 className="text-lg font-bold text-white md:text-xl">{product.name}</h3>
-                      <p className="text-sm text-white/80">{product.desc}</p>
+                      <h3 className="text-lg font-bold text-white md:text-xl">{p.name}</h3>
+                      <p className="text-sm text-white/80">{p.desc}</p>
                     </div>
                   </div>
                 </Link>
@@ -165,8 +153,8 @@ export default function PageSections({ theme: t }: Props) {
           </FadeIn>
           <FadeIn className="mt-10">
             <div className="flex justify-center">
-              <Link href="/products" className={`group inline-flex items-center gap-2 rounded-full ${btnPrimary} px-8 py-4 text-lg font-bold shadow-lg transition-all duration-300 hover:shadow-xl`}>
-                전체 제품 보기 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              <Link href="/products" className={`group inline-flex items-center gap-2 rounded-full ${btnP} px-8 py-4 text-lg font-bold shadow-lg transition-all duration-300 hover:shadow-xl`}>
+                {copy.prodCta} <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
               </Link>
             </div>
           </FadeIn>
@@ -178,11 +166,11 @@ export default function PageSections({ theme: t }: Props) {
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
-              <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">Supply Chain</span>
-              <h2 className={`text-4xl font-bold ${textPrimary} md:text-5xl lg:text-6xl`}>
-                새벽 위판장에서 <span className="text-ocean-500">식탁까지</span>
+              <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.supplyLabel}</span>
+              <h2 className={`text-4xl font-bold ${tp} md:text-5xl lg:text-6xl`}>
+                {copy.supplyTitle} <span className="text-ocean-500">{copy.supplyTitleAccent}</span>
               </h2>
-              <p className={`mx-auto mt-5 max-w-xl text-xl ${textSecondary}`}>당일 원료를 당일 가공하는 신속한 공급 체계</p>
+              <p className={`mx-auto mt-5 max-w-xl text-xl ${ts}`}>{copy.supplyDesc}</p>
             </div>
           </FadeIn>
           <FadeIn>
@@ -196,18 +184,14 @@ export default function PageSections({ theme: t }: Props) {
                 <div key={item.time} className="relative flex w-full flex-col items-center md:w-1/3 md:px-4">
                   <div className="relative z-10 mb-4 flex flex-col items-center">
                     <span className="font-montserrat text-xl font-bold text-ocean-500">{item.time}</span>
-                    <div className={`mt-1 h-3 w-3 rounded-full bg-ocean-500 ring-4 ${isDark ? 'ring-[#0a1628]' : 'ring-white'}`} />
+                    <div className={`mt-1 h-3 w-3 rounded-full bg-ocean-500 ring-4 ${ringColor}`} />
                   </div>
                   <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg">
                     <Image src={getImagePath(item.image)} alt={item.caption} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 33vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
                   <p className={`mt-3 text-center text-lg font-medium ${isDark ? 'text-white/80' : 'text-gray-700'}`}>{item.caption}</p>
-                  {i < 2 && (
-                    <div className="my-2 text-ocean-500/60 md:hidden">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-                    </div>
-                  )}
+                  {i < 2 && <div className="my-2 text-ocean-500/60 md:hidden"><svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></div>}
                 </div>
               ))}
             </div>
@@ -223,10 +207,12 @@ export default function PageSections({ theme: t }: Props) {
           <div className="mx-auto max-w-6xl px-6">
             <FadeIn>
               <div className="max-w-xl">
-                <h2 className="mb-5 text-4xl font-bold text-white md:text-5xl lg:text-6xl">변화를 두려워하지 않는<br /><span className="text-ocean-200">진취적 파트너십</span></h2>
-                <p className="mb-8 text-xl text-white/90 md:text-2xl">대형마트, 외식 프랜차이즈, 밀키트 브랜드.<br />귀사의 성공을 함께 설계합니다.</p>
+                <h2 className="mb-5 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+                  {copy.bannerTitle1}<br /><span className="text-ocean-200">{copy.bannerTitle2}</span>
+                </h2>
+                <p className="mb-8 text-xl text-white/90 md:text-2xl whitespace-pre-line">{copy.bannerDesc}</p>
                 <Link href="/contact" className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-ocean-600 transition-all duration-300 hover:bg-ocean-50 hover:shadow-xl">
-                  OEM 문의하기 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                  {copy.bannerCta} <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                 </Link>
               </div>
             </FadeIn>
@@ -239,16 +225,16 @@ export default function PageSections({ theme: t }: Props) {
         <div className="mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
-              <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">Trusted Partners</span>
-              <h2 className={`text-4xl font-bold ${textPrimary} md:text-5xl`}>신뢰의 <span className="text-ocean-500">파트너</span></h2>
-              <p className={`mt-5 text-xl ${textSecondary}`}>10년 이상 함께한 대한민국 대표 유통 파트너사</p>
+              <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.partnerLabel}</span>
+              <h2 className={`text-4xl font-bold ${tp} md:text-5xl`}>{copy.partnerTitle} <span className="text-ocean-500">{copy.partnerTitleAccent}</span></h2>
+              <p className={`mt-5 text-xl ${ts}`}>{copy.partnerDesc}</p>
             </div>
           </FadeIn>
           <FadeIn>
             <div className="flex flex-wrap items-center justify-center gap-6">
               {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
-                <div key={name} className={`flex h-24 w-44 items-center justify-center rounded-xl border ${cardBg} transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                  <span className={`text-xl font-bold ${textMuted}`}>{name}</span>
+                <div key={name} className={`flex h-24 w-44 items-center justify-center rounded-xl border ${cardCls} transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                  <span className={`text-xl font-bold ${tm}`}>{name}</span>
                 </div>
               ))}
             </div>
@@ -265,14 +251,12 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="text-center">
               <h2 className={`mb-5 text-4xl font-bold ${t.ctaText} md:text-5xl lg:text-6xl`}>
-                함께 만들어갈<br /><span className="text-ocean-300">다음 제품</span>이 궁금하시다면
+                {copy.ctaTitle1}<br /><span className="text-ocean-300">{copy.ctaTitle2}</span>이 궁금하시다면
               </h2>
-              <p className="mx-auto mb-10 max-w-xl text-xl text-ocean-200 md:text-2xl">
-                OEM 납품, 신제품 개발, 파트너십에 대해<br />언제든 편하게 문의해주세요.
-              </p>
+              <p className="mx-auto mb-10 max-w-xl text-xl text-ocean-200 md:text-2xl whitespace-pre-line">{copy.ctaDesc}</p>
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Link href="/contact" className="group inline-flex items-center gap-3 rounded-full bg-white px-10 py-5 text-xl font-bold text-ocean-600 shadow-xl transition-all duration-300 hover:bg-ocean-50 hover:shadow-2xl">
-                  문의하기
+                  {copy.ctaCta}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </Link>
                 <a href="tel:061-686-0508" className="inline-flex items-center gap-2 text-lg font-semibold text-white/90 transition-colors hover:text-white">
