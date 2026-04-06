@@ -3,11 +3,11 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy-950: #ffffff;
-  --color-navy-900: #fafbfc;
-  --color-navy-800: #f0f2f5;
-  --color-navy-700: #dde1e7;
-  --color-navy-600: #a0aab8;
+  --color-navy-950: #050a18;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0e1d33;
+  --color-navy-700: #1a2d4a;
+  --color-navy-600: #2a4060;
   --color-ocean-600: #1a6b8a;
   --color-ocean-500: #0e7490;
   --color-ocean-400: #22a1c4;
