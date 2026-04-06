@@ -25,7 +25,7 @@ export async function getSkinConfig(): Promise<SkinConfig> {
     const snap = await getDoc(doc(db, DOC_PATH));
     if (snap.exists()) return snap.data() as SkinConfig;
   } catch {}
-  return { heroSkinId: 0 };
+  return { heroSkinId: 6 };
 }
 
 export async function setSkinConfig(skinId: HeroSkinId): Promise<void> {

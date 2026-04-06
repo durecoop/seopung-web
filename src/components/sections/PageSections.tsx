@@ -27,7 +27,7 @@ interface Props { theme: SiteTheme; }
 
 export default function PageSections({ theme: t }: Props) {
   const copy = SKIN_COPY[t.id] || SKIN_COPY[0];
-  const isDark = t.id !== 0;
+  const isDark = t.id !== 0 && t.id !== 6;
   const tp = isDark ? 'text-white' : 'text-gray-900';
   const ts = isDark ? 'text-white/70' : 'text-gray-600';
   const tm = isDark ? 'text-white/50' : 'text-gray-500';
