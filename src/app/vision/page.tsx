@@ -3,11 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
+import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
-import Breadcrumb from '@/components/ui/Breadcrumb';
 
 /* ──────────────────────────────────────────────
    Data
@@ -140,363 +138,362 @@ export default function VisionPage() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <main className="bg-white font-pretendard">
-      <Navbar />
-      <Breadcrumb />
-
-      {/* ── Hero ── */}
-      <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
-        <Image
-          src={getImagePath('/images/team/factory-team-2.jpg')}
-          alt="서풍 팀"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-white/70" />
-        <div className="relative z-10 text-center">
-          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
-            Vision
-          </p>
-          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">비전</h1>
-          <p className="mt-4 text-lg text-gray-600">
-            No.1 수산 가공 파트너를 향한 로드맵
-          </p>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
-      </section>
-
-      {/* ── 1. 5대 중점 추진 과제 ── */}
-      <section className="relative py-24 md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-40" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <Reveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                Key Initiatives
+    <ThemeLayout breadcrumb={[{ label: '비전' }]}>
+      {(c) => (
+        <>
+          {/* ── Hero ── */}
+          <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
+            <Image
+              src={getImagePath('/images/team/factory-team-2.jpg')}
+              alt="서풍 팀"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className={`absolute inset-0 ${c.overlay}`} />
+            <div className="relative z-10 text-center">
+              <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
+                Vision
               </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">5대 중점 추진 과제</h2>
+              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>비전</h1>
+              <p className={`mt-4 text-lg ${c.text2}`}>
+                No.1 수산 가공 파트너를 향한 로드맵
+              </p>
             </div>
-          </Reveal>
+            <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.gradientFade}`} />
+          </section>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PRIORITIES.map((p, i) => (
-              <Reveal key={p.title} delay={i * 100}>
-                <div
-                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border bg-gray-50/60 p-8 backdrop-blur-sm transition-all duration-500 md:p-10 ${
-                    activeCard === i
-                      ? 'border-gold-500/50 bg-gray-100/80 shadow-lg shadow-gold-500/5'
-                      : 'border-gray-300/50 hover:border-ocean-400/30 hover:bg-gray-100/60'
-                  } ${i >= 3 ? 'lg:col-span-1' : ''}`}
-                  onClick={() => setActiveCard(activeCard === i ? null : i)}
-                >
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="relative">
-                    <div className={`mb-6 inline-flex rounded-xl p-3 transition-colors duration-300 ${
-                      activeCard === i ? 'bg-ocean-500/15 text-ocean-500' : 'bg-ocean-500/10 text-ocean-400'
-                    }`}>
-                      {p.icon}
-                    </div>
-                    <div className="mb-2 flex items-center gap-3">
-                      <span className="font-montserrat text-xs font-bold text-ocean-500/60">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="text-xl font-bold text-gray-900">{p.title}</h3>
-                    </div>
-                    <p className="leading-relaxed text-gray-600">{p.desc}</p>
-                  </div>
+          {/* ── 1. 5대 중점 추진 과제 ── */}
+          <section className="relative py-24 md:py-32">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-40" />
+            <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+              <Reveal>
+                <div className="mb-16 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Key Initiatives
+                  </p>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>5대 중점 추진 과제</h2>
                 </div>
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ── 2. 매출 현황 ── */}
-      <section className="relative py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <Reveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                Financial Overview
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">매출 현황</h2>
-            </div>
-          </Reveal>
-
-          {/* Total Sales */}
-          <Reveal delay={100}>
-            <div className="mb-8 overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-12">
-              <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-ocean-400">총 매출</p>
-              <div className="grid grid-cols-3 gap-4 md:gap-8">
-                {[
-                  { year: '2024', value: '376', unit: '억', highlight: false },
-                  { year: '2025', value: '379', unit: '억', highlight: false },
-                  { year: '2026 목표', value: '400', unit: '억', highlight: true, badge: '+6%' },
-                ].map((item, i) => (
-                  <div key={item.year} className="relative text-center">
-                    {i > 0 && (
-                      <div className="absolute -left-2 top-1/2 hidden -translate-y-1/2 text-gray-900/20 md:-left-4 md:block">
-                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {PRIORITIES.map((p, i) => (
+                  <Reveal key={p.title} delay={i * 100}>
+                    <div
+                      className={`group relative cursor-pointer overflow-hidden rounded-2xl border ${c.cardBg} p-8 backdrop-blur-sm transition-all duration-500 md:p-10 ${
+                        activeCard === i
+                          ? `border-gold-500/50 shadow-lg shadow-gold-500/5`
+                          : `${c.cardBorder} ${c.cardHover}`
+                      } ${i >= 3 ? 'lg:col-span-1' : ''}`}
+                      onClick={() => setActiveCard(activeCard === i ? null : i)}
+                    >
+                      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                      <div className="relative">
+                        <div className={`mb-6 inline-flex rounded-xl p-3 transition-colors duration-300 ${
+                          activeCard === i ? 'bg-ocean-500/15 text-ocean-500' : 'bg-ocean-500/10 text-ocean-400'
+                        }`}>
+                          {p.icon}
+                        </div>
+                        <div className="mb-2 flex items-center gap-3">
+                          <span className="font-montserrat text-xs font-bold text-ocean-500/60">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <h3 className={`text-xl font-bold ${c.text}`}>{p.title}</h3>
+                        </div>
+                        <p className={`leading-relaxed ${c.text2}`}>{p.desc}</p>
                       </div>
-                    )}
-                    <p className="mb-2 font-montserrat text-xs text-gray-600 sm:text-sm">{item.year}</p>
-                    <p className={`font-montserrat text-3xl font-bold sm:text-4xl md:text-6xl ${item.highlight ? 'text-ocean-500' : 'text-gray-900'}`}>
-                      {item.value}
-                      <span className="ml-0.5 text-sm font-normal text-gray-600 md:ml-1 md:text-lg">{item.unit}</span>
-                    </p>
-                    {item.badge && (
-                      <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-2 py-0.5 font-montserrat text-xs font-bold text-ocean-500 sm:mt-3 sm:px-3 sm:py-1 sm:text-sm">
-                        {item.badge}
-                      </span>
-                    )}
-                  </div>
+                    </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
-          </Reveal>
+          </section>
 
-          {/* ASC/MSC & Investment */}
-          <div className="grid gap-8 md:grid-cols-2">
-            <Reveal delay={200}>
-              <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-10">
-                <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">ASC / MSC 매출</p>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <p className="mb-2 font-montserrat text-sm text-gray-600">2025년</p>
-                    <p className="font-montserrat text-3xl font-bold text-gray-900">
-                      3.6<span className="ml-1 text-sm font-normal text-gray-600">억</span>
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <p className="mb-2 font-montserrat text-sm text-gray-600">2026 목표</p>
-                    <p className="font-montserrat text-3xl font-bold text-ocean-500">
-                      12<span className="ml-1 text-sm font-normal text-gray-600">억</span>
-                    </p>
-                    <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-3 py-1 font-montserrat text-xs font-bold text-ocean-500">
-                      +330%
-                    </span>
-                  </div>
+          {/* ── 2. 매출 현황 ── */}
+          <section className="relative py-24 md:py-32">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <Reveal>
+                <div className="mb-16 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Financial Overview
+                  </p>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>매출 현황</h2>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
 
-            <Reveal delay={300}>
-              <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-10">
-                <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">설비 투자</p>
-                <div className="grid grid-cols-3 gap-4">
-                  {[
-                    { year: '2024', value: '8억' },
-                    { year: '2025', value: '7.4억' },
-                    { year: '2026', value: '~9억', highlight: true },
-                  ].map((item) => (
-                    <div key={item.year} className="text-center">
-                      <p className="mb-2 font-montserrat text-sm text-gray-600">{item.year}</p>
-                      <p className={`font-montserrat text-2xl font-bold ${item.highlight ? 'text-ocean-500' : 'text-gray-900'}`}>
-                        {item.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2.5 전략적 성장 동력 ── */}
-      <section className="relative py-24 md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <Reveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                Strategic Growth
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">전략적 성장 동력</h2>
-            </div>
-          </Reveal>
-
-          <div className="grid gap-8 md:grid-cols-2">
-            <Reveal delay={100}>
-              <div className="overflow-hidden rounded-2xl border border-gray-300/50 border-l-ocean-500 border-l-4 bg-gray-50/60 p-8 backdrop-blur-sm md:p-10">
-                <h3 className="mb-4 text-xl font-bold text-gray-900">MG 품목 운영 확산</h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
-                    <span>푸드머스 전용 MG 품목군 확대 운영</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
-                    <span>전략적 저단가 품목군 단독 공급 체결로 연중 균일가 공급 안정화</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
-                    <span>국산/수입산 연단위 물량 계약으로 재고 확보</span>
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
-
-            <Reveal delay={200}>
-              <div className="overflow-hidden rounded-2xl border border-gray-300/50 border-l-ocean-500 border-l-4 bg-gray-50/60 p-8 backdrop-blur-sm md:p-10">
-                <h3 className="mb-4 text-xl font-bold text-gray-900">지속가능 브랜드 확대</h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
-                    <span>ASC·MSC 인증 어종 확대 (임연수어, 대구 등)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
-                    <span>특화 마리네이드 기술 적용 품목 확대</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
-                    <span>오븐구이 브랜드 신규 출시 예정</span>
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. 제품 개발 성과 ── */}
-      <section className="relative py-24 md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-40" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <Reveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                Product Development
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">제품 개발 성과</h2>
-            </div>
-          </Reveal>
-
-          {/* Stats */}
-          <Reveal delay={100}>
-            <div className="mb-16 grid gap-6 md:grid-cols-4">
-              {[
-                { number: '134', label: '10년간 출시 품목', sub: '수산물 제외' },
-                { number: '66', label: '현 운영 품목', sub: '' },
-                { number: '~1천만', label: '제품당 투자액', sub: '원' },
-                { number: '~5개월', label: '신제품 개발 소요', sub: '' },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-gray-300/50 bg-gray-50/60 p-6 text-center backdrop-blur-sm">
-                  <p className="font-montserrat text-3xl font-bold text-ocean-400 md:text-4xl">{stat.number}</p>
-                  {stat.sub && <p className="text-xs text-gray-600">{stat.sub}</p>}
-                  <p className="mt-2 text-sm text-gray-600">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* Brand History */}
-          <Reveal delay={200}>
-            <div className="overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 md:p-12">
-              <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-ocean-400">브랜드 히스토리</p>
-              <div className="relative">
-                {/* Timeline line */}
-                <div className="absolute left-0 right-0 top-4 h-px bg-gradient-to-r from-ocean-500/40 via-gold-500/40 to-ocean-500/40" />
-                <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
-                  {BRANDS.map((brand, i) => (
-                    <div key={brand.name} className="relative pt-8 text-center">
-                      {/* Dot on timeline */}
-                      <div className="absolute left-1/2 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-gold-500 bg-white" />
-                      <p className="mb-1 font-montserrat text-sm font-bold text-ocean-500">{brand.year}</p>
-                      <p className="mb-1 text-sm font-semibold text-gray-900">{brand.name}</p>
-                      <p className="text-xs text-gray-600">{brand.sales}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-8 rounded-xl bg-gray-100/50 px-6 py-4 text-center">
-                <p className="text-sm text-gray-600">
-                  연간 <span className="font-montserrat font-bold text-ocean-500">20</span>회 제안 추진
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── 4. Vision Statement ── */}
-      <section className="relative py-24 md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--color-navy-800)_0%,_transparent_70%)] opacity-50" />
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
-          <Reveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                Our Vision
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">비전 선언</h2>
-            </div>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <div className="mb-16 rounded-2xl border border-gold-500/20 bg-gray-50/80 p-10 text-center backdrop-blur-sm md:p-16">
-              <div className="relative pl-0">
-                <svg className="mx-auto mb-6 h-8 w-8 text-ocean-500/40" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                <p className="text-xl leading-relaxed text-gray-700 md:text-2xl md:leading-relaxed">
-                  기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* 3 Pillars */}
-          <div className="grid gap-8 md:grid-cols-3">
-            {VISION_PILLARS.map((p, i) => (
-              <Reveal key={p.title} delay={i * 150 + 200}>
-                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/50 bg-gray-50/60 p-8 backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60 md:p-10">
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="relative">
-                    <div className="mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
-                      {p.icon}
-                    </div>
-                    <h3 className="mb-4 text-xl font-bold text-gray-900">{p.title}</h3>
-                    <p className="leading-relaxed text-gray-600">{p.desc}</p>
+              {/* Total Sales */}
+              <Reveal delay={100}>
+                <div className={`mb-8 overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-12`}>
+                  <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-ocean-400">총 매출</p>
+                  <div className="grid grid-cols-3 gap-4 md:gap-8">
+                    {[
+                      { year: '2024', value: '376', unit: '억', highlight: false },
+                      { year: '2025', value: '379', unit: '억', highlight: false },
+                      { year: '2026 목표', value: '400', unit: '억', highlight: true, badge: '+6%' },
+                    ].map((item, i) => (
+                      <div key={item.year} className="relative text-center">
+                        {i > 0 && (
+                          <div className={`absolute -left-2 top-1/2 hidden -translate-y-1/2 ${c.textMuted} md:-left-4 md:block`}>
+                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                          </div>
+                        )}
+                        <p className={`mb-2 font-montserrat text-xs ${c.text2} sm:text-sm`}>{item.year}</p>
+                        <p className={`font-montserrat text-3xl font-bold sm:text-4xl md:text-6xl ${item.highlight ? 'text-ocean-500' : c.text}`}>
+                          {item.value}
+                          <span className={`ml-0.5 text-sm font-normal ${c.text2} md:ml-1 md:text-lg`}>{item.unit}</span>
+                        </p>
+                        {item.badge && (
+                          <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-2 py-0.5 font-montserrat text-xs font-bold text-ocean-500 sm:mt-3 sm:px-3 sm:py-1 sm:text-sm">
+                            {item.badge}
+                          </span>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ── Closing CTA ── */}
-      <section className="relative py-24 md:py-32 bg-gray-50/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-60" />
-        <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
-          <Reveal>
-            <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">서풍과 함께 성장하세요</h2>
-            <p className="mb-10 text-lg leading-relaxed text-gray-600">
-              OEM 납품, 신제품 개발, 브랜드 협업 등 다양한 형태의 파트너십을 환영합니다
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
-              >
-                문의하기 &rarr;
-              </Link>
-              <Link
-                href="/process"
-                className="inline-flex items-center gap-2 rounded-xl border border-ocean-500 px-8 py-4 font-semibold text-ocean-400 transition-all duration-300 hover:bg-ocean-500/10"
-              >
-                생산공정 보기 &rarr;
-              </Link>
+              {/* ASC/MSC & Investment */}
+              <div className="grid gap-8 md:grid-cols-2">
+                <Reveal delay={200}>
+                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-10`}>
+                    <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">ASC / MSC 매출</p>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="text-center">
+                        <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>2025년</p>
+                        <p className={`font-montserrat text-3xl font-bold ${c.text}`}>
+                          3.6<span className={`ml-1 text-sm font-normal ${c.text2}`}>억</span>
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>2026 목표</p>
+                        <p className="font-montserrat text-3xl font-bold text-ocean-500">
+                          12<span className={`ml-1 text-sm font-normal ${c.text2}`}>억</span>
+                        </p>
+                        <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-3 py-1 font-montserrat text-xs font-bold text-ocean-500">
+                          +330%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={300}>
+                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-10`}>
+                    <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">설비 투자</p>
+                    <div className="grid grid-cols-3 gap-4">
+                      {[
+                        { year: '2024', value: '8억' },
+                        { year: '2025', value: '7.4억' },
+                        { year: '2026', value: '~9억', highlight: true },
+                      ].map((item) => (
+                        <div key={item.year} className="text-center">
+                          <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>{item.year}</p>
+                          <p className={`font-montserrat text-2xl font-bold ${item.highlight ? 'text-ocean-500' : c.text}`}>
+                            {item.value}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </section>
 
-      <Footer />
-    </main>
+          {/* ── 2.5 전략적 성장 동력 ── */}
+          <section className="relative py-24 md:py-32">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
+            <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+              <Reveal>
+                <div className="mb-16 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Strategic Growth
+                  </p>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>전략적 성장 동력</h2>
+                </div>
+              </Reveal>
+
+              <div className="grid gap-8 md:grid-cols-2">
+                <Reveal delay={100}>
+                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} border-l-ocean-500 border-l-4 ${c.cardBg} p-8 backdrop-blur-sm md:p-10`}>
+                    <h3 className={`mb-4 text-xl font-bold ${c.text}`}>MG 품목 운영 확산</h3>
+                    <ul className={`space-y-3 ${c.text2}`}>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
+                        <span>푸드머스 전용 MG 품목군 확대 운영</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
+                        <span>전략적 저단가 품목군 단독 공급 체결로 연중 균일가 공급 안정화</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
+                        <span>국산/수입산 연단위 물량 계약으로 재고 확보</span>
+                      </li>
+                    </ul>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={200}>
+                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} border-l-ocean-500 border-l-4 ${c.cardBg} p-8 backdrop-blur-sm md:p-10`}>
+                    <h3 className={`mb-4 text-xl font-bold ${c.text}`}>지속가능 브랜드 확대</h3>
+                    <ul className={`space-y-3 ${c.text2}`}>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
+                        <span>ASC·MSC 인증 어종 확대 (임연수어, 대구 등)</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
+                        <span>특화 마리네이드 기술 적용 품목 확대</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
+                        <span>오븐구이 브랜드 신규 출시 예정</span>
+                      </li>
+                    </ul>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </section>
+
+          {/* ── 3. 제품 개발 성과 ── */}
+          <section className="relative py-24 md:py-32">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-40" />
+            <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+              <Reveal>
+                <div className="mb-16 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Product Development
+                  </p>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>제품 개발 성과</h2>
+                </div>
+              </Reveal>
+
+              {/* Stats */}
+              <Reveal delay={100}>
+                <div className="mb-16 grid gap-6 md:grid-cols-4">
+                  {[
+                    { number: '134', label: '10년간 출시 품목', sub: '수산물 제외' },
+                    { number: '66', label: '현 운영 품목', sub: '' },
+                    { number: '~1천만', label: '제품당 투자액', sub: '원' },
+                    { number: '~5개월', label: '신제품 개발 소요', sub: '' },
+                  ].map((stat) => (
+                    <div key={stat.label} className={`rounded-2xl border ${c.cardBorder} ${c.cardBg} p-6 text-center`}>
+                      <p className="font-montserrat text-3xl font-bold text-ocean-400 md:text-4xl">{stat.number}</p>
+                      {stat.sub && <p className={`text-xs ${c.text2}`}>{stat.sub}</p>}
+                      <p className={`mt-2 text-sm ${c.text2}`}>{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+
+              {/* Brand History */}
+              <Reveal delay={200}>
+                <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-12`}>
+                  <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-ocean-400">브랜드 히스토리</p>
+                  <div className="relative">
+                    {/* Timeline line */}
+                    <div className="absolute left-0 right-0 top-4 h-px bg-gradient-to-r from-ocean-500/40 via-gold-500/40 to-ocean-500/40" />
+                    <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
+                      {BRANDS.map((brand, i) => (
+                        <div key={brand.name} className="relative pt-8 text-center">
+                          {/* Dot on timeline */}
+                          <div className={`absolute left-1/2 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-gold-500 ${c.pageBg}`} />
+                          <p className="mb-1 font-montserrat text-sm font-bold text-ocean-500">{brand.year}</p>
+                          <p className={`mb-1 text-sm font-semibold ${c.text}`}>{brand.name}</p>
+                          <p className={`text-xs ${c.text2}`}>{brand.sales}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className={`mt-8 rounded-xl ${c.sectionAlt} px-6 py-4 text-center`}>
+                    <p className={`text-sm ${c.text2}`}>
+                      연간 <span className="font-montserrat font-bold text-ocean-500">20</span>회 제안 추진
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          {/* ── 4. Vision Statement ── */}
+          <section className="relative py-24 md:py-32">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--color-navy-800)_0%,_transparent_70%)] opacity-50" />
+            <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
+              <Reveal>
+                <div className="mb-16 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Our Vision
+                  </p>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>비전 선언</h2>
+                </div>
+              </Reveal>
+
+              <Reveal delay={100}>
+                <div className={`mb-16 rounded-2xl border border-gold-500/20 ${c.cardBg} p-10 text-center md:p-16`}>
+                  <div className="relative pl-0">
+                    <svg className="mx-auto mb-6 h-8 w-8 text-ocean-500/40" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                    <p className={`text-xl leading-relaxed ${c.text2} md:text-2xl md:leading-relaxed`}>
+                      기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* 3 Pillars */}
+              <div className="grid gap-8 md:grid-cols-3">
+                {VISION_PILLARS.map((p, i) => (
+                  <Reveal key={p.title} delay={i * 150 + 200}>
+                    <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 transition-all duration-500 ${c.cardHover} md:p-10`}>
+                      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                      <div className="relative">
+                        <div className="mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
+                          {p.icon}
+                        </div>
+                        <h3 className={`mb-4 text-xl font-bold ${c.text}`}>{p.title}</h3>
+                        <p className={`leading-relaxed ${c.text2}`}>{p.desc}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── Closing CTA ── */}
+          <section className={`relative py-24 md:py-32 ${c.sectionAlt}`}>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-60" />
+            <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
+              <Reveal>
+                <h2 className={`mb-6 text-3xl font-bold ${c.text} md:text-4xl`}>서풍과 함께 성장하세요</h2>
+                <p className={`mb-10 text-lg leading-relaxed ${c.text2}`}>
+                  OEM 납품, 신제품 개발, 브랜드 협업 등 다양한 형태의 파트너십을 환영합니다
+                </p>
+                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
+                  >
+                    문의하기 &rarr;
+                  </Link>
+                  <Link
+                    href="/process"
+                    className="inline-flex items-center gap-2 rounded-xl border border-ocean-500 px-8 py-4 font-semibold text-ocean-400 transition-all duration-300 hover:bg-ocean-500/10"
+                  >
+                    생산공정 보기 &rarr;
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        </>
+      )}
+    </ThemeLayout>
   );
 }

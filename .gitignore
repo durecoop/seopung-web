@@ -44,3 +44,5 @@ next-env.d.ts
 
 # Large original images (compressed versions in food-web/)
 /public/images/food/
+
+.vercel

@@ -1,11 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
+import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
-import Breadcrumb from '@/components/ui/Breadcrumb';
+import type { ThemeColors } from '@/hooks/useTheme';
 
 /* ──────────────────────────────────────────────
    Data
@@ -72,7 +71,7 @@ const STEPS: ProcessStep[] = [
   {
     number: '04',
     title: '급속동결',
-    desc: '터널프리저(IQF)를 통해 -40\u00B0C에서 급속동결하여 세포 파괴 없이 신선도를 완벽하게 유지합니다.',
+    desc: '터널프리저(IQF)를 통해 -40°C에서 급속동결하여 세포 파괴 없이 신선도를 완벽하게 유지합니다.',
     images: [
       { src: '/images/process/04-tunnel-freezer.jpg', alt: '터널프리저' },
       { src: '/images/process/04-freezer-belt.jpg', alt: '동결 벨트' },
@@ -113,7 +112,7 @@ const STEPS: ProcessStep[] = [
 /* ──────────────────────────────────────────────
    Process Step Component
    ────────────────────────────────────────────── */
-function ProcessStepSection({ step, index }: { step: ProcessStep; index: number }) {
+function ProcessStepSection({ step, index, c }: { step: ProcessStep; index: number; c: ThemeColors }) {
   const isEven = index % 2 === 0;
   const hasTwoImages = step.images.length > 1;
 
@@ -135,8 +134,8 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
                 </span>
                 <div className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
               </div>
-              <h3 className="mb-6 text-2xl font-bold text-gray-900 md:text-3xl">{step.title}</h3>
-              <p className="max-w-lg text-lg leading-relaxed text-gray-600">{step.desc}</p>
+              <h3 className={`mb-6 text-2xl font-bold md:text-3xl ${c.text}`}>{step.title}</h3>
+              <p className={`max-w-lg text-lg leading-relaxed ${c.text2}`}>{step.desc}</p>
             </div>
           </Reveal>
 
@@ -152,8 +151,8 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
-                    <p className="absolute bottom-3 left-4 text-sm font-medium text-gray-700">{img.alt}</p>
+                    <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade.replace('from-', 'from-').replace(/from-\S+/, 'from-transparent').replace('to-transparent', '')} from-black/20 to-transparent`} />
+                    <p className={`absolute bottom-3 left-4 text-sm font-medium ${c.text2}`}>{img.alt}</p>
                   </div>
                 ))}
               </div>
@@ -165,7 +164,7 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
+                <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/40' : 'from-white/40'} to-transparent`} />
               </div>
             )}
           </Reveal>
@@ -178,7 +177,7 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
               {step.gallery.map((g) => (
                 <div
                   key={g.src}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-gray-200"
+                  className={`group relative aspect-[4/3] overflow-hidden rounded-xl border ${c.cardBorder}`}
                 >
                   <Image
                     src={getImagePath(g.src)}
@@ -186,8 +185,8 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
-                  <p className="absolute bottom-2 left-3 text-xs text-gray-600">{g.caption}</p>
+                  <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/60' : 'from-white/60'} to-transparent`} />
+                  <p className={`absolute bottom-2 left-3 text-xs ${c.text2}`}>{g.caption}</p>
                 </div>
               ))}
             </div>
@@ -203,238 +202,237 @@ function ProcessStepSection({ step, index }: { step: ProcessStep; index: number 
    ────────────────────────────────────────────── */
 export default function ProcessPage() {
   return (
-    <main className="bg-white font-pretendard">
-      <Navbar />
-      <Breadcrumb />
-
-      {/* ── Hero ── */}
-      <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
-        <Image
-          src={getImagePath('/images/process/04-tunnel-freezer.jpg')}
-          alt="터널프리저 급속동결"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-white/70" />
-        <div className="relative z-10 text-center">
-          <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
-            Production Process
-          </p>
-          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">생산 공정</h1>
-          <p className="mt-4 text-lg text-gray-600">
-            원물에서 완제품까지, One-Way 생산라인
-          </p>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
-      </section>
-
-      {/* ── 1. 원료 수매 ── */}
-      <section className="relative py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          {/* Section header */}
-          <Reveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                Raw Material Sourcing
+    <ThemeLayout breadcrumb={[{ label: '생산공정' }]}>
+      {(c) => (
+        <>
+          {/* ── Hero ── */}
+          <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
+            <Image
+              src={getImagePath('/images/process/04-tunnel-freezer.jpg')}
+              alt="터널프리저 급속동결"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className={`absolute inset-0 ${c.overlay}`} />
+            <div className="relative z-10 text-center">
+              <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
+                Production Process
               </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">원료 수매</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-                새벽 위판장에서 시작되는 신선함. 30년 이상의 경험을 가진 중매인이 최고의 원료만을 선별합니다.
+              <h1 className={`text-4xl font-bold md:text-5xl lg:text-6xl ${c.text}`}>생산 공정</h1>
+              <p className={`mt-4 text-lg ${c.text2}`}>
+                원물에서 완제품까지, One-Way 생산라인
               </p>
             </div>
-          </Reveal>
+            <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]' : 'from-white'} to-transparent`} />
+          </section>
 
-          {/* Director + Text */}
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            <Reveal>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <Image
-                  src={getImagePath('/images/auction/director-inspect.jpg')}
-                  alt="49호 중매인 원료 검수"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
-                {/* Badge */}
-                <div className="absolute bottom-6 left-6 rounded-xl bg-white/80 px-4 py-2 backdrop-blur-sm">
-                  <p className="font-montserrat text-sm font-bold text-ocean-500">No.49</p>
-                  <p className="text-xs text-gray-600">중매인</p>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={200}>
-              <div>
-                <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-ocean-500/10 px-5 py-2">
-                  <span className="font-montserrat text-sm font-bold text-ocean-400">49호</span>
-                  <span className="text-sm text-gray-600">중매인 30년+ 경력</span>
-                </div>
-                <h3 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
-                  새벽 위판장, 최적의 원료 수매
-                </h3>
-                <p className="mb-6 text-lg leading-relaxed text-gray-600">
-                  매일 새벽 여수 수산시장 위판장에서 30년 이상의 경험을 가진 49호 중매인이 직접 원료를 감별하고 수매합니다. 어체의 탄력, 색택, 비늘 상태를 하나하나 확인하여 최상급 원료만을 선별합니다.
-                </p>
-                <p className="text-lg leading-relaxed text-gray-600">
-                  산지 직매입을 통해 유통 단계를 최소화하고, 수매 즉시 공장으로 이송하여 신선도를 극대화합니다.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Fish grid */}
-          <div className="mt-16 grid gap-6 sm:grid-cols-3">
-            {FISH_GRID.map((fish, i) => (
-              <Reveal key={fish.label} delay={i * 120}>
-                <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
-                  <Image
-                    src={getImagePath(fish.src)}
-                    alt={fish.label}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-5">
-                    <p className="text-lg font-bold text-gray-900">{fish.label}</p>
-                  </div>
+          {/* ── 1. 원료 수매 ── */}
+          <section className="relative py-24 md:py-32">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              {/* Section header */}
+              <Reveal>
+                <div className="mb-16 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Raw Material Sourcing
+                  </p>
+                  <h2 className={`text-3xl font-bold md:text-4xl ${c.text}`}>원료 수매</h2>
+                  <p className={`mx-auto mt-4 max-w-2xl ${c.text2}`}>
+                    새벽 위판장에서 시작되는 신선함. 30년 이상의 경험을 가진 중매인이 최고의 원료만을 선별합니다.
+                  </p>
                 </div>
               </Reveal>
-            ))}
-          </div>
 
-          {/* Panorama */}
-          <Reveal className="mt-10">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl md:aspect-[21/9]">
-              <Image
-                src={getImagePath('/images/auction/auction-panorama.jpg')}
-                alt="위판장 전경"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
-              <div className="absolute bottom-6 left-8">
-                <p className="text-sm font-medium text-gray-700">여수 수산시장 위판장 전경</p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── 취급 어종 ── */}
-      <section className="relative border-t border-gray-200/40 py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <Reveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                Fish Species
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">다양한 어종, 전문적인 취급</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-                참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어 등 9종 이상의 어종을 전문적으로 취급합니다.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="grid gap-6 sm:grid-cols-3">
-            {[
-              { src: '/images/auction/mackerel.jpg', label: '고등어' },
-              { src: '/images/auction/sea-bream-2.jpg', label: '참돔' },
-              { src: '/images/auction/fish-variety.jpg', label: '다양한 어종' },
-            ].map((fish, i) => (
-              <Reveal key={fish.label} delay={i * 120}>
-                <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-gray-200">
-                  <Image
-                    src={getImagePath(fish.src)}
-                    alt={fish.label}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-5">
-                    <p className="text-lg font-bold text-gray-900">{fish.label}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. 6단계 공정 ── */}
-      <section className="relative">
-        {/* Section header */}
-        <div className="py-24 md:py-32">
-          <Reveal>
-            <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
-              <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                6-Step Process
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">6단계 생산 공정</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-                원물 입고에서 출하까지, 철저한 위생관리와 최신 설비로 완벽한 품질을 보장합니다.
-              </p>
-
-              {/* Process flow indicator */}
-              <div className="mx-auto mt-12 flex max-w-4xl items-center justify-between">
-                {STEPS.map((step, i) => (
-                  <div key={step.number} className="flex items-center">
-                    <div className="flex flex-col items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/40 bg-gray-50 font-montserrat text-sm font-bold text-ocean-500 md:h-12 md:w-12 md:text-base">
-                        {step.number}
-                      </div>
-                      <p className="mt-2 hidden text-xs text-gray-600 sm:block">{step.title}</p>
+              {/* Director + Text */}
+              <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+                <Reveal>
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+                    <Image
+                      src={getImagePath('/images/auction/director-inspect.jpg')}
+                      alt="49호 중매인 원료 검수"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/50' : 'from-white/50'} to-transparent`} />
+                    {/* Badge */}
+                    <div className={`absolute bottom-6 left-6 rounded-xl px-4 py-2 backdrop-blur-sm ${c.dark ? 'bg-[#0a1628]/80' : 'bg-white/80'}`}>
+                      <p className="font-montserrat text-sm font-bold text-ocean-500">No.49</p>
+                      <p className={`text-xs ${c.text2}`}>중매인</p>
                     </div>
-                    {i < STEPS.length - 1 && (
-                      <div className="mx-1 h-px w-4 bg-ocean-500/20 md:mx-2 md:w-8 lg:w-16" />
-                    )}
                   </div>
+                </Reveal>
+
+                <Reveal delay={200}>
+                  <div>
+                    <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-ocean-500/10 px-5 py-2">
+                      <span className="font-montserrat text-sm font-bold text-ocean-400">49호</span>
+                      <span className={`text-sm ${c.text2}`}>중매인 30년+ 경력</span>
+                    </div>
+                    <h3 className={`mb-4 text-2xl font-bold md:text-3xl ${c.text}`}>
+                      새벽 위판장, 최적의 원료 수매
+                    </h3>
+                    <p className={`mb-6 text-lg leading-relaxed ${c.text2}`}>
+                      매일 새벽 여수 수산시장 위판장에서 30년 이상의 경험을 가진 49호 중매인이 직접 원료를 감별하고 수매합니다. 어체의 탄력, 색택, 비늘 상태를 하나하나 확인하여 최상급 원료만을 선별합니다.
+                    </p>
+                    <p className={`text-lg leading-relaxed ${c.text2}`}>
+                      산지 직매입을 통해 유통 단계를 최소화하고, 수매 즉시 공장으로 이송하여 신선도를 극대화합니다.
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* Fish grid */}
+              <div className="mt-16 grid gap-6 sm:grid-cols-3">
+                {FISH_GRID.map((fish, i) => (
+                  <Reveal key={fish.label} delay={i * 120}>
+                    <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
+                      <Image
+                        src={getImagePath(fish.src)}
+                        alt={fish.label}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade.replace(/from-\S+/, 'from-transparent').split(' ').slice(0, -1).join(' ')} ${c.dark ? 'from-[#0a1628]/70' : 'from-white/70'} via-transparent to-transparent`} />
+                      <div className="absolute bottom-4 left-5">
+                        <p className={`text-lg font-bold ${c.text}`}>{fish.label}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+
+              {/* Panorama */}
+              <Reveal className="mt-10">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-2xl md:aspect-[21/9]">
+                  <Image
+                    src={getImagePath('/images/auction/auction-panorama.jpg')}
+                    alt="위판장 전경"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/50' : 'from-white/50'} to-transparent`} />
+                  <div className="absolute bottom-6 left-8">
+                    <p className={`text-sm font-medium ${c.text2}`}>여수 수산시장 위판장 전경</p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          {/* ── 취급 어종 ── */}
+          <section className={`relative border-t ${c.cardBorder} py-24 md:py-32`}>
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <Reveal>
+                <div className="mb-16 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Fish Species
+                  </p>
+                  <h2 className={`text-3xl font-bold md:text-4xl ${c.text}`}>다양한 어종, 전문적인 취급</h2>
+                  <p className={`mx-auto mt-4 max-w-2xl ${c.text2}`}>
+                    참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어 등 9종 이상의 어종을 전문적으로 취급합니다.
+                  </p>
+                </div>
+              </Reveal>
+
+              <div className="grid gap-6 sm:grid-cols-3">
+                {[
+                  { src: '/images/auction/mackerel.jpg', label: '고등어' },
+                  { src: '/images/auction/sea-bream-2.jpg', label: '참돔' },
+                  { src: '/images/auction/fish-variety.jpg', label: '다양한 어종' },
+                ].map((fish, i) => (
+                  <Reveal key={fish.label} delay={i * 120}>
+                    <div className={`group relative aspect-[4/3] overflow-hidden rounded-2xl border ${c.cardBorder}`}>
+                      <Image
+                        src={getImagePath(fish.src)}
+                        alt={fish.label}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/70' : 'from-white/70'} via-transparent to-transparent`} />
+                      <div className="absolute bottom-4 left-5">
+                        <p className={`text-lg font-bold ${c.text}`}>{fish.label}</p>
+                      </div>
+                    </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
-          </Reveal>
-        </div>
+          </section>
 
-        {/* Steps */}
-        {STEPS.map((step, i) => (
-          <div
-            key={step.number}
-            className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'}
-          >
-            <ProcessStepSection step={step} index={i} />
-          </div>
-        ))}
-      </section>
+          {/* ── 2. 6단계 공정 ── */}
+          <section className="relative">
+            {/* Section header */}
+            <div className="py-24 md:py-32">
+              <Reveal>
+                <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    6-Step Process
+                  </p>
+                  <h2 className={`text-3xl font-bold md:text-4xl ${c.text}`}>6단계 생산 공정</h2>
+                  <p className={`mx-auto mt-4 max-w-2xl ${c.text2}`}>
+                    원물 입고에서 출하까지, 철저한 위생관리와 최신 설비로 완벽한 품질을 보장합니다.
+                  </p>
 
-      {/* ── Atmospheric closing ── */}
-      <section className="relative flex min-h-[420px] items-center justify-center overflow-hidden md:min-h-[520px]">
-        <Image
-          src={getImagePath('/images/hero/dawn-workers.jpg')}
-          alt="새벽 작업 현장"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-white/75" />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
-          <Reveal>
-            <blockquote className="text-2xl font-bold leading-snug text-gray-900 md:text-3xl lg:text-4xl">
-              &ldquo;새벽부터 시작되는 서풍의 하루,
-              <br className="hidden sm:block" />
-              대한민국 수산물의 미래를 만듭니다&rdquo;
-            </blockquote>
-          </Reveal>
-          <Reveal delay={200}>
-            <a
-              href="/technology"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-ocean-500 px-8 py-3 font-semibold text-white transition-colors duration-300 hover:bg-ocean-400"
-            >
-              기술·설비 보기 &rarr;
-            </a>
-          </Reveal>
-        </div>
-      </section>
+                  {/* Process flow indicator */}
+                  <div className="mx-auto mt-12 flex max-w-4xl items-center justify-between">
+                    {STEPS.map((step, i) => (
+                      <div key={step.number} className="flex items-center">
+                        <div className="flex flex-col items-center">
+                          <div className={`flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/40 font-montserrat text-sm font-bold text-ocean-500 md:h-12 md:w-12 md:text-base ${c.sectionAlt}`}>
+                            {step.number}
+                          </div>
+                          <p className={`mt-2 hidden text-xs sm:block ${c.text2}`}>{step.title}</p>
+                        </div>
+                        {i < STEPS.length - 1 && (
+                          <div className="mx-1 h-px w-4 bg-ocean-500/20 md:mx-2 md:w-8 lg:w-16" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
 
-      <Footer />
-    </main>
+            {/* Steps */}
+            {STEPS.map((step, i) => (
+              <div
+                key={step.number}
+                className={i % 2 === 0 ? '' : c.sectionAlt}
+              >
+                <ProcessStepSection step={step} index={i} c={c} />
+              </div>
+            ))}
+          </section>
+
+          {/* ── Atmospheric closing ── */}
+          <section className="relative flex min-h-[420px] items-center justify-center overflow-hidden md:min-h-[520px]">
+            <Image
+              src={getImagePath('/images/hero/dawn-workers.jpg')}
+              alt="새벽 작업 현장"
+              fill
+              className="object-cover"
+            />
+            <div className={`absolute inset-0 ${c.overlay}`} />
+            <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+              <Reveal>
+                <blockquote className={`text-2xl font-bold leading-snug md:text-3xl lg:text-4xl ${c.text}`}>
+                  &ldquo;새벽부터 시작되는 서풍의 하루,
+                  <br className="hidden sm:block" />
+                  대한민국 수산물의 미래를 만듭니다&rdquo;
+                </blockquote>
+              </Reveal>
+              <Reveal delay={200}>
+                <a
+                  href="/technology"
+                  className="mt-10 inline-flex items-center gap-2 rounded-full bg-ocean-500 px-8 py-3 font-semibold text-white transition-colors duration-300 hover:bg-ocean-400"
+                >
+                  기술·설비 보기 &rarr;
+                </a>
+              </Reveal>
+            </div>
+          </section>
+        </>
+      )}
+    </ThemeLayout>
   );
 }

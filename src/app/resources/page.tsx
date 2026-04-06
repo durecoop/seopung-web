@@ -3,25 +3,24 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
+import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
-import Breadcrumb from '@/components/ui/Breadcrumb';
 import { galleryCrud, type GalleryItem as GalleryType } from '@/lib/admin-store';
+import type { ThemeColors } from '@/hooks/useTheme';
 
 /* ──────────────────────────────────────────────
    Section heading
    ────────────────────────────────────────────── */
-function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
+function SectionHeading({ title, subtitle, c }: { title: string; subtitle?: string; c: ThemeColors }) {
   return (
     <div className="mb-12 text-center">
-      <h2 className="font-pretendard text-3xl font-bold text-gray-900 md:text-4xl">
+      <h2 className={`font-pretendard text-3xl font-bold ${c.text} md:text-4xl`}>
         {title}
       </h2>
       <div className="mx-auto mt-3 h-[2px] w-16 bg-gradient-to-r from-gold-500 to-gold-300" />
       {subtitle && (
-        <p className="mt-4 text-base text-gray-600 md:text-lg">{subtitle}</p>
+        <p className={`mt-4 text-base ${c.text2} md:text-lg`}>{subtitle}</p>
       )}
     </div>
   );
@@ -203,210 +202,210 @@ export default function ResourcesPage() {
     : galleryPhotos.filter((p) => p.category === activeTab);
 
   return (
-    <>
-      <Navbar />
-      <Breadcrumb />
-
-      {/* ── Hero ── */}
-      <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center overflow-hidden">
-        <Image
-          src={getImagePath('/images/facility/fish-scanner-3.jpg')}
-          alt="자료실"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white" />
-        <div className="relative z-10 text-center px-6">
-          <h1 className="font-montserrat text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-            자료실
-          </h1>
-          <p className="mt-3 text-lg text-gray-600 md:text-xl">
-            인증서, 사진 갤러리 및 회사 자료
-          </p>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-         Section 1: 인증서 다운로드
-         ══════════════════════════════════════ */}
-      <section className="bg-white py-24 md:py-32 px-6">
-        <div className="mx-auto max-w-6xl">
-          <Reveal>
-            <SectionHeading
-              title="인증서"
-              subtitle="거래처 등록 및 품질 증빙에 필요한 인증서"
+    <ThemeLayout breadcrumb={[{ label: '자료실' }]}>
+      {(c) => (
+        <>
+          {/* ── Hero ── */}
+          <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center overflow-hidden">
+            <Image
+              src={getImagePath('/images/facility/fish-scanner-3.jpg')}
+              alt="자료실"
+              fill
+              className="object-cover"
+              priority
             />
-          </Reveal>
-
-          <div className="grid gap-6 sm:grid-cols-2">
-            {CERTIFICATIONS.map((cert, i) => (
-              <Reveal key={cert.name} delay={i * 100}>
-                <div className="group relative rounded-2xl border border-white/5 bg-gray-100 p-6 transition-all duration-300 hover:border-gold-500/20 hover:shadow-lg hover:shadow-gold-500/5">
-                  {/* Header row */}
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-ocean-500/10 text-ocean-500">
-                      <ShieldIcon />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="text-lg font-bold text-gray-900">{cert.name}</h3>
-                        <span
-                          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                            cert.status === '유효'
-                              ? 'bg-emerald-500/15 text-emerald-400'
-                              : 'bg-amber-500/15 text-amber-400'
-                          }`}
-                        >
-                          {cert.status}
-                        </span>
-                      </div>
-                      <p className="mt-1 text-sm text-gray-600">{cert.description}</p>
-                      {cert.detail && (
-                        <p className="mt-1 text-xs text-gray-600">{cert.detail}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Thumbnail if available */}
-                  {cert.image && (
-                    <div className="mt-4 overflow-hidden rounded-lg">
-                      <Image
-                        src={getImagePath(`/images/${cert.image}`)}
-                        alt={cert.name}
-                        width={600}
-                        height={400}
-                        className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  )}
-
-                  {/* Download button */}
-                  <button
-                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/40 px-4 py-2.5 min-h-[44px] text-sm font-medium text-ocean-500 transition-all duration-300 hover:bg-ocean-500/10 hover:border-gold-400"
-                  >
-                    <DownloadIcon className="h-4 w-4" />
-                    다운로드
-                  </button>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={500}>
-            <p className="mt-8 text-center text-sm text-gray-600">
-              ※ 원본 인증서가 필요하신 경우 문의 바랍니다
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-         Section 2: 포토 갤러리
-         ══════════════════════════════════════ */}
-      <section className="bg-gray-50 py-24 md:py-32 px-6">
-        <div className="mx-auto max-w-6xl">
-          <Reveal>
-            <SectionHeading title="포토 갤러리" />
-          </Reveal>
-
-          {/* Tab filter */}
-          <Reveal delay={100}>
-            <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
-              {GALLERY_TABS.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`rounded-full px-5 py-2 min-h-[44px] text-sm font-medium transition-all duration-300 ${
-                    activeTab === tab
-                      ? 'bg-ocean-500 text-white shadow-lg shadow-ocean-500/25'
-                      : 'bg-gray-100 text-gray-600 hover:text-gray-700 hover:bg-navy-700'
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
+            <div className={`absolute inset-0 bg-gradient-to-b ${c.gradientFade}`} />
+            <div className="relative z-10 text-center px-6">
+              <h1 className={`font-montserrat text-4xl font-bold tracking-tight ${c.text} md:text-5xl lg:text-6xl`}>
+                자료실
+              </h1>
+              <p className={`mt-3 text-lg ${c.text2} md:text-xl`}>
+                인증서, 사진 갤러리 및 회사 자료
+              </p>
             </div>
-          </Reveal>
+          </section>
 
-          {/* Photo grid */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-5">
-            {filteredPhotos.map((photo, i) => (
-              <Reveal key={photo.src} delay={i * 60}>
-                <button
-                  onClick={() => setLightboxPhoto(photo)}
-                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl focus:outline-none focus:ring-2 focus:ring-ocean-500/50"
-                >
-                  <Image
-                    src={getImagePath(`/images/${photo.src}`)}
-                    alt={photo.label}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  {/* Category badge */}
-                  <span className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 rounded-full bg-white/70 px-2 sm:px-2.5 py-0.5 text-[10px] font-medium text-gray-700 backdrop-blur-sm md:text-xs">
-                    {photo.category}
-                  </span>
-                  {/* Label on hover */}
-                  <span className="absolute bottom-0 left-0 right-0 translate-y-full p-3 text-center text-sm font-medium text-gray-900 transition-transform duration-300 group-hover:translate-y-0">
-                    {photo.label}
-                  </span>
-                </button>
+          {/* ══════════════════════════════════════
+             Section 1: 인증서 다운로드
+             ══════════════════════════════════════ */}
+          <section className="py-24 md:py-32 px-6">
+            <div className="mx-auto max-w-6xl">
+              <Reveal>
+                <SectionHeading
+                  title="인증서"
+                  subtitle="거래처 등록 및 품질 증빙에 필요한 인증서"
+                  c={c}
+                />
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ══════════════════════════════════════
-         Section 3: 회사소개서
-         ══════════════════════════════════════ */}
-      <section className="bg-white py-24 md:py-32 px-6">
-        <div className="mx-auto max-w-2xl">
-          <Reveal>
-            <div className="rounded-2xl border border-white/5 bg-gray-100 p-8 text-center md:p-12">
-              {/* Icon */}
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-ocean-500/10">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8 text-ocean-500">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                </svg>
+              <div className="grid gap-6 sm:grid-cols-2">
+                {CERTIFICATIONS.map((cert, i) => (
+                  <Reveal key={cert.name} delay={i * 100}>
+                    <div className={`group relative rounded-2xl border ${c.cardBorder} ${c.cardBg} p-6 transition-all duration-300 hover:border-gold-500/20 hover:shadow-lg hover:shadow-gold-500/5`}>
+                      {/* Header row */}
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-ocean-500/10 text-ocean-500">
+                          <ShieldIcon />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className={`text-lg font-bold ${c.text}`}>{cert.name}</h3>
+                            <span
+                              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                                cert.status === '유효'
+                                  ? 'bg-emerald-500/15 text-emerald-400'
+                                  : 'bg-amber-500/15 text-amber-400'
+                              }`}
+                            >
+                              {cert.status}
+                            </span>
+                          </div>
+                          <p className={`mt-1 text-sm ${c.text2}`}>{cert.description}</p>
+                          {cert.detail && (
+                            <p className={`mt-1 text-xs ${c.text2}`}>{cert.detail}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Thumbnail if available */}
+                      {cert.image && (
+                        <div className="mt-4 overflow-hidden rounded-lg">
+                          <Image
+                            src={getImagePath(`/images/${cert.image}`)}
+                            alt={cert.name}
+                            width={600}
+                            height={400}
+                            className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+
+                      {/* Download button */}
+                      <button
+                        className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/40 px-4 py-2.5 min-h-[44px] text-sm font-medium text-ocean-500 transition-all duration-300 hover:bg-ocean-500/10 hover:border-gold-400"
+                      >
+                        <DownloadIcon className="h-4 w-4" />
+                        다운로드
+                      </button>
+                    </div>
+                  </Reveal>
+                ))}
               </div>
 
-              <h2 className="font-pretendard text-2xl font-bold text-gray-900 md:text-3xl">
-                회사소개서 다운로드
-              </h2>
-              <p className="mt-3 text-gray-600">
-                영어조합법인 서풍의 회사소개서를 PDF로 다운로드하세요
-              </p>
-
-              {/* Large download button */}
-              <button
-                className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-ocean-500 to-ocean-400 px-8 py-3.5 min-h-[44px] text-base font-semibold text-white shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:shadow-ocean-500/40 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <DownloadIcon className="h-5 w-5" />
-                PDF 다운로드
-              </button>
-
-              {/* Notice */}
-              <p className="mt-6 text-sm text-gray-600">
-                ※ 준비 중입니다.{' '}
-                <Link href="/contact" className="text-ocean-400 underline underline-offset-2 hover:text-ocean-300 transition-colors">
-                  문의 페이지
-                </Link>
-                를 통해 요청해주세요.
-              </p>
+              <Reveal delay={500}>
+                <p className={`mt-8 text-center text-sm ${c.text2}`}>
+                  ※ 원본 인증서가 필요하신 경우 문의 바랍니다
+                </p>
+              </Reveal>
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </section>
 
-      {/* Lightbox */}
-      <Lightbox photo={lightboxPhoto} onClose={closeLightbox} />
+          {/* ══════════════════════════════════════
+             Section 2: 포토 갤러리
+             ══════════════════════════════════════ */}
+          <section className={`${c.sectionAlt} py-24 md:py-32 px-6`}>
+            <div className="mx-auto max-w-6xl">
+              <Reveal>
+                <SectionHeading title="포토 갤러리" c={c} />
+              </Reveal>
 
-      <Footer />
-    </>
+              {/* Tab filter */}
+              <Reveal delay={100}>
+                <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
+                  {GALLERY_TABS.map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`rounded-full px-5 py-2 min-h-[44px] text-sm font-medium transition-all duration-300 ${
+                        activeTab === tab
+                          ? 'bg-ocean-500 text-white shadow-lg shadow-ocean-500/25'
+                          : `${c.cardBg} ${c.text2} hover:bg-navy-700`
+                      }`}
+                    >
+                      {tab}
+                    </button>
+                  ))}
+                </div>
+              </Reveal>
+
+              {/* Photo grid */}
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-5">
+                {filteredPhotos.map((photo, i) => (
+                  <Reveal key={photo.src} delay={i * 60}>
+                    <button
+                      onClick={() => setLightboxPhoto(photo)}
+                      className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl focus:outline-none focus:ring-2 focus:ring-ocean-500/50"
+                    >
+                      <Image
+                        src={getImagePath(`/images/${photo.src}`)}
+                        alt={photo.label}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                      />
+                      {/* Overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-0 transition-opacity duration-300 group-hover:opacity-80`} />
+                      {/* Category badge */}
+                      <span className={`absolute top-1.5 left-1.5 sm:top-2 sm:left-2 rounded-full ${c.overlay} px-2 sm:px-2.5 py-0.5 text-[10px] font-medium ${c.text2} backdrop-blur-sm md:text-xs`}>
+                        {photo.category}
+                      </span>
+                      {/* Label on hover */}
+                      <span className={`absolute bottom-0 left-0 right-0 translate-y-full p-3 text-center text-sm font-medium ${c.text} transition-transform duration-300 group-hover:translate-y-0`}>
+                        {photo.label}
+                      </span>
+                    </button>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════
+             Section 3: 회사소개서
+             ══════════════════════════════════════ */}
+          <section className="py-24 md:py-32 px-6">
+            <div className="mx-auto max-w-2xl">
+              <Reveal>
+                <div className={`rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 text-center md:p-12`}>
+                  {/* Icon */}
+                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-ocean-500/10">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8 text-ocean-500">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                  </div>
+
+                  <h2 className={`font-pretendard text-2xl font-bold ${c.text} md:text-3xl`}>
+                    회사소개서 다운로드
+                  </h2>
+                  <p className={`mt-3 ${c.text2}`}>
+                    영어조합법인 서풍의 회사소개서를 PDF로 다운로드하세요
+                  </p>
+
+                  {/* Large download button */}
+                  <button
+                    className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-ocean-500 to-ocean-400 px-8 py-3.5 min-h-[44px] text-base font-semibold text-white shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:shadow-ocean-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <DownloadIcon className="h-5 w-5" />
+                    PDF 다운로드
+                  </button>
+
+                  {/* Notice */}
+                  <p className={`mt-6 text-sm ${c.text2}`}>
+                    ※ 준비 중입니다.{' '}
+                    <Link href="/contact" className="text-ocean-400 underline underline-offset-2 hover:text-ocean-300 transition-colors">
+                      문의 페이지
+                    </Link>
+                    를 통해 요청해주세요.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          {/* Lightbox */}
+          <Lightbox photo={lightboxPhoto} onClose={closeLightbox} />
+        </>
+      )}
+    </ThemeLayout>
   );
 }

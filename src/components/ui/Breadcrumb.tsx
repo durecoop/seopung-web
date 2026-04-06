@@ -17,7 +17,12 @@ const PAGE_NAMES: Record<string, string> = {
   admin: '관리자',
 };
 
-export default function Breadcrumb() {
+interface BreadcrumbProps {
+  items?: { label: string; href?: string }[];
+  isDark?: boolean;
+}
+
+export default function Breadcrumb({ isDark = false }: BreadcrumbProps) {
   const pathname = usePathname();
 
   if (pathname === '/') return null;
@@ -36,7 +41,7 @@ export default function Breadcrumb() {
         <li>
           <Link
             href="/"
-            className="text-gray-600 transition-colors hover:text-ocean-500"
+            className="${isDark ? 'text-white/50 hover:text-white' : 'text-gray-600 hover:text-ocean-500'} transition-colors"
           >
             홈
           </Link>
@@ -49,7 +54,7 @@ export default function Breadcrumb() {
           return (
             <li key={href} className="flex items-center gap-2">
               <svg
-                className="h-3 w-3 text-gray-600"
+                className={`h-3 w-3 ${isDark ? 'text-white/30' : 'text-gray-600'}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -62,7 +67,7 @@ export default function Breadcrumb() {
               ) : (
                 <Link
                   href={href}
-                  className="text-gray-600 transition-colors hover:text-ocean-500"
+                  className="${isDark ? 'text-white/50 hover:text-white' : 'text-gray-600 hover:text-ocean-500'} transition-colors"
                 >
                   {label}
                 </Link>

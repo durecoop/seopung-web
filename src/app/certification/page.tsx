@@ -3,12 +3,10 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
+import ThemeLayout from '@/components/ui/ThemeLayout';
 import FadeIn from '@/components/ui/FadeIn';
 import { useReveal } from '@/hooks/useReveal';
 import { getImagePath } from '@/lib/utils';
-import Breadcrumb from '@/components/ui/Breadcrumb';
 
 /* ─── Professional SVG Badge Components ─── */
 function HaccpBadge() {
@@ -208,7 +206,7 @@ const QUALITY_TIMELINE = [
 ];
 
 /* ─── KPI CountUp component ─── */
-function KpiCard({ value, label }: { value: string; label: string }) {
+function KpiCard({ value, label, c }: { value: string; label: string; c: { text: string; text2: string; cardBg: string; cardBorder: string; cardHover: string } }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const numericMatch = value.match(/^([\d.]+)(.*)$/);
   const targetNum = numericMatch ? parseFloat(numericMatch[1]) : 0;
@@ -239,12 +237,12 @@ function KpiCard({ value, label }: { value: string; label: string }) {
   return (
     <div
       ref={ref}
-      className="group rounded-2xl border border-gray-300/50 bg-gray-50/60 p-5 sm:p-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-gold-500/30 hover:bg-gray-100/60"
+      className={`group rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 sm:p-8 text-center transition-all duration-500 ${c.cardHover}`}
     >
       <span className="block font-montserrat text-2xl font-bold text-ocean-500 sm:text-3xl md:text-4xl">
         {numericMatch ? display + suffix : value}
       </span>
-      <span className="mt-2 sm:mt-3 block text-xs sm:text-sm text-gray-700">{label}</span>
+      <span className={`mt-2 sm:mt-3 block text-xs sm:text-sm ${c.text2}`}>{label}</span>
     </div>
   );
 }
@@ -254,550 +252,549 @@ export default function CertificationPage() {
   const preparingCount = CERTIFICATIONS.filter((c) => c.status === 'preparing').length;
 
   return (
-    <main className="bg-white font-pretendard">
-      <Navbar />
-      <Breadcrumb />
-
-      {/* ── Page Hero ── */}
-      <section className="relative h-[40vh] min-h-[320px] flex items-end">
-        <Image
-          src={getImagePath('/images/facility/radiation-tester-2.jpg')}
-          alt="품질·인증"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/30" />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
-          <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-            Quality &amp; Certification
-          </span>
-          <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">품질·인증</h1>
-          <p className="mt-3 text-lg text-gray-600">글로벌 수준의 품질·위생 관리 체계</p>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════ */}
-      {/* 1. Certification Cards                */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
+    <ThemeLayout breadcrumb={[{ label: '품질·인증' }]}>
+      {(c) => (
+        <>
+          {/* ── Page Hero ── */}
+          <section className="relative h-[40vh] min-h-[320px] flex items-end">
+            <Image
+              src={getImagePath('/images/facility/radiation-tester-2.jpg')}
+              alt="품질·인증"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+            <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
+            <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                Certifications
+                Quality &amp; Certification
               </span>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-                인증 <span className="text-ocean-500">현황</span>
-              </h2>
-
-              {/* Certificate count summary */}
-              <div className="mt-6 flex items-center justify-center gap-4 sm:gap-6">
-                <div className="flex items-center gap-2 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-4 py-2">
-                  <div className="h-2 w-2 rounded-full bg-ocean-400" />
-                  <span className="text-sm font-medium text-ocean-400">취득 {acquiredCount}건</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-gold-500/30 bg-ocean-500/10 px-4 py-2">
-                  <div className="h-2 w-2 rounded-full bg-gold-400" />
-                  <span className="text-sm font-medium text-ocean-500">준비중 {preparingCount}건</span>
-                </div>
-              </div>
+              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>품질·인증</h1>
+              <p className={`mt-3 text-lg ${c.text2}`}>글로벌 수준의 품질·위생 관리 체계</p>
             </div>
-          </FadeIn>
+          </section>
 
-          {/* Acquired certifications */}
-          <FadeIn>
-            <div className="mb-4 flex items-center gap-3">
-              <div className="h-px flex-1 bg-ocean-500/20" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-ocean-400">취득 완료</span>
-              <div className="h-px flex-1 bg-ocean-500/20" />
-            </div>
-          </FadeIn>
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mb-10">
-            {CERTIFICATIONS.filter((c) => c.status === 'acquired').map((cert) => (
-              <FadeIn key={cert.name}>
-                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/40 bg-white/60 p-5 sm:p-7 transition-all duration-300 hover:border-ocean-500/40 hover:shadow-[0_0_30px_-5px_rgba(56,189,248,0.12)] md:p-8">
-                  {/* Acquired status indicator */}
-                  <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-2.5 py-1">
-                    <div className="h-1.5 w-1.5 rounded-full bg-ocean-400" />
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-ocean-400">취득</span>
-                  </div>
+          {/* ══════════════════════════════════════ */}
+          {/* 1. Certification Cards                */}
+          {/* ══════════════════════════════════════ */}
+          <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
+            <div className="mx-auto max-w-6xl px-6">
+              <FadeIn>
+                <div className="mb-14 text-center">
+                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                    Certifications
+                  </span>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                    인증 <span className="text-ocean-500">현황</span>
+                  </h2>
 
-                  <div className="mb-5 flex items-start gap-4 sm:gap-5">
-                    <div className="flex-shrink-0">
-                      {cert.logo ? (
-                        <div className="relative h-14 w-14 overflow-hidden rounded-xl bg-white p-1.5 shadow-lg shadow-black/20">
-                          <Image src={getImagePath(cert.logo)} alt={cert.name} fill className="object-contain" />
-                        </div>
-                      ) : cert.icon}
+                  {/* Certificate count summary */}
+                  <div className="mt-6 flex items-center justify-center gap-4 sm:gap-6">
+                    <div className="flex items-center gap-2 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-4 py-2">
+                      <div className="h-2 w-2 rounded-full bg-ocean-400" />
+                      <span className="text-sm font-medium text-ocean-400">취득 {acquiredCount}건</span>
                     </div>
-                    <div className="min-w-0 flex-1 pr-14 sm:pr-16">
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 truncate">{cert.name}</h3>
-                      {cert.year && (
-                        <p className="mt-1 font-montserrat text-sm font-medium text-ocean-400">{cert.year}</p>
+                    <div className="flex items-center gap-2 rounded-full border border-gold-500/30 bg-ocean-500/10 px-4 py-2">
+                      <div className="h-2 w-2 rounded-full bg-gold-400" />
+                      <span className="text-sm font-medium text-ocean-500">준비중 {preparingCount}건</span>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+
+              {/* Acquired certifications */}
+              <FadeIn>
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="h-px flex-1 bg-ocean-500/20" />
+                  <span className="text-xs font-semibold uppercase tracking-widest text-ocean-400">취득 완료</span>
+                  <div className="h-px flex-1 bg-ocean-500/20" />
+                </div>
+              </FadeIn>
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mb-10">
+                {CERTIFICATIONS.filter((cert) => cert.status === 'acquired').map((cert) => (
+                  <FadeIn key={cert.name}>
+                    <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 sm:p-7 transition-all duration-300 hover:border-ocean-500/40 hover:shadow-[0_0_30px_-5px_rgba(56,189,248,0.12)] md:p-8`}>
+                      {/* Acquired status indicator */}
+                      <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-2.5 py-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-ocean-400" />
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-ocean-400">취득</span>
+                      </div>
+
+                      <div className="mb-5 flex items-start gap-4 sm:gap-5">
+                        <div className="flex-shrink-0">
+                          {cert.logo ? (
+                            <div className="relative h-14 w-14 overflow-hidden rounded-xl bg-white p-1.5 shadow-lg shadow-black/20">
+                              <Image src={getImagePath(cert.logo)} alt={cert.name} fill className="object-contain" />
+                            </div>
+                          ) : cert.icon}
+                        </div>
+                        <div className="min-w-0 flex-1 pr-14 sm:pr-16">
+                          <h3 className={`text-lg sm:text-xl font-bold ${c.text} truncate`}>{cert.name}</h3>
+                          {cert.year && (
+                            <p className="mt-1 font-montserrat text-sm font-medium text-ocean-400">{cert.year}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <p className={`text-sm sm:text-base leading-relaxed ${c.text2}`}>{cert.desc}</p>
+
+                      {/* Extra logos row */}
+                      {cert.extraLogos && cert.extraLogos.length > 0 && (
+                        <div className="mt-4 flex items-center gap-3">
+                          {cert.extraLogos.map((logoPath) => (
+                            <div key={logoPath} className="relative h-10 w-20 overflow-hidden rounded-lg bg-white p-1 shadow-md shadow-black/10">
+                              <Image src={getImagePath(logoPath)} alt="관련 로고" fill className="object-contain" />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Optional cert photo */}
+                      {cert.photo && (
+                        <div className={`relative mt-5 aspect-[16/10] overflow-hidden rounded-xl border ${c.cardBorder}`}>
+                          <Image
+                            src={getImagePath(cert.photo)}
+                            alt={`${cert.name} 인증서`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
                       )}
                     </div>
-                  </div>
+                  </FadeIn>
+                ))}
+              </div>
 
-                  <p className="text-sm sm:text-base leading-relaxed text-gray-600">{cert.desc}</p>
-
-                  {/* Extra logos row */}
-                  {cert.extraLogos && cert.extraLogos.length > 0 && (
-                    <div className="mt-4 flex items-center gap-3">
-                      {cert.extraLogos.map((logoPath) => (
-                        <div key={logoPath} className="relative h-10 w-20 overflow-hidden rounded-lg bg-white p-1 shadow-md shadow-black/10">
-                          <Image src={getImagePath(logoPath)} alt="관련 로고" fill className="object-contain" />
+              {/* Preparing certifications */}
+              <FadeIn>
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="h-px flex-1 bg-ocean-500/20" />
+                  <span className="text-xs font-semibold uppercase tracking-widest text-ocean-500">준비중</span>
+                  <div className="h-px flex-1 bg-ocean-500/20" />
+                </div>
+              </FadeIn>
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+                {CERTIFICATIONS.filter((cert) => cert.status === 'preparing').map((cert) => (
+                  <FadeIn key={cert.name}>
+                    <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} border-dashed ${c.cardBg} p-5 sm:p-7 transition-all duration-300 hover:border-gold-500/30 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.08)] md:p-8`}>
+                      {/* Badge */}
+                      {cert.badge ? (
+                        <div className="absolute right-3 top-3 sm:right-4 sm:top-4 rounded-full border border-gold-500/40 bg-ocean-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-ocean-500">
+                          {cert.badge}
                         </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Optional cert photo */}
-                  {cert.photo && (
-                    <div className="relative mt-5 aspect-[16/10] overflow-hidden rounded-xl border border-gray-300/30">
-                      <Image
-                        src={getImagePath(cert.photo)}
-                        alt={`${cert.name} 인증서`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                  )}
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          {/* Preparing certifications */}
-          <FadeIn>
-            <div className="mb-4 flex items-center gap-3">
-              <div className="h-px flex-1 bg-ocean-500/20" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-ocean-500">준비중</span>
-              <div className="h-px flex-1 bg-ocean-500/20" />
-            </div>
-          </FadeIn>
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-            {CERTIFICATIONS.filter((c) => c.status === 'preparing').map((cert) => (
-              <FadeIn key={cert.name}>
-                <div className="group relative overflow-hidden rounded-2xl border border-gray-300/30 border-dashed bg-white/40 p-5 sm:p-7 transition-all duration-300 hover:border-gold-500/30 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.08)] md:p-8">
-                  {/* Badge */}
-                  {cert.badge ? (
-                    <div className="absolute right-3 top-3 sm:right-4 sm:top-4 rounded-full border border-gold-500/40 bg-ocean-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-ocean-500">
-                      {cert.badge}
-                    </div>
-                  ) : (
-                    <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 rounded-full border border-gold-500/30 bg-ocean-500/10 px-2.5 py-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-ocean-500">준비중</span>
-                    </div>
-                  )}
-
-                  <div className="mb-5 flex items-start gap-4 sm:gap-5 opacity-80">
-                    <div className="flex-shrink-0">
-                      {cert.icon}
-                    </div>
-                    <div className="min-w-0 flex-1 pr-14 sm:pr-16">
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-700 truncate">{cert.name}</h3>
-                      {cert.year && (
-                        <p className="mt-1 font-montserrat text-sm font-medium text-ocean-500">{cert.year}</p>
+                      ) : (
+                        <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 rounded-full border border-gold-500/30 bg-ocean-500/10 px-2.5 py-1">
+                          <div className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-ocean-500">준비중</span>
+                        </div>
                       )}
-                    </div>
-                  </div>
 
-                  <p className="text-sm sm:text-base leading-relaxed text-gray-900/40">{cert.desc}</p>
+                      <div className="mb-5 flex items-start gap-4 sm:gap-5 opacity-80">
+                        <div className="flex-shrink-0">
+                          {cert.icon}
+                        </div>
+                        <div className="min-w-0 flex-1 pr-14 sm:pr-16">
+                          <h3 className={`text-lg sm:text-xl font-bold ${c.text} truncate`}>{cert.name}</h3>
+                          {cert.year && (
+                            <p className="mt-1 font-montserrat text-sm font-medium text-ocean-500">{cert.year}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <p className={`text-sm sm:text-base leading-relaxed ${c.textMuted}`}>{cert.desc}</p>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════ */}
+          {/* 1-B. 인증서 실물 갤러리               */}
+          {/* ══════════════════════════════════════ */}
+          <section className="border-t border-gray-200 py-24 md:py-32">
+            <div className="mx-auto max-w-4xl px-6">
+              <FadeIn>
+                <div className="mb-14 text-center">
+                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                    Certificate Gallery
+                  </span>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                    인증서 <span className="text-ocean-500">갤러리</span>
+                  </h2>
                 </div>
               </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ══════════════════════════════════════ */}
-      {/* 1-B. 인증서 실물 갤러리               */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
-        <div className="mx-auto max-w-4xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                Certificate Gallery
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-                인증서 <span className="text-ocean-500">갤러리</span>
-              </h2>
-            </div>
-          </FadeIn>
-
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-            <FadeIn>
-              <div className="overflow-hidden rounded-2xl border border-gray-300/30 bg-white/[0.03] p-3 sm:p-4 shadow-lg backdrop-blur-sm">
-                <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
-                  <div className="relative aspect-[3/4]">
-                    <Image
-                      src={getImagePath('/images/certification/traceability-cert.jpg')}
-                      alt="수산물이력추적관리 등록증 제1164호"
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+                <FadeIn>
+                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-3 sm:p-4 shadow-lg`}>
+                    <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
+                      <div className="relative aspect-[3/4]">
+                        <Image
+                          src={getImagePath('/images/certification/traceability-cert.jpg')}
+                          alt="수산물이력추적관리 등록증 제1164호"
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                    </div>
+                    <p className={`mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium ${c.text2}`}>
+                      수산물이력추적관리 등록증 제1164호
+                    </p>
                   </div>
-                </div>
-                <p className="mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-700">
-                  수산물이력추적관리 등록증 제1164호
+                </FadeIn>
+
+                <FadeIn>
+                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-3 sm:p-4 shadow-lg`}>
+                    <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
+                      <div className="relative aspect-[3/4]">
+                        <Image
+                          src={getImagePath('/images/certification/traceability-cert-2.jpg')}
+                          alt="수산물이력추적관리 인증서"
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                    </div>
+                    <p className={`mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium ${c.text2}`}>
+                      수산물이력추적관리 인증서
+                    </p>
+                  </div>
+                </FadeIn>
+              </div>
+
+              <FadeIn className="mt-8">
+                <p className={`text-center text-xs sm:text-sm ${c.text2}`}>
+                  ※ HACCP, 수산물품질인증 등 추가 인증서는 사무실에서 확인 가능합니다
                 </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn>
-              <div className="overflow-hidden rounded-2xl border border-gray-300/30 bg-white/[0.03] p-3 sm:p-4 shadow-lg backdrop-blur-sm">
-                <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
-                  <div className="relative aspect-[3/4]">
-                    <Image
-                      src={getImagePath('/images/certification/traceability-cert-2.jpg')}
-                      alt="수산물이력추적관리 인증서"
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
-                </div>
-                <p className="mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-700">
-                  수산물이력추적관리 인증서
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-
-          <FadeIn className="mt-8">
-            <p className="text-center text-xs sm:text-sm text-gray-600">
-              ※ HACCP, 수산물품질인증 등 추가 인증서는 사무실에서 확인 가능합니다
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════ */}
-      {/* 1-C. 인증서 다운로드                    */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                Downloads
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-                인증서 <span className="text-ocean-500">다운로드</span>
-              </h2>
-              <p className="mt-3 text-sm text-gray-900/50">필요한 인증서를 다운로드하세요</p>
+              </FadeIn>
             </div>
-          </FadeIn>
+          </section>
 
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
-            {[
-              { name: 'HACCP', desc: '식품안전관리인증기준' },
-              { name: 'ASC', desc: '양식 수산물 지속가능성 인증' },
-              { name: 'MSC', desc: '자연산 수산물 지속가능 어업 인증' },
-              { name: '수산물이력추적', desc: '수산물이력추적관리 등록' },
-              { name: '수산물품질인증', desc: '국립수산물품질관리원 인증' },
-            ].map((cert) => (
-              <FadeIn key={cert.name}>
-                <div className="group overflow-hidden rounded-2xl border border-gray-300/40 bg-gradient-to-br from-navy-800/60 to-navy-900/60 p-5 sm:p-6 transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.1)]">
-                  <div className="mb-4 flex items-start gap-3 sm:gap-4">
-                    {/* Cert icon */}
-                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-ocean-500/15 to-ocean-600/10 p-2.5 sm:p-3 text-ocean-400 ring-1 ring-ocean-500/20">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 sm:h-7 sm:w-7">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                      </svg>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-base sm:text-lg font-bold text-gray-900 truncate">{cert.name}</h3>
-                      <p className="mt-1 text-xs sm:text-sm text-gray-600 line-clamp-2">{cert.desc}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-gray-300/30 pt-4">
-                    <span className="flex items-center gap-1.5 text-xs text-gray-900/40">
-                      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5 text-red-400/60">
-                        <path d="M4 1h8a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1zm2 3v2h4V4H6zm0 3v1h4V7H6z" />
-                      </svg>
-                      PDF
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => alert('준비 중입니다')}
-                      className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-gold-500/30 bg-ocean-500/5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-ocean-500 transition-all duration-300 hover:border-gold-500/60 hover:bg-ocean-500/10 hover:shadow-lg hover:shadow-gold-500/5"
-                    >
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                      </svg>
-                      다운로드
-                    </button>
-                  </div>
+          {/* ══════════════════════════════════════ */}
+          {/* 1-C. 인증서 다운로드                    */}
+          {/* ══════════════════════════════════════ */}
+          <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
+            <div className="mx-auto max-w-6xl px-6">
+              <FadeIn>
+                <div className="mb-14 text-center">
+                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                    Downloads
+                  </span>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                    인증서 <span className="text-ocean-500">다운로드</span>
+                  </h2>
+                  <p className={`mt-3 text-sm ${c.textMuted}`}>필요한 인증서를 다운로드하세요</p>
                 </div>
               </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ══════════════════════════════════════ */}
-      {/* 2. Quality Management System          */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                Quality Management
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-                품질 관리 <span className="text-ocean-500">체계</span>
-              </h2>
-            </div>
-          </FadeIn>
-
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
-            {/* Radiation testing */}
-            <FadeIn>
-              <div className="group overflow-hidden rounded-2xl border border-gray-300/40 bg-gray-50/50 transition-all duration-300 hover:border-ocean-500/30">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={getImagePath('/images/facility/radiation-tester.jpg')}
-                    alt="방사능 검사"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
-                </div>
-                <div className="p-4 sm:p-6">
-                  <h3 className="mb-2 text-lg font-bold text-gray-900">방사능 검사</h3>
-                  <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
-                    Gamma Radiation Spectrometer를 활용하여 전 원료의 방사능 오염 여부를 상시 검사합니다.
-                    입고 원료 전수 검사를 통해 안전한 원료만 생산 라인에 투입됩니다.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Foreign material management */}
-            <FadeIn>
-              <div className="group overflow-hidden rounded-2xl border border-gray-300/40 bg-gray-50/50 transition-all duration-300 hover:border-ocean-500/30">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={getImagePath('/images/facility/safety-sign.jpg')}
-                    alt="이물 관리"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
-                </div>
-                <div className="p-4 sm:p-6">
-                  <h3 className="mb-2 text-lg font-bold text-gray-900">이물 관리</h3>
-                  <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
-                    생산 현장 전 구역에 이물 주의 관리 체계를 운영합니다.
-                    금속검출기, 이물선별 공정 등 다단계 이물 방지 시스템을 갖추고 있습니다.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* AI X-ray link */}
-            <FadeIn>
-              <div className="group flex flex-col overflow-hidden rounded-2xl border border-gray-300/40 bg-gray-50/50 transition-all duration-300 hover:border-gold-500/30">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={getImagePath('/images/facility/ai-xray-process.png')}
-                    alt="AI 엑스레이"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
-                  <div className="absolute left-4 top-4 rounded-full bg-ocean-500/90 px-3 py-1 text-[10px] font-bold text-white">
-                    2026 도입
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col p-4 sm:p-6">
-                  <h3 className="mb-2 text-lg font-bold text-gray-900">AI 엑스레이 검출</h3>
-                  <p className="mb-4 flex-1 text-xs sm:text-sm leading-relaxed text-gray-600">
-                    인공지능 기반 X-ray 이물질 검출 시스템으로 미세 이물까지 자동 감별합니다.
-                    2026년 4월 현장 도입 예정입니다.
-                  </p>
-                  <Link
-                    href="/technology"
-                    className="group/link inline-flex items-center gap-2 text-sm font-medium text-ocean-400 transition-colors hover:text-ocean-300"
-                  >
-                    기술·설비 페이지에서 자세히 보기
-                    <span className="transition-transform duration-300 group-hover/link:translate-x-1">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════ */}
-      {/* 2-B. 현장 품질 관리 사진              */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                On-Site Quality Control
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-                현장 품질 <span className="text-ocean-500">관리</span>
-              </h2>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6">
-            {[
-              { image: '/images/facility/raw-material-label.jpg', caption: '원료 식별표시' },
-              { image: '/images/facility/raw-material-label-2.jpg', caption: '원료 관리' },
-              { image: '/images/facility/cold-storage-boxes.jpg', caption: '냉동 보관' },
-              { image: '/images/facility/cold-storage-detail.jpg', caption: '선내급속냉동' },
-            ].map((photo) => (
-              <FadeIn key={photo.caption}>
-                <div className="group overflow-hidden rounded-xl border border-gray-300/40 bg-white/60 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={getImagePath(photo.image)}
-                      alt={photo.caption}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/70 to-transparent" />
-                  </div>
-                  <div className="p-2 sm:p-4">
-                    <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">{photo.caption}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════ */}
-      {/* 2-C. Quality KPI Metrics              */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                Quality KPI
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-                품질 <span className="text-ocean-500">지표</span>
-              </h2>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
-            {[
-              { value: '0.02%', label: '불량률' },
-              { value: '99.7%', label: '납기 준수율' },
-              { value: '95%+', label: '재계약률' },
-              { value: '15톤', label: '일일 처리량' },
-            ].map((kpi) => (
-              <FadeIn key={kpi.label}>
-                <KpiCard value={kpi.value} label={kpi.label} />
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════ */}
-      {/* 3. Quality History Timeline           */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-gray-50/40 py-24 md:py-32">
-        <div className="mx-auto max-w-3xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                Quality History
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-                품질 <span className="text-ocean-500">연혁</span>
-              </h2>
-            </div>
-          </FadeIn>
-
-          {/* Vertical timeline */}
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-ocean-500/40 via-ocean-500/20 to-transparent md:left-1/2 md:-translate-x-px" />
-
-            <div className="space-y-12">
-              {QUALITY_TIMELINE.map((item, i) => (
-                <FadeIn key={item.year}>
-                  <div className={`relative flex items-start gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                    {/* Dot */}
-                    <div className="absolute left-6 top-1 z-10 md:left-1/2 md:-translate-x-1/2">
-                      <div
-                        className={`h-3 w-3 rounded-full border-2 ${
-                          item.upcoming
-                            ? 'border-gold-500 bg-ocean-500/20 shadow-lg shadow-gold-500/30'
-                            : 'border-ocean-400 bg-ocean-400/20'
-                        }`}
-                      />
-                    </div>
-
-                    {/* Content */}
-                    <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
-                      <span
-                        className={`font-montserrat text-2xl font-bold ${
-                          item.upcoming ? 'text-ocean-500' : 'text-ocean-400'
-                        }`}
-                      >
-                        {item.year}
-                      </span>
-                      <h3 className="mt-1 text-lg font-semibold text-gray-900">{item.title}</h3>
-                      {item.desc && <p className="mt-1 text-sm text-gray-600">{item.desc}</p>}
-                      {item.upcoming && (
-                        <span className="mt-2 inline-block rounded-full border border-gold-500/30 bg-ocean-500/10 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-ocean-500">
-                          Upcoming
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
+                {[
+                  { name: 'HACCP', desc: '식품안전관리인증기준' },
+                  { name: 'ASC', desc: '양식 수산물 지속가능성 인증' },
+                  { name: 'MSC', desc: '자연산 수산물 지속가능 어업 인증' },
+                  { name: '수산물이력추적', desc: '수산물이력추적관리 등록' },
+                  { name: '수산물품질인증', desc: '국립수산물품질관리원 인증' },
+                ].map((cert) => (
+                  <FadeIn key={cert.name}>
+                    <div className={`group overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 sm:p-6 transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.1)]`}>
+                      <div className="mb-4 flex items-start gap-3 sm:gap-4">
+                        {/* Cert icon */}
+                        <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-ocean-500/15 to-ocean-600/10 p-2.5 sm:p-3 text-ocean-400 ring-1 ring-ocean-500/20">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 sm:h-7 sm:w-7">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                          </svg>
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h3 className={`text-base sm:text-lg font-bold ${c.text} truncate`}>{cert.name}</h3>
+                          <p className={`mt-1 text-xs sm:text-sm ${c.text2} line-clamp-2`}>{cert.desc}</p>
+                        </div>
+                      </div>
+                      <div className={`flex items-center justify-between border-t ${c.cardBorder} pt-4`}>
+                        <span className={`flex items-center gap-1.5 text-xs ${c.textMuted}`}>
+                          <svg viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5 text-red-400/60">
+                            <path d="M4 1h8a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1zm2 3v2h4V4H6zm0 3v1h4V7H6z" />
+                          </svg>
+                          PDF
                         </span>
-                      )}
+                        <button
+                          type="button"
+                          onClick={() => alert('준비 중입니다')}
+                          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-gold-500/30 bg-ocean-500/5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-ocean-500 transition-all duration-300 hover:border-gold-500/60 hover:bg-ocean-500/10 hover:shadow-lg hover:shadow-gold-500/5"
+                        >
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg>
+                          다운로드
+                        </button>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════ */}
+          {/* 2. Quality Management System          */}
+          {/* ══════════════════════════════════════ */}
+          <section className="border-t border-gray-200 py-24 md:py-32">
+            <div className="mx-auto max-w-7xl px-6">
+              <FadeIn>
+                <div className="mb-14 text-center">
+                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                    Quality Management
+                  </span>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                    품질 관리 <span className="text-ocean-500">체계</span>
+                  </h2>
+                </div>
+              </FadeIn>
+
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
+                {/* Radiation testing */}
+                <FadeIn>
+                  <div className={`group overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-ocean-500/30`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={getImagePath('/images/facility/radiation-tester.jpg')}
+                        alt="방사능 검사"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-80`} />
+                    </div>
+                    <div className="p-4 sm:p-6">
+                      <h3 className={`mb-2 text-lg font-bold ${c.text}`}>방사능 검사</h3>
+                      <p className={`text-xs sm:text-sm leading-relaxed ${c.text2}`}>
+                        Gamma Radiation Spectrometer를 활용하여 전 원료의 방사능 오염 여부를 상시 검사합니다.
+                        입고 원료 전수 검사를 통해 안전한 원료만 생산 라인에 투입됩니다.
+                      </p>
                     </div>
                   </div>
                 </FadeIn>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ══════════════════════════════════════ */}
-      {/* CTA — 기술·설비 링크                  */}
-      {/* ══════════════════════════════════════ */}
-      <section className="border-t border-gray-200 bg-white py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <FadeIn>
-            <div className="text-center">
-              <Link
-                href="/technology"
-                className="inline-flex items-center gap-2 rounded-full bg-ocean-400 px-8 py-3.5 text-base font-bold text-gray-900 shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-500 hover:shadow-ocean-500/30"
-              >
-                기술·설비도 확인해보세요
-                <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+                {/* Foreign material management */}
+                <FadeIn>
+                  <div className={`group overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-ocean-500/30`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={getImagePath('/images/facility/safety-sign.jpg')}
+                        alt="이물 관리"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-80`} />
+                    </div>
+                    <div className="p-4 sm:p-6">
+                      <h3 className={`mb-2 text-lg font-bold ${c.text}`}>이물 관리</h3>
+                      <p className={`text-xs sm:text-sm leading-relaxed ${c.text2}`}>
+                        생산 현장 전 구역에 이물 주의 관리 체계를 운영합니다.
+                        금속검출기, 이물선별 공정 등 다단계 이물 방지 시스템을 갖추고 있습니다.
+                      </p>
+                    </div>
+                  </div>
+                </FadeIn>
 
-      <Footer />
-    </main>
+                {/* AI X-ray link */}
+                <FadeIn>
+                  <div className={`group flex flex-col overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-gold-500/30`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={getImagePath('/images/facility/ai-xray-process.png')}
+                        alt="AI 엑스레이"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-80`} />
+                      <div className="absolute left-4 top-4 rounded-full bg-ocean-500/90 px-3 py-1 text-[10px] font-bold text-white">
+                        2026 도입
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col p-4 sm:p-6">
+                      <h3 className={`mb-2 text-lg font-bold ${c.text}`}>AI 엑스레이 검출</h3>
+                      <p className={`mb-4 flex-1 text-xs sm:text-sm leading-relaxed ${c.text2}`}>
+                        인공지능 기반 X-ray 이물질 검출 시스템으로 미세 이물까지 자동 감별합니다.
+                        2026년 4월 현장 도입 예정입니다.
+                      </p>
+                      <Link
+                        href="/technology"
+                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-ocean-400 transition-colors hover:text-ocean-300"
+                      >
+                        기술·설비 페이지에서 자세히 보기
+                        <span className="transition-transform duration-300 group-hover/link:translate-x-1">&rarr;</span>
+                      </Link>
+                    </div>
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════ */}
+          {/* 2-B. 현장 품질 관리 사진              */}
+          {/* ══════════════════════════════════════ */}
+          <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
+            <div className="mx-auto max-w-7xl px-6">
+              <FadeIn>
+                <div className="mb-14 text-center">
+                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                    On-Site Quality Control
+                  </span>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                    현장 품질 <span className="text-ocean-500">관리</span>
+                  </h2>
+                </div>
+              </FadeIn>
+
+              <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6">
+                {[
+                  { image: '/images/facility/raw-material-label.jpg', caption: '원료 식별표시' },
+                  { image: '/images/facility/raw-material-label-2.jpg', caption: '원료 관리' },
+                  { image: '/images/facility/cold-storage-boxes.jpg', caption: '냉동 보관' },
+                  { image: '/images/facility/cold-storage-detail.jpg', caption: '선내급속냉동' },
+                ].map((photo) => (
+                  <FadeIn key={photo.caption}>
+                    <div className={`group overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5`}>
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={getImagePath(photo.image)}
+                          alt={photo.caption}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-70`} />
+                      </div>
+                      <div className="p-2 sm:p-4">
+                        <p className={`text-xs sm:text-sm font-medium ${c.text2} truncate`}>{photo.caption}</p>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════ */}
+          {/* 2-C. Quality KPI Metrics              */}
+          {/* ══════════════════════════════════════ */}
+          <section className="border-t border-gray-200 py-24 md:py-32">
+            <div className="mx-auto max-w-6xl px-6">
+              <FadeIn>
+                <div className="mb-14 text-center">
+                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                    Quality KPI
+                  </span>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                    품질 <span className="text-ocean-500">지표</span>
+                  </h2>
+                </div>
+              </FadeIn>
+
+              <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+                {[
+                  { value: '0.02%', label: '불량률' },
+                  { value: '99.7%', label: '납기 준수율' },
+                  { value: '95%+', label: '재계약률' },
+                  { value: '15톤', label: '일일 처리량' },
+                ].map((kpi) => (
+                  <FadeIn key={kpi.label}>
+                    <KpiCard value={kpi.value} label={kpi.label} c={c} />
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════ */}
+          {/* 3. Quality History Timeline           */}
+          {/* ══════════════════════════════════════ */}
+          <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
+            <div className="mx-auto max-w-3xl px-6">
+              <FadeIn>
+                <div className="mb-14 text-center">
+                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                    Quality History
+                  </span>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                    품질 <span className="text-ocean-500">연혁</span>
+                  </h2>
+                </div>
+              </FadeIn>
+
+              {/* Vertical timeline */}
+              <div className="relative">
+                {/* Vertical line */}
+                <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-ocean-500/40 via-ocean-500/20 to-transparent md:left-1/2 md:-translate-x-px" />
+
+                <div className="space-y-12">
+                  {QUALITY_TIMELINE.map((item, i) => (
+                    <FadeIn key={item.year}>
+                      <div className={`relative flex items-start gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                        {/* Dot */}
+                        <div className="absolute left-6 top-1 z-10 md:left-1/2 md:-translate-x-1/2">
+                          <div
+                            className={`h-3 w-3 rounded-full border-2 ${
+                              item.upcoming
+                                ? 'border-gold-500 bg-ocean-500/20 shadow-lg shadow-gold-500/30'
+                                : 'border-ocean-400 bg-ocean-400/20'
+                            }`}
+                          />
+                        </div>
+
+                        {/* Content */}
+                        <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
+                          <span
+                            className={`font-montserrat text-2xl font-bold ${
+                              item.upcoming ? 'text-ocean-500' : 'text-ocean-400'
+                            }`}
+                          >
+                            {item.year}
+                          </span>
+                          <h3 className={`mt-1 text-lg font-semibold ${c.text}`}>{item.title}</h3>
+                          {item.desc && <p className={`mt-1 text-sm ${c.text2}`}>{item.desc}</p>}
+                          {item.upcoming && (
+                            <span className="mt-2 inline-block rounded-full border border-gold-500/30 bg-ocean-500/10 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-ocean-500">
+                              Upcoming
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════ */}
+          {/* CTA — 기술·설비 링크                  */}
+          {/* ══════════════════════════════════════ */}
+          <section className="border-t border-gray-200 py-24 md:py-32">
+            <div className="mx-auto max-w-7xl px-6">
+              <FadeIn>
+                <div className="text-center">
+                  <Link
+                    href="/technology"
+                    className={`inline-flex items-center gap-2 rounded-full bg-ocean-400 px-8 py-3.5 text-base font-bold ${c.text} shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-500 hover:shadow-ocean-500/30`}
+                  >
+                    기술·설비도 확인해보세요
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                  </Link>
+                </div>
+              </FadeIn>
+            </div>
+          </section>
+        </>
+      )}
+    </ThemeLayout>
   );
 }
