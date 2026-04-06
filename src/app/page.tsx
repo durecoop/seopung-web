@@ -1,12 +1,23 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/ui/Navbar';
-import HeroSection from '@/components/sections/HeroSection';
 import Footer from '@/components/ui/Footer';
 import FadeIn from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
+import { getSkinConfig, type HeroSkinId } from '@/lib/skin-store';
+
+const HERO_COMPONENTS: Record<HeroSkinId, ReturnType<typeof dynamic>> = {
+  0: dynamic(() => import('@/components/sections/HeroSection'), { ssr: false }),
+  1: dynamic(() => import('@/components/sections/HeroCssWave'), { ssr: false }),
+  2: dynamic(() => import('@/components/sections/HeroParticleOcean'), { ssr: false }),
+  3: dynamic(() => import('@/components/sections/HeroVideo'), { ssr: false }),
+  4: dynamic(() => import('@/components/sections/HeroCinematic'), { ssr: false }),
+  5: dynamic(() => import('@/components/sections/HeroTextClip'), { ssr: false }),
+};
 
 /* ─── Certification badges data ─── */
 const CERT_BADGES = [
@@ -30,10 +41,22 @@ const PRODUCTS = [
 /*  LANDING PAGE — PROTOTYPE v2           */
 /* ═══════════════════════════════════════ */
 export default function Home() {
+  const [skinId, setSkinId] = useState<HeroSkinId>(0);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    getSkinConfig().then((c) => {
+      setSkinId(c.heroSkinId);
+      setLoaded(true);
+    }).catch(() => setLoaded(true));
+  }, []);
+
+  const HeroComponent = HERO_COMPONENTS[skinId];
+
   return (
     <main id="main-content" className="bg-white font-pretendard">
       <Navbar />
-      <HeroSection />
+      {loaded ? <HeroComponent /> : <div className="h-screen bg-[#020a18]" />}
 
       {/* ══════════════════════════════════════════════════════════ */}
       {/* ── 1. CERTIFICATIONS — 가장 눈에 띄는 섹션 (인증 강조) ── */}
