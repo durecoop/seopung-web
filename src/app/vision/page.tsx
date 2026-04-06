@@ -8,6 +8,118 @@ import Reveal from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
 
 /* ──────────────────────────────────────────────
+   Skin-specific copy
+   ────────────────────────────────────────────── */
+interface VisionCopy {
+  heroSub: string;
+  prioritiesLabel: string;
+  prioritiesHeading: string;
+  salesLabel: string;
+  salesHeading: string;
+  growthLabel: string;
+  growthHeading: string;
+  visionLabel: string;
+  visionHeading: string;
+  visionStatement: string;
+  ctaTitle: string;
+  ctaDesc: string;
+  ctaButton: string;
+}
+
+const VISION_COPY: Record<number, VisionCopy> = {
+  0: {
+    heroSub: 'No.1 수산 가공 파트너를 향한 로드맵',
+    prioritiesLabel: 'Key Initiatives',
+    prioritiesHeading: '5대 중점 추진 과제',
+    salesLabel: 'Financial Overview',
+    salesHeading: '매출 현황',
+    growthLabel: 'Strategic Growth',
+    growthHeading: '전략적 성장 동력',
+    visionLabel: 'Our Vision',
+    visionHeading: '비전 선언',
+    visionStatement: '신뢰를 기반으로 함께 성장하며, 안전한 수산물 공급으로 지속가능한 미래를 만들어갑니다.',
+    ctaTitle: '서풍과 함께 성장하세요',
+    ctaDesc: 'OEM 납품, 신제품 개발, 브랜드 협업 등 다양한 형태의 파트너십을 환영합니다',
+    ctaButton: '문의하기',
+  },
+  1: {
+    heroSub: '거침없이 전진하는 수산업의 새 지평',
+    prioritiesLabel: 'Battle Plan',
+    prioritiesHeading: '5대 돌파 전략',
+    salesLabel: 'Power Metrics',
+    salesHeading: '전투력 현황',
+    growthLabel: 'Charge Forward',
+    growthHeading: '공격적 성장 동력',
+    visionLabel: 'Our Mission',
+    visionHeading: '도전의 선언',
+    visionStatement: '남들이 망설일 때 우리는 전진한다. 거침없는 도전으로 수산업의 한계를 돌파하고, 새로운 역사를 써 나갑니다.',
+    ctaTitle: '다음 전투에 합류하세요',
+    ctaDesc: '새로운 도전이 기다리고 있습니다. 서풍과 함께 출항하세요',
+    ctaButton: '출항하기',
+  },
+  2: {
+    heroSub: '데이터가 설계하는 수산 가공의 미래',
+    prioritiesLabel: 'Tech Roadmap',
+    prioritiesHeading: '5대 기술 혁신 과제',
+    salesLabel: 'Analytics',
+    salesHeading: '성과 데이터',
+    growthLabel: 'Innovation Engine',
+    growthHeading: '기술 기반 성장 동력',
+    visionLabel: 'Innovation Vision',
+    visionHeading: '혁신 선언',
+    visionStatement: 'AI, 데이터, 자동화 기술로 수산 가공의 패러다임을 전환합니다. 기술 혁신이 곧 품질이고, 데이터가 곧 신뢰입니다.',
+    ctaTitle: '다음 혁신을 함께 설계합시다',
+    ctaDesc: 'OEM 납품, R&D 협력, 기술 파트너십. 데이터가 답을 알고 있습니다',
+    ctaButton: '프로젝트 시작하기',
+  },
+  3: {
+    heroSub: '바다에서 식탁까지, 서풍이 그리는 꿈의 여정',
+    prioritiesLabel: 'The Path Ahead',
+    prioritiesHeading: '5가지 약속',
+    salesLabel: 'The Journey So Far',
+    salesHeading: '걸어온 발자취',
+    growthLabel: 'The Next Chapter',
+    growthHeading: '다음 장(章)의 이야기',
+    visionLabel: 'Our Dream',
+    visionHeading: '꿈의 선언',
+    visionStatement: '여수의 새벽에서 시작된 이야기는 아직 끝나지 않았습니다. 바다의 가치를 식탁에 전하는 여정, 서풍의 꿈은 계속됩니다.',
+    ctaTitle: '이야기를 함께 써 나가세요',
+    ctaDesc: '서풍과 함께라면, 당신의 다음 제품은 하나의 작품이 됩니다',
+    ctaButton: '이야기 시작하기',
+  },
+  4: {
+    heroSub: '대한민국 No.1 프리미엄 수산 OEM의 비전',
+    prioritiesLabel: 'Excellence Plan',
+    prioritiesHeading: '5대 최고 전략',
+    salesLabel: 'Performance',
+    salesHeading: '리더의 성과',
+    growthLabel: 'Premium Growth',
+    growthHeading: '프리미엄 성장 전략',
+    visionLabel: 'Leadership Vision',
+    visionHeading: '리더의 선언',
+    visionStatement: '1등의 파트너가 1등을 만듭니다. 타협 없는 품질과 프리미엄 경쟁력으로 대한민국 수산 OEM의 최고 자리를 지킵니다.',
+    ctaTitle: '최고와 함께하세요',
+    ctaDesc: 'OEM 납품, 전략적 파트너십. 서풍이 최적의 해답을 제시합니다',
+    ctaButton: '상담 신청',
+  },
+  5: {
+    heroSub: '아무도 가지 않은 길 위의 새로운 이정표',
+    prioritiesLabel: 'Pioneer Plan',
+    prioritiesHeading: '5대 개척 과제',
+    salesLabel: 'Trailblazer Metrics',
+    salesHeading: '개척의 기록',
+    growthLabel: 'New Frontiers',
+    growthHeading: '새로운 길의 성장 동력',
+    visionLabel: 'Pioneer Vision',
+    visionHeading: '개척의 선언',
+    visionStatement: '길이 없으면 만들면 됩니다. 한계를 정하지 않고, 세상에 없던 것을 최초로 만들어가는 것이 서풍의 비전입니다.',
+    ctaTitle: '새로운 길을 함께 열어가세요',
+    ctaDesc: '서풍과 함께라면 세상에 없던 것을 만들 수 있습니다',
+    ctaButton: '개척 시작하기',
+  },
+};
+
+/* ──────────────────────────────────────────────
    Data
    ────────────────────────────────────────────── */
 const PRIORITIES = [
@@ -139,7 +251,9 @@ export default function VisionPage() {
 
   return (
     <ThemeLayout breadcrumb={[{ label: '비전' }]}>
-      {(c) => (
+      {(c) => {
+        const copy = VISION_COPY[c.theme.id] ?? VISION_COPY[0];
+        return (
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
@@ -157,7 +271,7 @@ export default function VisionPage() {
               </p>
               <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>비전</h1>
               <p className={`mt-4 text-lg ${c.text2}`}>
-                No.1 수산 가공 파트너를 향한 로드맵
+                {copy.heroSub}
               </p>
             </div>
             <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.gradientFade}`} />
@@ -170,9 +284,9 @@ export default function VisionPage() {
               <Reveal>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Key Initiatives
+                    {copy.prioritiesLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>5대 중점 추진 과제</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.prioritiesHeading}</h2>
                 </div>
               </Reveal>
 
@@ -215,9 +329,9 @@ export default function VisionPage() {
               <Reveal>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Financial Overview
+                    {copy.salesLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>매출 현황</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.salesHeading}</h2>
                 </div>
               </Reveal>
 
@@ -310,9 +424,9 @@ export default function VisionPage() {
               <Reveal>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Strategic Growth
+                    {copy.growthLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>전략적 성장 동력</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.growthHeading}</h2>
                 </div>
               </Reveal>
 
@@ -427,9 +541,9 @@ export default function VisionPage() {
               <Reveal>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Our Vision
+                    {copy.visionLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>비전 선언</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.visionHeading}</h2>
                 </div>
               </Reveal>
 
@@ -440,7 +554,7 @@ export default function VisionPage() {
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                     <p className={`text-xl leading-relaxed ${c.text2} md:text-2xl md:leading-relaxed`}>
-                      기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.
+                      {copy.visionStatement}
                     </p>
                   </div>
                 </div>
@@ -471,16 +585,16 @@ export default function VisionPage() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-60" />
             <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
               <Reveal>
-                <h2 className={`mb-6 text-3xl font-bold ${c.text} md:text-4xl`}>서풍과 함께 성장하세요</h2>
+                <h2 className={`mb-6 text-3xl font-bold ${c.text} md:text-4xl`}>{copy.ctaTitle}</h2>
                 <p className={`mb-10 text-lg leading-relaxed ${c.text2}`}>
-                  OEM 납품, 신제품 개발, 브랜드 협업 등 다양한 형태의 파트너십을 환영합니다
+                  {copy.ctaDesc}
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
                   >
-                    문의하기 &rarr;
+                    {copy.ctaButton} &rarr;
                   </Link>
                   <Link
                     href="/process"
@@ -493,7 +607,8 @@ export default function VisionPage() {
             </div>
           </section>
         </>
-      )}
+        );
+      }}
     </ThemeLayout>
   );
 }

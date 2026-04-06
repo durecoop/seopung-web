@@ -8,6 +8,110 @@ import { getImagePath } from '@/lib/utils';
 import { saveInquiry, generateId, type Inquiry } from '@/lib/admin-store';
 
 /* ──────────────────────────────────────────────
+   Skin-specific copy (keyed by theme id 0-5)
+   ────────────────────────────────────────────── */
+interface ContactCopy {
+  heroTitle: string;
+  heroSub: string;
+  formSectionLabel: string;
+  formSectionHeading: string;
+  companyInfoHeading: string;
+  companyInfoLabel: string;
+  submitBtn: string;
+  promiseHeading: string;
+  promiseDesc1: string;
+  promiseDesc2: string;
+  promiseDesc3: string;
+}
+
+const CONTACT_COPY: Record<number, ContactCopy> = {
+  // 0: warm trust
+  0: {
+    heroTitle: '문의하기',
+    heroSub: 'OEM 납품 및 협력 문의',
+    formSectionLabel: 'Get in Touch',
+    formSectionHeading: '문의 및 회사 정보',
+    companyInfoLabel: 'Company Information',
+    companyInfoHeading: '회사 정보',
+    submitBtn: '문의하기',
+    promiseHeading: '우리의 약속',
+    promiseDesc1: '문의 접수 후 24시간 이내 회신',
+    promiseDesc2: '귀사의 요구사항에 최적화된 OEM 솔루션 제안',
+    promiseDesc3: '제품 검토를 위한 샘플 무상 제공',
+  },
+  // 1: bold fearless
+  1: {
+    heroTitle: '함께 도전할 준비가 되셨나요',
+    heroSub: '거침없이 시작합시다',
+    formSectionLabel: 'Join the Challenge',
+    formSectionHeading: '도전의 시작, 여기서부터',
+    companyInfoLabel: 'Our Base Camp',
+    companyInfoHeading: '서풍 기지',
+    submitBtn: '출항하기',
+    promiseHeading: '서풍의 전투력',
+    promiseDesc1: '문의 접수 즉시, 24시간 내 회신으로 돌파',
+    promiseDesc2: '귀사의 목표에 맞춘 공격적 OEM 솔루션',
+    promiseDesc3: '결과로 보여드립니다 — 샘플 무상 제공',
+  },
+  // 2: tech innovation
+  2: {
+    heroTitle: '최적의 솔루션을 설계합니다',
+    heroSub: '데이터 기반 OEM 파트너십',
+    formSectionLabel: 'Start a Project',
+    formSectionHeading: '프로젝트 문의 & 회사 데이터',
+    companyInfoLabel: 'System Info',
+    companyInfoHeading: '기업 데이터',
+    submitBtn: '프로젝트 시작하기',
+    promiseHeading: '시스템 보장',
+    promiseDesc1: '문의 접수 후 24시간 이내 자동 회신 시스템',
+    promiseDesc2: '데이터 분석 기반 맞춤형 OEM 솔루션 설계',
+    promiseDesc3: '스마트 공정으로 제작된 샘플 무상 제공',
+  },
+  // 3: cinematic emotional
+  3: {
+    heroTitle: '다음 이야기를 함께 쓰겠습니다',
+    heroSub: '당신의 브랜드에 바다의 이야기를 담다',
+    formSectionLabel: 'Write Together',
+    formSectionHeading: '이야기의 시작',
+    companyInfoLabel: 'Our Story',
+    companyInfoHeading: '서풍이라는 이름',
+    submitBtn: '이야기 시작하기',
+    promiseHeading: '서풍의 약속',
+    promiseDesc1: '문의를 보내주신 순간부터, 정성스러운 회신을 준비합니다',
+    promiseDesc2: '귀사만의 이야기에 맞는 제품을 함께 설계합니다',
+    promiseDesc3: '맛으로 전하는 진심 — 샘플을 무상으로 보내드립니다',
+  },
+  // 4: premium confident
+  4: {
+    heroTitle: '최고의 파트너를 만나실 시간입니다',
+    heroSub: '프리미엄 OEM 상담',
+    formSectionLabel: 'Premium Inquiry',
+    formSectionHeading: '상담 신청 & 기업 정보',
+    companyInfoLabel: 'Corporate Profile',
+    companyInfoHeading: '기업 프로필',
+    submitBtn: '상담 신청',
+    promiseHeading: '서풍의 자신감',
+    promiseDesc1: '문의 접수 24시간 이내 전담 매니저 배정',
+    promiseDesc2: '업계 최고 수준의 맞춤형 OEM 솔루션',
+    promiseDesc3: '프리미엄 샘플 무상 제공 — 결과로 증명합니다',
+  },
+  // 5: pioneer bold
+  5: {
+    heroTitle: '새로운 길을 열어봅시다',
+    heroSub: '세상에 없던 제품을 함께 만듭니다',
+    formSectionLabel: 'Open New Paths',
+    formSectionHeading: '개척의 첫걸음',
+    companyInfoLabel: 'Pioneer HQ',
+    companyInfoHeading: '개척 본부',
+    submitBtn: '개척 시작하기',
+    promiseHeading: '개척자의 약속',
+    promiseDesc1: '24시간 내 회신 — 빠른 시작이 새로운 길을 연다',
+    promiseDesc2: '기존에 없던 OEM 솔루션을 함께 설계합니다',
+    promiseDesc3: '한 번도 본 적 없는 샘플을 무상으로 보내드립니다',
+  },
+};
+
+/* ──────────────────────────────────────────────
    Data
    ────────────────────────────────────────────── */
 const COMPANY_INFO = [
@@ -136,7 +240,9 @@ export default function ContactPage() {
 
   return (
     <ThemeLayout breadcrumb={[{ label: '문의' }]}>
-      {(c) => (
+      {(c) => {
+        const copy = CONTACT_COPY[c.theme.id] ?? CONTACT_COPY[0];
+        return (
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
@@ -152,9 +258,9 @@ export default function ContactPage() {
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
                 Contact
               </p>
-              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>문의하기</h1>
+              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>{copy.heroTitle}</h1>
               <p className={`mt-4 text-lg ${c.text2}`}>
-                OEM 납품 및 협력 문의
+                {copy.heroSub}
               </p>
             </div>
             <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.gradientFade}`} />
@@ -274,9 +380,9 @@ export default function ContactPage() {
               <Reveal>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Get in Touch
+                    {copy.formSectionLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>문의 및 회사 정보</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.formSectionHeading}</h2>
                 </div>
               </Reveal>
 
@@ -376,7 +482,7 @@ export default function ContactPage() {
                       type="submit"
                       className="group relative w-full overflow-hidden rounded-xl bg-ocean-500 px-8 py-4 min-h-[44px] font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
                     >
-                      <span className="relative z-10">문의하기</span>
+                      <span className="relative z-10">{copy.submitBtn}</span>
                       <div className="absolute inset-0 -translate-x-full bg-gold-400 transition-transform duration-300 group-hover:translate-x-0" />
                     </button>
                   </form>
@@ -387,9 +493,9 @@ export default function ContactPage() {
                   <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg}`}>
                     <div className={`border-b ${c.cardBorder} ${c.sectionAlt} px-8 py-6`}>
                       <p className="font-montserrat text-sm font-semibold uppercase tracking-wider text-ocean-500">
-                        Company Information
+                        {copy.companyInfoLabel}
                       </p>
-                      <h3 className={`mt-2 text-xl font-bold ${c.text}`}>회사 정보</h3>
+                      <h3 className={`mt-2 text-xl font-bold ${c.text}`}>{copy.companyInfoHeading}</h3>
                     </div>
                     <div className={`divide-y divide-navy-700/30`}>
                       {COMPANY_INFO.map((info) => (
@@ -524,7 +630,7 @@ export default function ContactPage() {
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                     Our Promise
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>우리의 약속</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.promiseHeading}</h2>
                 </div>
               </Reveal>
 
@@ -532,7 +638,7 @@ export default function ContactPage() {
                 {[
                   {
                     title: '신속한 응답',
-                    desc: '문의 접수 후 24시간 이내 회신',
+                    desc: copy.promiseDesc1,
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -541,7 +647,7 @@ export default function ContactPage() {
                   },
                   {
                     title: '맞춤 제안',
-                    desc: '귀사의 요구사항에 최적화된 OEM 솔루션 제안',
+                    desc: copy.promiseDesc2,
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
@@ -551,7 +657,7 @@ export default function ContactPage() {
                   },
                   {
                     title: '샘플 제공',
-                    desc: '제품 검토를 위한 샘플 무상 제공',
+                    desc: copy.promiseDesc3,
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
@@ -573,7 +679,8 @@ export default function ContactPage() {
             </div>
           </section>
         </>
-      )}
+        );
+      }}
     </ThemeLayout>
   );
 }

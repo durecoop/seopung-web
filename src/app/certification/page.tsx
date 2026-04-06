@@ -247,13 +247,167 @@ function KpiCard({ value, label, c }: { value: string; label: string; c: { text:
   );
 }
 
+/* ──────────────────────────────────────────────
+   Skin-specific copy
+   ────────────────────────────────────────────── */
+const COPY: Record<number, {
+  heroLabel: string;
+  heroTitle: string;
+  heroSub: string;
+  certSectionLabel: string;
+  certSectionTitle: string;
+  certSectionAccent: string;
+  qualityTitle: string;
+  qualityAccent: string;
+  galleryTitle: string;
+  galleryAccent: string;
+  downloadTitle: string;
+  downloadAccent: string;
+  kpiTitle: string;
+  kpiAccent: string;
+  timelineTitle: string;
+  timelineAccent: string;
+  onSiteTitle: string;
+  onSiteAccent: string;
+  ctaText: string;
+}> = {
+  0: {
+    heroLabel: 'Quality & Certification',
+    heroTitle: '품질·인증',
+    heroSub: '글로벌 수준의 품질·위생 관리 체계',
+    certSectionLabel: 'Certifications',
+    certSectionTitle: '인증',
+    certSectionAccent: '현황',
+    qualityTitle: '품질 관리',
+    qualityAccent: '체계',
+    galleryTitle: '인증서',
+    galleryAccent: '갤러리',
+    downloadTitle: '인증서',
+    downloadAccent: '다운로드',
+    kpiTitle: '품질',
+    kpiAccent: '지표',
+    timelineTitle: '품질',
+    timelineAccent: '연혁',
+    onSiteTitle: '현장 품질',
+    onSiteAccent: '관리',
+    ctaText: '기술·설비도 확인해보세요',
+  },
+  1: {
+    heroLabel: 'Proven Standards',
+    heroTitle: '흔들리지 않는 품질',
+    heroSub: '폭풍 속에서도 타협하지 않는 품질 시스템',
+    certSectionLabel: 'Battle-Tested',
+    certSectionTitle: '검증된 인증',
+    certSectionAccent: '현황',
+    qualityTitle: '철벽',
+    qualityAccent: '품질 관리',
+    galleryTitle: '인증서',
+    galleryAccent: '실물 확인',
+    downloadTitle: '인증서',
+    downloadAccent: '즉시 다운로드',
+    kpiTitle: '현장에서 증명된',
+    kpiAccent: '수치',
+    timelineTitle: '도전의',
+    timelineAccent: '궤적',
+    onSiteTitle: '최전선',
+    onSiteAccent: '품질 관리',
+    ctaText: '설비 전력도 확인하라',
+  },
+  2: {
+    heroLabel: 'Verified System',
+    heroTitle: '데이터가 보증하는 품질',
+    heroSub: 'AI 검수 · 이력추적 · 국제 표준 시스템',
+    certSectionLabel: 'Verified Data',
+    certSectionTitle: '시스템 인증',
+    certSectionAccent: '현황',
+    qualityTitle: '스마트 품질',
+    qualityAccent: '관리 체계',
+    galleryTitle: '인증서',
+    galleryAccent: '아카이브',
+    downloadTitle: '인증서',
+    downloadAccent: '데이터 다운로드',
+    kpiTitle: '데이터로 본',
+    kpiAccent: '품질 지표',
+    timelineTitle: '기술 발전',
+    timelineAccent: '타임라인',
+    onSiteTitle: '실시간 모니터링',
+    onSiteAccent: '현장 품질',
+    ctaText: '스마트 설비 시스템 보기',
+  },
+  3: {
+    heroLabel: 'Trust & Legacy',
+    heroTitle: '30년이 증명하는 인증',
+    heroSub: '바다 위의 약속, 식탁 위의 신뢰',
+    certSectionLabel: 'Legacy',
+    certSectionTitle: '쌓아온 인증의',
+    certSectionAccent: '무게',
+    qualityTitle: '한 치의 타협 없는',
+    qualityAccent: '품질 철학',
+    galleryTitle: '인증서',
+    galleryAccent: '이야기',
+    downloadTitle: '인증서',
+    downloadAccent: '소장하기',
+    kpiTitle: '세월이 빚어낸',
+    kpiAccent: '품질 지표',
+    timelineTitle: '30년의',
+    timelineAccent: '여정',
+    onSiteTitle: '매일 아침 반복되는',
+    onSiteAccent: '품질의 의식',
+    ctaText: '장인의 설비를 만나보세요',
+  },
+  4: {
+    heroLabel: 'Excellence',
+    heroTitle: '타협 없는 글로벌 인증',
+    heroSub: '세계가 인정한 품질 기준, 대한민국 대표 수산 OEM',
+    certSectionLabel: 'Excellence',
+    certSectionTitle: '프리미엄 인증',
+    certSectionAccent: '현황',
+    qualityTitle: '최고 수준의',
+    qualityAccent: '품질 관리',
+    galleryTitle: '인증서',
+    galleryAccent: '포트폴리오',
+    downloadTitle: '인증서',
+    downloadAccent: '확보하기',
+    kpiTitle: '숫자가 말하는',
+    kpiAccent: '품질력',
+    timelineTitle: '리더의',
+    timelineAccent: '품질 연혁',
+    onSiteTitle: '흐트러짐 없는',
+    onSiteAccent: '현장 관리',
+    ctaText: '프리미엄 설비를 확인하세요',
+  },
+  5: {
+    heroLabel: 'Pioneer Standard',
+    heroTitle: '개척자의 품질 기준',
+    heroSub: '남들이 따라올 수 없는 기준을 스스로 세우다',
+    certSectionLabel: 'First Mover',
+    certSectionTitle: '새로운 기준,',
+    certSectionAccent: '인증 현황',
+    qualityTitle: '기존의 틀을 깬',
+    qualityAccent: '품질 관리',
+    galleryTitle: '인증서',
+    galleryAccent: '기록',
+    downloadTitle: '인증서',
+    downloadAccent: '다운로드',
+    kpiTitle: '한계를 넘어선',
+    kpiAccent: '품질 수치',
+    timelineTitle: '개척의',
+    timelineAccent: '발자취',
+    onSiteTitle: '누구보다 먼저 세운',
+    onSiteAccent: '현장 기준',
+    ctaText: '개척자의 설비를 확인하다',
+  },
+};
+
 export default function CertificationPage() {
   const acquiredCount = CERTIFICATIONS.filter((c) => c.status === 'acquired').length;
   const preparingCount = CERTIFICATIONS.filter((c) => c.status === 'preparing').length;
 
   return (
     <ThemeLayout breadcrumb={[{ label: '품질·인증' }]}>
-      {(c) => (
+      {(c) => {
+        const copy = COPY[c.theme.id] ?? COPY[0];
+        return (
         <>
           {/* ── Page Hero ── */}
           <section className="relative h-[40vh] min-h-[320px] flex items-end">
@@ -268,10 +422,10 @@ export default function CertificationPage() {
             <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
             <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                Quality &amp; Certification
+                {copy.heroLabel}
               </span>
-              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>품질·인증</h1>
-              <p className={`mt-3 text-lg ${c.text2}`}>글로벌 수준의 품질·위생 관리 체계</p>
+              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>{copy.heroTitle}</h1>
+              <p className={`mt-3 text-lg ${c.text2}`}>{copy.heroSub}</p>
             </div>
           </section>
 
@@ -283,10 +437,10 @@ export default function CertificationPage() {
               <FadeIn>
                 <div className="mb-14 text-center">
                   <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                    Certifications
+                    {copy.certSectionLabel}
                   </span>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    인증 <span className="text-ocean-500">현황</span>
+                    {copy.certSectionTitle} <span className="text-ocean-500">{copy.certSectionAccent}</span>
                   </h2>
 
                   {/* Certificate count summary */}
@@ -422,7 +576,7 @@ export default function CertificationPage() {
                     Certificate Gallery
                   </span>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    인증서 <span className="text-ocean-500">갤러리</span>
+                    {copy.galleryTitle} <span className="text-ocean-500">{copy.galleryAccent}</span>
                   </h2>
                 </div>
               </FadeIn>
@@ -486,7 +640,7 @@ export default function CertificationPage() {
                     Downloads
                   </span>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    인증서 <span className="text-ocean-500">다운로드</span>
+                    {copy.downloadTitle} <span className="text-ocean-500">{copy.downloadAccent}</span>
                   </h2>
                   <p className={`mt-3 text-sm ${c.textMuted}`}>필요한 인증서를 다운로드하세요</p>
                 </div>
@@ -550,7 +704,7 @@ export default function CertificationPage() {
                     Quality Management
                   </span>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    품질 관리 <span className="text-ocean-500">체계</span>
+                    {copy.qualityTitle} <span className="text-ocean-500">{copy.qualityAccent}</span>
                   </h2>
                 </div>
               </FadeIn>
@@ -649,7 +803,7 @@ export default function CertificationPage() {
                     On-Site Quality Control
                   </span>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    현장 품질 <span className="text-ocean-500">관리</span>
+                    {copy.onSiteTitle} <span className="text-ocean-500">{copy.onSiteAccent}</span>
                   </h2>
                 </div>
               </FadeIn>
@@ -694,7 +848,7 @@ export default function CertificationPage() {
                     Quality KPI
                   </span>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    품질 <span className="text-ocean-500">지표</span>
+                    {copy.kpiTitle} <span className="text-ocean-500">{copy.kpiAccent}</span>
                   </h2>
                 </div>
               </FadeIn>
@@ -725,7 +879,7 @@ export default function CertificationPage() {
                     Quality History
                   </span>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    품질 <span className="text-ocean-500">연혁</span>
+                    {copy.timelineTitle} <span className="text-ocean-500">{copy.timelineAccent}</span>
                   </h2>
                 </div>
               </FadeIn>
@@ -786,7 +940,7 @@ export default function CertificationPage() {
                     href="/technology"
                     className={`inline-flex items-center gap-2 rounded-full bg-ocean-400 px-8 py-3.5 text-base font-bold ${c.text} shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-500 hover:shadow-ocean-500/30`}
                   >
-                    기술·설비도 확인해보세요
+                    {copy.ctaText}
                     <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                   </Link>
                 </div>
@@ -794,7 +948,8 @@ export default function CertificationPage() {
             </div>
           </section>
         </>
-      )}
+        );
+      }}
     </ThemeLayout>
   );
 }

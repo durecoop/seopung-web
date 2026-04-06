@@ -59,12 +59,159 @@ const OEM_STATS = [
 ];
 
 /* ──────────────────────────────────────────────
+   Skin-specific copy
+   ────────────────────────────────────────────── */
+const COPY: Record<number, {
+  heroLabel: string;
+  heroTitle: string;
+  heroSub: string;
+  introLabel: string;
+  introText: string;
+  introBold: string;
+  introAfter: string;
+  categoryLabel: string;
+  categoryTitle: string;
+  fishLabel: string;
+  fishTitle: string;
+  fishDesc: string;
+  oemLabel: string;
+  oemTitle: string;
+  oemDesc: string;
+  ctaLabel: string;
+  ctaText: string;
+  ctaButton: string;
+}> = {
+  0: {
+    heroLabel: 'Product Lineup',
+    heroTitle: '제품 소개',
+    heroSub: '9개 어종 · 134+ 품목 · OEM 맞춤 생산',
+    introLabel: 'OEM Capabilities',
+    introText: '영어조합법인 서풍은 대형 유통사와 외식 프랜차이즈를 위한 ',
+    introBold: 'B2B OEM 수산 가공 전문 기업',
+    introAfter: '입니다. 원료 수매부터 완제품 출하까지, 귀사의 브랜드에 맞춘 맞춤 생산을 제공합니다.',
+    categoryLabel: 'Categories',
+    categoryTitle: '제품 카테고리',
+    fishLabel: 'Fish Species',
+    fishTitle: '어종 취급 현황',
+    fishDesc: '9개 어종을 전문적으로 가공하며, 각 어종별 최적의 가공 방식을 적용합니다.',
+    oemLabel: 'OEM Track Record',
+    oemTitle: 'OEM 역량',
+    oemDesc: '10년간 쌓아온 OEM 제조 역량으로 귀사의 브랜드 가치를 높여드립니다.',
+    ctaLabel: 'Partnership',
+    ctaText: '귀사의 브랜드에 맞는 수산 가공 제품,\n서풍이 함께 만들어 드립니다',
+    ctaButton: 'OEM 문의하기',
+  },
+  1: {
+    heroLabel: 'Battle-Tested Products',
+    heroTitle: '현장에서 증명된 제품',
+    heroSub: '거친 시장에서 살아남은 134+ 품목',
+    introLabel: 'Firepower',
+    introText: '서풍은 거친 유통 현장에서 검증된 ',
+    introBold: 'B2B OEM 수산 가공 전투부대',
+    introAfter: '입니다. 원료 수매부터 완제품 출하까지, 시장의 요구에 맞서 결과로 응답합니다.',
+    categoryLabel: 'Arsenal',
+    categoryTitle: '주력 제품군',
+    fishLabel: 'Target Species',
+    fishTitle: '주력 어종 라인업',
+    fishDesc: '9개 핵심 어종, 각각에 최적화된 가공 전략으로 승부합니다.',
+    oemLabel: 'Track Record',
+    oemTitle: '실전 OEM 역량',
+    oemDesc: '10년간 현장에서 증명한 제조 역량. 숫자가 전력을 말해줍니다.',
+    ctaLabel: 'Join the Fight',
+    ctaText: '다음 히트 상품,\n서풍이 만들어드립니다',
+    ctaButton: '도전에 합류하기',
+  },
+  2: {
+    heroLabel: 'Smart Products',
+    heroTitle: '스마트 공정의 결과물',
+    heroSub: 'AI 품질 검수 · 실시간 추적 · 데이터 기반 생산',
+    introLabel: 'System Output',
+    introText: '서풍은 데이터와 기술로 구동되는 ',
+    introBold: '스마트 수산 OEM 플랫폼',
+    introAfter: '입니다. AI 검수부터 실시간 이력추적까지, 기술이 품질을 보장합니다.',
+    categoryLabel: 'Product Database',
+    categoryTitle: '제품 카테고리',
+    fishLabel: 'Species Matrix',
+    fishTitle: '어종 데이터베이스',
+    fishDesc: '9개 어종의 최적 가공 파라미터를 데이터로 관리합니다.',
+    oemLabel: 'Analytics',
+    oemTitle: 'OEM 퍼포먼스',
+    oemDesc: '데이터로 검증된 OEM 제조 역량 지표입니다.',
+    ctaLabel: 'Integration',
+    ctaText: '귀사의 공급망에 최적화된 솔루션,\n데이터가 답을 알고 있습니다',
+    ctaButton: '솔루션 문의',
+  },
+  3: {
+    heroLabel: 'Crafted with Soul',
+    heroTitle: '장인의 손끝에서 탄생한 제품',
+    heroSub: '바다의 가치를 식탁으로 전하는 134+ 작품',
+    introLabel: 'The Craft',
+    introText: '서풍은 바다의 이야기를 제품에 담는 ',
+    introBold: '수산 장인 집단',
+    introAfter: '입니다. 새벽 위판장의 신선함부터 완제품의 정성까지, 하나하나 영혼을 담습니다.',
+    categoryLabel: 'Collection',
+    categoryTitle: '제품 컬렉션',
+    fishLabel: 'The Cast',
+    fishTitle: '바다가 선사한 어종',
+    fishDesc: '9가지 바다의 주인공, 각각의 이야기를 최적의 가공으로 완성합니다.',
+    oemLabel: 'The Numbers',
+    oemTitle: '작품의 기록',
+    oemDesc: '30년간 쌓아온 장인의 기록이 신뢰를 만듭니다.',
+    ctaLabel: 'Your Story',
+    ctaText: '당신의 브랜드에\n바다의 이야기를 담아드립니다',
+    ctaButton: '스토리 함께 만들기',
+  },
+  4: {
+    heroLabel: 'Premium Lineup',
+    heroTitle: '프리미엄 제품 라인업',
+    heroSub: '대한민국 1등 수산 OEM의 134+ 제품군',
+    introLabel: 'Market Leader',
+    introText: '서풍은 업계 최고의 파트너들이 선택한 ',
+    introBold: '프리미엄 수산 OEM 리더',
+    introAfter: '입니다. 어떤 요구에도 응답하는 제품력, 결과로 증명합니다.',
+    categoryLabel: 'Portfolio',
+    categoryTitle: '프리미엄 제품군',
+    fishLabel: 'Core Species',
+    fishTitle: '핵심 어종 포트폴리오',
+    fishDesc: '9개 핵심 어종에 대한 완벽한 가공 체계를 갖추고 있습니다.',
+    oemLabel: 'Performance',
+    oemTitle: 'OEM 실적',
+    oemDesc: '업계 최고 수준의 OEM 제조 역량을 숫자로 확인하세요.',
+    ctaLabel: 'Excellence',
+    ctaText: '1등의 파트너가 만드는\n1등의 제품',
+    ctaButton: '파트너십 문의',
+  },
+  5: {
+    heroLabel: 'Groundbreaking',
+    heroTitle: '경계를 허문 제품',
+    heroSub: '기존의 틀을 깨는 134+ 혁신 제품',
+    introLabel: 'New Territory',
+    introText: '서풍은 수산 가공의 새로운 카테고리를 창조하는 ',
+    introBold: '개척형 OEM 기업',
+    introAfter: '입니다. 불가능을 가능으로 바꾸는 제품 철학으로, 세상에 없던 것을 만듭니다.',
+    categoryLabel: 'Innovation',
+    categoryTitle: '혁신 제품군',
+    fishLabel: 'Frontier Species',
+    fishTitle: '도전하는 어종 라인업',
+    fishDesc: '9개 어종의 한계를 넘어, 새로운 가공 방식을 개척합니다.',
+    oemLabel: 'Pioneer Record',
+    oemTitle: '개척의 기록',
+    oemDesc: '한계를 정하지 않는 OEM 역량. 서풍이 먼저 길을 엽니다.',
+    ctaLabel: 'Explore',
+    ctaText: '세상에 없던 제품,\n서풍과 함께 만들어냅시다',
+    ctaButton: '새로운 길 열기',
+  },
+};
+
+/* ──────────────────────────────────────────────
    Page component
    ────────────────────────────────────────────── */
 export default function ProductsPage() {
   return (
     <ThemeLayout breadcrumb={[{ label: '제품' }]}>
-      {(c) => (
+      {(c) => {
+        const copy = COPY[c.theme.id] ?? COPY[0];
+        return (
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
@@ -78,13 +225,13 @@ export default function ProductsPage() {
             <div className={`absolute inset-0 ${c.overlay}`} />
             <div className="relative z-10 text-center">
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
-                Product Lineup
+                {copy.heroLabel}
               </p>
               <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>
-                제품 라인업
+                {copy.heroTitle}
               </h1>
               <p className={`mt-4 text-lg ${c.text2}`}>
-                9개 어종 &middot; 134+ 품목 &middot; OEM 맞춤 생산
+                {copy.heroSub}
               </p>
             </div>
             <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.gradientFade}`} />
@@ -96,12 +243,11 @@ export default function ProductsPage() {
               <FadeIn>
                 <div className="text-center">
                   <p className="mb-6 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    OEM Capabilities
+                    {copy.introLabel}
                   </p>
                   <p className={`text-xl leading-relaxed ${c.text2} md:text-2xl md:leading-relaxed`}>
-                    영어조합법인 서풍은 대형 유통사와 외식 프랜차이즈를 위한{' '}
-                    <span className={`${c.text} font-semibold`}>B2B OEM 수산 가공 전문 기업</span>입니다.
-                    원료 수매부터 완제품 출하까지, 귀사의 브랜드에 맞춘 맞춤 생산을 제공합니다.
+                    {copy.introText}
+                    <span className={`${c.text} font-semibold`}>{copy.introBold}</span>{copy.introAfter}
                   </p>
                 </div>
               </FadeIn>
@@ -115,9 +261,9 @@ export default function ProductsPage() {
               <FadeIn>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Categories
+                    {copy.categoryLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>제품 카테고리</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.categoryTitle}</h2>
                 </div>
               </FadeIn>
 
@@ -170,11 +316,11 @@ export default function ProductsPage() {
               <FadeIn>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Fish Species
+                    {copy.fishLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>어종 취급 현황</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.fishTitle}</h2>
                   <p className={`mx-auto mt-4 max-w-xl text-base ${c.text2}`}>
-                    9개 어종을 전문적으로 가공하며, 각 어종별 최적의 가공 방식을 적용합니다.
+                    {copy.fishDesc}
                   </p>
                 </div>
               </FadeIn>
@@ -212,11 +358,11 @@ export default function ProductsPage() {
               <FadeIn>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    OEM Track Record
+                    {copy.oemLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>OEM 역량</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.oemTitle}</h2>
                   <p className={`mx-auto mt-4 max-w-xl text-base ${c.text2}`}>
-                    10년간 쌓아온 OEM 제조 역량으로 귀사의 브랜드 가치를 높여드립니다.
+                    {copy.oemDesc}
                   </p>
                 </div>
               </FadeIn>
@@ -249,24 +395,25 @@ export default function ProductsPage() {
             <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
               <FadeIn>
                 <p className="mb-4 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                  Partnership
+                  {copy.ctaLabel}
                 </p>
                 <p className={`mb-10 text-2xl font-medium leading-relaxed ${c.text2} md:text-3xl md:leading-relaxed`}>
-                  귀사의 브랜드에 맞는 수산 가공 제품,
-                  <br />
-                  서풍이 함께 만들어 드립니다
+                  {copy.ctaText.split('\n').map((line, i) => (
+                    <span key={i}>{i > 0 && <br />}{line}</span>
+                  ))}
                 </p>
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
                 >
-                  OEM 문의하기 &rarr;
+                  {copy.ctaButton} &rarr;
                 </Link>
               </FadeIn>
             </div>
           </section>
         </>
-      )}
+        );
+      }}
     </ThemeLayout>
   );
 }

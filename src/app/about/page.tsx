@@ -9,6 +9,111 @@ import { getImagePath } from '@/lib/utils';
 import { historyCrud, getCompanyInfo, type HistoryItem as HistType } from '@/lib/admin-store';
 
 /* ──────────────────────────────────────────────
+   Skin-specific copy
+   ────────────────────────────────────────────── */
+interface AboutCopy {
+  heroSub: string;
+  ceoLabel: string;
+  ceoHeading: string;
+  ceoQuote: string;
+  philosophyKeywords: [string, string, string];
+  numbersHeading: string;
+  mgmtPhiloLabel: string;
+  mgmtPhiloHeading: string;
+  partnerHeading: string;
+  partnerSub: string;
+  teamHeading: string;
+  teamDesc: string;
+}
+
+const ABOUT_COPY: Record<number, AboutCopy> = {
+  0: {
+    heroSub: '신뢰와 안전을 함께 만들어가는 수산 파트너',
+    ceoLabel: 'CEO MESSAGE',
+    ceoHeading: '대표 인사말',
+    ceoQuote: '매출 성장을 현장과 품질에 환원하는 선순환 재투자 경영을 실천합니다. 신뢰를 기반으로 함께 성장하며, 안전한 먹거리로 소비자의 식탁을 지킵니다.',
+    philosophyKeywords: ['신뢰', '함께', '안전'],
+    numbersHeading: '숫자로 보는 서풍',
+    mgmtPhiloLabel: 'Management Philosophy',
+    mgmtPhiloHeading: '경영 철학',
+    partnerHeading: '신뢰의 파트너',
+    partnerSub: '10년 이상 함께한 파트너사',
+    teamHeading: '서풍을 만드는 사람들',
+    teamDesc: '영어조합법인 서풍은 원료 수매부터 생산, 품질관리까지 각 분야의 전문가들이 함께합니다.',
+  },
+  1: {
+    heroSub: '거친 바다를 거침없이 전진하는 수산 기업',
+    ceoLabel: 'CAPTAIN\'S LOG',
+    ceoHeading: '도전의 선언',
+    ceoQuote: '멈추면 뒤처진다. 서풍은 위기를 기회로 바꾸고, 거침없는 도전으로 수산업의 새 역사를 쓰고 있습니다. 전진만이 우리의 방향입니다.',
+    philosophyKeywords: ['도전', '전진', '거침없는'],
+    numbersHeading: '전투력으로 보는 서풍',
+    mgmtPhiloLabel: 'Fighting Spirit',
+    mgmtPhiloHeading: '돌파의 경영 철학',
+    partnerHeading: '전우와 같은 파트너',
+    partnerSub: '험난한 시장을 함께 돌파한 동지들',
+    teamHeading: '서풍의 전사들',
+    teamDesc: '새벽부터 밤까지, 거친 현장에서 도전을 멈추지 않는 서풍의 전사들입니다.',
+  },
+  2: {
+    heroSub: '데이터와 기술이 이끄는 수산 가공의 미래',
+    ceoLabel: 'INNOVATION NOTE',
+    ceoHeading: '기술 리더의 메시지',
+    ceoQuote: '데이터 기반 의사결정과 AI 품질관리로 수산 가공의 패러다임을 전환합니다. 기술 혁신이 곧 서풍의 경쟁력입니다.',
+    philosophyKeywords: ['기술', '혁신', '데이터'],
+    numbersHeading: '데이터로 보는 서풍',
+    mgmtPhiloLabel: 'Innovation System',
+    mgmtPhiloHeading: '기술 중심 경영 철학',
+    partnerHeading: '연결된 파트너 네트워크',
+    partnerSub: '데이터로 연결된 핵심 유통 파트너',
+    teamHeading: '서풍의 이노베이터',
+    teamDesc: 'AI, 데이터 분석, 스마트 생산라인을 운영하는 기술 전문가들이 함께합니다.',
+  },
+  3: {
+    heroSub: '바다의 이야기를 담아 식탁까지 전하는 여정',
+    ceoLabel: 'THE STORY',
+    ceoHeading: '서풍의 이야기',
+    ceoQuote: '1995년 여수의 새벽, 한 사람의 꿈에서 시작된 항해. 정직한 바다, 정직한 먹거리라는 단순한 원칙이 30년의 이야기가 되었습니다.',
+    philosophyKeywords: ['이야기', '여정', '꿈'],
+    numbersHeading: '서풍이 걸어온 길',
+    mgmtPhiloLabel: 'Our Philosophy',
+    mgmtPhiloHeading: '이야기가 된 철학',
+    partnerHeading: '함께 걸어온 길',
+    partnerSub: '같은 바다를 바라보며 함께 성장한 파트너들',
+    teamHeading: '이야기를 만드는 사람들',
+    teamDesc: '매일 새벽, 바다와 마주하며 서풍의 이야기를 써 내려가는 사람들입니다.',
+  },
+  4: {
+    heroSub: '대한민국 No.1 프리미엄 수산 OEM 리더',
+    ceoLabel: 'LEADERSHIP',
+    ceoHeading: '리더의 확신',
+    ceoQuote: '연 매출 400억, 134개 품목. 숫자가 증명합니다. 1등의 파트너가 1등을 만듭니다. 서풍은 최고의 결과로 응답합니다.',
+    philosophyKeywords: ['최고', '리더', '프리미엄'],
+    numbersHeading: '최고의 성과',
+    mgmtPhiloLabel: 'Excellence',
+    mgmtPhiloHeading: '프리미엄 경영 철학',
+    partnerHeading: '대한민국 TOP 파트너',
+    partnerSub: '업계 최고의 기업들이 서풍을 선택합니다',
+    teamHeading: '최고를 만드는 팀',
+    teamDesc: '각 분야 최고의 전문가들이 프리미엄 품질을 완성합니다.',
+  },
+  5: {
+    heroSub: '아무도 가지 않은 길을 개척하는 수산 선구자',
+    ceoLabel: 'PIONEER\'S NOTE',
+    ceoHeading: '개척자의 선언',
+    ceoQuote: '길이 없으면 만들면 됩니다. 한계를 정하는 것은 시장이 아니라 우리 자신입니다. 서풍은 새로운 길의 첫 번째 발자국입니다.',
+    philosophyKeywords: ['개척', '최초', '새로운 길'],
+    numbersHeading: '개척의 발자취',
+    mgmtPhiloLabel: 'Pioneer Spirit',
+    mgmtPhiloHeading: '개척의 경영 철학',
+    partnerHeading: '함께 길을 여는 동반자',
+    partnerSub: '새로운 시장을 함께 개척해온 선구자들',
+    teamHeading: '새로운 길을 여는 사람들',
+    teamDesc: '기존의 틀을 깨고, 수산업의 미래를 개척하는 선구자들이 함께합니다.',
+  },
+};
+
+/* ──────────────────────────────────────────────
    Data
    ────────────────────────────────────────────── */
 const PILLARS = [
@@ -134,7 +239,9 @@ export default function AboutPage() {
 
   return (
     <ThemeLayout breadcrumb={[{label:'회사소개'}]}>
-      {(c) => (
+      {(c) => {
+        const copy = ABOUT_COPY[c.theme.id] ?? ABOUT_COPY[0];
+        return (
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[35vh] min-h-[320px] items-center justify-center overflow-hidden md:h-[40vh]">
@@ -152,7 +259,7 @@ export default function AboutPage() {
               </p>
               <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>회사소개</h1>
               <p className={`mt-4 text-lg ${c.text2}`}>
-                지속가능한 수산업을 위한 성장 파트너
+                {copy.heroSub}
               </p>
             </div>
             {/* Bottom gradient */}
@@ -181,13 +288,13 @@ export default function AboutPage() {
                     {/* Content – right */}
                     <div className="p-8 md:p-12 lg:p-16">
                       <p className="mb-2 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-400">
-                        CEO MESSAGE
+                        {copy.ceoLabel}
                       </p>
-                      <h2 className={`mb-8 text-3xl font-bold ${c.text} md:text-4xl`}>대표 인사말</h2>
+                      <h2 className={`mb-8 text-3xl font-bold ${c.text} md:text-4xl`}>{copy.ceoHeading}</h2>
 
                       <div className="relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:rounded-full before:bg-ocean-500">
                         <p className={`text-lg leading-relaxed ${c.text2} md:text-xl md:leading-relaxed`}>
-                          &ldquo;매출 성장을 현장과 품질에 환원하는 선순환 재투자 경영을 실천합니다. 기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출하고, 품질 경쟁력을 바탕으로 지속가능한 성장과 발전을 이루어 나갑니다.&rdquo;
+                          &ldquo;{copy.ceoQuote}&rdquo;
                         </p>
                       </div>
 
@@ -200,11 +307,11 @@ export default function AboutPage() {
 
                       {/* Philosophy keywords */}
                       <div className={`mt-8 flex items-center gap-4 text-sm font-medium tracking-wide ${c.textMuted}`}>
-                        <span>신뢰</span>
+                        <span>{copy.philosophyKeywords[0]}</span>
                         <span className="text-ocean-500/60">|</span>
-                        <span>혁신</span>
+                        <span>{copy.philosophyKeywords[1]}</span>
                         <span className="text-ocean-500/60">|</span>
-                        <span>신뢰 협력</span>
+                        <span>{copy.philosophyKeywords[2]}</span>
                       </div>
                     </div>
                   </div>
@@ -222,7 +329,7 @@ export default function AboutPage() {
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                     By The Numbers
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>숫자로 보는 서풍</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.numbersHeading}</h2>
                 </div>
               </Reveal>
 
@@ -251,9 +358,9 @@ export default function AboutPage() {
               <Reveal>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Management Philosophy
+                    {copy.mgmtPhiloLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>경영 철학</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.mgmtPhiloHeading}</h2>
                 </div>
               </Reveal>
 
@@ -381,8 +488,8 @@ export default function AboutPage() {
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                     Trusted Partners
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>신뢰의 파트너</h2>
-                  <p className={`mt-4 text-base ${c.text2}`}>10년 이상 함께한 파트너사</p>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.partnerHeading}</h2>
+                  <p className={`mt-4 text-base ${c.text2}`}>{copy.partnerSub}</p>
                 </div>
               </Reveal>
 
@@ -411,7 +518,7 @@ export default function AboutPage() {
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                     Our Team
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>서풍을 만드는 사람들</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.teamHeading}</h2>
                 </div>
               </Reveal>
 
@@ -444,7 +551,7 @@ export default function AboutPage() {
 
               <Reveal delay={300}>
                 <p className={`mx-auto mt-12 max-w-2xl text-center text-base leading-relaxed ${c.text2}`}>
-                  영어조합법인 서풍은 원료 수매부터 생산, 품질관리까지 각 분야의 전문가들이 함께합니다.
+                  {copy.teamDesc}
                 </p>
               </Reveal>
             </div>
@@ -509,7 +616,8 @@ export default function AboutPage() {
             </div>
           </section>
         </>
-      )}
+        );
+      }}
     </ThemeLayout>
   );
 }

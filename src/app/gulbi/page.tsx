@@ -7,6 +7,127 @@ import Reveal from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
 
 /* ──────────────────────────────────────────────
+   Skin-specific copy (keyed by theme id 0-5)
+   ────────────────────────────────────────────── */
+interface GulbiCopy {
+  heroTitle: string;
+  heroSub: string;
+  introText: string;
+  whyLabel: string;
+  whyHeading: string;
+  featureCard1Desc: string;
+  featureCard2Desc: string;
+  featureCard3Desc: string;
+  closingQuote: string;
+  closingCta: string;
+}
+
+const GULBI_COPY: Record<number, GulbiCopy> = {
+  // 0: warm trust
+  0: {
+    heroTitle: '영광 굴비',
+    heroSub: '전통의 맛, 장인의 손길',
+    introText:
+      '영어조합법인 서풍의 영광 굴비는 여수 위판장에서 직접 수매한 생물 참조기를 사용하여 전통 방식으로 제조합니다.',
+    whyLabel: 'Why Seopung Gulbi',
+    whyHeading: '왜 서풍의 영광 굴비인가',
+    featureCard1Desc:
+      '새벽 위판장에서 직접 수매한 참조기를 당일 영광으로 운송합니다. 냉동이 아닌 생물 원료만 사용합니다.',
+    featureCard2Desc:
+      '기계 염장이 아닌 전통 방식 그대로 아가미에 소금을 채워 간을 맞춥니다. 깊은 풍미의 비결입니다.',
+    featureCard3Desc:
+      '1분에 한 묶음, 숙련된 장인이 한 마리 한 마리 정성껏 엮습니다. 기계로는 대체할 수 없는 정성입니다.',
+    closingQuote: '바다의 정성을 식탁까지, 영광 굴비의 진심을 전합니다',
+    closingCta: '주문 문의하기',
+  },
+  // 1: bold fearless
+  1: {
+    heroTitle: '거친 바다가 만든, 영광 굴비',
+    heroSub: '타협 없는 원료, 타협 없는 맛',
+    introText:
+      '서풍의 영광 굴비는 남해의 거친 바다에서 건져 올린 최상급 참조기로 만듭니다. 냉동이 아닌 생물, 기계가 아닌 수작업 — 강한 원칙이 강한 맛을 만듭니다.',
+    whyLabel: 'Proven by the Sea',
+    whyHeading: '현장에서 증명된 영광 굴비',
+    featureCard1Desc:
+      '새벽 4시, 위판장에서 직접 선별한 참조기를 당일 영광으로 직송합니다. 속도가 곧 신선함이다.',
+    featureCard2Desc:
+      '흉내 낼 수 없는 전통 아가미 섭간. 깊고 강렬한 풍미를 만드는 서풍만의 방식입니다.',
+    featureCard3Desc:
+      '1분에 한 묶음, 숙련된 장인의 손끝에서 완성됩니다. 기계로 대체할 수 없는 전투력입니다.',
+    closingQuote: '가장 거친 바다에서, 가장 강한 굴비가 태어납니다',
+    closingCta: '도전에 합류하기',
+  },
+  // 2: tech innovation
+  2: {
+    heroTitle: '스마트 공정의 영광 굴비',
+    heroSub: '전통과 기술의 정밀한 결합',
+    introText:
+      '서풍의 영광 굴비는 전통 제조 방식에 AI 품질 검수와 이력추적 시스템을 결합하여, 맛과 안전을 동시에 보장합니다.',
+    whyLabel: 'Smart Craft',
+    whyHeading: '데이터가 증명하는 영광 굴비의 품질',
+    featureCard1Desc:
+      '위판장 원료 데이터를 실시간 분석하여 최적의 참조기를 선별, 당일 영광으로 운송합니다.',
+    featureCard2Desc:
+      '전통 아가미 섭간 방식의 정밀한 염도 관리. 데이터 기반으로 일정한 풍미를 보장합니다.',
+    featureCard3Desc:
+      '숙련 장인의 수작업과 AI 검수 시스템의 결합. 사람의 감각과 기술의 정밀함이 만나는 지점입니다.',
+    closingQuote: '전통의 감각에 기술의 정밀함을 더한, 차세대 영광 굴비',
+    closingCta: '솔루션 문의',
+  },
+  // 3: cinematic emotional
+  3: {
+    heroTitle: '바다가 키운 명품, 영광 굴비',
+    heroSub: '새벽 바다의 이야기를 담다',
+    introText:
+      '해 뜨기 전 여수 위판장에 울려 퍼지는 경매 소리. 그 속에서 엄선된 참조기 한 마리가 장인의 손을 거쳐 영광 굴비가 되기까지 — 서풍의 이야기입니다.',
+    whyLabel: 'A Story of the Sea',
+    whyHeading: '한 마리의 굴비에 담긴 서사',
+    featureCard1Desc:
+      '새벽 어둠 속, 위판장의 함성과 함께 시작되는 하루. 오직 살아있는 참조기만이 서풍의 선택을 받습니다.',
+    featureCard2Desc:
+      '수백 년 전해져 온 아가미 섭간. 소금 한 줌에 바다의 시간이 녹아듭니다.',
+    featureCard3Desc:
+      '한 마리 한 마리, 장인의 손끝에서 이야기가 완성됩니다. 기계로는 전할 수 없는 온기입니다.',
+    closingQuote: '새벽 바다에서 시작된 이야기가, 당신의 식탁에 닿습니다',
+    closingCta: '이야기 함께 만들기',
+  },
+  // 4: premium confident
+  4: {
+    heroTitle: '프리미엄 영광 굴비',
+    heroSub: '대한민국 최고의 굴비, 서풍',
+    introText:
+      '서풍의 프리미엄 영광 굴비는 1미 130g 이상 엄선된 참조기, 전통 아가미 섭간, 숙련 장인의 수작업으로 완성됩니다. 대형마트 PB부터 프리미엄 선물세트까지 — 결과로 증명합니다.',
+    whyLabel: 'Premium Standard',
+    whyHeading: '1등이 선택하는 영광 굴비',
+    featureCard1Desc:
+      '여수 위판장 직접 수매, 당일 영광 운송. 냉동 원료는 취급하지 않습니다. 타협 없는 원료 기준.',
+    featureCard2Desc:
+      '전통 아가미 섭간으로 완성되는 깊은 풍미. 대한민국 최고의 굴비에 걸맞은 방식입니다.',
+    featureCard3Desc:
+      '숙련된 장인의 수작업. 1분에 한 묶음, 정밀하고 흐트러짐 없는 품질을 보장합니다.',
+    closingQuote: '최고의 원료, 최고의 장인, 최고의 결과 — 서풍 프리미엄 굴비',
+    closingCta: '파트너십 문의',
+  },
+  // 5: pioneer bold
+  5: {
+    heroTitle: '경계를 넘는 영광 굴비',
+    heroSub: '아무도 가지 않은 길, 서풍이 만든 기준',
+    introText:
+      '서풍은 영광 굴비의 새로운 기준을 세웠습니다. 여수 직송 생물 참조기와 전통 아가미 섭간, 그리고 장인의 수작업 — 기존의 틀을 깨는 것이 서풍의 방식입니다.',
+    whyLabel: 'New Standard',
+    whyHeading: '서풍이 세운 영광 굴비의 새로운 기준',
+    featureCard1Desc:
+      '남들이 냉동 원료를 쓸 때, 서풍은 새벽 위판장에서 생물 참조기를 직접 선별합니다. 최초의 선택이 최고의 결과를 만듭니다.',
+    featureCard2Desc:
+      '기계 염장의 시대에도 전통 아가미 섭간을 고집합니다. 아무도 가지 않는 길에 답이 있습니다.',
+    featureCard3Desc:
+      '숙련된 장인이 한 마리 한 마리 엮어내는 정성. 세상에 없던 기준을 만드는 것이 개척자의 일입니다.',
+    closingQuote: '기존의 답습이 아닌, 완전히 새로운 영광 굴비를 만들어갑니다',
+    closingCta: '새로운 길 열기',
+  },
+};
+
+/* ──────────────────────────────────────────────
    Data
    ────────────────────────────────────────────── */
 const PROCESS_STEPS = [
@@ -126,7 +247,9 @@ const FEATURES = [
 export default function GulbiPage() {
   return (
     <ThemeLayout breadcrumb={[{ label: '영광굴비' }]}>
-      {(c) => (
+      {(c) => {
+        const copy = GULBI_COPY[c.theme.id] ?? GULBI_COPY[0];
+        return (
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
@@ -142,9 +265,9 @@ export default function GulbiPage() {
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
                 Yeongkwang Gulbi
               </p>
-              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>영광 굴비</h1>
+              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>{copy.heroTitle}</h1>
               <p className={`mt-4 text-lg ${c.text2}`}>
-                전통의 맛, 장인의 손길
+                {copy.heroSub}
               </p>
             </div>
             <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.gradientFade}`} />
@@ -160,7 +283,7 @@ export default function GulbiPage() {
                   </p>
                   <div className="relative mx-auto max-w-3xl pl-0">
                     <p className={`text-xl leading-relaxed ${c.text2} md:text-2xl md:leading-relaxed`}>
-                      영어조합법인 서풍의 영광 굴비는 여수 위판장에서 직접 수매한 생물 참조기를 사용하여 전통 방식으로 제조합니다.
+                      {copy.introText}
                     </p>
                   </div>
                 </div>
@@ -175,14 +298,16 @@ export default function GulbiPage() {
               <Reveal>
                 <div className="mb-16 text-center">
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    Why Seopung Gulbi
+                    {copy.whyLabel}
                   </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>왜 서풍의 영광 굴비인가</h2>
+                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.whyHeading}</h2>
                 </div>
               </Reveal>
 
               <div className="grid gap-8 md:grid-cols-3">
-                {WHY_GULBI.map((item, i) => (
+                {WHY_GULBI.map((item, i) => {
+                  const cardDescs = [copy.featureCard1Desc, copy.featureCard2Desc, copy.featureCard3Desc];
+                  return (
                   <Reveal key={item.title} delay={i * 120}>
                     <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 transition-all duration-500 ${c.cardHover} md:p-10`}>
                       <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
@@ -191,11 +316,12 @@ export default function GulbiPage() {
                           {item.icon}
                         </div>
                         <h3 className={`mb-4 text-xl font-bold ${c.text}`}>{item.title}</h3>
-                        <p className={`leading-relaxed ${c.text2}`}>{item.desc}</p>
+                        <p className={`leading-relaxed ${c.text2}`}>{cardDescs[i]}</p>
                       </div>
                     </div>
                   </Reveal>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -330,19 +456,20 @@ export default function GulbiPage() {
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
                 <p className={`mb-10 text-2xl font-medium leading-relaxed ${c.text2} md:text-3xl md:leading-relaxed`}>
-                  바다의 정성을 식탁까지, 영광 굴비의 진심을 전합니다
+                  {copy.closingQuote}
                 </p>
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
                 >
-                  주문 문의하기 &rarr;
+                  {copy.closingCta} &rarr;
                 </Link>
               </Reveal>
             </div>
           </section>
         </>
-      )}
+        );
+      }}
     </ThemeLayout>
   );
 }
