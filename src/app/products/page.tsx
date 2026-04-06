@@ -201,6 +201,26 @@ const COPY: Record<number, {
     ctaText: '세상에 없던 제품,\n서풍과 함께 만들어냅시다',
     ctaButton: '새로운 길 열기',
   },
+  6: {
+    heroLabel: 'Products',
+    heroTitle: '제품소개',
+    heroSub: '엄선된 원료로 만든 134+ 안전한 제품',
+    introLabel: 'OEM Capabilities',
+    introText: '영어조합법인 서풍은 대형 유통사와 외식 프랜차이즈를 위한 ',
+    introBold: 'B2B OEM 수산 가공 전문기업',
+    introAfter: '입니다. 엄선된 원료와 철저한 품질관리를 바탕으로 안전한 맞춤 제품을 공급합니다.',
+    categoryLabel: 'Categories',
+    categoryTitle: '제품 카테고리',
+    fishLabel: 'Fish Species',
+    fishTitle: '취급 어종',
+    fishDesc: '9개 어종을 전문적으로 가공하며, 각 어종에 최적화된 가공 방식을 적용합니다.',
+    oemLabel: 'OEM Track Record',
+    oemTitle: 'OEM 실적',
+    oemDesc: '30년간 쌓아온 OEM 제조 역량으로 안전하고 맛있는 제품을 공급합니다.',
+    ctaLabel: 'Partnership',
+    ctaText: '귀사의 브랜드에 맞는 수산 가공 제품,\n서풍이 정직하게 만들어 드립니다',
+    ctaButton: '문의하기',
+  },
 };
 
 /* ──────────────────────────────────────────────

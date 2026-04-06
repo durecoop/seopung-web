@@ -94,6 +94,18 @@ const COPY: Record<number, {
     brochureButton: '보고서 다운로드',
     brochureNotice: '※ 준비 중입니다.',
   },
+  6: {
+    heroTitle: '자료실',
+    heroSubtitle: '인증서, 갤러리 및 회사 자료',
+    certHeading: '인증서',
+    certSubtitle: '거래처 등록 및 품질 증빙을 위한 인증서',
+    certNote: '※ 원본 인증서가 필요하신 경우 문의 바랍니다',
+    galleryHeading: '포토 갤러리',
+    brochureHeading: '회사소개서 다운로드',
+    brochureDesc: '영어조합법인 서풍의 회사소개서를 PDF로 다운로드하세요',
+    brochureButton: 'PDF 다운로드',
+    brochureNotice: '※ 준비 중입니다.',
+  },
 };
 
 /* ──────────────────────────────────────────────

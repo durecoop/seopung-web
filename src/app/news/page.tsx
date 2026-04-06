@@ -78,6 +78,16 @@ const COPY: Record<number, {
     pinnedBadge: '핵심',
     categoryBadge: '공지',
   },
+  6: {
+    heroLabel: 'News & Notice',
+    heroTitle: '소식 & 공지',
+    heroSubtitle: '영어조합법인 서풍의 최신 소식과 공지사항',
+    noticeHeading: '공지사항',
+    newsHeading: '뉴스',
+    emptyState: '더 많은 소식이 곧 업데이트됩니다.',
+    pinnedBadge: '고정',
+    categoryBadge: '공지',
+  },
 };
 
 const FALLBACK_NEWS = [

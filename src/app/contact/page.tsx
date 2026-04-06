@@ -109,6 +109,19 @@ const CONTACT_COPY: Record<number, ContactCopy> = {
     promiseDesc2: '기존에 없던 OEM 솔루션을 함께 설계합니다',
     promiseDesc3: '한 번도 본 적 없는 샘플을 무상으로 보내드립니다',
   },
+  6: {
+    heroTitle: '문의하기',
+    heroSub: 'OEM 납품 및 파트너십 문의',
+    formSectionLabel: 'Contact Us',
+    formSectionHeading: '문의 및 회사 정보',
+    companyInfoLabel: 'Company Information',
+    companyInfoHeading: '회사 정보',
+    submitBtn: '문의하기',
+    promiseHeading: '서풍의 약속',
+    promiseDesc1: '문의 접수 후 24시간 이내 담당자가 회신드립니다',
+    promiseDesc2: '귀사의 요구사항에 맞는 최적의 OEM 솔루션을 제안합니다',
+    promiseDesc3: '제품 검토를 위한 샘플을 무상으로 제공합니다',
+  },
 };
 
 /* ──────────────────────────────────────────────

@@ -117,6 +117,21 @@ const VISION_COPY: Record<number, VisionCopy> = {
     ctaDesc: '서풍과 함께라면 세상에 없던 것을 만들 수 있습니다',
     ctaButton: '개척 시작하기',
   },
+  6: {
+    heroSub: '안전한 수산물 공급을 위한 비전과 전략',
+    prioritiesLabel: 'Key Initiatives',
+    prioritiesHeading: '5대 중점 추진 과제',
+    salesLabel: 'Financial Overview',
+    salesHeading: '매출 현황',
+    growthLabel: 'Growth Strategy',
+    growthHeading: '전략적 성장 동력',
+    visionLabel: 'Our Vision',
+    visionHeading: '비전 선언',
+    visionStatement: '정직한 원료 선별과 철저한 위생관리를 바탕으로, 안전하고 맛있는 수산 가공식품을 공급하여 고객과 함께 성장하겠습니다.',
+    ctaTitle: '서풍에 문의하세요',
+    ctaDesc: 'OEM 납품, 신제품 개발, 파트너십 등 무엇이든 편하게 문의해 주세요',
+    ctaButton: '문의하기',
+  },
 };
 
 /* ──────────────────────────────────────────────

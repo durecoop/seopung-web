@@ -136,6 +136,23 @@ const COPY: Record<number, ProcessCopy> = {
     closingQuote: '길이 없다면 만들면 된다 —\n서풍은 언제나 첫 발자국을 찍는다',
     closingCta: '혁신 설비 보기',
   },
+  6: {
+    heroLabel: 'Production Process',
+    heroTitle: '생산 공정',
+    heroSub: '원물에서 완제품까지, 철저한 위생관리 공정',
+    sourcingLabel: 'Raw Material Sourcing',
+    sourcingTitle: '원료 수매',
+    sourcingDesc: '매일 새벽 여수 위판장에서 엄선된 원료만을 수매합니다. 30년 이상의 경험을 가진 전문 중매인이 최상급 원료를 선별합니다.',
+    sourcingDirectorTitle: '위판장 직접 수매, 최상급 원료 확보',
+    sourcingDirectorDesc: '매일 새벽 여수 수산시장에서 49호 중매인이 직접 원료를 감별합니다. 어체의 탄력, 색택, 비늘 상태를 하나하나 확인하여 최상급 원료만을 선별하고 수매합니다.',
+    speciesTitle: '다양한 어종의 전문 취급',
+    speciesDesc: '참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어 등 9종 이상의 어종을 전문적으로 취급합니다.',
+    stepsLabel: '6-Step Process',
+    stepsTitle: '6단계 생산 공정',
+    stepsDesc: '원물 입고에서 출하까지, 철저한 위생관리와 체계적 설비로 안전한 제품을 생산합니다.',
+    closingQuote: '엄선된 원료, 철저한 위생관리,\n변함없는 품질로 보답하겠습니다',
+    closingCta: '기술·설비 보기',
+  },
 };
 
 /* ──────────────────────────────────────────────

@@ -96,7 +96,7 @@ export default function Home() {
         </div>
       </div>
 
-      {loaded ? <HeroComponent /> : <div className="h-screen bg-[#020a18]" />}
+      {loaded ? <HeroComponent /> : <div className="h-screen bg-white" />}
       <PageSections theme={theme} />
       <ThemedFooter theme={theme} />
     </main>

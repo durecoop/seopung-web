@@ -49,7 +49,7 @@ export function useTheme() {
   }, []);
 
   const theme = THEMES[skinId];
-  const dark = skinId !== 0;
+  const dark = skinId !== 0 && skinId !== 6;
 
   const colors: ThemeColors = {
     dark,

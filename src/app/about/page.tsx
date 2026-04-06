@@ -111,6 +111,20 @@ const ABOUT_COPY: Record<number, AboutCopy> = {
     teamHeading: '새로운 길을 여는 사람들',
     teamDesc: '기존의 틀을 깨고, 수산업의 미래를 개척하는 선구자들이 함께합니다.',
   },
+  6: {
+    heroSub: '안전하고 건강한 수산 가공식품 전문기업',
+    ceoLabel: 'CEO MESSAGE',
+    ceoHeading: '대표 인사말',
+    ceoQuote: '정직한 원료와 철저한 위생관리를 바탕으로, 고객의 식탁에 안전하고 맛있는 수산 가공식품을 전하겠습니다. 최고의 품질과 안전한 제품만을 약속합니다.',
+    philosophyKeywords: ['정직', '안전', '품질'],
+    numbersHeading: '숫자로 보는 서풍',
+    mgmtPhiloLabel: 'Management Philosophy',
+    mgmtPhiloHeading: '경영 철학',
+    partnerHeading: '신뢰의 유통 파트너',
+    partnerSub: '전국 주요 유통 채널과의 안정적 파트너십',
+    teamHeading: '서풍을 만드는 사람들',
+    teamDesc: '원료 수매부터 생산, 품질관리까지 각 분야의 전문 인력이 최고의 품질을 만들어갑니다.',
+  },
 };
 
 /* ──────────────────────────────────────────────

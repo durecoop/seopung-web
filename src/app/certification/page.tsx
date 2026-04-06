@@ -397,6 +397,27 @@ const COPY: Record<number, {
     onSiteAccent: '현장 기준',
     ctaText: '개척자의 설비를 확인하다',
   },
+  6: {
+    heroLabel: 'Certified Quality',
+    heroTitle: '신뢰할 수 있는 품질 인증',
+    heroSub: '체계적인 인증 시스템으로 고객 신뢰를 실현합니다',
+    certSectionLabel: 'Credentials',
+    certSectionTitle: '공인 인증',
+    certSectionAccent: '현황',
+    qualityTitle: '체계적',
+    qualityAccent: '품질 관리',
+    galleryTitle: '인증서',
+    galleryAccent: '원본 확인',
+    downloadTitle: '인증서',
+    downloadAccent: '다운로드',
+    kpiTitle: '핵심 품질',
+    kpiAccent: '성과 지표',
+    timelineTitle: '인증 취득',
+    timelineAccent: '연혁',
+    onSiteTitle: '현장 기반',
+    onSiteAccent: '품질 점검',
+    ctaText: '설비·기술 역량 확인하기',
+  },
 };
 
 export default function CertificationPage() {

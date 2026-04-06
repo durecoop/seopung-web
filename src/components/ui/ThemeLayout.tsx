@@ -23,7 +23,7 @@ export default function ThemeLayout({ children, breadcrumb }: Props) {
   const { loaded, theme, colors } = useTheme();
 
   if (!loaded) {
-    return <div className="min-h-screen bg-[#0a1628]" />;
+    return <div className="min-h-screen bg-white" />;
   }
 
   return (
