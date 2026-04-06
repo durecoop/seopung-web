@@ -1,7 +1,7 @@
 import { db } from './firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-export type HeroSkinId = 0 | 1 | 2 | 3 | 4 | 5;
+export type HeroSkinId = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface SkinConfig {
   heroSkinId: HeroSkinId;
@@ -15,6 +15,7 @@ export const HERO_SKINS: { id: HeroSkinId; name: string; desc: string }[] = [
   { id: 3, name: '바다 영상', desc: '실제 바다 영상 2개 교차 + 에너지 스캔라인' },
   { id: 4, name: '시네마틱 분할', desc: '좌측 거대 타이포 + 우측 바다 영상' },
   { id: 5, name: '대담한 타이포', desc: '초대형 서풍 + 바다 영상 배경 + 글로우' },
+  { id: 6, name: 'CJ 기업형', desc: '클린 화이트 캐러셀 + 가치 카드 + 기업 신뢰감' },
 ];
 
 const DOC_PATH = 'web_settings/skin';

@@ -313,4 +313,48 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
     ctaDesc: '서풍과 함께라면\n세상에 없던 것을 만들 수 있습니다.',
     ctaCta: '개척 시작하기',
   },
+
+  // 6: CJ 기업형 — 정직, 신뢰, 깔끔한 기업 톤
+  6: {
+    certLabel: 'Quality Assurance',
+    certTitle: '신뢰할 수 있는',
+    certTitleAccent: '6대 품질 인증',
+    certDesc: '안전하고 위생적인 수산 가공을 위한',
+    certDescBold: '국내외 최고 수준의 인증 시스템',
+    certCta: '인증 현황 보기',
+
+    aboutLabel: 'About Us',
+    aboutTitle1: '정직함을 담아',
+    aboutTitle2: '만듭니다',
+    aboutDesc1: '1995년 설립 이래 여수에서 30년간 수산 가공 산업에 헌신해온 서풍은 정직과 품질을 최우선 가치로 삼습니다.',
+    aboutDesc2: '고객의 식탁에 안전하고 맛있는 수산물을 전합니다.',
+    aboutDesc2Bold: '철저한 위생관리와 체계적 품질 시스템.',
+    aboutCta: '회사소개 보기',
+
+    prodLabel: 'Our Products',
+    prodTitle: '엄선된',
+    prodTitleAccent: '134+ 제품 라인업',
+    prodDesc: '냉동수산가공, 프리미엄 굴비, 밀키트, 선물세트까지\n최고의 품질로 공급합니다',
+    prodCta: '제품 보기',
+
+    supplyLabel: 'Supply Chain',
+    supplyTitle: '산지에서',
+    supplyTitleAccent: '식탁까지',
+    supplyDesc: '당일 입고, 당일 가공의 신선한 공급 체계',
+
+    bannerTitle1: '최고의 품질,',
+    bannerTitle2: '안전한 먹거리',
+    bannerDesc: '대형마트, 온라인, 외식 프랜차이즈.\n각 채널에 최적화된 맞춤 솔루션을 제공합니다.',
+    bannerCta: 'OEM 문의하기',
+
+    partnerLabel: 'Our Partners',
+    partnerTitle: '함께 성장하는',
+    partnerTitleAccent: '파트너사',
+    partnerDesc: '대한민국 주요 유통 채널과의 안정적 파트너십',
+
+    ctaTitle1: '함께할',
+    ctaTitle2: '파트너',
+    ctaDesc: 'OEM 납품, 제품 개발, 파트너십 문의.\n정직한 수산 가공 파트너 서풍이 함께합니다.',
+    ctaCta: '문의하기',
+  },
 };

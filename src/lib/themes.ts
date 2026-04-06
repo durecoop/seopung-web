@@ -98,4 +98,16 @@ export const THEMES: Record<number, SiteTheme> = {
     footerBg: 'bg-[#020a18]', footerText: 'text-white', footerMuted: 'text-white/40',
     accent: 'bg-white', accentHover: 'hover:bg-ocean-50',
   },
+  // 6: CJ 기업형 — 클린 화이트, 기업 신뢰감
+  6: {
+    id: 6, name: 'CJ 기업형',
+    navBg: 'bg-white/95 backdrop-blur-md shadow-md',
+    navText: 'text-gray-800', navHeroText: 'text-white/90', navAccent: 'text-[#003366]',
+    certBg: 'bg-[#003366]', certText: 'text-white', certCardBg: 'bg-white/10', certCardBorder: 'border-white/15',
+    sectionBg1: 'bg-white', sectionBg2: 'bg-[#f7f9fc]',
+    bannerOverlay: 'from-[#003366]/90 via-[#003366]/70 to-[#003366]/40',
+    ctaBg: 'bg-[#003366]', ctaText: 'text-white',
+    footerBg: 'bg-[#1a2a3a]', footerText: 'text-white', footerMuted: 'text-white/60',
+    accent: 'bg-[#003366]', accentHover: 'hover:bg-[#004488]',
+  },
 };

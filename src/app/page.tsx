@@ -15,6 +15,7 @@ const HERO_COMPONENTS: Record<HeroSkinId, ReturnType<typeof dynamic>> = {
   3: dynamic(() => import('@/components/sections/HeroVideo'), { ssr: false }),
   4: dynamic(() => import('@/components/sections/HeroCinematic'), { ssr: false }),
   5: dynamic(() => import('@/components/sections/HeroTextClip'), { ssr: false }),
+  6: dynamic(() => import('@/components/sections/HeroCorporate'), { ssr: false }),
 };
 
 export default function Home() {
@@ -70,17 +71,16 @@ export default function Home() {
                 <h3 className="text-sm font-bold text-white">스킨 선택</h3>
                 <button onClick={() => setPickerOpen(false)} className="text-white/50 hover:text-white text-lg">&times;</button>
               </div>
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+              <div className="grid grid-cols-4 gap-2 pb-2 sm:grid-cols-7">
                 {HERO_SKINS.map((skin) => (
                   <button
                     key={skin.id}
                     onClick={() => { handleSelect(skin.id); setPickerOpen(false); }}
-                    className={`flex-shrink-0 rounded-xl border px-4 py-3 text-left transition-all ${
+                    className={`rounded-xl border px-3 py-3 text-left transition-all ${
                       skinId === skin.id
                         ? 'border-ocean-400 bg-ocean-500/20 shadow-lg shadow-ocean-500/10'
                         : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'
                     }`}
-                    style={{ minWidth: 140 }}
                   >
                     <span className={`block text-xs font-bold ${skinId === skin.id ? 'text-ocean-300' : 'text-white/80'}`}>
                       #{skin.id} {skin.name}
