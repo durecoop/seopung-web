@@ -9,15 +9,16 @@ import { getImagePath } from '@/lib/utils';
 import { investCrud, type Investment as InvestType } from '@/lib/admin-store';
 
 /* ──────────────────────────────────────────────
-   Skin-specific copy
+   Skin-specific copy (only skin 6 used as default)
    ────────────────────────────────────────────── */
 interface TechCopy {
   heroLabel: string;
   heroTitle: string;
   heroSub: string;
-  hyperLabel: string;
-  hyperTitle: string;
-  hyperAccent: string;
+  focusLabel: string;
+  focusTitle: string;
+  focusAccent: string;
+  focusDesc: string;
   autoLabel: string;
   autoTitle: string;
   autoAccent: string;
@@ -34,21 +35,21 @@ interface TechCopy {
 }
 
 const COPY: Record<number, TechCopy> = {
-  // 0: 클린 오션 — 따뜻, 신뢰
   0: {
     heroLabel: 'Technology & Facility',
     heroTitle: '기술·설비',
-    heroSub: '최신 설비와 자동화로 구현하는 스마트 팩토리',
-    hyperLabel: 'Next-Gen Detection',
-    hyperTitle: 'AI 초분광 검출기 —',
-    hyperAccent: '차세대 품질 혁신',
-    autoLabel: 'Automation Vision',
+    heroSub: 'R&D 역량 강화와 스마트 생산라인으로 글로벌 수준의 품질 체계 구축',
+    focusLabel: '5 Key Initiatives',
+    focusTitle: '5대 중점',
+    focusAccent: '추진 과제',
+    focusDesc: 'R&D 역량강화, 스마트 생산라인 구축, AI 기술 도입 등을 통한 글로벌 수준의 품질 및 환경 관리 체계 확립',
+    autoLabel: 'Smart Automation',
     autoTitle: '기술 중심의',
     autoAccent: '생산 자동화 로드맵',
     autoDesc: '스마트 팩토리 구현을 위해 단계적으로 자동화 설비를 도입하고 있습니다.',
     roadmapLabel: 'Investment Roadmap',
-    roadmapTitle: '투자',
-    roadmapAccent: '로드맵',
+    roadmapTitle: '연도별 주요',
+    roadmapAccent: '투자 내역',
     investLabel: '2026 Investment Plan',
     investTitle: '2026년 투자 계획',
     qualityLabel: 'Quality Infrastructure',
@@ -56,21 +57,21 @@ const COPY: Record<number, TechCopy> = {
     qualityAccent: '인프라',
     qualityClosing: '서풍은 방사능 검사, 이물 관리, HACCP 기반 위생 관리를 통해 식품 안전을 최우선으로 합니다.',
   },
-  // 1: 딥 네이비 — 강인함, 도전
   1: {
     heroLabel: 'Arsenal & Firepower',
     heroTitle: '전투 장비, 기술력',
     heroSub: '거친 시장에서 살아남는 무기, 최강의 설비',
-    hyperLabel: 'Next Weapon',
-    hyperTitle: 'AI 초분광 검출기 —',
-    hyperAccent: '차세대 무기 도입',
+    focusLabel: '5 Battle Plans',
+    focusTitle: '5대 핵심',
+    focusAccent: '전투 전략',
+    focusDesc: 'R&D 역량강화, 스마트 생산라인, AI 기술 도입으로 경쟁사를 압도하는 품질 체계 확립',
     autoLabel: 'Battle Strategy',
     autoTitle: '공격적인',
     autoAccent: '자동화 전략',
     autoDesc: '멈추면 뒤처진다. 거침없이 자동화 설비를 투입합니다.',
     roadmapLabel: 'Attack Plan',
-    roadmapTitle: '공격적 투자',
-    roadmapAccent: '로드맵',
+    roadmapTitle: '연도별',
+    roadmapAccent: '투자 전력',
     investLabel: '2026 Offensive',
     investTitle: '2026년 공격적 투자',
     qualityLabel: 'Defense Line',
@@ -78,21 +79,21 @@ const COPY: Record<number, TechCopy> = {
     qualityAccent: '최전선',
     qualityClosing: '방사능 검사, 이물 관리, HACCP — 한 발자국도 뚫리지 않는 서풍의 품질 방어선.',
   },
-  // 2: 테크 다크 — 기술, 데이터
   2: {
     heroLabel: 'Smart Factory System',
     heroTitle: 'AI 기반 스마트 팩토리',
     heroSub: 'IoT·빅데이터·자동화가 구동하는 지능형 수산 가공',
-    hyperLabel: 'Spectral AI',
-    hyperTitle: 'AI 초분광 모듈 —',
-    hyperAccent: '비가시 영역 분석',
+    focusLabel: '5 Core Modules',
+    focusTitle: '5대 핵심',
+    focusAccent: '추진 모듈',
+    focusDesc: 'R&D, 스마트 생산라인, AI 기술 도입으로 글로벌 수준의 품질·환경 관리 시스템 구축',
     autoLabel: 'Automation Pipeline',
     autoTitle: '단계별',
     autoAccent: '자동화 파이프라인',
     autoDesc: '수작업 → 반자동 → 완전자동화. 데이터가 각 단계의 전환 시점을 결정합니다.',
     roadmapLabel: 'Capex Roadmap',
-    roadmapTitle: '설비 투자',
-    roadmapAccent: '타임라인',
+    roadmapTitle: '연도별 설비',
+    roadmapAccent: '투자 타임라인',
     investLabel: '2026 Capex Plan',
     investTitle: '2026 투자 파이프라인',
     qualityLabel: 'QA Infrastructure',
@@ -100,14 +101,14 @@ const COPY: Record<number, TechCopy> = {
     qualityAccent: '시스템',
     qualityClosing: '방사능 스펙트로미터, AI 이물 검출, HACCP 모니터링 — 모든 데이터가 실시간으로 대시보드에 집계됩니다.',
   },
-  // 3: 시네마틱 — 감성적, 서사적
   3: {
     heroLabel: 'The Machines Behind the Magic',
     heroTitle: '기술이 빚어낸 맛',
     heroSub: '보이지 않는 곳에서 묵묵히 일하는 장비들의 이야기',
-    hyperLabel: 'Beyond Light',
-    hyperTitle: 'AI 초분광 —',
-    hyperAccent: '빛 너머의 진실',
+    focusLabel: '5 Chapters',
+    focusTitle: '5가지',
+    focusAccent: '약속',
+    focusDesc: '연구, 자동화, AI, 글로벌 인증, 그리고 환경 — 다섯 가지 길 위에서 서풍은 내일을 준비합니다',
     autoLabel: 'Evolution',
     autoTitle: '손끝에서 기계로,',
     autoAccent: '진화하는 공정',
@@ -122,21 +123,21 @@ const COPY: Record<number, TechCopy> = {
     qualityAccent: '눈(目)',
     qualityClosing: '보이지 않는 곳에서, 보이지 않는 위협을 막아내는 사람들. 서풍의 품질은 그 헌신 위에 서 있습니다.',
   },
-  // 4: 블루 프리미엄 — 자신감, 확신
   4: {
     heroLabel: 'Premium Technology',
     heroTitle: '업계 최고 설비',
     heroSub: '대한민국 수산 OEM No.1의 기술 경쟁력',
-    hyperLabel: 'Leading Edge',
-    hyperTitle: 'AI 초분광 —',
-    hyperAccent: '업계 최초 도입',
+    focusLabel: '5 Pillars',
+    focusTitle: '5대 핵심',
+    focusAccent: '경쟁력',
+    focusDesc: 'R&D, 스마트 생산라인, AI 기술, 글로벌 인증, ESG — 업계 최고 수준의 5대 추진 과제',
     autoLabel: 'Industry Leader',
     autoTitle: '업계를 선도하는',
     autoAccent: '자동화 비전',
     autoDesc: '경쟁사가 따라올 수 없는 설비 투자. 서풍의 자동화는 업계의 기준이 됩니다.',
     roadmapLabel: 'Strategic Investment',
-    roadmapTitle: '전략적 투자',
-    roadmapAccent: '로드맵',
+    roadmapTitle: '전략적',
+    roadmapAccent: '투자 내역',
     investLabel: '2026 Strategic Plan',
     investTitle: '2026년 전략 투자',
     qualityLabel: 'Gold Standard',
@@ -144,14 +145,14 @@ const COPY: Record<number, TechCopy> = {
     qualityAccent: '골드 스탠다드',
     qualityClosing: '방사능 검사, 이물 관리, HACCP 인증 — 대한민국 최고 수준의 품질 인프라를 갖추고 있습니다.',
   },
-  // 5: 글로우 다크 — 개척, 선구자
   5: {
     heroLabel: 'Pioneering Technology',
     heroTitle: '아무도 가지 않은 기술의 길',
     heroSub: '수산 가공의 새로운 기준을 세우는 개척자',
-    hyperLabel: 'Uncharted Territory',
-    hyperTitle: 'AI 초분광 —',
-    hyperAccent: '미지의 영역으로',
+    focusLabel: '5 Frontiers',
+    focusTitle: '5대 개척',
+    focusAccent: '과제',
+    focusDesc: '연구, 자동화, AI, 글로벌 인증, ESG — 아무도 가지 않은 길 위에 5개의 이정표를 세웁니다',
     autoLabel: 'Trailblazing',
     autoTitle: '새로운 길을 여는',
     autoAccent: '자동화 혁신',
@@ -169,17 +170,18 @@ const COPY: Record<number, TechCopy> = {
   6: {
     heroLabel: 'Technology & Facility',
     heroTitle: '기술·설비',
-    heroSub: '최신 설비와 자동화로 여는 스마트 팩토리',
-    hyperLabel: 'Next Innovation',
-    hyperTitle: 'AI 초분광 검출기 —',
-    hyperAccent: '차세대 품질 혁신',
+    heroSub: 'R&D 역량 강화와 스마트 생산라인으로 글로벌 수준의 품질 체계 구축',
+    focusLabel: '5 Key Initiatives',
+    focusTitle: '5대 중점',
+    focusAccent: '추진 과제',
+    focusDesc: 'R&D 역량강화, 스마트 생산라인 구축, AI 기술 도입 등을 통한 글로벌 수준의 품질 및 환경 관리 체계 확립',
     autoLabel: 'Smart Automation',
     autoTitle: '진화하는',
     autoAccent: '생산 자동화',
     autoDesc: '수작업에서 스마트 자동화로. 매년 설비 투자를 확대하며 생산 효율을 높여가고 있습니다.',
     roadmapLabel: 'Investment Roadmap',
-    roadmapTitle: '설비 투자',
-    roadmapAccent: '로드맵',
+    roadmapTitle: '연도별 주요',
+    roadmapAccent: '투자 내역',
     investLabel: '2026 Investment',
     investTitle: '2026년 투자 계획',
     qualityLabel: 'Quality System',
@@ -189,8 +191,61 @@ const COPY: Record<number, TechCopy> = {
   },
 };
 
+/* ─── 5대 중점 추진 과제 (PPT Slide 5) ─── */
+const FOCUS_AREAS = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.3 24.3 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5m-4.75-11.396c.251.023.501.05.75.082M12 21a8.966 8.966 0 0 0 5.982-2.275M12 21a8.966 8.966 0 0 1-5.982-2.275" />
+      </svg>
+    ),
+    title: 'R&D 역량 강화',
+    desc: '기업부설 연구소 설립 및 푸드머스 전용 제품 개발 체계 구축',
+    detail: '약 10년간 134품목 출시, 現 66개 품목 운영',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.049.58.025 1.193-.14 1.743" />
+      </svg>
+    ),
+    title: 'Smart 생산라인 구축',
+    desc: '원물~완제품까지 One-Way 자동화 생산라인 구축',
+    detail: '급속동결, 자동화 포장, 스캔 자동절단',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+      </svg>
+    ),
+    title: '이물 Zero화',
+    desc: 'AI 초분광 등 첨단 기술을 현장에 도입하여 원료 기인성 이물 "Zero" 달성',
+    detail: '2026년 AI 초분광 검출기 약 2.5억 투자',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A8.966 8.966 0 0 1 3 12c0-1.264.26-2.466.73-3.555" />
+      </svg>
+    ),
+    title: '글로벌 식품안전 관리',
+    desc: 'FSSC 22000 인증 및 글로벌 HACCP 인증 추진',
+    detail: '2026년내 FSSC 22000 추진 예정',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 1 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+      </svg>
+    ),
+    title: 'ESG 경영',
+    desc: '풀무원 가치 체계 반영 및 친환경 제조환경 선제적 대응',
+    detail: 'ASC·MSC 지속가능 수산물 인증 확대',
+  },
+];
 
-/* ─── Timeline data ─── */
+/* ─── Timeline data (PPT Slide 4) ─── */
 const TIMELINE = [
   {
     year: '~2024',
@@ -213,7 +268,7 @@ const TIMELINE = [
   {
     year: '2026',
     label: '2026년',
-    items: 'AI 초분광(2.5억), 전처리 자동화(3.5억), 오븐 구이기(0.9억)',
+    items: 'AI 초분광, 전처리 자동화, 특수 해동기, 오븐 구이기 등',
     amount: '약 6.9억원',
     highlight: true,
   },
@@ -230,6 +285,14 @@ const INVEST_2026 = [
   { label: 'AI 초분광', amount: '2.5', unit: '억' },
   { label: '전처리 자동화', amount: '3.5', unit: '억' },
   { label: '오븐 설비', amount: '0.9', unit: '억' },
+];
+
+/* ─── 인증 현황 ─── */
+const CERTS = [
+  { name: 'HACCP', desc: '전 식품유형 인증', year: '2011~' },
+  { name: 'ASC·MSC', desc: '지속가능 수산물 인증', year: '2024~' },
+  { name: '수산물 이력제', desc: '전품목 확대 적용', year: '2013~' },
+  { name: 'FSSC 22000', desc: '글로벌 식품안전 인증', year: '2026 추진' },
 ];
 
 export default function TechnologyPage() {
@@ -268,54 +331,88 @@ export default function TechnologyPage() {
             </section>
 
             {/* ══════════════════════════════════════ */}
-            {/* 1-B. AI 초분광 검출기                  */}
+            {/* 1. 5대 중점 추진 과제 (PPT Slide 5)   */}
             {/* ══════════════════════════════════════ */}
-            <section className="border-t border-gray-200 py-24 md:py-32">
+            <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
               <div className="mx-auto max-w-7xl px-6">
                 <FadeIn>
-                  <div className="mb-12 text-center">
+                  <div className="mb-16 text-center">
                     <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                      {copy.hyperLabel}
+                      {copy.focusLabel}
                     </span>
                     <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                      {copy.hyperTitle} <span className="text-ocean-500">{copy.hyperAccent}</span>
+                      {copy.focusTitle} <span className="text-ocean-500">{copy.focusAccent}</span>
                     </h2>
+                    <p className={`mx-auto mt-4 max-w-3xl text-base ${c.text2}`}>
+                      {copy.focusDesc}
+                    </p>
                   </div>
                 </FadeIn>
 
-                <FadeIn>
-                  <div className={`relative overflow-hidden rounded-2xl border border-ocean-500/30 ${c.cardBg} p-8 shadow-lg shadow-ocean-500/5 md:p-12`}>
-                    {/* Ocean glow effect */}
-                    <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-ocean-500/10 blur-3xl" />
-                    <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-ocean-400/5 blur-3xl" />
+                {/* 5 cards in a pentagon-like layout */}
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {FOCUS_AREAS.map((area, i) => (
+                    <FadeIn key={area.title} delay={i * 80}>
+                      <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-7 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5 ${
+                        i >= 3 ? 'lg:col-span-1' : ''
+                      }`}>
+                        {/* Accent line */}
+                        <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-ocean-500/60 to-ocean-400/20" />
 
-                    <div className="relative z-10 flex flex-col items-center gap-8 md:flex-row">
-                      <div className="flex-1">
-                        <p className={`mb-6 text-lg leading-relaxed ${c.text2}`}>
-                          기존 X-ray로는 검출이 어려운 이물질까지 초분광 이미징 기술로 판별합니다.
-                          2026년 도입 예정으로 약 2.5억원이 투자됩니다.
-                        </p>
-                        <div className="flex flex-wrap items-center gap-4">
-                          <span className="rounded-full bg-ocean-500/90 px-5 py-2 text-sm font-bold text-white shadow-lg">
-                            투자 예정 2.5억원
-                          </span>
-                          <span className="inline-flex items-center gap-2 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-4 py-2 text-sm font-medium text-ocean-300">
-                            <span className="relative flex h-2.5 w-2.5">
-                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ocean-400 opacity-75" />
-                              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-ocean-400" />
-                            </span>
-                            2026년 도입 예정
-                          </span>
+                        <div className="mb-4 flex items-center gap-4">
+                          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-ocean-500/10 text-ocean-500">
+                            {area.icon}
+                          </div>
+                          <div>
+                            <span className="font-montserrat text-xs font-bold text-ocean-400">{String(i + 1).padStart(2, '0')}</span>
+                            <h3 className={`text-lg font-bold ${c.text}`}>{area.title}</h3>
+                          </div>
                         </div>
+                        <p className={`mb-3 text-sm leading-relaxed ${c.text2}`}>{area.desc}</p>
+                        <p className="text-xs font-medium text-ocean-400">{area.detail}</p>
                       </div>
-                    </div>
+                    </FadeIn>
+                  ))}
+                </div>
+
+                {/* 재투자 중심 경영 강조 (PPT Slide 2) */}
+                <FadeIn className="mt-12">
+                  <div className={`rounded-2xl border border-ocean-500/20 ${c.cardBg} p-8 text-center md:p-10`}>
+                    <p className={`text-lg font-medium leading-relaxed ${c.text2}`}>
+                      매출 성장을 현장과 품질에 환원하는 <span className="font-bold text-ocean-500">선순환 재투자 경영</span>
+                    </p>
+                    <p className={`mt-2 text-sm ${c.text2}`}>
+                      푸드머스 매출액 기준 약 5~6% 수준의 꾸준한 설비 투자를 통해 생산 및 품질 설비를 고도화하고 있습니다.
+                    </p>
                   </div>
                 </FadeIn>
               </div>
             </section>
 
             {/* ══════════════════════════════════════ */}
-            {/* 2-B. 생산 자동화 비전                  */}
+            {/* 2. 인증 현황 요약                      */}
+            {/* ══════════════════════════════════════ */}
+            <section className="border-t border-gray-200 py-20 md:py-24">
+              <div className="mx-auto max-w-5xl px-6">
+                <FadeIn>
+                  <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                    {CERTS.map((cert, i) => (
+                      <div
+                        key={cert.name}
+                        className={`rounded-xl border ${c.cardBorder} ${c.cardBg} px-5 py-6 text-center transition-all duration-300 hover:border-ocean-500/30`}
+                      >
+                        <p className="font-montserrat text-lg font-bold text-ocean-500">{cert.name}</p>
+                        <p className={`mt-1 text-sm font-medium ${c.text}`}>{cert.desc}</p>
+                        <p className={`mt-1 text-xs ${c.text2}`}>{cert.year}</p>
+                      </div>
+                    ))}
+                  </div>
+                </FadeIn>
+              </div>
+            </section>
+
+            {/* ══════════════════════════════════════ */}
+            {/* 3. 생산 자동화 비전                    */}
             {/* ══════════════════════════════════════ */}
             <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
               <div className="mx-auto max-w-7xl px-6">
@@ -346,9 +443,9 @@ export default function TechnologyPage() {
                       image: '/images/facility/fish-scanner-detail.jpg',
                     },
                     {
-                      title: 'AI 품질 검사',
-                      desc: 'AI 초분광 기술로 이물 Zero 달성',
-                      image: '/images/facility/radiation-tester.jpg',
+                      title: '급속동결 & 자동 포장',
+                      desc: '터널프리저 IQF와 로터리 포장기로 생산성 극대화',
+                      image: '/images/process/04-tunnel-freezer.jpg',
                     },
                   ].map((card, i) => (
                     <FadeIn key={card.title}>
@@ -378,9 +475,9 @@ export default function TechnologyPage() {
             </section>
 
             {/* ══════════════════════════════════════ */}
-            {/* 3. Investment Roadmap Timeline        */}
+            {/* 4. Investment Roadmap Timeline        */}
             {/* ══════════════════════════════════════ */}
-            <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
+            <section className="border-t border-gray-200 py-24 md:py-32">
               <div className="mx-auto max-w-7xl px-6">
                 <FadeIn>
                   <div className="mb-16 text-center">
@@ -443,9 +540,9 @@ export default function TechnologyPage() {
             </section>
 
             {/* ══════════════════════════════════════ */}
-            {/* 4. 2026 Investment Summary Bar        */}
+            {/* 5. 2026 Investment Summary Bar        */}
             {/* ══════════════════════════════════════ */}
-            <section className="border-t border-gray-200 py-24 md:py-32">
+            <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
               <div className="mx-auto max-w-5xl px-6">
                 <FadeIn>
                   <div className="mb-10 text-center">
@@ -460,12 +557,12 @@ export default function TechnologyPage() {
 
                 <FadeIn>
                   <div className={`overflow-hidden rounded-2xl border border-gold-500/20 ${c.cardBg}`}>
-                    <div className="grid grid-cols-2 md:grid-cols-4">
+                    <div className="grid grid-cols-3">
                       {INVEST_2026.map((item, i) => (
                         <div
                           key={item.label}
                           className={`flex flex-col items-center justify-center p-6 md:p-8 ${
-                            i < INVEST_2026.length - 1 ? `border-b border-r ${c.cardBorder} md:border-b-0` : 'border-r-0'
+                            i < INVEST_2026.length - 1 ? `border-r ${c.cardBorder}` : ''
                           }`}
                         >
                           <p className={`mb-1 text-sm font-medium ${c.text2}`}>{item.label}</p>
@@ -490,9 +587,9 @@ export default function TechnologyPage() {
             </section>
 
             {/* ══════════════════════════════════════ */}
-            {/* 5. 품질 관리 인프라                    */}
+            {/* 6. 품질 관리 인프라                    */}
             {/* ══════════════════════════════════════ */}
-            <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
+            <section className="border-t border-gray-200 py-24 md:py-32">
               <div className="mx-auto max-w-7xl px-6">
                 <FadeIn>
                   <div className="mb-14 text-center">
