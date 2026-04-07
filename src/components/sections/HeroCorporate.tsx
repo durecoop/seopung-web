@@ -29,7 +29,7 @@ const SLIDES = [
     image: '/images/food-web/tica034m19010001.jpg',
     tag: 'Smart Factory',
     title: 'AI 기술로 여는\n수산업의 내일',
-    desc: 'AI X-ray 이물 검출, 초분광 선별 — 기술 혁신으로 품질의 한계를 넘습니다',
+    desc: 'AI 초분광 선별, 스캔 자동절단 — 기술 혁신으로 품질의 한계를 넘습니다',
   },
 ];
 

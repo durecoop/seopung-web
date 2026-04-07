@@ -36,7 +36,6 @@ interface InvestmentItem {
 }
 
 const INVESTMENTS: InvestmentItem[] = [
-  { label: 'AI 엑스레이', amount: '2억' },
   { label: 'AI 초분광', amount: '2.5억' },
   { label: '전처리 자동화', amount: '3.5억' },
   { label: '오븐 설비', amount: '0.9억' },
@@ -83,11 +82,11 @@ export default function TechnologySection() {
             기술 혁신
           </h2>
           <p className="mt-6 text-base text-gray-600 md:text-lg">
-            AI 기술이 지키는 품질, 스마트 팩토리
+            최신 설비와 자동화로 구현하는 스마트 팩토리
           </p>
         </div>
 
-        {/* ── Featured card: AI X-ray ── */}
+        {/* ── Featured card: 어류 스캔 자동절단기 ── */}
         <div
           className={`mb-14 overflow-hidden rounded-2xl border border-white/10 bg-gray-100/50 backdrop-blur-sm transition-all duration-700 delay-200 ease-out ${
             sectionVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
@@ -97,8 +96,8 @@ export default function TechnologySection() {
             {/* Image side */}
             <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[400px]">
               <Image
-                src={getImagePath('/images/facility/ai-xray-process.png')}
-                alt="AI 엑스레이 검출기"
+                src={getImagePath('/images/facility/fish-scanner.jpg')}
+                alt="어류 스캔 자동절단기"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -113,15 +112,15 @@ export default function TechnologySection() {
                   <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1.5" />
                   <path d="M6 3v3l2 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
-                핵심 기술
+                핵심 설비
               </span>
               <h3 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
-                AI 엑스레이 검출기
+                어류 스캔 자동절단기
               </h3>
               <p className="mb-6 text-sm leading-relaxed text-gray-700 md:text-base">
-                농심엔지니어링과 약 6개월간 협업하여 검증을 완료한 AI 엑스레이는 제품 내부를
-                X-ray로 촬영한 뒤 인공지능이 이물, 결함, 충진량 이상 등을 자동으로
-                판별합니다. 원료 기인성(뼈 등) 이물 Zero화를 실현합니다.
+                정밀 스캔 기술로 어류의 크기와 형태를 자동으로 분석하여 규격별로 균일하게
+                절단합니다. 숙련 작업자 수준의 정확도를 자동화로 실현하여 생산 효율과
+                제품 품질을 동시에 높입니다.
               </p>
               <div className="inline-flex w-fit items-center gap-2 rounded-xl border border-gold-500/20 bg-ocean-500/10 px-5 py-3">
                 <svg className="h-5 w-5 text-ocean-500" viewBox="0 0 20 20" fill="none">
@@ -133,8 +132,8 @@ export default function TechnologySection() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-sm text-ocean-500">투자금액</span>
-                <span className="font-montserrat text-lg font-bold text-gold-300">약 2억원</span>
+                <span className="text-sm text-ocean-500">정밀 자동화</span>
+                <span className="font-montserrat text-lg font-bold text-gold-300">스마트 가공</span>
               </div>
             </div>
           </div>
@@ -211,7 +210,7 @@ export default function TechnologySection() {
                 <div className="flex flex-col items-center rounded-xl border border-gold-500/20 bg-ocean-500/10 px-5 py-3 md:px-8">
                   <span className="text-xs text-ocean-500/70">총 투자</span>
                   <span className="font-montserrat text-xl font-bold text-gold-300 md:text-2xl">
-                    약 9억원
+                    약 6.9억원
                   </span>
                 </div>
               </div>

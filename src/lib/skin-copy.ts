@@ -150,7 +150,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
     aboutLabel: 'Innovation Lab',
     aboutTitle1: '기술이 만드는',
     aboutTitle2: '수산업의 미래',
-    aboutDesc1: 'AI X-ray 이물질 검출, 초분광 선별 시스템. 서풍은 기술로 수산 가공의 새 패러다임을 만듭니다.',
+    aboutDesc1: 'AI 초분광 선별, 스캔 자동절단 시스템. 서풍은 기술로 수산 가공의 새 패러다임을 만듭니다.',
     aboutDesc2: '단순 가공을 넘어, 스마트 팩토리로의 전환.',
     aboutDesc2Bold: '데이터 기반 의사결정, 자동화된 품질관리.',
     aboutCta: '기술력 확인하기',

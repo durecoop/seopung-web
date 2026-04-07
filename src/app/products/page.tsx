@@ -40,18 +40,6 @@ const CATEGORIES = [
   },
 ];
 
-const FISH_SPECIES = [
-  { name: '고등어', en: 'Mackerel' },
-  { name: '삼치', en: 'Spanish Mackerel' },
-  { name: '갈치', en: 'Hairtail' },
-  { name: '오징어', en: 'Squid' },
-  { name: '아귀', en: 'Monkfish' },
-  { name: '참조기', en: 'Yellow Croaker' },
-  { name: '장어', en: 'Eel' },
-  { name: '연어', en: 'Salmon' },
-  { name: '명태', en: 'Pollock' },
-];
-
 const OEM_STATS = [
   { number: '134+', label: '품목 개발', desc: '10년간 누적 개발 품목' },
   { number: '66개', label: '운영중', desc: '현재 양산 중인 품목' },
@@ -71,9 +59,6 @@ const COPY: Record<number, {
   introAfter: string;
   categoryLabel: string;
   categoryTitle: string;
-  fishLabel: string;
-  fishTitle: string;
-  fishDesc: string;
   oemLabel: string;
   oemTitle: string;
   oemDesc: string;
@@ -91,9 +76,6 @@ const COPY: Record<number, {
     introAfter: '입니다. 원료 수매부터 완제품 출하까지, 귀사의 브랜드에 맞춘 맞춤 생산을 제공합니다.',
     categoryLabel: 'Categories',
     categoryTitle: '제품 카테고리',
-    fishLabel: 'Fish Species',
-    fishTitle: '어종 취급 현황',
-    fishDesc: '9개 어종을 전문적으로 가공하며, 각 어종별 최적의 가공 방식을 적용합니다.',
     oemLabel: 'OEM Track Record',
     oemTitle: 'OEM 역량',
     oemDesc: '10년간 쌓아온 OEM 제조 역량으로 귀사의 브랜드 가치를 높여드립니다.',
@@ -111,9 +93,6 @@ const COPY: Record<number, {
     introAfter: '입니다. 원료 수매부터 완제품 출하까지, 시장의 요구에 맞서 결과로 응답합니다.',
     categoryLabel: 'Arsenal',
     categoryTitle: '주력 제품군',
-    fishLabel: 'Target Species',
-    fishTitle: '주력 어종 라인업',
-    fishDesc: '9개 핵심 어종, 각각에 최적화된 가공 전략으로 승부합니다.',
     oemLabel: 'Track Record',
     oemTitle: '실전 OEM 역량',
     oemDesc: '10년간 현장에서 증명한 제조 역량. 숫자가 전력을 말해줍니다.',
@@ -131,9 +110,6 @@ const COPY: Record<number, {
     introAfter: '입니다. AI 검수부터 실시간 이력추적까지, 기술이 품질을 보장합니다.',
     categoryLabel: 'Product Database',
     categoryTitle: '제품 카테고리',
-    fishLabel: 'Species Matrix',
-    fishTitle: '어종 데이터베이스',
-    fishDesc: '9개 어종의 최적 가공 파라미터를 데이터로 관리합니다.',
     oemLabel: 'Analytics',
     oemTitle: 'OEM 퍼포먼스',
     oemDesc: '데이터로 검증된 OEM 제조 역량 지표입니다.',
@@ -151,9 +127,6 @@ const COPY: Record<number, {
     introAfter: '입니다. 새벽 위판장의 신선함부터 완제품의 정성까지, 하나하나 영혼을 담습니다.',
     categoryLabel: 'Collection',
     categoryTitle: '제품 컬렉션',
-    fishLabel: 'The Cast',
-    fishTitle: '바다가 선사한 어종',
-    fishDesc: '9가지 바다의 주인공, 각각의 이야기를 최적의 가공으로 완성합니다.',
     oemLabel: 'The Numbers',
     oemTitle: '작품의 기록',
     oemDesc: '30년간 쌓아온 장인의 기록이 신뢰를 만듭니다.',
@@ -171,9 +144,6 @@ const COPY: Record<number, {
     introAfter: '입니다. 어떤 요구에도 응답하는 제품력, 결과로 증명합니다.',
     categoryLabel: 'Portfolio',
     categoryTitle: '프리미엄 제품군',
-    fishLabel: 'Core Species',
-    fishTitle: '핵심 어종 포트폴리오',
-    fishDesc: '9개 핵심 어종에 대한 완벽한 가공 체계를 갖추고 있습니다.',
     oemLabel: 'Performance',
     oemTitle: 'OEM 실적',
     oemDesc: '업계 최고 수준의 OEM 제조 역량을 숫자로 확인하세요.',
@@ -191,9 +161,6 @@ const COPY: Record<number, {
     introAfter: '입니다. 불가능을 가능으로 바꾸는 제품 철학으로, 세상에 없던 것을 만듭니다.',
     categoryLabel: 'Innovation',
     categoryTitle: '혁신 제품군',
-    fishLabel: 'Frontier Species',
-    fishTitle: '도전하는 어종 라인업',
-    fishDesc: '9개 어종의 한계를 넘어, 새로운 가공 방식을 개척합니다.',
     oemLabel: 'Pioneer Record',
     oemTitle: '개척의 기록',
     oemDesc: '한계를 정하지 않는 OEM 역량. 서풍이 먼저 길을 엽니다.',
@@ -211,9 +178,6 @@ const COPY: Record<number, {
     introAfter: '입니다. 시장 트렌드를 빠르게 반영하여 귀사의 브랜드에 맞는 맞춤 제품을 개발·생산합니다.',
     categoryLabel: 'Categories',
     categoryTitle: '제품 카테고리',
-    fishLabel: 'Fish Species',
-    fishTitle: '어종 취급 현황',
-    fishDesc: '9개 어종을 전문적으로 가공하며, 각 어종별 최적의 가공 방식을 적용합니다.',
     oemLabel: 'OEM Track Record',
     oemTitle: 'OEM 역량',
     oemDesc: '10년간 쌓아온 OEM 제조 역량과 신제품 개발력으로 귀사의 성장을 함께 설계합니다.',
@@ -326,49 +290,6 @@ export default function ProductsPage() {
                   </FadeIn>
                 ))}
               </div>
-            </div>
-          </section>
-
-          {/* ── Fish Species ── */}
-          <section className="relative py-24 md:py-32">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-40" />
-            <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-              <FadeIn>
-                <div className="mb-16 text-center">
-                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    {copy.fishLabel}
-                  </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.fishTitle}</h2>
-                  <p className={`mx-auto mt-4 max-w-xl text-base ${c.text2}`}>
-                    {copy.fishDesc}
-                  </p>
-                </div>
-              </FadeIn>
-
-              <FadeIn>
-                <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-9">
-                  {FISH_SPECIES.map((fish, i) => (
-                    <FadeIn key={fish.name} delay={i * 60}>
-                      <div className={`group flex flex-col items-center gap-3 rounded-2xl border ${c.cardBorder} ${c.cardBg} px-3 py-6 text-center transition-all duration-500 ${c.cardHover}`}>
-                        {/* Fish icon */}
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ocean-500/10 text-ocean-500 transition-colors duration-300 group-hover:bg-ocean-500/20">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 3c-4.97 0-9 3.13-9 7s4.03 7 9 7c1.66 0 3.2-.45 4.5-1.22L21 18l-1.22-4.5C20.55 12.2 21 10.66 21 10c0-3.87-4.03-7-9-7z"
-                            />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className={`text-sm font-bold ${c.text}`}>{fish.name}</p>
-                          <p className={`mt-0.5 text-[10px] font-medium ${c.text2}`}>{fish.en}</p>
-                        </div>
-                      </div>
-                    </FadeIn>
-                  ))}
-                </div>
-              </FadeIn>
             </div>
           </section>
 

@@ -15,11 +15,6 @@ interface TechCopy {
   heroLabel: string;
   heroTitle: string;
   heroSub: string;
-  xrayLabel: string;
-  xrayTitle: string;
-  xrayAccent: string;
-  xrayDesc: string;
-  xrayDiagramTitle: string;
   hyperLabel: string;
   hyperTitle: string;
   hyperAccent: string;
@@ -46,12 +41,7 @@ const COPY: Record<number, TechCopy> = {
   0: {
     heroLabel: 'Technology & Facility',
     heroTitle: '기술·설비',
-    heroSub: 'AI 기술이 지키는 품질, 스마트 팩토리',
-    xrayLabel: 'Featured Technology',
-    xrayTitle: 'AI 엑스레이',
-    xrayAccent: '검출 시스템',
-    xrayDesc: '농심엔지니어링과 약 6개월간 협업하여 검증을 완료한 AI 엑스레이는 제품 내부를 X-ray로 촬영한 뒤 인공지능이 이물, 결함, 충진량 이상 등을 자동으로 판별하는 검사 시스템입니다.',
-    xrayDiagramTitle: 'AI 엑스레이 구성도',
+    heroSub: '최신 설비와 자동화로 구현하는 스마트 팩토리',
     hyperLabel: 'Next-Gen Detection',
     hyperTitle: 'AI 초분광 검출기 —',
     hyperAccent: '차세대 품질 혁신',
@@ -77,11 +67,6 @@ const COPY: Record<number, TechCopy> = {
     heroLabel: 'Arsenal & Firepower',
     heroTitle: '전투 장비, 기술력',
     heroSub: '거친 시장에서 살아남는 무기, 최강의 설비',
-    xrayLabel: 'Weapon System',
-    xrayTitle: 'AI 엑스레이',
-    xrayAccent: '철벽 검출 시스템',
-    xrayDesc: '6개월간의 실전 검증을 마친 AI 엑스레이 — 이물, 결함, 충진량 이상을 한 치의 오차 없이 잡아냅니다. 약한 제품은 여기서 걸러진다.',
-    xrayDiagramTitle: 'AI 엑스레이 전투 배치도',
     hyperLabel: 'Next Weapon',
     hyperTitle: 'AI 초분광 검출기 —',
     hyperAccent: '차세대 무기 도입',
@@ -106,12 +91,7 @@ const COPY: Record<number, TechCopy> = {
   2: {
     heroLabel: 'Smart Factory System',
     heroTitle: 'AI 기반 스마트 팩토리',
-    heroSub: 'AI·IoT·빅데이터가 구동하는 지능형 수산 가공',
-    xrayLabel: 'Core AI Module',
-    xrayTitle: 'AI X-ray',
-    xrayAccent: '자동 검출 엔진',
-    xrayDesc: 'CNN 기반 딥러닝 모델이 X-ray 이미지를 분석하여 이물·결함·충진량 이상을 밀리초 단위로 판별합니다. 약 1,000장의 학습 데이터, 99%+ 정확도.',
-    xrayDiagramTitle: 'AI X-ray 시스템 아키텍처',
+    heroSub: 'IoT·빅데이터·자동화가 구동하는 지능형 수산 가공',
     hyperLabel: 'Spectral AI',
     hyperTitle: 'AI 초분광 모듈 —',
     hyperAccent: '비가시 영역 분석',
@@ -137,11 +117,6 @@ const COPY: Record<number, TechCopy> = {
     heroLabel: 'The Machines Behind the Magic',
     heroTitle: '기술이 빚어낸 맛',
     heroSub: '보이지 않는 곳에서 묵묵히 일하는 장비들의 이야기',
-    xrayLabel: 'The Guardian',
-    xrayTitle: 'AI 엑스레이 —',
-    xrayAccent: '보이지 않는 수호자',
-    xrayDesc: '제품 속 깊은 곳까지 들여다보는 눈(目). 6개월간의 검증 끝에 탄생한 AI 엑스레이는 사람의 눈으로는 발견할 수 없는 이물까지 찾아냅니다.',
-    xrayDiagramTitle: 'AI 엑스레이의 시선',
     hyperLabel: 'Beyond Light',
     hyperTitle: 'AI 초분광 —',
     hyperAccent: '빛 너머의 진실',
@@ -167,11 +142,6 @@ const COPY: Record<number, TechCopy> = {
     heroLabel: 'Premium Technology',
     heroTitle: '업계 최고 설비',
     heroSub: '대한민국 수산 OEM No.1의 기술 경쟁력',
-    xrayLabel: 'Premium QA',
-    xrayTitle: 'AI 엑스레이',
-    xrayAccent: '최고급 검출 시스템',
-    xrayDesc: '대한민국 수산 업계 최초 AI 엑스레이 도입. 농심엔지니어링과 6개월 검증을 거쳐 완성한, 타의 추종을 불허하는 품질 검사 시스템입니다.',
-    xrayDiagramTitle: 'AI 엑스레이 시스템 구성',
     hyperLabel: 'Leading Edge',
     hyperTitle: 'AI 초분광 —',
     hyperAccent: '업계 최초 도입',
@@ -197,11 +167,6 @@ const COPY: Record<number, TechCopy> = {
     heroLabel: 'Pioneering Technology',
     heroTitle: '아무도 가지 않은 기술의 길',
     heroSub: '수산 가공의 새로운 기준을 세우는 개척자',
-    xrayLabel: 'First in Industry',
-    xrayTitle: 'AI 엑스레이 —',
-    xrayAccent: '업계 최초의 도전',
-    xrayDesc: '아무도 시도하지 않았던 수산 가공 AI 검출. 서풍이 처음으로 그 길을 열었습니다. 6개월의 검증, 약 2억원의 투자 — 개척자의 대가는 크지만 보상은 더 큽니다.',
-    xrayDiagramTitle: 'AI 엑스레이 — 개척의 청사진',
     hyperLabel: 'Uncharted Territory',
     hyperTitle: 'AI 초분광 —',
     hyperAccent: '미지의 영역으로',
@@ -225,12 +190,7 @@ const COPY: Record<number, TechCopy> = {
   6: {
     heroLabel: 'Technology & Facility',
     heroTitle: '기술·설비',
-    heroSub: 'AI 기술과 자동화로 여는 스마트 팩토리',
-    xrayLabel: 'Core Technology',
-    xrayTitle: 'AI 엑스레이',
-    xrayAccent: '검출 시스템',
-    xrayDesc: '농심엔지니어링과 6개월간 협업하여 도입한 AI 엑스레이는 X-ray 촬영 후 인공지능이 이물, 결함, 충진량 이상을 실시간으로 판별합니다. 수산업계 최초 도입.',
-    xrayDiagramTitle: 'AI 엑스레이 시스템 구성도',
+    heroSub: '최신 설비와 자동화로 여는 스마트 팩토리',
     hyperLabel: 'Next Innovation',
     hyperTitle: 'AI 초분광 검출기 —',
     hyperAccent: '차세대 품질 혁신',
@@ -310,8 +270,8 @@ const TIMELINE = [
   {
     year: '2026',
     label: '2026년',
-    items: 'AI 엑스레이(2억), AI 초분광(2.5억), 전처리 자동화(3.5억), 오븐 구이기(0.9억)',
-    amount: '약 9억원',
+    items: 'AI 초분광(2.5억), 전처리 자동화(3.5억), 오븐 구이기(0.9억)',
+    amount: '약 6.9억원',
     highlight: true,
   },
   {
@@ -324,7 +284,6 @@ const TIMELINE = [
 
 /* ─── 2026 investment items ─── */
 const INVEST_2026 = [
-  { label: 'AI 엑스레이', amount: '2', unit: '억' },
   { label: 'AI 초분광', amount: '2.5', unit: '억' },
   { label: '전처리 자동화', amount: '3.5', unit: '억' },
   { label: '오븐 설비', amount: '0.9', unit: '억' },
@@ -366,86 +325,6 @@ export default function TechnologyPage() {
                 </span>
                 <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>{copy.heroTitle}</h1>
                 <p className={`mt-3 text-lg ${c.text2}`}>{copy.heroSub}</p>
-              </div>
-            </section>
-
-            {/* ══════════════════════════════════════ */}
-            {/* 1. AI X-ray Featured Section          */}
-            {/* ══════════════════════════════════════ */}
-            <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
-              <div className="mx-auto max-w-7xl px-6">
-                <FadeIn>
-                  <div className="mb-12 text-center">
-                    <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                      {copy.xrayLabel}
-                    </span>
-                    <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                      {copy.xrayTitle} <span className="text-ocean-500">{copy.xrayAccent}</span>
-                    </h2>
-                  </div>
-                </FadeIn>
-
-                {/* Large image + description */}
-                <FadeIn>
-                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} lg:flex`}>
-                    <div className="relative aspect-[16/10] lg:aspect-auto lg:w-3/5">
-                      <Image
-                        src={getImagePath('/images/facility/ai-xray-process.png')}
-                        alt="AI X-ray 이물질 검출 프로세스"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 60vw"
-                      />
-                      {/* Investment badge */}
-                      <div className="absolute left-4 top-4 rounded-full bg-ocean-500/90 px-5 py-2 text-sm font-bold text-white shadow-lg">
-                        투자금액 약 2억원
-                      </div>
-                    </div>
-                    <div className="flex flex-col justify-center p-8 lg:w-2/5 lg:p-12">
-                      <h3 className={`mb-4 text-2xl font-bold ${c.text}`}>AI 엑스레이 검출기</h3>
-                      <p className={`mb-6 leading-relaxed ${c.text2}`}>
-                        {copy.xrayDesc}
-                      </p>
-                      <p className={`mb-6 leading-relaxed ${c.text2}`}>
-                        푸드머스 순살 제품군 적용을 위해 도입하였으며, 26년 1월 최종 발주 완료(약 2억원)하여
-                        4월 내 현장 도입 예정입니다.
-                      </p>
-                      <div className="rounded-xl border border-ocean-500/20 bg-ocean-500/5 p-5">
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-ocean-400">How It Works</p>
-                        <div className={`flex flex-wrap items-center gap-2 text-sm ${c.text2}`}>
-                          {['이미지 수집(약 1000장)', '이미지 라벨링', 'AI모델 학습', 'AI모델 평가', '학습된 AI모델 적용'].map(
-                            (step, i, arr) => (
-                              <span key={step} className="flex items-center gap-2">
-                                <span className="rounded-md bg-ocean-500/10 px-2.5 py-1 text-ocean-300">{step}</span>
-                                {i < arr.length - 1 && (
-                                  <svg className="h-4 w-4 text-ocean-500/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                                  </svg>
-                                )}
-                              </span>
-                            )
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-
-                {/* Diagram */}
-                <FadeIn className="mt-12">
-                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.sectionAlt} p-6 md:p-10`}>
-                    <h3 className={`mb-6 text-center text-lg font-semibold ${c.text2}`}>{copy.xrayDiagramTitle}</h3>
-                    <div className="relative mx-auto aspect-[16/9] max-w-4xl">
-                      <Image
-                        src={getImagePath('/images/facility/ai-xray-diagram.png')}
-                        alt="AI X-ray 시스템 구성도"
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 1024px) 100vw, 896px"
-                      />
-                    </div>
-                  </div>
-                </FadeIn>
               </div>
             </section>
 
@@ -570,8 +449,8 @@ export default function TechnologyPage() {
                     },
                     {
                       title: 'AI 품질 검사',
-                      desc: 'AI 엑스레이와 초분광으로 이물 Zero 달성',
-                      image: '/images/facility/ai-xray-process.png',
+                      desc: 'AI 초분광 기술로 이물 Zero 달성',
+                      image: '/images/facility/radiation-tester.jpg',
                     },
                   ].map((card, i) => (
                     <FadeIn key={card.title}>
@@ -704,7 +583,7 @@ export default function TechnologyPage() {
                     <div className={`border-t border-gold-500/20 bg-ocean-500/5 px-6 py-5 text-center`}>
                       <span className={`text-sm ${c.text2}`}>총 투자 예정 </span>
                       <span className="font-montserrat text-2xl font-bold text-ocean-500 md:text-3xl">
-                        약 9<span className="ml-0.5 text-lg">억원</span>
+                        약 6.9<span className="ml-0.5 text-lg">억원</span>
                       </span>
                     </div>
                   </div>
