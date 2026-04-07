@@ -231,12 +231,53 @@ export default function PageSections({ theme: t }: Props) {
             </div>
           </FadeIn>
           <FadeIn>
-            <div className="flex flex-wrap items-center justify-center gap-6">
-              {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
-                <div key={name} className={`flex h-24 w-44 items-center justify-center rounded-xl border ${cardCls} transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                  <span className={`text-xl font-bold ${tm}`}>{name}</span>
-                </div>
-              ))}
+            <div className="flex flex-wrap items-center justify-center gap-5">
+              {/* 풀무원 */}
+              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                <svg viewBox="0 0 200 40" className="h-8 w-full">
+                  <text x="100" y="28" textAnchor="middle" fill="#2E7D32" fontSize="22" fontWeight="800" fontFamily="'Noto Sans KR', sans-serif">풀무원</text>
+                  <rect x="30" y="34" width="140" height="2" rx="1" fill="#8BC34A" />
+                </svg>
+              </div>
+              {/* 푸드머스 */}
+              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                <svg viewBox="0 0 200 40" className="h-8 w-full">
+                  <text x="100" y="28" textAnchor="middle" fill="#E65100" fontSize="20" fontWeight="700" fontFamily="'Noto Sans KR', sans-serif">푸드머스</text>
+                  <circle cx="22" cy="20" r="8" fill="none" stroke="#FF8F00" strokeWidth="2" />
+                  <circle cx="22" cy="20" r="3" fill="#FF8F00" />
+                </svg>
+              </div>
+              {/* 홈플러스 */}
+              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                <svg viewBox="0 0 200 40" className="h-8 w-full">
+                  <text x="105" y="28" textAnchor="middle" fill="#E31837" fontSize="20" fontWeight="800" fontFamily="Arial, sans-serif">homeplus</text>
+                  <circle cx="22" cy="20" r="10" fill="none" stroke="#E31837" strokeWidth="2" />
+                  <path d="M17 20h10M22 15v10" stroke="#E31837" strokeWidth="2.5" strokeLinecap="round" />
+                </svg>
+              </div>
+              {/* 이마트 */}
+              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                <svg viewBox="0 0 200 40" className="h-8 w-full">
+                  <text x="100" y="28" textAnchor="middle" fill="#FFB300" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="1">emart</text>
+                  <rect x="60" y="32" width="80" height="3" rx="1.5" fill="#FFB300" />
+                </svg>
+              </div>
+              {/* 쿠팡 */}
+              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                <svg viewBox="0 0 200 40" className="h-8 w-full">
+                  <text x="100" y="28" textAnchor="middle" fill="#00635A" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="1">Coupang</text>
+                </svg>
+              </div>
+              {/* 두레생협 */}
+              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                <svg viewBox="0 0 200 44" className="h-8 w-full">
+                  <circle cx="28" cy="22" r="12" fill="none" stroke="#4CAF50" strokeWidth="2" />
+                  <path d="M22 22c0-3 3-6 6-6s6 3 6 6" fill="none" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="28" cy="18" r="2" fill="#4CAF50" />
+                  <text x="120" y="20" textAnchor="middle" fill="#2E7D32" fontSize="16" fontWeight="800" fontFamily="'Noto Sans KR', sans-serif">두레생협</text>
+                  <text x="120" y="34" textAnchor="middle" fill="#66BB6A" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">DURE COOP</text>
+                </svg>
+              </div>
             </div>
           </FadeIn>
         </div>
