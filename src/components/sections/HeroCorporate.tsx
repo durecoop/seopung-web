@@ -49,12 +49,12 @@ const VALUE_CARDS = [
     icon: (
       <svg viewBox="0 0 48 48" fill="none" className="h-12 w-12">
         <circle cx="24" cy="24" r="22" stroke="#003d6b" strokeWidth="2" fill="#f0f6fc" />
-        <path d="M24 14v10l6 4" stroke="#003d6b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <circle cx="24" cy="24" r="11" stroke="#003d6b" strokeWidth="1.5" fill="none" opacity="0.3" />
+        <path d="M16 18h16M16 24h16M16 30h10" stroke="#003d6b" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <path d="M34 28l4 4-4 4" stroke="#003d6b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.5" />
       </svg>
     ),
-    title: 'AI 스마트 팩토리',
-    desc: 'AI X-ray 검수, 초분광 선별 등\n기술 혁신으로 품질의 새로운 기준을 세웁니다',
+    title: '맞춤 OEM 솔루션',
+    desc: '대형마트 PB, 외식 프랜차이즈, 밀키트 브랜드\n귀사의 요구에 맞춘 제품을 설계·생산합니다',
   },
   {
     icon: (
