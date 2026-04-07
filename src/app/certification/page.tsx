@@ -259,16 +259,12 @@ const COPY: Record<number, {
   certSectionAccent: string;
   qualityTitle: string;
   qualityAccent: string;
-  galleryTitle: string;
-  galleryAccent: string;
   downloadTitle: string;
   downloadAccent: string;
   kpiTitle: string;
   kpiAccent: string;
   timelineTitle: string;
   timelineAccent: string;
-  onSiteTitle: string;
-  onSiteAccent: string;
   ctaText: string;
 }> = {
   0: {
@@ -280,16 +276,12 @@ const COPY: Record<number, {
     certSectionAccent: '현황',
     qualityTitle: '품질 관리',
     qualityAccent: '체계',
-    galleryTitle: '인증서',
-    galleryAccent: '갤러리',
     downloadTitle: '인증서',
     downloadAccent: '다운로드',
     kpiTitle: '품질',
     kpiAccent: '지표',
     timelineTitle: '품질',
     timelineAccent: '연혁',
-    onSiteTitle: '현장 품질',
-    onSiteAccent: '관리',
     ctaText: '기술·설비도 확인해보세요',
   },
   1: {
@@ -301,16 +293,12 @@ const COPY: Record<number, {
     certSectionAccent: '현황',
     qualityTitle: '철벽',
     qualityAccent: '품질 관리',
-    galleryTitle: '인증서',
-    galleryAccent: '실물 확인',
     downloadTitle: '인증서',
     downloadAccent: '즉시 다운로드',
     kpiTitle: '현장에서 증명된',
     kpiAccent: '수치',
     timelineTitle: '도전의',
     timelineAccent: '궤적',
-    onSiteTitle: '최전선',
-    onSiteAccent: '품질 관리',
     ctaText: '설비 전력도 확인하라',
   },
   2: {
@@ -322,16 +310,12 @@ const COPY: Record<number, {
     certSectionAccent: '현황',
     qualityTitle: '스마트 품질',
     qualityAccent: '관리 체계',
-    galleryTitle: '인증서',
-    galleryAccent: '아카이브',
     downloadTitle: '인증서',
     downloadAccent: '데이터 다운로드',
     kpiTitle: '데이터로 본',
     kpiAccent: '품질 지표',
     timelineTitle: '기술 발전',
     timelineAccent: '타임라인',
-    onSiteTitle: '실시간 모니터링',
-    onSiteAccent: '현장 품질',
     ctaText: '스마트 설비 시스템 보기',
   },
   3: {
@@ -343,16 +327,12 @@ const COPY: Record<number, {
     certSectionAccent: '무게',
     qualityTitle: '한 치의 타협 없는',
     qualityAccent: '품질 철학',
-    galleryTitle: '인증서',
-    galleryAccent: '이야기',
     downloadTitle: '인증서',
     downloadAccent: '소장하기',
     kpiTitle: '세월이 빚어낸',
     kpiAccent: '품질 지표',
     timelineTitle: '30년의',
     timelineAccent: '여정',
-    onSiteTitle: '매일 아침 반복되는',
-    onSiteAccent: '품질의 의식',
     ctaText: '장인의 설비를 만나보세요',
   },
   4: {
@@ -364,16 +344,12 @@ const COPY: Record<number, {
     certSectionAccent: '현황',
     qualityTitle: '최고 수준의',
     qualityAccent: '품질 관리',
-    galleryTitle: '인증서',
-    galleryAccent: '포트폴리오',
     downloadTitle: '인증서',
     downloadAccent: '확보하기',
     kpiTitle: '숫자가 말하는',
     kpiAccent: '품질력',
     timelineTitle: '리더의',
     timelineAccent: '품질 연혁',
-    onSiteTitle: '흐트러짐 없는',
-    onSiteAccent: '현장 관리',
     ctaText: '프리미엄 설비를 확인하세요',
   },
   5: {
@@ -385,16 +361,12 @@ const COPY: Record<number, {
     certSectionAccent: '인증 현황',
     qualityTitle: '기존의 틀을 깬',
     qualityAccent: '품질 관리',
-    galleryTitle: '인증서',
-    galleryAccent: '기록',
     downloadTitle: '인증서',
     downloadAccent: '다운로드',
     kpiTitle: '한계를 넘어선',
     kpiAccent: '품질 수치',
     timelineTitle: '개척의',
     timelineAccent: '발자취',
-    onSiteTitle: '누구보다 먼저 세운',
-    onSiteAccent: '현장 기준',
     ctaText: '개척자의 설비를 확인하다',
   },
   6: {
@@ -406,16 +378,12 @@ const COPY: Record<number, {
     certSectionAccent: '현황',
     qualityTitle: '체계적',
     qualityAccent: '품질 관리',
-    galleryTitle: '인증서',
-    galleryAccent: '원본',
     downloadTitle: '인증서',
     downloadAccent: '다운로드',
     kpiTitle: '핵심 품질',
     kpiAccent: '성과',
     timelineTitle: '인증',
     timelineAccent: '히스토리',
-    onSiteTitle: '현장',
-    onSiteAccent: '품질 점검',
     ctaText: '기술·설비 역량 확인하기',
   },
 };
@@ -587,70 +555,6 @@ export default function CertificationPage() {
           </section>
 
           {/* ══════════════════════════════════════ */}
-          {/* 1-B. 인증서 실물 갤러리               */}
-          {/* ══════════════════════════════════════ */}
-          <section className="border-t border-gray-200 py-24 md:py-32">
-            <div className="mx-auto max-w-4xl px-6">
-              <FadeIn>
-                <div className="mb-14 text-center">
-                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                    Certificate Gallery
-                  </span>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    {copy.galleryTitle} <span className="text-ocean-500">{copy.galleryAccent}</span>
-                  </h2>
-                </div>
-              </FadeIn>
-
-              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-                <FadeIn>
-                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-3 sm:p-4 shadow-lg`}>
-                    <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
-                      <div className="relative aspect-[3/4]">
-                        <Image
-                          src={getImagePath('/images/certification/traceability-cert.jpg')}
-                          alt="수산물이력추적관리 등록증 제1164호"
-                          fill
-                          className="object-contain"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                    </div>
-                    <p className={`mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium ${c.text2}`}>
-                      수산물이력추적관리 등록증 제1164호
-                    </p>
-                  </div>
-                </FadeIn>
-
-                <FadeIn>
-                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-3 sm:p-4 shadow-lg`}>
-                    <div className="overflow-hidden rounded-xl bg-white/95 p-2 sm:p-3">
-                      <div className="relative aspect-[3/4]">
-                        <Image
-                          src={getImagePath('/images/certification/traceability-cert-2.jpg')}
-                          alt="수산물이력추적관리 인증서"
-                          fill
-                          className="object-contain"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                    </div>
-                    <p className={`mt-2 sm:mt-3 text-center text-xs sm:text-sm font-medium ${c.text2}`}>
-                      수산물이력추적관리 인증서
-                    </p>
-                  </div>
-                </FadeIn>
-              </div>
-
-              <FadeIn className="mt-8">
-                <p className={`text-center text-xs sm:text-sm ${c.text2}`}>
-                  ※ HACCP, 수산물품질인증 등 추가 인증서는 사무실에서 확인 가능합니다
-                </p>
-              </FadeIn>
-            </div>
-          </section>
-
-          {/* ══════════════════════════════════════ */}
           {/* 1-C. 인증서 다운로드                    */}
           {/* ══════════════════════════════════════ */}
           <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
@@ -809,51 +713,6 @@ export default function CertificationPage() {
                     </div>
                   </div>
                 </FadeIn>
-              </div>
-            </div>
-          </section>
-
-          {/* ══════════════════════════════════════ */}
-          {/* 2-B. 현장 품질 관리 사진              */}
-          {/* ══════════════════════════════════════ */}
-          <section className={`border-t border-gray-200 ${c.sectionAlt} py-24 md:py-32`}>
-            <div className="mx-auto max-w-7xl px-6">
-              <FadeIn>
-                <div className="mb-14 text-center">
-                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                    On-Site Quality Control
-                  </span>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    {copy.onSiteTitle} <span className="text-ocean-500">{copy.onSiteAccent}</span>
-                  </h2>
-                </div>
-              </FadeIn>
-
-              <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6">
-                {[
-                  { image: '/images/facility/raw-material-label.jpg', caption: '원료 식별표시' },
-                  { image: '/images/facility/raw-material-label-2.jpg', caption: '원료 관리' },
-                  { image: '/images/facility/cold-storage-boxes.jpg', caption: '냉동 보관' },
-                  { image: '/images/facility/cold-storage-detail.jpg', caption: '선내급속냉동' },
-                ].map((photo) => (
-                  <FadeIn key={photo.caption}>
-                    <div className={`group overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5`}>
-                      <div className="relative aspect-[4/3] overflow-hidden">
-                        <Image
-                          src={getImagePath(photo.image)}
-                          alt={photo.caption}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 768px) 50vw, 33vw"
-                        />
-                        <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-70`} />
-                      </div>
-                      <div className="p-2 sm:p-4">
-                        <p className={`text-xs sm:text-sm font-medium ${c.text2} truncate`}>{photo.caption}</p>
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
               </div>
             </div>
           </section>
