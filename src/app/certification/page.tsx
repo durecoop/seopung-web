@@ -145,7 +145,7 @@ const CERTIFICATIONS: CertificationItem[] = [
     name: '수산물 이력추적',
     year: '2013년',
     desc: '원산지부터 가공·유통까지 전 과정을 추적할 수 있어 소비자가 안심하고 구매할 수 있는 제도입니다. 서풍은 전품목에 이력추적관리를 적용하고 있습니다.',
-    photo: '/images/certification/traceability-cert.jpg',
+    photo: null,
     logo: '/images/certification/logos/traceability-logo.jpg',
     extraLogos: [
       '/images/certification/logos/fishtrace-system-logo.jpg',
