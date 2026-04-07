@@ -6,7 +6,7 @@ import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import FadeIn from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
-import { equipCrud, investCrud, type Equipment as EquipType, type Investment as InvestType } from '@/lib/admin-store';
+import { investCrud, type Investment as InvestType } from '@/lib/admin-store';
 
 /* ──────────────────────────────────────────────
    Skin-specific copy
@@ -18,9 +18,6 @@ interface TechCopy {
   hyperLabel: string;
   hyperTitle: string;
   hyperAccent: string;
-  equipLabel: string;
-  equipTitle: string;
-  equipAccent: string;
   autoLabel: string;
   autoTitle: string;
   autoAccent: string;
@@ -45,9 +42,6 @@ const COPY: Record<number, TechCopy> = {
     hyperLabel: 'Next-Gen Detection',
     hyperTitle: 'AI 초분광 검출기 —',
     hyperAccent: '차세대 품질 혁신',
-    equipLabel: 'Equipment',
-    equipTitle: '주요 설비',
-    equipAccent: '현황',
     autoLabel: 'Automation Vision',
     autoTitle: '기술 중심의',
     autoAccent: '생산 자동화 로드맵',
@@ -70,9 +64,6 @@ const COPY: Record<number, TechCopy> = {
     hyperLabel: 'Next Weapon',
     hyperTitle: 'AI 초분광 검출기 —',
     hyperAccent: '차세대 무기 도입',
-    equipLabel: 'Heavy Equipment',
-    equipTitle: '실전 검증된',
-    equipAccent: '핵심 장비',
     autoLabel: 'Battle Strategy',
     autoTitle: '공격적인',
     autoAccent: '자동화 전략',
@@ -95,9 +86,6 @@ const COPY: Record<number, TechCopy> = {
     hyperLabel: 'Spectral AI',
     hyperTitle: 'AI 초분광 모듈 —',
     hyperAccent: '비가시 영역 분석',
-    equipLabel: 'Hardware Stack',
-    equipTitle: '스마트 설비',
-    equipAccent: '스택',
     autoLabel: 'Automation Pipeline',
     autoTitle: '단계별',
     autoAccent: '자동화 파이프라인',
@@ -120,9 +108,6 @@ const COPY: Record<number, TechCopy> = {
     hyperLabel: 'Beyond Light',
     hyperTitle: 'AI 초분광 —',
     hyperAccent: '빛 너머의 진실',
-    equipLabel: 'Silent Heroes',
-    equipTitle: '묵묵히 일하는',
-    equipAccent: '설비들',
     autoLabel: 'Evolution',
     autoTitle: '손끝에서 기계로,',
     autoAccent: '진화하는 공정',
@@ -145,9 +130,6 @@ const COPY: Record<number, TechCopy> = {
     hyperLabel: 'Leading Edge',
     hyperTitle: 'AI 초분광 —',
     hyperAccent: '업계 최초 도입',
-    equipLabel: 'Top-Tier Equipment',
-    equipTitle: '대한민국 최고',
-    equipAccent: '설비 라인업',
     autoLabel: 'Industry Leader',
     autoTitle: '업계를 선도하는',
     autoAccent: '자동화 비전',
@@ -170,9 +152,6 @@ const COPY: Record<number, TechCopy> = {
     hyperLabel: 'Uncharted Territory',
     hyperTitle: 'AI 초분광 —',
     hyperAccent: '미지의 영역으로',
-    equipLabel: 'Groundbreaking Gear',
-    equipTitle: '한계를 넘는',
-    equipAccent: '혁신 설비',
     autoLabel: 'Trailblazing',
     autoTitle: '새로운 길을 여는',
     autoAccent: '자동화 혁신',
@@ -194,9 +173,6 @@ const COPY: Record<number, TechCopy> = {
     hyperLabel: 'Next Innovation',
     hyperTitle: 'AI 초분광 검출기 —',
     hyperAccent: '차세대 품질 혁신',
-    equipLabel: 'Equipment',
-    equipTitle: '핵심 설비',
-    equipAccent: '라인업',
     autoLabel: 'Smart Automation',
     autoTitle: '진화하는',
     autoAccent: '생산 자동화',
@@ -213,39 +189,6 @@ const COPY: Record<number, TechCopy> = {
   },
 };
 
-/* ─── Equipment data ─── */
-const EQUIPMENT = [
-  {
-    name: '어류 스캔 자동절단기',
-    image: '/images/facility/fish-scanner-2.jpg',
-    desc: '정밀한 스캔으로 어류를 규격별로 균일하게 절단',
-  },
-  {
-    name: '터널프리저 (IQF)',
-    image: '/images/process/04-tunnel-freezer.jpg',
-    desc: '통벨트 & 자동CIP, -40\u00B0C 급속동결',
-  },
-  {
-    name: '로터리 포장기',
-    image: '/images/process/05-rotary-packer.jpg',
-    desc: '자동 계량 및 포장 시스템 2대 운영',
-  },
-  {
-    name: '열선형 진공포장기',
-    image: '/images/process/05-vacuum-packer.jpg',
-    desc: '다양한 규격의 진공 밀봉 포장',
-  },
-  {
-    name: '방사능 검사 장비',
-    image: '/images/facility/radiation-tester.jpg',
-    desc: 'Gamma Radiation Spectrometer로 원료 안전성 상시 검증',
-  },
-  {
-    name: '오징어할복기',
-    image: '/images/process/02-cutting-machine.jpg',
-    desc: '오징어 전용 자동 할복 가공 장비',
-  },
-];
 
 /* ─── Timeline data ─── */
 const TIMELINE = [
@@ -290,13 +233,9 @@ const INVEST_2026 = [
 ];
 
 export default function TechnologyPage() {
-  const [equipment, setEquipment] = useState(EQUIPMENT);
   const [timeline, setTimeline] = useState(TIMELINE);
 
   useEffect(() => {
-    equipCrud.getAll('sortOrder', 'asc').then((items: EquipType[]) => {
-      if (items.length > 0) setEquipment(items.map(e => ({ name: e.name, image: e.imageUrl, desc: e.desc })));
-    }).catch(() => {});
     investCrud.getAll('sortOrder', 'asc').then((items: InvestType[]) => {
       if (items.length > 0) setTimeline(items.map(inv => ({ year: inv.year, label: inv.label, items: inv.items, amount: inv.amount, highlight: inv.highlight })));
     }).catch(() => {});
@@ -372,47 +311,6 @@ export default function TechnologyPage() {
                     </div>
                   </div>
                 </FadeIn>
-              </div>
-            </section>
-
-            {/* ══════════════════════════════════════ */}
-            {/* 2. Equipment Grid                     */}
-            {/* ══════════════════════════════════════ */}
-            <section className="border-t border-gray-200 py-24 md:py-32">
-              <div className="mx-auto max-w-7xl px-6">
-                <FadeIn>
-                  <div className="mb-12 text-center">
-                    <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                      {copy.equipLabel}
-                    </span>
-                    <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                      {copy.equipTitle} <span className="text-ocean-500">{copy.equipAccent}</span>
-                    </h2>
-                  </div>
-                </FadeIn>
-
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {equipment.map((eq, i) => (
-                    <FadeIn key={eq.name} delay={i * 100}>
-                      <div className={`group overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5`}>
-                        <div className="relative aspect-[4/3] overflow-hidden">
-                          <Image
-                            src={getImagePath(eq.image)}
-                            alt={eq.name}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          />
-                          <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-70`} />
-                        </div>
-                        <div className="p-5">
-                          <h3 className={`mb-1.5 text-lg font-bold ${c.text}`}>{eq.name}</h3>
-                          <p className={`text-sm leading-relaxed ${c.text2}`}>{eq.desc}</p>
-                        </div>
-                      </div>
-                    </FadeIn>
-                  ))}
-                </div>
               </div>
             </section>
 
