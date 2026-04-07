@@ -15,21 +15,21 @@ import { getImagePath } from '@/lib/utils';
 const SLIDES = [
   {
     image: '/images/food-web/td06120004185.jpg',
-    tag: 'Quality & Safety',
-    title: '최고의 품질과\n안전한 제품을 약속합니다',
-    desc: 'HACCP·ASC·MSC 등 6대 국제 인증을 보유한 수산 전문 기업',
+    tag: 'No.1 Seafood OEM',
+    title: '수산 가공의 새로운 기준,\n서풍이 만들어갑니다',
+    desc: '6대 국제 인증 · 연 매출 400억+ · 134개 품목 — 숫자가 증명하는 경쟁력',
   },
   {
     image: '/images/food-web/pc0031187199.jpg',
-    tag: 'Trust & Honesty',
-    title: '정직함을 담아\n만듭니다',
-    desc: '엄선된 원료, 철저한 위생관리로 건강한 수산 가공식품을 생산합니다',
+    tag: 'Since 1995',
+    title: '30년의 도전,\n멈추지 않는 성장',
+    desc: '여수에서 시작한 작은 도전이 대한민국 수산 OEM의 역사가 되었습니다',
   },
   {
     image: '/images/food-web/tica034m19010001.jpg',
     tag: 'Smart Factory',
-    title: '기술 혁신으로\n수산업의 미래를 선도합니다',
-    desc: 'AI X-ray 이물질 검출, 초분광 선별 시스템 등 스마트 팩토리 운영',
+    title: 'AI 기술로 여는\n수산업의 내일',
+    desc: 'AI X-ray 이물 검출, 초분광 선별 — 기술 혁신으로 품질의 한계를 넘습니다',
   },
 ];
 
@@ -42,8 +42,8 @@ const VALUE_CARDS = [
         <path d="M24 10c-2.5 0-4.8.7-6.8 1.8" stroke="#003d6b" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.4" />
       </svg>
     ),
-    title: '철저한 위생관리',
-    desc: 'HACCP 인증 기반의 체계적 위생 시스템으로\n안전한 수산 가공식품을 생산합니다',
+    title: '6대 국제 인증',
+    desc: 'HACCP·ASC·MSC 등 글로벌 스탠다드를 갖춘\n대한민국 최고 수준의 품질 시스템',
   },
   {
     icon: (
@@ -53,8 +53,8 @@ const VALUE_CARDS = [
         <circle cx="24" cy="24" r="11" stroke="#003d6b" strokeWidth="1.5" fill="none" opacity="0.3" />
       </svg>
     ),
-    title: '안정적 품질관리',
-    desc: '원료 입고부터 출하까지 전 공정에 걸친\n엄격한 품질 관리 시스템을 운영합니다',
+    title: 'AI 스마트 팩토리',
+    desc: 'AI X-ray 검수, 초분광 선별 등\n기술 혁신으로 품질의 새로운 기준을 세웁니다',
   },
   {
     icon: (
@@ -63,8 +63,8 @@ const VALUE_CARDS = [
         <path d="M12 30h8l4-12 4 18 4-10h8" stroke="#003d6b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </svg>
     ),
-    title: '전국권의 유통망',
-    desc: '대형마트, 온라인, 외식 채널을 통해\n전국 어디서나 신선한 제품을 공급합니다',
+    title: '134+ 제품 라인업',
+    desc: '냉동수산·밀키트·프리미엄 굴비까지\n트렌드를 선도하는 맞춤 OEM 솔루션',
   },
 ];
 
