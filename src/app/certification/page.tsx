@@ -404,7 +404,6 @@ export default function CertificationPage() {
               sizes="100vw"
               priority
             />
-            <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
             <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
               <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400 md:text-base">
                 {copy.heroLabel}
@@ -645,7 +644,6 @@ export default function CertificationPage() {
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-80`} />
                     </div>
                     <div className="p-4 sm:p-6">
                       <h3 className={`mb-2 text-lg font-bold ${c.text}`}>방사능 검사</h3>
@@ -668,7 +666,6 @@ export default function CertificationPage() {
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-80`} />
                     </div>
                     <div className="p-4 sm:p-6">
                       <h3 className={`mb-2 text-lg font-bold ${c.text}`}>이물 관리</h3>
@@ -691,7 +688,6 @@ export default function CertificationPage() {
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-80`} />
                       <div className="absolute left-4 top-4 rounded-full bg-ocean-500/90 px-3 py-1 text-[10px] font-bold text-white">
                         2026 도입
                       </div>
