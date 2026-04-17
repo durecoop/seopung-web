@@ -70,7 +70,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
         <ul className="hidden items-center gap-1 lg:flex">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className={`relative px-4 py-2 text-sm font-medium transition-colors ${textClass} hover:${theme.navAccent}`}>
+              <Link href={item.href} className={`relative px-4 py-2 text-base font-semibold transition-colors ${textClass} hover:${theme.navAccent}`}>
                 {item.label}
               </Link>
             </li>

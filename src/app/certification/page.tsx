@@ -406,11 +406,14 @@ export default function CertificationPage() {
             />
             <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
             <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400 md:text-base">
                 {copy.heroLabel}
               </span>
-              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>{copy.heroTitle}</h1>
-              <p className={`mt-3 text-lg ${c.text2}`}>{copy.heroSub}</p>
+              <h1 className={`text-5xl font-bold leading-tight ${c.text} sm:text-6xl md:text-7xl`}>{copy.heroTitle}</h1>
+              <p className={`mt-4 text-xl font-medium ${c.text2} md:text-2xl`}>{copy.heroSub}</p>
+              <p className={`mt-3 max-w-2xl text-base ${c.text2} opacity-90 md:text-lg`}>
+                대형 유통사·외식 프랜차이즈가 요구하는 안전 기준을 서풍이 선제적으로 충족합니다
+              </p>
             </div>
           </section>
 
@@ -424,19 +427,19 @@ export default function CertificationPage() {
                   <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
                     {copy.certSectionLabel}
                   </span>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                  <h2 className={`text-4xl font-bold ${c.text} sm:text-5xl md:text-6xl`}>
                     {copy.certSectionTitle} <span className="text-ocean-500">{copy.certSectionAccent}</span>
                   </h2>
 
                   {/* Certificate count summary */}
                   <div className="mt-6 flex items-center justify-center gap-4 sm:gap-6">
-                    <div className="flex items-center gap-2 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-4 py-2">
-                      <div className="h-2 w-2 rounded-full bg-ocean-400" />
-                      <span className="text-sm font-medium text-ocean-400">취득 {acquiredCount}건</span>
+                    <div className="flex items-center gap-2 rounded-full border border-ocean-500/30 bg-ocean-500/10 px-5 py-2.5">
+                      <div className="h-2.5 w-2.5 rounded-full bg-ocean-400" />
+                      <span className="text-base font-semibold text-ocean-400">취득 {acquiredCount}건</span>
                     </div>
-                    <div className="flex items-center gap-2 rounded-full border border-gold-500/30 bg-ocean-500/10 px-4 py-2">
-                      <div className="h-2 w-2 rounded-full bg-gold-400" />
-                      <span className="text-sm font-medium text-ocean-500">준비중 {preparingCount}건</span>
+                    <div className="flex items-center gap-2 rounded-full border border-gold-500/30 bg-ocean-500/10 px-5 py-2.5">
+                      <div className="h-2.5 w-2.5 rounded-full bg-gold-400" />
+                      <span className="text-base font-semibold text-ocean-500">준비중 {preparingCount}건</span>
                     </div>
                   </div>
                 </div>
