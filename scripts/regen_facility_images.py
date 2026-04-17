@@ -17,10 +17,12 @@ import fal_client
 ROOT = Path(r"D:/2_Projects/web/Maker_homepade/seopung-web/public/images/facility")
 
 STYLE = (
-    "professional industrial photography, natural bright daylight, "
-    "realistic materials and textures, clean modern Korean seafood factory, "
-    "shallow depth of field, editorial magazine quality, true-to-life colors, "
-    "no text, no watermark, no labels, shot on Canon 5D 35mm"
+    "candid documentary photograph inside a real Korean seafood factory, "
+    "35mm film look, slight grain, natural ambient fluorescent and daylight mix, "
+    "authentic unposed moment, imperfect casual framing, real-world wear and "
+    "small dust on surfaces, subtle lens softness, no over-retouching, "
+    "no dramatic stylization, no oversaturated colors, no text, no watermark, "
+    "looks like a real photojournalism snapshot, not a rendered image"
 )
 
 IMAGES = [
@@ -65,7 +67,7 @@ def generate(prompt, aspect, fmt):
             "enable_safety_checker": True,
             "safety_tolerance": "2",
             "output_format": fmt,
-            "raw": False,
+            "raw": True,
         },
         with_logs=False,
     )

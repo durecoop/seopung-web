@@ -18,13 +18,15 @@ import fal_client
 ROOT = Path(r"D:/2_Projects/web/Maker_homepade/seopung-web/public/images")
 
 COMMON = (
-    "bright clean Korean seafood industry photography, editorial magazine quality, "
-    "realistic texture and materials, true-to-life colors, shallow depth of field, "
-    "no text, no watermark, no labels, no AI artifacts, shot on Canon 5D"
+    "candid documentary photograph, 35mm film look, natural Fujifilm color science, "
+    "slight film grain, authentic unposed moment, imperfect casual framing, "
+    "real-world texture and wear, subtle lens softness, no over-retouching, "
+    "no oversaturated colors, no dramatic stylization, no text, no watermark, "
+    "looks like a real photojournalism snapshot, not a rendered image"
 )
 
-DAWN = "cinematic cool dawn light, subtle blue-orange gradient in sky, "
-DAYLIGHT = "bright natural daylight, soft clean lighting, "
+DAWN = "soft overcast dawn light, muted pale blue and grey sky, no lens flare, "
+DAYLIGHT = "natural ambient daylight from windows, uneven soft shadows, "
 
 
 IMAGES = [
@@ -137,7 +139,7 @@ def generate(prompt, aspect, fmt):
             "enable_safety_checker": True,
             "safety_tolerance": "2",
             "output_format": fmt,
-            "raw": False,
+            "raw": True,
         },
         with_logs=False,
     )
