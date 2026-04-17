@@ -19,9 +19,15 @@ ROOT = Path(r"D:/2_Projects/web/Maker_homepade/seopung-web/public/images")
 
 COMMON = (
     "candid documentary photograph, 35mm film look, natural Fujifilm color science, "
-    "slight film grain, authentic unposed moment, imperfect casual framing, "
-    "real-world texture and wear, subtle lens softness, no over-retouching, "
-    "no oversaturated colors, no dramatic stylization, no text, no watermark, "
+    "slight film grain, authentic unposed moment, subtle lens softness, "
+    "no over-retouching, no dramatic stylization, "
+    "clean uncluttered background, tidy organized composition, minimalist framing, "
+    "ABSOLUTELY NO TEXT ANYWHERE IN FRAME: no letters, no words, no Korean "
+    "characters 한글, no English writing, no numbers, no digits, no signs, "
+    "no posters, no banners, no labels on equipment, no brand names, "
+    "no stickers, no printed text, no clock faces with numbers, "
+    "no displays with readable text, no menu boards, no warning signs, "
+    "no typography whatsoever, completely text-free composition, "
     "looks like a real photojournalism snapshot, not a rendered image"
 )
 
@@ -50,9 +56,10 @@ IMAGES = [
      "precision food technology feel. " + COMMON),
 
     ("food-web/td06120004172.jpg", "21:9",
-     DAYLIGHT + "pristine vacuum-sealed premium Korean seafood packages "
-     "arranged in neat rows on white surface — mackerel fillets, hairtail slices, "
-     "shrimp packs — clean minimalist product showcase, soft top-down lighting. "
+     DAYLIGHT + "clean vacuum-sealed Korean seafood packages in plain "
+     "transparent wrapping arranged in neat rows on light wooden surface — "
+     "mackerel fillets, hairtail slices, peeled shrimp — minimalist product "
+     "showcase, soft top-down lighting, no printed labels, no stickers. "
      + COMMON),
 
     ("food-web/pc0031187509.jpg", "21:9",
@@ -70,9 +77,10 @@ IMAGES = [
 
     ("food-web/pc0031187533.jpg", "21:9",
      DAYLIGHT + "packaging and dispatch line at Korean seafood factory. "
-     "Vacuum-packed frozen fish boxes stacked on stainless trolleys heading to "
-     "refrigerated trucks, workers sealing cardboard boxes with labels, "
-     "bright efficient logistics scene. " + COMMON),
+     "Vacuum-packed frozen fish in plain white packaging stacked on stainless "
+     "trolleys heading to refrigerated trucks, workers in white uniforms "
+     "sealing plain cardboard boxes, bright efficient clean logistics scene, "
+     "no printing on boxes. " + COMMON),
 
     # ───── Process 공정 페이지 4장 ─────
     ("process/04-tunnel-freezer.jpg", "16:9",
@@ -82,16 +90,19 @@ IMAGES = [
      "panel, subtle frost on stainless steel surfaces. " + COMMON),
 
     ("auction/director-inspect.jpg", "4:3",
-     DAYLIGHT + "close-up from behind: hands of a Korean seafood quality manager "
-     "in white coat and cap inspecting fresh silver mackerel laid on blue plastic "
-     "crate at wholesale market. Face not visible, focus on careful hand "
-     "examination of fish, early-morning market light. " + COMMON),
+     DAYLIGHT + "close-up overhead view of hands in white gloves carefully "
+     "inspecting fresh silver Korean mackerel with clear scale and gill detail, "
+     "laid neatly on a clean blue plastic crate. No face visible, just "
+     "hands and fish, tidy uncluttered background, early-morning market light. "
+     + COMMON),
 
     ("auction/auction-panorama.jpg", "21:9",
      DAWN + "wide panorama of Korean coastal fish auction market at dawn. "
-     "Rows of blue plastic fish crates filled with fresh catch on wet concrete "
-     "floor, buyers and sellers in yellow boots and caps from distance, "
-     "bright overhead market lights, bustling early morning scene. " + COMMON),
+     "Neat rows of clean blue plastic fish crates filled with fresh silver "
+     "mackerel, hairtail and sea bream on wet concrete floor, realistic fish "
+     "scales texture, a few blurred workers in yellow boots in the distance, "
+     "overhead lights, clean organized early morning scene, no signs or banners. "
+     + COMMON),
 
     ("hero/dawn-workers.jpg", "16:9",
      DAWN + "silhouette of Korean fishing port workers carrying crates of "
@@ -102,23 +113,25 @@ IMAGES = [
     # ───── Products 1장 ─────
     ("process/06-cold-storage.jpg", "16:9",
      DAYLIGHT + "interior of large Korean cold storage warehouse. Rows of "
-     "neatly stacked white cardboard seafood boxes on tall metal shelving "
-     "disappearing into the distance, visible frost air, cool blue-white "
-     "LED lighting, clean industrial cold-chain facility. " + COMMON),
+     "neatly stacked plain white cardboard boxes (no printing, no labels) "
+     "on tall metal shelving disappearing into the distance, visible cold "
+     "mist, cool blue-white LED lighting, spotless floor, clean organized "
+     "cold-chain facility. " + COMMON),
 
     # ───── Technology / Resources 2장 ─────
     ("facility/fish-scanner.jpg", "4:3",
      DAYLIGHT + "modern X-ray and metal detection scanner on Korean seafood "
      "production line. Stainless steel conveyor carrying sealed fish packages "
-     "through a rectangular tunnel detector, digital screen showing scan result "
-     "on the side, clean hygienic white-tile factory environment. " + COMMON),
+     "in plain white wrapping through a rectangular tunnel detector, simple "
+     "blank control panel, clean hygienic white-tile factory environment, "
+     "no text or labels on any equipment. " + COMMON),
 
     ("facility/fish-scanner-3.jpg", "4:3",
-     DAYLIGHT + "quality control technician in white coat examining a digital "
-     "X-ray scan image on high-resolution monitor at Korean seafood factory. "
-     "Background shows stainless steel scanner and production line, precise "
-     "tech-forward atmosphere. Face of technician angled away or unclear. "
-     + COMMON),
+     DAYLIGHT + "quality control technician in white coat standing next to "
+     "industrial scanner at Korean seafood factory, examining the machine "
+     "interior. Monitor in background shows abstract blue X-ray silhouette "
+     "of fish without any text or numbers. Stainless steel equipment with "
+     "clean blank surfaces, face of technician angled away. " + COMMON),
 
     # ───── Contact 1장 ─────
     ("hero/dawn-unloading.jpg", "21:9",

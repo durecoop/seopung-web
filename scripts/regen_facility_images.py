@@ -19,42 +19,46 @@ ROOT = Path(r"D:/2_Projects/web/Maker_homepade/seopung-web/public/images/facilit
 STYLE = (
     "candid documentary photograph inside a real Korean seafood factory, "
     "35mm film look, slight grain, natural ambient fluorescent and daylight mix, "
-    "authentic unposed moment, imperfect casual framing, real-world wear and "
-    "small dust on surfaces, subtle lens softness, no over-retouching, "
-    "no dramatic stylization, no oversaturated colors, no text, no watermark, "
+    "authentic unposed moment, subtle lens softness, no over-retouching, "
+    "no dramatic stylization, clean uncluttered background, tidy composition, "
+    "ABSOLUTELY NO TEXT ANYWHERE IN FRAME: no letters, no words, no Korean "
+    "characters 한글, no English writing, no numbers, no digits, no signs, "
+    "no posters, no banners, no labels on equipment, no brand names, "
+    "no stickers, no printed text, no displays with readable text, "
+    "no warning signs, no typography whatsoever, completely text-free composition, "
     "looks like a real photojournalism snapshot, not a rendered image"
 )
 
 IMAGES = [
     # (filename, aspect, prompt)
     ("radiation-tester-2.jpg", "21:9",
-     "Wide panoramic view of a bright modern Korean seafood processing lab. "
-     "A white-coated technician operates a Gamma Radiation Spectrometer — "
-     "a large white industrial device with digital control panel — testing "
-     "fresh fish samples on stainless steel tray. Clean white walls, soft "
-     "LED lighting, HACCP-certified clinical environment, blurred background "
-     "of laboratory equipment. " + STYLE),
+     "Wide view of a bright modern Korean seafood quality lab. A white-coated "
+     "technician operating a large white industrial radiation spectrometer "
+     "machine with blank panel (no text or numbers), testing fresh fish "
+     "samples on clean stainless steel tray. Clean white walls, soft LED "
+     "lighting, uncluttered blurred background of lab equipment, no posters "
+     "or signs on walls. " + STYLE),
 
     ("radiation-tester.jpg", "4:3",
-     "Close-up of a Gamma Radiation Spectrometer in a Korean seafood quality "
-     "control lab. White industrial housing with digital readout display "
-     "showing test data, stainless steel sample chamber open with fresh "
-     "fish fillet inside. Gloved hand of technician in background adjusting "
-     "settings. Bright, clean, precision-instrument look. " + STYLE),
+     "Close-up of a radiation spectrometer in a Korean seafood quality lab. "
+     "Clean white industrial housing with blank control surface (no text, "
+     "no digits), open stainless steel sample chamber showing fresh fish "
+     "fillet inside. A gloved hand in background, bright clean lab feel. "
+     + STYLE),
 
     ("safety-sign.jpg", "4:3",
-     "Modern metal detector and X-ray foreign object detection machine on a "
-     "Korean seafood packaging line. Stainless steel conveyor belt carrying "
-     "vacuum-sealed fish packages through the scanner. Clean white factory "
-     "environment, blue safety floor markings, soft daylight from large windows. "
-     "Precision food safety inspection scene. " + STYLE),
+     "Modern metal detector and X-ray scanner machine on a Korean seafood "
+     "packaging line. Stainless steel conveyor belt carrying plain "
+     "vacuum-sealed fish packages (no printed labels) through the rectangular "
+     "tunnel detector. Clean white factory, soft daylight, spotless floor, "
+     "no warning signs or posters anywhere. " + STYLE),
 
     ("ai-xray-process.png", "4:3",
-     "Futuristic AI X-ray inspection machine on Korean seafood production line. "
-     "Glowing blue monitor screen shows X-ray scan image of fish fillet with "
-     "AI-detected highlights. Stainless steel conveyor, clean white factory "
-     "walls, subtle tech-forward atmosphere with soft cyan accent lighting. "
-     "Modern food safety technology. " + STYLE),
+     "AI X-ray inspection machine on Korean seafood production line. Monitor "
+     "in background shows abstract glowing blue silhouette of fish shape "
+     "without any text, numbers or readable UI. Stainless steel conveyor with "
+     "plain white-wrapped fish packages, clean white factory walls, soft cyan "
+     "accent lighting, uncluttered setup. " + STYLE),
 ]
 
 def generate(prompt, aspect, fmt):
