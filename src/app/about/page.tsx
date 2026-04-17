@@ -266,18 +266,15 @@ export default function AboutPage() {
               className="object-cover"
               priority
             />
-            <div className={`absolute inset-0 ${c.overlay}`} />
-            <div className="relative z-10 text-center">
+            <div className="relative z-10 inline-block rounded-2xl bg-white/85 px-8 py-6 text-center shadow-lg backdrop-blur-sm">
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
                 About Us
               </p>
-              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>회사소개</h1>
-              <p className={`mt-4 text-lg ${c.text2}`}>
+              <h1 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">회사소개</h1>
+              <p className="mt-4 text-lg text-gray-700">
                 {copy.heroSub}
               </p>
             </div>
-            {/* Bottom gradient */}
-            <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.gradientFade}`} />
           </section>
 
           {/* ── 1. 인사말 ── */}
@@ -295,7 +292,6 @@ export default function AboutPage() {
                           fill
                           className="object-cover"
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} lg:bg-gradient-to-r lg:from-transparent lg:to-transparent`} />
                       </div>
                     </div>
 
@@ -611,8 +607,7 @@ export default function AboutPage() {
                         fill
                         className="object-cover transition-transform duration-700 hover:scale-105"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
-                      <p className={`absolute bottom-4 left-6 text-sm font-medium ${c.text2}`}>경영지원팀</p>
+                      <span className="absolute bottom-4 left-6 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-gray-800 shadow-sm">경영지원팀</span>
                     </div>
                     <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
                       <Image
@@ -621,8 +616,7 @@ export default function AboutPage() {
                         fill
                         className="object-cover transition-transform duration-700 hover:scale-105"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
-                      <p className={`absolute bottom-4 left-6 text-sm font-medium ${c.text2}`}>수매팀</p>
+                      <span className="absolute bottom-4 left-6 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-gray-800 shadow-sm">수매팀</span>
                     </div>
                   </div>
                 </Reveal>
