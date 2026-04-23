@@ -34,13 +34,13 @@ export default function ThemedFooter({ theme: t }: { theme: SiteTheme }) {
               </div>
               <span className={`text-lg font-bold ${t.footerText}`}>서풍</span>
             </div>
-            <p className={`max-w-xs text-sm leading-relaxed ${t.footerMuted}`}>바다의 가치를 세상의 식탁으로.<br />No.1 수산 가공 파트너, 영어조합법인 서풍</p>
+            <p className={`max-w-xs text-sm leading-relaxed ${t.footerMuted}`}>바다의 가치를 세상의 식탁으로. No.1 수산 가공 파트너, 영어조합법인 서풍</p>
           </div>
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ocean-300">바로가기</h4>
             <ul className="space-y-2.5">
               {LINKS.map((l) => (
-                <li key={l.href}><Link href={l.href} className={`inline-block py-1 text-sm ${t.footerMuted} transition-colors hover:${t.footerText}`}>{l.label}</Link></li>
+                <li key={l.href}><Link href={l.href} className={`inline-block py-1 text-sm ${t.footerMuted} transition-colors hover:text-white`}>{l.label}</Link></li>
               ))}
             </ul>
           </div>

@@ -61,7 +61,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
           </div>
           <div className="hidden sm:flex flex-col">
             <span className={`font-bold tracking-wide transition-all duration-500 ${isOverlay ? 'text-xl' : 'text-lg'} ${textClass}`}>서풍</span>
-            <span className={`font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-xs max-h-6 opacity-80' : 'text-[0px] max-h-0 opacity-0'} ${textClass}`}>
+            <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-xs max-h-6 opacity-80' : 'text-[0px] max-h-0 opacity-0'} ${textClass}`}>
               No.1 수산 가공 파트너
             </span>
           </div>
@@ -70,7 +70,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
         <ul className="hidden items-center gap-1 lg:flex">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className={`relative px-4 py-2 text-base font-semibold transition-colors ${textClass} hover:${theme.navAccent}`}>
+              <Link href={item.href} className={`relative px-4 py-2 text-base font-semibold transition-colors ${textClass} ${isOverlay ? 'hover:text-white' : 'hover:text-ocean-500'}`}>
                 {item.label}
               </Link>
             </li>

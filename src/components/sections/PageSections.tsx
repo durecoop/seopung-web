@@ -92,7 +92,7 @@ export default function PageSections({ theme: t }: Props) {
               <div>
                 <span className="mb-4 inline-block font-montserrat text-base font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.aboutLabel}</span>
                 <h2 className={`mb-6 text-4xl font-bold leading-tight ${tp} sm:text-5xl md:text-6xl`}>
-                  {copy.aboutTitle1}<br /><span className="text-ocean-500">{copy.aboutTitle2}</span>
+                  {copy.aboutTitle1}<br className="hidden sm:block" /> <span className="text-ocean-500">{copy.aboutTitle2}</span>
                 </h2>
                 <p className={`mb-6 text-xl leading-relaxed ${ts} md:text-2xl`}>{copy.aboutDesc1}</p>
                 <p className={`mb-8 text-lg leading-relaxed ${ts} md:text-xl`}>
@@ -211,7 +211,7 @@ export default function PageSections({ theme: t }: Props) {
             <FadeIn>
               <div className="max-w-xl">
                 <h2 className="mb-5 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                  {copy.bannerTitle1}<br /><span className="text-ocean-200">{copy.bannerTitle2}</span>
+                  {copy.bannerTitle1}<br className="hidden md:block" /> <span className="text-ocean-200">{copy.bannerTitle2}</span>
                 </h2>
                 <p className="mb-8 text-xl leading-relaxed text-white/95 md:text-2xl whitespace-pre-line">{copy.bannerDesc}</p>
                 <Link href="/contact" className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-ocean-600 transition-all duration-300 hover:bg-ocean-50 hover:shadow-xl sm:text-xl">
@@ -295,7 +295,7 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="text-center">
               <h2 className={`mb-5 text-4xl font-bold leading-tight ${t.ctaText} sm:text-5xl md:text-6xl lg:text-7xl`}>
-                {copy.ctaTitle1}<br /><span className="text-ocean-300">{copy.ctaTitle2}</span>이 궁금하시다면
+                {copy.ctaTitle1}<br className="hidden sm:block" /> <span className="text-ocean-300">{copy.ctaTitle2}</span>
               </h2>
               <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-ocean-200 md:text-2xl whitespace-pre-line">{copy.ctaDesc}</p>
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

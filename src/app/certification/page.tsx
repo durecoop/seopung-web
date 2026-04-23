@@ -598,16 +598,15 @@ export default function CertificationPage() {
                           </svg>
                           PDF
                         </span>
-                        <button
-                          type="button"
-                          onClick={() => alert('준비 중입니다')}
+                        <Link
+                          href="/contact"
                           className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-gold-500/30 bg-ocean-500/5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-ocean-500 transition-all duration-300 hover:border-gold-500/60 hover:bg-ocean-500/10 hover:shadow-lg hover:shadow-gold-500/5"
                         >
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                           </svg>
-                          다운로드
-                        </button>
+                          사본 요청
+                        </Link>
                       </div>
                     </div>
                   </FadeIn>
@@ -696,7 +695,7 @@ export default function CertificationPage() {
                       <h3 className={`mb-2 text-lg font-bold ${c.text}`}>AI 엑스레이 검출</h3>
                       <p className={`mb-4 flex-1 text-xs sm:text-sm leading-relaxed ${c.text2}`}>
                         인공지능 기반 X-ray 이물질 검출 시스템으로 미세 이물까지 자동 감별합니다.
-                        2026년 4월 현장 도입 예정입니다.
+                        2026년 상반기 현장 도입을 추진하고 있습니다.
                       </p>
                       <Link
                         href="/technology"
@@ -813,7 +812,7 @@ export default function CertificationPage() {
                 <div className="text-center">
                   <Link
                     href="/technology"
-                    className={`inline-flex items-center gap-2 rounded-full bg-ocean-400 px-8 py-3.5 text-base font-bold ${c.text} shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-500 hover:shadow-ocean-500/30`}
+                    className={`group inline-flex items-center gap-2 rounded-full bg-ocean-400 px-8 py-3.5 text-base font-bold ${c.text} shadow-lg shadow-ocean-500/20 transition-all duration-300 hover:bg-ocean-500 hover:shadow-ocean-500/30`}
                   >
                     {copy.ctaText}
                     <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
