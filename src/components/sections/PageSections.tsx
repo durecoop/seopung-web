@@ -170,7 +170,7 @@ export default function PageSections({ theme: t }: Props) {
                     {p.image ? (
                       <>
                         <Image src={getImagePath(p.image)} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 50vw, 25vw" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-4">
                           <h3 className="text-xl font-bold text-white md:text-2xl">{p.name}</h3>
                           <p className="text-base text-white/85 md:text-lg">{p.desc}</p>
@@ -226,7 +226,7 @@ export default function PageSections({ theme: t }: Props) {
                   </div>
                   <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg">
                     <Image src={getImagePath(item.image)} alt={item.caption} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 33vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
                   <p className={`mt-3 text-center text-lg font-medium ${isDark ? 'text-white/80' : 'text-gray-700'}`}>{item.caption}</p>
                   {i < 2 && <div className="my-2 text-ocean-500/60 md:hidden"><svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></div>}

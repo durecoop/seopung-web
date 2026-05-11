@@ -373,7 +373,6 @@ export default function GulbiPage() {
                                 fill
                                 className="object-cover transition-transform duration-700 hover:scale-105"
                               />
-                              <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-40`} />
                             </div>
                             {/* Second image for step 4 */}
                             {'image2' in step && step.image2 && (
@@ -384,8 +383,7 @@ export default function GulbiPage() {
                                   fill
                                   className="object-cover transition-transform duration-700 hover:scale-105"
                                 />
-                                <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-40`} />
-                              </div>
+                                </div>
                             )}
                             {step.extraImages && step.extraImages.length > 0 && (
                               <div className="mt-4 grid grid-cols-2 gap-3">
@@ -397,7 +395,6 @@ export default function GulbiPage() {
                                       fill
                                       className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
                                     />
-                                    <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-30`} />
                                   </div>
                                 ))}
                               </div>
@@ -465,7 +462,7 @@ export default function GulbiPage() {
               fill
               className="object-cover"
             />
-            <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-90`} />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
             <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
               <Reveal>
                 <svg className="mx-auto mb-8 h-8 w-8 text-ocean-500/40" viewBox="0 0 24 24" fill="currentColor">

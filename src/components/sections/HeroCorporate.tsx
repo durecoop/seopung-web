@@ -115,7 +115,7 @@ export default function HeroCorporate() {
 
         {/* 오버레이 — CJ 스타일: 전체 어둡게 + 하단 그라디언트 */}
         <div className="absolute inset-0 z-[11] bg-black/40" />
-        <div className="absolute inset-0 z-[11] bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+        <div className="absolute inset-0 z-[11] bg-gradient-to-t from-black/30 via-transparent to-black/10" />
 
         {/* 텍스트 콘텐츠 — 중앙 정렬 */}
         <div className="relative z-20 flex h-full items-center justify-center">

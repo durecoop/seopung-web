@@ -572,7 +572,6 @@ export default function AboutPage() {
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, 33vw"
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
                       </div>
                       <div className="p-6">
                         <h3 className={`text-lg font-bold ${c.text}`}>{member.caption}</h3>

@@ -267,7 +267,6 @@ export default function ProductsPage() {
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
                       </div>
 
                       {/* Content */}
@@ -335,7 +334,7 @@ export default function ProductsPage() {
               fill
               className="object-cover"
             />
-            <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
             <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
               <FadeIn>
                 <p className="mb-4 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">

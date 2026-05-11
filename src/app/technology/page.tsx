@@ -458,7 +458,6 @@ export default function TechnologyPage() {
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, 33vw"
                           />
-                          <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-70`} />
                           <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-ocean-500/20 font-montserrat text-sm font-bold text-ocean-300">
                             {i + 1}
                           </div>
@@ -623,7 +622,6 @@ export default function TechnologyPage() {
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
-                          <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade} opacity-60`} />
                         </div>
                         <div className="p-5">
                           <p className={`text-sm font-medium leading-relaxed ${c.text2}`}>{photo.caption}</p>
