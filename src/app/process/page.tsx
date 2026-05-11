@@ -300,8 +300,8 @@ function ProcessStepSection({ step, index, c }: { step: ProcessStep; index: numb
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade.replace('from-', 'from-').replace(/from-\S+/, 'from-transparent').replace('to-transparent', '')} from-black/20 to-transparent`} />
-                    <p className={`absolute bottom-3 left-4 text-sm font-medium ${c.text2}`}>{img.alt}</p>
+                    <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/30' : 'from-black/15'} via-transparent to-transparent`} />
+                    <p className="absolute bottom-3 left-4 text-sm font-medium text-white drop-shadow">{img.alt}</p>
                   </div>
                 ))}
               </div>
@@ -313,7 +313,6 @@ function ProcessStepSection({ step, index, c }: { step: ProcessStep; index: numb
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/40' : 'from-white/40'} to-transparent`} />
               </div>
             )}
           </Reveal>
@@ -334,8 +333,8 @@ function ProcessStepSection({ step, index, c }: { step: ProcessStep; index: numb
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/60' : 'from-white/60'} to-transparent`} />
-                  <p className={`absolute bottom-2 left-3 text-xs ${c.text2}`}>{g.caption}</p>
+                  <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/30' : 'from-black/15'} via-transparent to-transparent`} />
+                  <p className="absolute bottom-2 left-3 text-xs text-white drop-shadow">{g.caption}</p>
                 </div>
               ))}
             </div>
@@ -365,13 +364,13 @@ export default function ProcessPage() {
                 className="object-cover"
                 priority
               />
-              <div className={`absolute inset-0 ${c.overlay}`} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
               <div className="relative z-10 text-center">
-                <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
+                <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-300">
                   {copy.heroLabel}
                 </p>
-                <h1 className={`text-4xl font-bold md:text-5xl lg:text-6xl ${c.text}`}>{copy.heroTitle}</h1>
-                <p className={`mt-4 text-lg ${c.text2}`}>
+                <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl text-white drop-shadow-md">{copy.heroTitle}</h1>
+                <p className="mt-4 text-lg text-white/90 drop-shadow">
                   {copy.heroSub}
                 </p>
               </div>
@@ -404,7 +403,6 @@ export default function ProcessPage() {
                         fill
                         className="object-cover"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/50' : 'from-white/50'} to-transparent`} />
                       {/* Badge */}
                       <div className={`absolute bottom-6 left-6 rounded-xl px-4 py-2 backdrop-blur-sm ${c.dark ? 'bg-[#0a1628]/80' : 'bg-white/80'}`}>
                         <p className="font-montserrat text-sm font-bold text-ocean-500">No.49</p>
@@ -443,9 +441,9 @@ export default function ProcessPage() {
                           fill
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade.replace(/from-\S+/, 'from-transparent').split(' ').slice(0, -1).join(' ')} ${c.dark ? 'from-[#0a1628]/70' : 'from-white/70'} via-transparent to-transparent`} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                         <div className="absolute bottom-4 left-5">
-                          <p className={`text-lg font-bold ${c.text}`}>{fish.label}</p>
+                          <p className="text-lg font-bold text-white drop-shadow-md">{fish.label}</p>
                         </div>
                       </div>
                     </Reveal>
@@ -461,9 +459,9 @@ export default function ProcessPage() {
                       fill
                       className="object-cover"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/50' : 'from-white/50'} to-transparent`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                     <div className="absolute bottom-6 left-8">
-                      <p className={`text-sm font-medium ${c.text2}`}>여수 수산시장 위판장 전경</p>
+                      <p className="text-sm font-medium text-white drop-shadow">여수 수산시장 위판장 전경</p>
                     </div>
                   </div>
                 </Reveal>
@@ -499,9 +497,9 @@ export default function ProcessPage() {
                           fill
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/70' : 'from-white/70'} via-transparent to-transparent`} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                         <div className="absolute bottom-4 left-5">
-                          <p className={`text-lg font-bold ${c.text}`}>{fish.label}</p>
+                          <p className="text-lg font-bold text-white drop-shadow-md">{fish.label}</p>
                         </div>
                       </div>
                     </Reveal>
@@ -563,10 +561,10 @@ export default function ProcessPage() {
                 fill
                 className="object-cover"
               />
-              <div className={`absolute inset-0 ${c.overlay}`} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
               <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
                 <Reveal>
-                  <blockquote className={`text-2xl font-bold leading-snug md:text-3xl lg:text-4xl ${c.text}`}>
+                  <blockquote className="text-2xl font-bold leading-snug md:text-3xl lg:text-4xl text-white drop-shadow-md">
                     &ldquo;{copy.closingQuote.split('\n').map((line, i, arr) => (
                       <span key={i}>
                         {line}

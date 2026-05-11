@@ -406,13 +406,14 @@ export default function CertificationPage() {
               sizes="100vw"
               priority
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
             <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
-              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-400 md:text-base">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-ocean-300 md:text-base">
                 {copy.heroLabel}
               </span>
-              <h1 className={`text-5xl font-bold leading-tight ${c.text} sm:text-6xl md:text-7xl`}>{copy.heroTitle}</h1>
-              <p className={`mt-4 text-xl font-medium ${c.text2} md:text-2xl`}>{copy.heroSub}</p>
-              <p className={`mt-3 max-w-2xl text-base ${c.text2} opacity-90 md:text-lg`}>
+              <h1 className="text-5xl font-bold leading-tight text-white drop-shadow-md sm:text-6xl md:text-7xl">{copy.heroTitle}</h1>
+              <p className="mt-4 text-xl font-medium text-white/90 drop-shadow md:text-2xl">{copy.heroSub}</p>
+              <p className="mt-3 max-w-2xl text-base text-white/80 drop-shadow md:text-lg">
                 대형 유통사·외식 프랜차이즈가 요구하는 안전 기준을 서풍이 선제적으로 충족합니다
               </p>
             </div>

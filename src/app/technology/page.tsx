@@ -320,13 +320,13 @@ export default function TechnologyPage() {
                 sizes="100vw"
                 priority
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${c.gradientFade}`} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
               <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
-                <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-300">
                   {copy.heroLabel}
                 </span>
-                <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>{copy.heroTitle}</h1>
-                <p className={`mt-3 text-lg ${c.text2}`}>{copy.heroSub}</p>
+                <h1 className="text-4xl font-bold text-white drop-shadow-md md:text-5xl lg:text-6xl">{copy.heroTitle}</h1>
+                <p className="mt-3 text-lg text-white/90 drop-shadow">{copy.heroSub}</p>
               </div>
             </section>
 

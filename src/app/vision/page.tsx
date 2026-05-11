@@ -279,13 +279,13 @@ export default function VisionPage() {
               className="object-cover"
               priority
             />
-            <div className={`absolute inset-0 ${c.overlay}`} />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
             <div className="relative z-10 text-center">
-              <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
+              <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-300">
                 Vision
               </p>
-              <h1 className={`text-4xl font-bold ${c.text} md:text-5xl lg:text-6xl`}>비전</h1>
-              <p className={`mt-4 text-lg ${c.text2}`}>
+              <h1 className="text-4xl font-bold text-white drop-shadow-md md:text-5xl lg:text-6xl">비전</h1>
+              <p className="mt-4 text-lg text-white/90 drop-shadow">
                 {copy.heroSub}
               </p>
             </div>
