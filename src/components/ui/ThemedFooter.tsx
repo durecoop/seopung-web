@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getImagePath } from '@/lib/utils';
 import type { SiteTheme } from '@/lib/themes';
+import { COMPANY, AFFILIATES as AFFILIATE_CONFIG, hasValue } from '@/lib/company-config';
 
 const CERTS = ['HACCP', 'ASC', 'MSC', '수산물이력추적', '수산물품질인증', 'ISO 22000'];
 const LINKS = [
@@ -11,7 +12,7 @@ const LINKS = [
   { label: '기술·설비', href: '/technology' }, { label: '품질·인증', href: '/certification' },
   { label: '제품', href: '/products' }, { label: '문의', href: '/contact' },
 ];
-const AFFILIATES = ['영어조합법인 서풍', '㈜여수유통', '㈜대주냉장', '중매인 49호'];
+const AFFILIATES = AFFILIATE_CONFIG.length > 0 ? AFFILIATE_CONFIG.map((a) => a.name) : [COMPANY.name];
 
 export default function ThemedFooter({ theme: t }: { theme: SiteTheme }) {
   return (
@@ -32,9 +33,9 @@ export default function ThemedFooter({ theme: t }: { theme: SiteTheme }) {
               <div className="relative h-10 w-10 overflow-hidden rounded-full bg-white/90">
                 <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" fill className="scale-[1.75] object-contain" />
               </div>
-              <span className={`text-lg font-bold ${t.footerText}`}>서풍</span>
+              <span className={`text-lg font-bold ${t.footerText}`}>{COMPANY.shortName}</span>
             </div>
-            <p className={`max-w-xs text-sm leading-relaxed ${t.footerMuted}`}>바다의 가치를 세상의 식탁으로. No.1 수산 가공 파트너, 영어조합법인 서풍</p>
+            <p className={`max-w-xs text-sm leading-relaxed ${t.footerMuted}`}>{COMPANY.tagline}. {COMPANY.description}</p>
           </div>
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ocean-300">바로가기</h4>
@@ -51,16 +52,16 @@ export default function ThemedFooter({ theme: t }: { theme: SiteTheme }) {
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ocean-300">연락처</h4>
             <ul className={`space-y-2.5 text-sm ${t.footerMuted}`}>
-              <li className="py-1">전라남도 여수시 석교로 121</li>
-              <li className="py-1">061-686-0508</li>
-              <li className="py-1">seopung@naver.com</li>
+              <li className="py-1">{COMPANY.address}</li>
+              {hasValue(COMPANY.phone) && <li className="py-1">{COMPANY.phone}</li>}
+              {hasValue(COMPANY.email) && <li className="py-1">{COMPANY.email}</li>}
             </ul>
           </div>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-5">
-          <p className={`text-center text-xs ${t.footerMuted}`}>Copyright &copy; 2026 영어조합법인 서풍. All rights reserved.</p>
+          <p className={`text-center text-xs ${t.footerMuted}`}>Copyright &copy; 2026 {COMPANY.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>

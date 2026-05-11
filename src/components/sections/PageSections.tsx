@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import FadeIn from '@/components/ui/FadeIn';
+import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import { getImagePath } from '@/lib/utils';
 import type { SiteTheme } from '@/lib/themes';
 import { SKIN_COPY } from '@/lib/skin-copy';
+import { COMPANY, STATS, PARTNERS, hasValue } from '@/lib/company-config';
 
 const CERT_BADGES = [
   { name: 'HACCP', icon: '/images/certs/haccp.png', desc: '식품안전관리인증', detail: '위해요소 중점관리 기준 적합' },
@@ -16,12 +18,27 @@ const CERT_BADGES = [
   { name: 'ISO 22000', icon: '/images/certs/iso22000.png', desc: '식품안전경영시스템', detail: '국제 식품안전 경영 시스템' },
 ];
 
-const PRODUCTS = [
-  { name: '냉동수산가공', image: '/images/food-web/pc0031187411.jpg', desc: '고등어, 삼치, 갈치 등' },
-  { name: '프리미엄 굴비', image: '/images/food-web/pc0031187455.jpg', desc: '영광 전통 방식 굴비' },
-  { name: '밀키트·HMR', image: '/images/food-web/pc0031187507.jpg', desc: '간편식 OEM 생산' },
-  { name: '수산 선물세트', image: '/images/food-web/pc0031187499.jpg', desc: '명절 프리미엄 세트' },
+const PRODUCTS: { name: string; image: string | null; desc: string }[] = [
+  { name: '냉동수산가공', image: null, desc: '고등어, 삼치, 갈치 등' },
+  { name: '프리미엄 굴비', image: null, desc: '영광 전통 방식 굴비' },
+  { name: '밀키트·HMR', image: null, desc: '간편식 OEM 생산' },
+  { name: '수산 선물세트', image: null, desc: '명절 프리미엄 세트' },
 ];
+
+const VALUES = [
+  { label: '글로벌 인증', desc: 'HACCP · ASC · MSC 보유' },
+  { label: 'One Platform', desc: '수매·가공·보관·유통 일원화' },
+  { label: '대형 유통 납품', desc: '검증된 OEM 파트너십' },
+  { label: '지속가능 수산', desc: '책임있는 양식 · 어업' },
+];
+
+const STAT_ENTRIES: { value: string | null; label: string }[] = [
+  { value: STATS.annualRevenue, label: '연 매출' },
+  { value: STATS.developedItems, label: '개발 품목' },
+  { value: STATS.activeItems, label: '운영 품목' },
+  { value: STATS.fishSpeciesCount, label: '취급 어종' },
+];
+const VISIBLE_STATS = STAT_ENTRIES.filter((s) => hasValue(s.value));
 
 interface Props { theme: SiteTheme; }
 
@@ -99,17 +116,21 @@ export default function PageSections({ theme: t }: Props) {
                   <span className={`font-semibold ${tp}`}>{copy.aboutDesc2Bold}</span>{' '}{copy.aboutDesc2}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { num: '400억+', label: '연 매출' },
-                    { num: '134+', label: '개발 품목' },
-                    { num: '66개', label: '운영 품목' },
-                    { num: '10년+', label: '핵심 파트너' },
-                  ].map((s) => (
-                    <div key={s.label} className={`rounded-xl border ${cardCls} px-4 py-5 text-center`}>
-                      <span className="block font-montserrat text-3xl font-bold text-ocean-500 md:text-4xl">{s.num}</span>
-                      <span className={`mt-1 block text-base font-medium ${tm}`}>{s.label}</span>
-                    </div>
-                  ))}
+                  {VISIBLE_STATS.length > 0 ? (
+                    VISIBLE_STATS.map((s) => (
+                      <div key={s.label} className={`rounded-xl border ${cardCls} px-4 py-5 text-center`}>
+                        <span className="block font-montserrat text-3xl font-bold text-ocean-500 md:text-4xl">{s.value}</span>
+                        <span className={`mt-1 block text-base font-medium ${tm}`}>{s.label}</span>
+                      </div>
+                    ))
+                  ) : (
+                    VALUES.map((v) => (
+                      <div key={v.label} className={`rounded-xl border ${cardCls} px-4 py-5`}>
+                        <span className={`block text-lg font-bold ${tp} md:text-xl`}>{v.label}</span>
+                        <span className={`mt-1 block text-sm ${tm}`}>{v.desc}</span>
+                      </div>
+                    ))
+                  )}
                 </div>
                 <Link href="/about" className="group mt-8 inline-flex items-center gap-2 text-lg font-semibold text-ocean-500 transition-colors hover:text-ocean-400">
                   {copy.aboutCta} <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
@@ -117,10 +138,13 @@ export default function PageSections({ theme: t }: Props) {
               </div>
             </FadeIn>
             <FadeIn delay={200}>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
-                <Image src={getImagePath('/images/food-web/tica034m19010003.jpg')} alt="서풍 수산가공" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ocean-600/30 to-transparent" />
-              </div>
+              <PhotoNeeded
+                ratio="4/5"
+                tone={isDark ? 'dark' : 'light'}
+                caption="대표 컷 (공장 외관 또는 가공 라인)"
+                hint="고품질 스튜디오 촬영 권장"
+                className="shadow-2xl"
+              />
             </FadeIn>
           </div>
         </div>
@@ -141,14 +165,25 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
               {PRODUCTS.map((p) => (
-                <Link key={p.name} href="/products" className={`group overflow-hidden rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white'} shadow-sm transition-all duration-300 hover:shadow-xl`}>
+                <Link key={p.name} href="/products" className={`group block overflow-hidden rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white'} shadow-sm transition-all duration-300 hover:shadow-xl`}>
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image src={getImagePath(p.image)} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 50vw, 25vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-4">
-                      <h3 className="text-xl font-bold text-white md:text-2xl">{p.name}</h3>
-                      <p className="text-base text-white/85 md:text-lg">{p.desc}</p>
-                    </div>
+                    {p.image ? (
+                      <>
+                        <Image src={getImagePath(p.image)} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 50vw, 25vw" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        <div className="absolute bottom-0 left-0 p-4">
+                          <h3 className="text-xl font-bold text-white md:text-2xl">{p.name}</h3>
+                          <p className="text-base text-white/85 md:text-lg">{p.desc}</p>
+                        </div>
+                      </>
+                    ) : (
+                      <PhotoNeeded
+                        fill
+                        tone={isDark ? 'dark' : 'light'}
+                        caption={p.name}
+                        hint={p.desc}
+                      />
+                    )}
                   </div>
                 </Link>
               ))}
@@ -234,54 +269,31 @@ export default function PageSections({ theme: t }: Props) {
             </div>
           </FadeIn>
           <FadeIn>
-            <div className="flex flex-wrap items-center justify-center gap-5">
-              {/* 풀무원 */}
-              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                <svg viewBox="0 0 200 40" className="h-8 w-full">
-                  <text x="100" y="28" textAnchor="middle" fill="#2E7D32" fontSize="22" fontWeight="800" fontFamily="'Noto Sans KR', sans-serif">풀무원</text>
-                  <rect x="30" y="34" width="140" height="2" rx="1" fill="#8BC34A" />
-                </svg>
+            {PARTNERS.length > 0 ? (
+              <div className="flex flex-wrap items-center justify-center gap-5">
+                {PARTNERS.map((p) => (
+                  <div key={p.name} className={`flex h-20 w-40 items-center justify-center overflow-hidden rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                    {p.logoPath ? (
+                      <Image src={getImagePath(p.logoPath)} alt={p.name} width={160} height={48} className="h-10 w-auto object-contain" />
+                    ) : (
+                      <span className={`text-sm font-semibold ${tp}`}>{p.name}</span>
+                    )}
+                  </div>
+                ))}
               </div>
-              {/* 푸드머스 */}
-              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                <svg viewBox="0 0 200 40" className="h-8 w-full">
-                  <text x="100" y="28" textAnchor="middle" fill="#E65100" fontSize="20" fontWeight="700" fontFamily="'Noto Sans KR', sans-serif">푸드머스</text>
-                  <circle cx="22" cy="20" r="8" fill="none" stroke="#FF8F00" strokeWidth="2" />
-                  <circle cx="22" cy="20" r="3" fill="#FF8F00" />
-                </svg>
+            ) : (
+              <div className="mx-auto grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <PhotoNeeded
+                    key={i}
+                    ratio="16/9"
+                    tone={isDark ? 'dark' : 'light'}
+                    caption="파트너사 로고"
+                    hint="사용 동의 후 등록"
+                  />
+                ))}
               </div>
-              {/* 홈플러스 */}
-              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                <svg viewBox="0 0 200 40" className="h-8 w-full">
-                  <text x="105" y="28" textAnchor="middle" fill="#E31837" fontSize="20" fontWeight="800" fontFamily="Arial, sans-serif">homeplus</text>
-                  <circle cx="22" cy="20" r="10" fill="none" stroke="#E31837" strokeWidth="2" />
-                  <path d="M17 20h10M22 15v10" stroke="#E31837" strokeWidth="2.5" strokeLinecap="round" />
-                </svg>
-              </div>
-              {/* 이마트 */}
-              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                <svg viewBox="0 0 200 40" className="h-8 w-full">
-                  <text x="100" y="28" textAnchor="middle" fill="#FFB300" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="1">emart</text>
-                  <rect x="60" y="32" width="80" height="3" rx="1.5" fill="#FFB300" />
-                </svg>
-              </div>
-              {/* 쿠팡 */}
-              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                <svg viewBox="0 0 200 40" className="h-8 w-full">
-                  <text x="100" y="28" textAnchor="middle" fill="#00635A" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="1">Coupang</text>
-                </svg>
-              </div>
-              {/* 두레생협 */}
-              <div className={`flex h-20 w-40 items-center justify-center rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                <svg viewBox="0 0 200 44" className="h-8 w-full">
-                  <circle cx="28" cy="22" r="12" fill="none" stroke="#4CAF50" strokeWidth="2" />
-                  <path d="M22 22c0-3 3-6 6-6s6 3 6 6" fill="none" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="28" cy="18" r="2" fill="#4CAF50" />
-                  <text x="120" y="20" textAnchor="middle" fill="#2E7D32" fontSize="16" fontWeight="800" fontFamily="'Noto Sans KR', sans-serif">두레생협</text>
-                  <text x="120" y="34" textAnchor="middle" fill="#66BB6A" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">DURE COOP</text>
-                </svg>
-              </div>
-            </div>
+            )}
           </FadeIn>
         </div>
       </section>
@@ -303,10 +315,12 @@ export default function PageSections({ theme: t }: Props) {
                   OEM 문의하기
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </Link>
-                <a href="tel:061-686-0508" className="inline-flex items-center gap-2 text-xl font-semibold text-white/95 transition-colors hover:text-white">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                  061-686-0508
-                </a>
+                {hasValue(COMPANY.phone) && (
+                  <a href={`tel:${COMPANY.phone}`} className="inline-flex items-center gap-2 text-xl font-semibold text-white/95 transition-colors hover:text-white">
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                    {COMPANY.phone}
+                  </a>
+                )}
               </div>
             </div>
           </FadeIn>

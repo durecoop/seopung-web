@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import FadeIn from '@/components/ui/FadeIn';
+import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import { useReveal } from '@/hooks/useReveal';
 import { getImagePath } from '@/lib/utils';
+import { STATS, hasValue } from '@/lib/company-config';
 
 /* ─── Professional SVG Badge Components ─── */
 function HaccpBadge() {
@@ -580,7 +582,6 @@ export default function CertificationPage() {
                   <FadeIn key={cert.name}>
                     <div className={`group overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 sm:p-6 transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.1)]`}>
                       <div className="mb-4 flex items-start gap-3 sm:gap-4">
-                        {/* Cert icon */}
                         <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-ocean-500/15 to-ocean-600/10 p-2.5 sm:p-3 text-ocean-400 ring-1 ring-ocean-500/20">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 sm:h-7 sm:w-7">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
@@ -591,23 +592,12 @@ export default function CertificationPage() {
                           <p className={`mt-1 text-xs sm:text-sm ${c.text2} line-clamp-2`}>{cert.desc}</p>
                         </div>
                       </div>
-                      <div className={`flex items-center justify-between border-t ${c.cardBorder} pt-4`}>
-                        <span className={`flex items-center gap-1.5 text-xs ${c.textMuted}`}>
-                          <svg viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5 text-red-400/60">
-                            <path d="M4 1h8a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1zm2 3v2h4V4H6zm0 3v1h4V7H6z" />
-                          </svg>
-                          PDF
-                        </span>
-                        <Link
-                          href="/contact"
-                          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-gold-500/30 bg-ocean-500/5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-ocean-500 transition-all duration-300 hover:border-gold-500/60 hover:bg-ocean-500/10 hover:shadow-lg hover:shadow-gold-500/5"
-                        >
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                          </svg>
-                          사본 요청
-                        </Link>
-                      </div>
+                      <PhotoNeeded
+                        ratio="4/3"
+                        tone="light"
+                        caption={`${cert.name} 인증서`}
+                        hint="PDF · 컬러 스캔 권장"
+                      />
                     </div>
                   </FadeIn>
                 ))}
@@ -714,33 +704,41 @@ export default function CertificationPage() {
           {/* ══════════════════════════════════════ */}
           {/* 2-C. Quality KPI Metrics              */}
           {/* ══════════════════════════════════════ */}
-          <section className="border-t border-gray-200 py-24 md:py-32">
-            <div className="mx-auto max-w-6xl px-6">
-              <FadeIn>
-                <div className="mb-14 text-center">
-                  <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
-                    Quality KPI
-                  </span>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
-                    {copy.kpiTitle} <span className="text-ocean-500">{copy.kpiAccent}</span>
-                  </h2>
-                </div>
-              </FadeIn>
+          {(() => {
+            const kpis = [
+              { value: STATS.defectRate, label: '불량률' },
+              { value: STATS.onTimeDeliveryRate, label: '납기 준수율' },
+              { value: STATS.renewalRate, label: '재계약률' },
+              { value: STATS.dailyCapacity, label: '일일 처리량' },
+            ].filter((k): k is { value: string; label: string } => hasValue(k.value));
 
-              <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
-                {[
-                  { value: '0.02%', label: '불량률' },
-                  { value: '99.7%', label: '납기 준수율' },
-                  { value: '95%+', label: '재계약률' },
-                  { value: '15톤', label: '일일 처리량' },
-                ].map((kpi) => (
-                  <FadeIn key={kpi.label}>
-                    <KpiCard value={kpi.value} label={kpi.label} c={c} />
+            if (kpis.length === 0) return null;
+
+            return (
+              <section className="border-t border-gray-200 py-24 md:py-32">
+                <div className="mx-auto max-w-6xl px-6">
+                  <FadeIn>
+                    <div className="mb-14 text-center">
+                      <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-ocean-400">
+                        Quality KPI
+                      </span>
+                      <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
+                        {copy.kpiTitle} <span className="text-ocean-500">{copy.kpiAccent}</span>
+                      </h2>
+                    </div>
                   </FadeIn>
-                ))}
-              </div>
-            </div>
-          </section>
+
+                  <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+                    {kpis.map((kpi) => (
+                      <FadeIn key={kpi.label}>
+                        <KpiCard value={kpi.value} label={kpi.label} c={c} />
+                      </FadeIn>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            );
+          })()}
 
           {/* ══════════════════════════════════════ */}
           {/* 3. Quality History Timeline           */}

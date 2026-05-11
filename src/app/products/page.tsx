@@ -40,11 +40,14 @@ const CATEGORIES = [
   },
 ];
 
-const OEM_STATS = [
-  { number: '134+', label: '품목 개발', desc: '10년간 누적 개발 품목' },
-  { number: '66개', label: '운영중', desc: '현재 양산 중인 품목' },
-  { number: '~5개월', label: '개발기간', desc: '평균 신제품 개발 기간' },
+import { STATS as GLOBAL_STATS, hasValue as hasStat } from '@/lib/company-config';
+
+const OEM_STATS_RAW: { number: string | null; label: string; desc: string }[] = [
+  { number: GLOBAL_STATS.developedItems, label: '품목 개발', desc: '누적 OEM 개발 품목' },
+  { number: GLOBAL_STATS.activeItems, label: '운영중', desc: '현재 양산 중인 품목' },
+  { number: GLOBAL_STATS.newProductCycleMonths, label: '개발기간', desc: '평균 신제품 개발 기간' },
 ];
+const OEM_STATS = OEM_STATS_RAW.filter((s): s is { number: string; label: string; desc: string } => hasStat(s.number));
 
 /* ──────────────────────────────────────────────
    Skin-specific copy
@@ -69,7 +72,7 @@ const COPY: Record<number, {
   0: {
     heroLabel: 'Product Lineup',
     heroTitle: '제품 소개',
-    heroSub: '9개 어종 · 134+ 품목 · OEM 맞춤 생산',
+    heroSub: 'OEM 맞춤 생산 · 글로벌 인증 기반',
     introLabel: 'OEM Capabilities',
     introText: '영어조합법인 서풍은 대형 유통사와 외식 프랜차이즈를 위한 ',
     introBold: 'B2B OEM 수산 가공 전문 기업',
@@ -86,7 +89,7 @@ const COPY: Record<number, {
   1: {
     heroLabel: 'Battle-Tested Products',
     heroTitle: '현장에서 증명된 제품',
-    heroSub: '거친 시장에서 살아남은 134+ 품목',
+    heroSub: '거친 시장에서 검증된 제품',
     introLabel: 'Firepower',
     introText: '서풍은 거친 유통 현장에서 검증된 ',
     introBold: 'B2B OEM 수산 가공 전투부대',
@@ -120,7 +123,7 @@ const COPY: Record<number, {
   3: {
     heroLabel: 'Crafted with Soul',
     heroTitle: '장인의 손끝에서 탄생한 제품',
-    heroSub: '바다의 가치를 식탁으로 전하는 134+ 작품',
+    heroSub: '바다의 가치를 식탁으로 전하는 작품',
     introLabel: 'The Craft',
     introText: '서풍은 바다의 이야기를 제품에 담는 ',
     introBold: '수산 장인 집단',
@@ -137,7 +140,7 @@ const COPY: Record<number, {
   4: {
     heroLabel: 'Premium Lineup',
     heroTitle: '프리미엄 제품 라인업',
-    heroSub: '대한민국 1등 수산 OEM의 134+ 제품군',
+    heroSub: '대한민국 대표 수산 OEM의 제품군',
     introLabel: 'Market Leader',
     introText: '서풍은 업계 최고의 파트너들이 선택한 ',
     introBold: '프리미엄 수산 OEM 리더',
@@ -154,7 +157,7 @@ const COPY: Record<number, {
   5: {
     heroLabel: 'Groundbreaking',
     heroTitle: '경계를 허문 제품',
-    heroSub: '기존의 틀을 깨는 134+ 혁신 제품',
+    heroSub: '기존의 틀을 깨는 혁신 제품',
     introLabel: 'New Territory',
     introText: '서풍은 수산 가공의 새로운 카테고리를 창조하는 ',
     introBold: '개척형 OEM 기업',
@@ -171,7 +174,7 @@ const COPY: Record<number, {
   6: {
     heroLabel: 'Product Lineup',
     heroTitle: '제품 소개',
-    heroSub: '시장을 선도하는 134+ 제품 라인업',
+    heroSub: '시장을 선도하는 제품 라인업',
     introLabel: 'OEM Capabilities',
     introText: '영어조합법인 서풍은 대형 유통사와 외식 프랜차이즈를 위한 ',
     introBold: 'B2B OEM 수산 가공 전문기업',

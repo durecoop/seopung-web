@@ -4,9 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
+import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import { useReveal } from '@/hooks/useReveal';
 import { getImagePath } from '@/lib/utils';
 import { historyCrud, getCompanyInfo, type HistoryItem as HistType } from '@/lib/admin-store';
+import { COMPANY, STATS, HISTORY as HISTORY_CONFIG, AFFILIATES as AFFILIATE_CONFIG, PARTNERS, hasValue } from '@/lib/company-config';
 
 /* ──────────────────────────────────────────────
    Skin-specific copy
@@ -160,30 +162,35 @@ const PILLARS = [
   },
 ];
 
-const HISTORY = [
-  { year: '2008', text: 'HACCP 최초 인증' },
-  { year: '2011', text: 'HACCP 기반 품질위생관리 체계 안정화' },
-  { year: '2013', text: '수산물 이력추적관리 시스템 도입' },
-  { year: '2017', text: "'레몬담은수산물' 브랜드 출시" },
-  { year: '2019', text: "'마리네이드수산물' 브랜드 출시" },
-  { year: '2024', text: 'ASC·MSC 지속가능 수산물 인증, 8억원 설비 투자' },
-  { year: '2025', text: '7.4억원 설비 투자, 총매출 379억원' },
-  { year: '2026', text: 'AI 엑스레이·초분광 도입, FSSC 22000 추진, 목표 매출 400억원' },
-];
+const HISTORY: { year: string; text: string }[] = HISTORY_CONFIG;
 
-const PLATFORM_STEPS = [
-  { entity: '중매인 49호', role: 'Purchase', desc: '원료 매입' },
-  { entity: '영어조합법인 서풍', role: 'Manufacturing', desc: '제조·가공' },
-  { entity: '㈜대주냉장', role: 'Storage', desc: '냉동 보관' },
-  { entity: '㈜여수유통', role: 'Distribution', desc: '유통·물류' },
-];
+const PLATFORM_STEPS = AFFILIATE_CONFIG.length > 0
+  ? AFFILIATE_CONFIG.map((a) => ({ entity: a.name, role: a.role, desc: a.description }))
+  : [
+      { entity: '원료 수매', role: 'Purchase', desc: '여수 위판장 신선 원료' },
+      { entity: '제조·가공', role: 'Manufacturing', desc: 'HACCP 인증 라인' },
+      { entity: '냉동 보관', role: 'Storage', desc: '저온 보관 시설' },
+      { entity: '유통·물류', role: 'Distribution', desc: '전국 콜드체인' },
+    ];
 
 const COMPANY_INFO = [
-  { label: '회사명', value: '영어조합법인 서풍' },
-  { label: '대표', value: '상무이사 김태환' },
-  { label: '주소', value: '전라남도 여수시 석교로 121 화양면' },
-  { label: '사업자번호', value: '417-81-41979' },
+  { label: '회사명', value: COMPANY.name },
+  { label: '대표', value: hasValue(COMPANY.ceoTitle) ? `${COMPANY.ceoTitle} ${COMPANY.ceoName}` : COMPANY.ceoName },
+  { label: '주소', value: hasValue(COMPANY.addressDetail) ? `${COMPANY.address} ${COMPANY.addressDetail}` : COMPANY.address },
+  ...(hasValue(COMPANY.bizNumber) ? [{ label: '사업자번호', value: COMPANY.bizNumber }] : []),
+  ...(hasValue(COMPANY.phone) ? [{ label: '전화', value: COMPANY.phone }] : []),
+  ...(hasValue(COMPANY.email) ? [{ label: '이메일', value: COMPANY.email }] : []),
 ];
+
+const STAT_ENTRIES: { number: string | null; label: string; sub: string }[] = [
+  { number: STATS.annualRevenueTarget, label: '연 매출', sub: '목표' },
+  { number: STATS.developedItems, label: '품목 개발', sub: '누적' },
+  { number: STATS.activeItems, label: '품목 운영중', sub: '현재' },
+  { number: STATS.annualEquipmentInvest, label: '연간 설비투자', sub: '연도별' },
+  { number: STATS.fishSpeciesCount, label: '어종 취급', sub: '다양한 원료' },
+  { number: STATS.certCount, label: '인증 보유', sub: 'HACCP·ASC·MSC' },
+];
+const VISIBLE_NUMBER_STATS = STAT_ENTRIES.filter((s) => hasValue(s.number)) as { number: string; label: string; sub: string }[];
 
 /* ──────────────────────────────────────────────
    CountUp Card – animates numeric portion on scroll
@@ -286,11 +293,11 @@ export default function AboutPage() {
                     {/* Photo – left */}
                     <div className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:h-full">
                       <div className="absolute inset-0 border-b-4 border-gold-500/40 lg:border-b-0 lg:border-r-4">
-                        <Image
-                          src={getImagePath('/images/team/director-writing.jpg')}
-                          alt="상무이사 김태환"
+                        <PhotoNeeded
                           fill
-                          className="object-cover"
+                          tone="light"
+                          caption="대표 프로필 사진"
+                          hint="정장 / 깔끔한 작업복 권장"
                         />
                       </div>
                     </div>
@@ -309,7 +316,9 @@ export default function AboutPage() {
                       </div>
 
                       <div className="mt-10">
-                        <p className={`text-2xl font-bold ${c.text} md:text-3xl`}>상무이사 김태환</p>
+                        <p className={`text-2xl font-bold ${c.text} md:text-3xl`}>
+                          {hasValue(COMPANY.ceoTitle) ? `${COMPANY.ceoTitle} ` : ''}{COMPANY.ceoName}
+                        </p>
                         <div className="mt-4 inline-block">
                           <div className="h-[2px] w-24 rounded-full bg-gradient-to-r from-gold-500 to-gold-500/0" />
                         </div>
@@ -331,34 +340,29 @@ export default function AboutPage() {
           </section>
 
           {/* ── 1.5 숫자로 보는 서풍 ── */}
-          <section className="relative py-24 md:py-32">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
-            <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-              <Reveal>
-                <div className="mb-16 text-center">
-                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
-                    By The Numbers
-                  </p>
-                  <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.numbersHeading}</h2>
-                </div>
-              </Reveal>
+          {VISIBLE_NUMBER_STATS.length > 0 && (
+            <section className="relative py-24 md:py-32">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
+              <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+                <Reveal>
+                  <div className="mb-16 text-center">
+                    <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                      By The Numbers
+                    </p>
+                    <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.numbersHeading}</h2>
+                  </div>
+                </Reveal>
 
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {[
-                  { number: '400억원', label: '연매출', sub: '2026 목표' },
-                  { number: '134', label: '품목 개발', sub: '10년간' },
-                  { number: '66개', label: '품목 운영중', sub: '현재' },
-                  { number: '9억원+', label: '연간 설비투자', sub: '2026' },
-                  { number: '9종', label: '어종 취급', sub: '다양한 원료' },
-                  { number: '3대', label: '인증 보유', sub: 'HACCP·ASC·MSC' },
-                ].map((stat, i) => (
-                  <Reveal key={stat.label} delay={i * 100}>
-                    <CountUpCard number={stat.number} label={stat.label} sub={stat.sub} cardBg={c.cardBg} cardBorder={c.cardBorder} cardHover={c.cardHover} text={c.text} text2={c.text2} />
-                  </Reveal>
-                ))}
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {VISIBLE_NUMBER_STATS.map((stat, i) => (
+                    <Reveal key={stat.label} delay={i * 100}>
+                      <CountUpCard number={stat.number} label={stat.label} sub={stat.sub} cardBg={c.cardBg} cardBorder={c.cardBorder} cardHover={c.cardHover} text={c.text} text2={c.text2} />
+                    </Reveal>
+                  ))}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           {/* ── 2. 경영 철학 ── */}
           <section className="relative py-24 md:py-32">
@@ -395,6 +399,7 @@ export default function AboutPage() {
           </section>
 
           {/* ── 3. 연혁 타임라인 ── */}
+          {historyData.length > 0 && (
           <section className="relative py-24 md:py-32">
             <div className="mx-auto max-w-4xl px-6 lg:px-8">
               <Reveal>
@@ -435,6 +440,7 @@ export default function AboutPage() {
               </div>
             </div>
           </section>
+          )}
 
           {/* ── 4. One Platform ── */}
           <section className="relative overflow-hidden py-24 md:py-32">
@@ -504,18 +510,36 @@ export default function AboutPage() {
               </Reveal>
 
               <Reveal delay={100}>
-                <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-                  {['풀무원', '푸드머스', '홈플러스', '이마트', '쿠팡'].map((name) => (
-                    <div
-                      key={name}
-                      className={`group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 ${c.cardBg} transition-all duration-500 hover:border-gold-500/40 ${c.cardHover} hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-0.5`}
-                    >
-                      <span className={`text-lg font-bold ${c.textMuted} transition-colors duration-500 group-hover:text-ocean-500`}>
-                        {name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                {PARTNERS.length > 0 ? (
+                  <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+                    {PARTNERS.map((p) => (
+                      <div
+                        key={p.name}
+                        className={`group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 ${c.cardBg} transition-all duration-500 hover:border-gold-500/40 ${c.cardHover} hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-0.5`}
+                      >
+                        {p.logoPath ? (
+                          <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={48} className="h-10 w-auto object-contain" />
+                        ) : (
+                          <span className={`text-lg font-bold ${c.textMuted} transition-colors duration-500 group-hover:text-ocean-500`}>
+                            {p.name}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <PhotoNeeded
+                        key={i}
+                        ratio="16/9"
+                        tone="light"
+                        caption="파트너사 로고"
+                        hint="사용 동의 후 등록"
+                      />
+                    ))}
+                  </div>
+                )}
               </Reveal>
             </div>
           </section>

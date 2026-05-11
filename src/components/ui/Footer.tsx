@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getImagePath } from '@/lib/utils';
+import { COMPANY, AFFILIATES as AFFILIATE_CONFIG, hasValue } from '@/lib/company-config';
 
 const CERTIFICATIONS = [
   'HACCP',
@@ -22,12 +23,9 @@ const QUICK_LINKS = [
   { label: '문의', href: '/contact' },
 ];
 
-const AFFILIATES = [
-  '영어조합법인 서풍',
-  '㈜여수유통',
-  '㈜대주냉장',
-  '중매인 49호',
-];
+const AFFILIATES = AFFILIATE_CONFIG.length > 0
+  ? AFFILIATE_CONFIG.map((a) => a.name)
+  : [COMPANY.name];
 
 const CROSS_LINKS = [
   { label: '서풍몰 쇼핑하기', href: 'https://shop.seopung.co.kr', icon: '\uD83D\uDED2' },
@@ -68,12 +66,12 @@ export default function Footer() {
                   className="scale-[1.75] object-contain"
                 />
               </div>
-              <span className="text-lg font-bold text-white">서풍</span>
+              <span className="text-lg font-bold text-white">{COMPANY.shortName}</span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-white/60">
-              바다의 가치를 세상의 식탁으로.
+              {COMPANY.tagline}.
               <br />
-              No.1 수산 가공 파트너, 영어조합법인 서풍
+              {COMPANY.description}
             </p>
           </div>
 
@@ -116,9 +114,9 @@ export default function Footer() {
               연락처
             </h4>
             <ul className="space-y-2.5 text-sm text-white/60">
-              <li className="py-1">전라남도 여수시 석교로 121</li>
-              <li className="py-1">061-686-0508</li>
-              <li className="py-1">seopung@naver.com</li>
+              <li className="py-1">{COMPANY.address}</li>
+              {hasValue(COMPANY.phone) && <li className="py-1">{COMPANY.phone}</li>}
+              {hasValue(COMPANY.email) && <li className="py-1">{COMPANY.email}</li>}
             </ul>
 
             <h4 className="mb-3 mt-6 text-sm font-semibold uppercase tracking-wider text-ocean-300">
@@ -160,7 +158,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-5">
           <p className="text-center text-xs text-white/40">
-            Copyright &copy; 2026 영어조합법인 서풍. All rights reserved.
+            Copyright &copy; 2026 {COMPANY.name}. All rights reserved.
           </p>
         </div>
       </div>

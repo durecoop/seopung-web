@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   description:
     "지속가능한 바다, 책임 있는 먹거리의 약속. 기술 혁신과 신뢰를 기반으로 국내 수산업의 미래 가치를 창출합니다.",
-  keywords: "서풍, 수산가공, OEM, HACCP, ASC, MSC, 수산물, 여수, 영광굴비, 풀무원, 푸드머스",
+  keywords: "서풍, 수산가공, OEM, HACCP, ASC, MSC, 수산물, 여수, 영광굴비, 수산물 OEM",
   openGraph: {
     title: "영어조합법인 서풍 | No.1 수산 가공 파트너",
     description: "지속가능한 바다, 책임 있는 먹거리의 약속. HACCP·ASC·MSC 인증 보유, AI 스마트 팩토리 운영.",

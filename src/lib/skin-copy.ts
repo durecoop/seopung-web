@@ -68,8 +68,8 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
     aboutCta: '회사소개 보기',
 
     prodLabel: 'Products',
-    prodTitle: '품목의 제품 라인업',
-    prodTitleAccent: '134+',
+    prodTitle: '제품',
+    prodTitleAccent: '라인업',
     prodDesc: '냉동수산가공부터 프리미엄 굴비, 밀키트까지\n맞춤형 OEM 솔루션을 제공합니다',
     prodCta: '전체 제품 보기',
 
@@ -113,7 +113,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
 
     prodLabel: 'Battle-Tested Products',
     prodTitle: '현장에서 증명된',
-    prodTitleAccent: '134+ 품목',
+    prodTitleAccent: '제품',
     prodDesc: '거친 시장의 요구에 맞서\n검증된 제품만을 내놓습니다',
     prodCta: '제품 라인업 보기',
 
@@ -157,7 +157,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
 
     prodLabel: 'Smart Products',
     prodTitle: '스마트 공정으로 탄생한',
-    prodTitleAccent: '134+ 제품',
+    prodTitleAccent: '정밀 제품',
     prodDesc: 'AI 품질 검수를 거친 정밀한 제품 라인업\n기술이 맛과 안전을 동시에 보장합니다',
     prodCta: '제품 데이터베이스',
 
@@ -201,7 +201,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
 
     prodLabel: 'Crafted with Soul',
     prodTitle: '장인의 손끝에서 탄생한',
-    prodTitleAccent: '134+ 작품',
+    prodTitleAccent: '작품',
     prodDesc: '하나하나 정성을 담아 만든 제품\n바다의 가치를 식탁으로 전합니다',
     prodCta: '제품 갤러리',
 
@@ -238,14 +238,14 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
     aboutLabel: 'Leadership',
     aboutTitle1: '도전이 곧',
     aboutTitle2: '서풍이다',
-    aboutDesc1: '30년간 대한민국 수산 가공 산업을 선도해온 서풍. 연 매출 400억, 134개 품목 — 숫자가 말해줍니다.',
+    aboutDesc1: '30년간 대한민국 수산 가공 산업을 선도해온 서풍. 글로벌 인증과 검증된 OEM 실적으로 응답합니다.',
     aboutDesc2: '파트너의 성공이 곧 우리의 성공입니다.',
     aboutDesc2Bold: '1등만이 살아남는 시장에서, 서풍은 1등의 파트너입니다.',
     aboutCta: '리더십 확인하기',
 
     prodLabel: 'Premium Lineup',
     prodTitle: '프리미엄',
-    prodTitleAccent: '134+ 제품군',
+    prodTitleAccent: '제품군',
     prodDesc: '대형마트 PB부터 프리미엄 선물세트까지\n어떤 요구에도 응답하는 제품력',
     prodCta: '제품군 보기',
 
@@ -256,7 +256,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
 
     bannerTitle1: '1등의 파트너가',
     bannerTitle2: '1등을 만든다',
-    bannerDesc: '풀무원, 이마트, 쿠팡이 선택한 이유.\n서풍은 결과로 증명합니다.',
+    bannerDesc: '대한민국 대표 유통사가 선택한 이유.\n서풍은 결과로 증명합니다.',
     bannerCta: '파트너십 문의',
 
     partnerLabel: 'Elite Partners',
@@ -289,7 +289,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
 
     prodLabel: 'Groundbreaking',
     prodTitle: '경계를 허문',
-    prodTitleAccent: '134+ 혁신 제품',
+    prodTitleAccent: '혁신 제품',
     prodDesc: '기존의 틀을 깨고 새로운 카테고리를 창조하는\n서풍만의 제품 철학',
     prodCta: '혁신 제품 보기',
 
@@ -328,12 +328,12 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
     aboutTitle2: '끊임없는 진화',
     aboutDesc1: '1995년 여수에서 시작한 서풍은 매년 새로운 도전으로 성장해왔습니다. AI 스마트 팩토리, 글로벌 인증, 신제품 개발 — 멈추지 않는 혁신이 서풍의 DNA입니다.',
     aboutDesc2: '파트너의 성공이 곧 우리의 성장입니다.',
-    aboutDesc2Bold: '매출 400억+, 134개 품목, 6대 인증 — 숫자가 증명합니다.',
+    aboutDesc2Bold: 'HACCP·ASC·MSC 인증 기반의 안정된 수산 OEM 파트너십.',
     aboutCta: '서풍 스토리 보기',
 
     prodLabel: 'Product Lineup',
     prodTitle: '트렌드를 선도하는',
-    prodTitleAccent: '134+ 제품',
+    prodTitleAccent: '제품',
     prodDesc: '냉동수산가공, 프리미엄 굴비, 밀키트, HMR까지\n시장이 원하는 제품을 가장 먼저 만듭니다',
     prodCta: '제품 더 보기',
 

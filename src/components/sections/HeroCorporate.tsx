@@ -15,9 +15,9 @@ import { getImagePath } from '@/lib/utils';
 const SLIDES = [
   {
     image: '/images/food-web/td06120004185.jpg',
-    tag: 'No.1 Seafood OEM',
+    tag: 'Seafood OEM Partner',
     title: '수산 가공의 새로운 기준,\n서풍이 만들어갑니다',
-    desc: '6대 국제 인증 · 연 매출 400억+ · 134개 품목 — 숫자가 증명하는 경쟁력',
+    desc: 'HACCP · ASC · MSC 글로벌 인증 기반의 프리미엄 수산 OEM 파트너',
   },
   {
     image: '/images/food-web/pc0031187199.jpg',
@@ -42,7 +42,7 @@ const VALUE_CARDS = [
         <path d="M24 10c-2.5 0-4.8.7-6.8 1.8" stroke="#003d6b" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.4" />
       </svg>
     ),
-    title: '6대 국제 인증',
+    title: '글로벌 인증',
     desc: 'HACCP·ASC·MSC 등 글로벌 스탠다드를 갖춘\n대한민국 최고 수준의 품질 시스템',
   },
   {
@@ -63,7 +63,7 @@ const VALUE_CARDS = [
         <path d="M12 30h8l4-12 4 18 4-10h8" stroke="#003d6b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </svg>
     ),
-    title: '134+ 제품 라인업',
+    title: '폭넓은 제품 라인업',
     desc: '냉동수산·밀키트·프리미엄 굴비까지\n트렌드를 선도하는 맞춤 OEM 솔루션',
   },
 ];

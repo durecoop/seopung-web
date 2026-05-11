@@ -4,8 +4,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
+import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import { getImagePath } from '@/lib/utils';
 import { saveInquiry, generateId, type Inquiry } from '@/lib/admin-store';
+import { COMPANY, FISH_SPECIES, AFFILIATES as AFFILIATE_CONFIG, hasValue } from '@/lib/company-config';
 
 /* ──────────────────────────────────────────────
    Skin-specific copy (keyed by theme id 0-5)
@@ -128,55 +130,16 @@ const CONTACT_COPY: Record<number, ContactCopy> = {
    Data
    ────────────────────────────────────────────── */
 const COMPANY_INFO = [
-  { label: '회사명', value: '영어조합법인 서풍' },
-  { label: '대표', value: '김태환' },
-  { label: '주소', value: '전라남도 여수시 석교로 121 (화양면)' },
-  { label: '사업자번호', value: '417-81-41979' },
-  { label: '취급어종', value: '참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어' },
+  { label: '회사명', value: COMPANY.name },
+  { label: '대표', value: hasValue(COMPANY.ceoTitle) ? `${COMPANY.ceoTitle} ${COMPANY.ceoName}` : COMPANY.ceoName },
+  { label: '주소', value: hasValue(COMPANY.addressDetail) ? `${COMPANY.address} (${COMPANY.addressDetail})` : COMPANY.address },
+  ...(hasValue(COMPANY.bizNumber) ? [{ label: '사업자번호', value: COMPANY.bizNumber }] : []),
+  ...(hasValue(COMPANY.phone) ? [{ label: '전화', value: COMPANY.phone }] : []),
+  ...(hasValue(COMPANY.email) ? [{ label: '이메일', value: COMPANY.email }] : []),
+  ...(FISH_SPECIES.length > 0 ? [{ label: '취급어종', value: FISH_SPECIES.join(', ') }] : []),
 ];
 
-const AFFILIATES = [
-  {
-    name: '영어조합법인 서풍',
-    role: 'Manufacturing',
-    desc: '수산물 제조 · 가공',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21" />
-      </svg>
-    ),
-  },
-  {
-    name: '㈜여수유통',
-    role: 'Distribution',
-    desc: '유통 · 물류',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.079-.481 1.09-1.102.434-8.674-.655-15.648-15.648-15.648H3.375c-.621 0-1.125.504-1.125 1.125v11.25" />
-      </svg>
-    ),
-  },
-  {
-    name: '㈜대주냉장',
-    role: 'Storage',
-    desc: '냉동 · 보관',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-      </svg>
-    ),
-  },
-  {
-    name: '중매인 49호',
-    role: 'Purchase',
-    desc: '원료 매입',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-      </svg>
-    ),
-  },
-];
+const AFFILIATES = AFFILIATE_CONFIG;
 
 /* ──────────────────────────────────────────────
    Page component
@@ -539,25 +502,37 @@ export default function ContactPage() {
                 </div>
               </Reveal>
 
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {AFFILIATES.map((affiliate, i) => (
-                  <Reveal key={affiliate.name} delay={i * 100}>
-                    <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 text-center transition-all duration-500 hover:border-ocean-400/30 ${c.cardHover}`}>
-                      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
-                      <div className="relative">
-                        <div className="mx-auto mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
-                          {affiliate.icon}
+              {AFFILIATES.length > 0 ? (
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {AFFILIATES.map((affiliate, i) => (
+                    <Reveal key={affiliate.name} delay={i * 100}>
+                      <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 text-center transition-all duration-500 hover:border-ocean-400/30 ${c.cardHover}`}>
+                        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="relative">
+                          <p className="mb-1 font-montserrat text-xs font-medium uppercase tracking-wider text-ocean-500">
+                            {affiliate.role}
+                          </p>
+                          <h3 className={`mb-3 text-lg font-bold ${c.text}`}>{affiliate.name}</h3>
+                          <p className={`text-sm ${c.text2}`}>{affiliate.description}</p>
                         </div>
-                        <p className="mb-1 font-montserrat text-xs font-medium uppercase tracking-wider text-ocean-500">
-                          {affiliate.role}
-                        </p>
-                        <h3 className={`mb-3 text-lg font-bold ${c.text}`}>{affiliate.name}</h3>
-                        <p className={`text-sm ${c.text2}`}>{affiliate.desc}</p>
                       </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
+                    </Reveal>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <Reveal key={i} delay={i * 100}>
+                      <PhotoNeeded
+                        ratio="4/3"
+                        tone="light"
+                        caption="관계사 정보"
+                        hint="법인명·역할 확인 후 등록"
+                      />
+                    </Reveal>
+                  ))}
+                </div>
+              )}
             </div>
           </section>
 

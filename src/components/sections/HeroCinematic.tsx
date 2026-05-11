@@ -57,7 +57,7 @@ export default function HeroCinematic() {
           <p className={`mb-10 max-w-lg text-xl text-white/70 md:text-2xl transition-all duration-1000 delay-300 ${ready ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             거친 바다 위에서 30년,
             <br />
-            134개 품목으로 증명한 대한민국 No.1 수산 OEM
+            글로벌 인증으로 증명한 대한민국 수산 OEM 파트너
           </p>
 
           <div className={`flex flex-col gap-4 sm:flex-row transition-all duration-1000 delay-500 ${ready ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
@@ -69,17 +69,12 @@ export default function HeroCinematic() {
             </Link>
           </div>
 
-          {/* Stats row */}
-          <div className={`mt-12 flex gap-8 transition-all duration-1000 delay-700 ${ready ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            {[
-              { num: '400억+', label: '연 매출' },
-              { num: '134+', label: '개발 품목' },
-              { num: '6대', label: '국제 인증' },
-            ].map((s) => (
-              <div key={s.label}>
-                <span className="block font-montserrat text-3xl font-black text-ocean-300 md:text-4xl">{s.num}</span>
-                <span className="text-sm text-white/50">{s.label}</span>
-              </div>
+          {/* Value chips (대체 표기 — 검증된 숫자가 들어오면 stats 그리드로 복원) */}
+          <div className={`mt-12 flex flex-wrap gap-3 transition-all duration-1000 delay-700 ${ready ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            {['HACCP', 'ASC', 'MSC', '이력추적'].map((label) => (
+              <span key={label} className="rounded-full border border-white/30 bg-white/10 px-4 py-1.5 font-montserrat text-xs font-semibold tracking-wider text-white/85 backdrop-blur-sm">
+                {label}
+              </span>
             ))}
           </div>
         </div>
