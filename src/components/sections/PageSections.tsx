@@ -169,7 +169,7 @@ export default function PageSections({ theme: t }: Props) {
                   <div className="relative aspect-[4/3] overflow-hidden">
                     {p.image ? (
                       <>
-                        <Image src={getImagePath(p.image)} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 50vw, 25vw" />
+                        <Image src={getImagePath(p.image)} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" sizes="(max-width: 768px) 50vw, 25vw" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-4">
                           <h3 className="text-xl font-bold text-white md:text-2xl">{p.name}</h3>
@@ -225,7 +225,7 @@ export default function PageSections({ theme: t }: Props) {
                     <div className={`mt-1 h-3 w-3 rounded-full bg-ocean-500 ring-4 ${ringColor}`} />
                   </div>
                   <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg">
-                    <Image src={getImagePath(item.image)} alt={item.caption} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 33vw" />
+                    <Image src={getImagePath(item.image)} alt={item.caption} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" sizes="(max-width: 768px) 100vw, 33vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
                   <p className={`mt-3 text-center text-lg font-medium ${isDark ? 'text-white/80' : 'text-gray-700'}`}>{item.caption}</p>

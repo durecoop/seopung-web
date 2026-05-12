@@ -494,6 +494,58 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* ── 4.2 왜 서풍인가 — 차별점 비교 ── */}
+          <section className="relative py-20 md:py-28">
+            <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+              <Reveal>
+                <div className="mb-12 text-center">
+                  <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                    Why Seopung
+                  </p>
+                  <h2 className={`text-3xl font-bold tracking-tight ${c.text} md:text-4xl`}>
+                    대형 OEM 사업자와 무엇이 다른가
+                  </h2>
+                  <p className={`mx-auto mt-4 max-w-2xl text-base ${c.text2} md:text-lg`}>
+                    중견 OEM 전문 기업의 장점 — 빠른 의사결정, 소량 다품종, 직매입 구조
+                  </p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={120}>
+                <div className={`overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg}`}>
+                  <div className={`grid grid-cols-[1.2fr_1fr_1fr] gap-0 border-b ${c.cardBorder}`}>
+                    <div className={`px-5 py-4 text-sm font-semibold ${c.textMuted}`}>비교 항목</div>
+                    <div className={`px-5 py-4 text-center text-sm font-semibold ${c.textMuted}`}>대형 OEM 사업자</div>
+                    <div className="px-5 py-4 text-center text-sm font-bold text-ocean-500">서풍</div>
+                  </div>
+                  {[
+                    { item: '최소 발주량 (MOQ)', big: '수만 팩 단위', us: '소량 OEM 가능' },
+                    { item: '신제품 개발 사이클', big: '평균 6~12개월', us: '평균 5개월' },
+                    { item: '의사결정 속도', big: '다단계 결재', us: '담당자 직접 응대' },
+                    { item: '원료 매입 구조', big: '다단계 유통', us: '여수 위판장 직매입' },
+                    { item: '인증 보유', big: '기본 인증', us: 'HACCP · ASC · MSC · 이력추적' },
+                    { item: '소품종 다품종 대응', big: '제한적', us: '강점 영역' },
+                  ].map((row, i, arr) => (
+                    <div
+                      key={row.item}
+                      className={`grid grid-cols-[1.2fr_1fr_1fr] gap-0 ${i < arr.length - 1 ? `border-b ${c.cardBorder}` : ''}`}
+                    >
+                      <div className={`px-5 py-4 text-sm font-medium ${c.text} md:text-base`}>{row.item}</div>
+                      <div className={`px-5 py-4 text-center text-sm ${c.text2} md:text-base`}>{row.big}</div>
+                      <div className="px-5 py-4 text-center text-sm font-semibold text-ocean-500 md:text-base">
+                        {row.us}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+
+              <p className={`mt-6 text-center text-xs ${c.textMuted} md:text-sm`}>
+                * 일반적인 업계 수준과의 비교이며 개별 사업자에 따라 다를 수 있습니다.
+              </p>
+            </div>
+          </section>
+
           {/* ── 4.3 신뢰의 파트너 (Client Logos) ── */}
           <section className="relative py-24 md:py-32">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
@@ -514,7 +566,7 @@ export default function AboutPage() {
                     {PARTNERS.map((p) => (
                       <div
                         key={p.name}
-                        className={`group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 ${c.cardBg} transition-all duration-500 hover:border-gold-500/40 ${c.cardHover} hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-0.5`}
+                        className={`group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 ${c.cardBg} transition-all duration-500 hover:border-gold-500/40 ${c.cardHover} hover:shadow-lg hover:shadow-gold-500/5 `}
                       >
                         {p.logoPath ? (
                           <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={48} className="h-10 w-auto object-contain" />

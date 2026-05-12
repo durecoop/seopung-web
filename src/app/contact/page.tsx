@@ -359,6 +359,21 @@ export default function ContactPage() {
                     {copy.formSectionLabel}
                   </p>
                   <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>{copy.formSectionHeading}</h2>
+                  <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+                    <span className={`inline-flex items-center gap-2 ${c.text2}`}>
+                      <svg className="h-4 w-4 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      24시간 내 담당자 직접 회신
+                    </span>
+                    <span className={`inline-flex items-center gap-2 ${c.text2}`}>
+                      <svg className="h-4 w-4 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      샘플 무상 발송
+                    </span>
+                    <span className={`inline-flex items-center gap-2 ${c.text2}`}>
+                      <svg className="h-4 w-4 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      NDA 즉시 체결 가능
+                    </span>
+                  </div>
+                  <p className={`mt-3 text-xs ${c.textMuted}`}>제출하신 정보는 영업 외 목적으로 사용·외부 공유되지 않습니다.</p>
                 </div>
               </Reveal>
 
