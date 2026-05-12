@@ -266,12 +266,11 @@ export default function AboutPage() {
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[35vh] min-h-[320px] items-center justify-center overflow-hidden md:h-[40vh]">
-            <Image
-              src={getImagePath('/images/team/factory-team.jpg')}
-              alt="서풍 공장 팀"
+            <PhotoNeeded
               fill
-              className="object-cover"
-              priority
+              tone="light"
+              caption="공장 단체 사진"
+              hint="자연스러운 현장 컷 권장"
             />
             <div className="relative z-10 inline-block rounded-2xl bg-white/85 px-8 py-6 text-center shadow-lg backdrop-blur-sm">
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
@@ -558,19 +557,18 @@ export default function AboutPage() {
 
               <div className="grid gap-6 md:grid-cols-3">
                 {[
-                  { image: '/images/team/factory-team-3.jpg', caption: '공장 팀', desc: '위생복 착용, 철저한 위생관리' },
-                  { image: '/images/team/auction-team-2.jpg', caption: '위판장 팀', desc: '새벽부터 원료 수매' },
-                  { image: '/images/team/office-meeting.jpg', caption: '사무실', desc: '품질관리와 제품개발' },
+                  { caption: '공장 팀', desc: '위생복 착용, 철저한 위생관리' },
+                  { caption: '위판장 팀', desc: '새벽부터 원료 수매' },
+                  { caption: '사무실', desc: '품질관리와 제품개발' },
                 ].map((member, i) => (
                   <Reveal key={member.caption} delay={i * 150}>
                     <div className={`group overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} transition-all duration-500 hover:border-ocean-400/30`}>
                       <div className="relative aspect-[4/3] overflow-hidden">
-                        <Image
-                          src={getImagePath(member.image)}
-                          alt={member.caption}
+                        <PhotoNeeded
                           fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, 33vw"
+                          tone="light"
+                          caption={member.caption}
+                          hint="현장 단체사진 권장"
                         />
                       </div>
                       <div className="p-6">
@@ -624,21 +622,11 @@ export default function AboutPage() {
                 <Reveal delay={200}>
                   <div className="grid gap-4">
                     <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
-                      <Image
-                        src={getImagePath('/images/team/office-team.jpg')}
-                        alt="사무실 팀"
-                        fill
-                        className="object-cover transition-transform duration-700 hover:scale-105"
-                      />
+                      <PhotoNeeded fill tone="light" caption="경영지원팀" hint="자연스러운 단체사진" />
                       <span className="absolute bottom-4 left-6 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-gray-800 shadow-sm">경영지원팀</span>
                     </div>
                     <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
-                      <Image
-                        src={getImagePath('/images/team/auction-team.jpg')}
-                        alt="수매 팀"
-                        fill
-                        className="object-cover transition-transform duration-700 hover:scale-105"
-                      />
+                      <PhotoNeeded fill tone="light" caption="수매팀" hint="새벽 위판장 작업 컷" />
                       <span className="absolute bottom-4 left-6 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-gray-800 shadow-sm">수매팀</span>
                     </div>
                   </div>

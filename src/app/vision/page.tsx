@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
+import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import { getImagePath } from '@/lib/utils';
 
 /* ──────────────────────────────────────────────
@@ -272,12 +272,11 @@ export default function VisionPage() {
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
-            <Image
-              src={getImagePath('/images/team/factory-team-2.jpg')}
-              alt="서풍 팀"
+            <PhotoNeeded
               fill
-              className="object-cover"
-              priority
+              tone="dark"
+              caption="공장 단체 사진"
+              hint="자연스러운 현장 컷"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
             <div className="relative z-10 text-center">
