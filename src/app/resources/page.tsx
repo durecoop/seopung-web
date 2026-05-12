@@ -204,7 +204,6 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
   { src: 'facility/fish-scanner.jpg', label: '어류 스캔 절단기', category: '공장' },
   { src: 'facility/radiation-tester.jpg', label: '방사능 검사 장비', category: '공장' },
   { src: 'process/06-cold-storage.jpg', label: '냉동창고', category: '공장' },
-  { src: 'team/factory-team.jpg', label: '공장 전경', category: '공장' },
   // Auction
   { src: 'hero/dawn-unloading.jpg', label: '새벽 하역', category: '위판장' },
   { src: 'auction/director-inspect.jpg', label: '원료 검수', category: '위판장' },

@@ -68,7 +68,7 @@ export default function Footer() {
               </div>
               <span className="text-lg font-bold text-white">{COMPANY.shortName}</span>
             </div>
-            <p className="max-w-xs text-sm leading-relaxed text-white/60">
+            <p className="max-w-xs text-sm leading-relaxed text-white/75">
               {COMPANY.tagline}.
               <br />
               {COMPANY.description}
@@ -85,7 +85,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-block py-1 text-sm text-white/60 transition-colors duration-300 hover:text-white"
+                    className="inline-block py-1 text-sm text-white/75 transition-colors duration-300 hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -101,7 +101,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {AFFILIATES.map((name) => (
-                <li key={name} className="py-1 text-sm text-white/60">
+                <li key={name} className="py-1 text-sm text-white/75">
                   {name}
                 </li>
               ))}
@@ -113,7 +113,7 @@ export default function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-ocean-300">
               연락처
             </h4>
-            <ul className="space-y-2.5 text-sm text-white/60">
+            <ul className="space-y-2.5 text-sm text-white/75">
               <li className="py-1">{COMPANY.address}</li>
               {hasValue(COMPANY.phone) && <li className="py-1">{COMPANY.phone}</li>}
               {hasValue(COMPANY.email) && <li className="py-1">{COMPANY.email}</li>}
@@ -128,7 +128,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
+                      className="inline-flex items-center gap-2 text-sm text-white/75 transition-colors hover:text-white"
                     >
                       <span className="text-xs">{link.icon}</span>
                       {link.label}
@@ -140,7 +140,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
+                      className="inline-flex items-center gap-2 text-sm text-white/75 transition-colors hover:text-white"
                     >
                       <span className="text-xs">{link.icon}</span>
                       {link.label}
@@ -157,7 +157,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-5">
-          <p className="text-center text-xs text-white/40">
+          <p className="text-center text-xs text-white/65">
             Copyright &copy; 2026 {COMPANY.name}. All rights reserved.
           </p>
         </div>

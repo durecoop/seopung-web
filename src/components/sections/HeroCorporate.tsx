@@ -15,21 +15,21 @@ import { getImagePath } from '@/lib/utils';
 const SLIDES = [
   {
     image: '/images/food-web/td06120004185.jpg',
-    tag: 'Seafood OEM Partner',
-    title: '수산 가공의 새로운 기준,\n서풍이 만들어갑니다',
-    desc: 'HACCP · ASC · MSC 글로벌 인증 기반의 프리미엄 수산 OEM 파트너',
+    tag: 'Certified Seafood OEM',
+    title: '대형 유통사 PB가\n선택하는 수산 OEM',
+    desc: 'HACCP · ASC · MSC · 이력추적 · 품질인증 — 5대 안전 인증 보유',
   },
   {
     image: '/images/food-web/pc0031187199.jpg',
-    tag: 'Since 1995',
-    title: '30년의 도전,\n멈추지 않는 성장',
-    desc: '여수에서 시작한 작은 도전이 대한민국 수산 OEM의 역사가 되었습니다',
+    tag: 'One Platform',
+    title: '여수 위판장 직매입,\n당일 가공·출하',
+    desc: '중매인 직접 매입 → 가공 → 보관 → 유통 한 흐름. 중간 유통 마진 없음',
   },
   {
     image: '/images/food-web/tica034m19010001.jpg',
     tag: 'Smart Factory',
-    title: 'AI 기술로 여는\n수산업의 내일',
-    desc: 'AI 초분광 선별, 스캔 자동절단 — 기술 혁신으로 품질의 한계를 넘습니다',
+    title: 'AI 검수·자동화\n수산 가공의 다음 기준',
+    desc: 'AI 엑스레이 · 초분광 선별 · 스캔 자동절단 — 2026년 도입 중',
   },
 ];
 
@@ -127,10 +127,10 @@ export default function HeroCorporate() {
             <span className="mb-5 inline-block border-b border-white/40 pb-1 font-montserrat text-xs font-semibold uppercase tracking-[0.3em] text-white/80 md:text-sm">
               {slide.tag}
             </span>
-            <h1 className="mb-5 whitespace-pre-line text-3xl font-bold leading-snug text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="mx-auto mb-5 max-w-3xl whitespace-pre-line text-3xl font-bold leading-[1.25] tracking-tight text-white sm:text-4xl md:text-5xl">
               {slide.title}
             </h1>
-            <p className="mx-auto mb-8 max-w-xl text-base text-white/85 md:text-lg">
+            <p className="mx-auto mb-8 max-w-2xl text-base text-white/90 md:text-lg">
               {slide.desc}
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

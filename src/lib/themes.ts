@@ -35,7 +35,7 @@ export const THEMES: Record<number, SiteTheme> = {
     sectionBg1: 'bg-white', sectionBg2: 'bg-gray-50',
     bannerOverlay: 'from-ocean-600/90 via-ocean-600/70 to-ocean-600/40',
     ctaBg: 'bg-ocean-600', ctaText: 'text-white',
-    footerBg: 'bg-ocean-600', footerText: 'text-white', footerMuted: 'text-white/60',
+    footerBg: 'bg-ocean-600', footerText: 'text-white', footerMuted: 'text-white/75',
     accent: 'bg-ocean-500', accentHover: 'hover:bg-ocean-400',
   },
   // 1: CSS 폭풍 파도 — 딥 네이비
@@ -47,7 +47,7 @@ export const THEMES: Record<number, SiteTheme> = {
     sectionBg1: 'bg-[#0a1628]', sectionBg2: 'bg-[#0e1d33]',
     bannerOverlay: 'from-[#0a1628]/90 via-[#0a1628]/70 to-ocean-600/60',
     ctaBg: 'bg-[#0c2040]', ctaText: 'text-white',
-    footerBg: 'bg-[#060e1a]', footerText: 'text-white', footerMuted: 'text-white/50',
+    footerBg: 'bg-[#060e1a]', footerText: 'text-white', footerMuted: 'text-white/70',
     accent: 'bg-ocean-500', accentHover: 'hover:bg-ocean-400',
   },
   // 2: 파티클 오션 — 테크 다크
@@ -59,7 +59,7 @@ export const THEMES: Record<number, SiteTheme> = {
     sectionBg1: 'bg-[#030a19]', sectionBg2: 'bg-[#071525]',
     bannerOverlay: 'from-[#030a19]/90 via-ocean-600/50 to-[#030a19]/70',
     ctaBg: 'bg-gradient-to-br from-[#071525] to-[#0c2d4a]', ctaText: 'text-white',
-    footerBg: 'bg-[#020810]', footerText: 'text-white', footerMuted: 'text-white/40',
+    footerBg: 'bg-[#020810]', footerText: 'text-white', footerMuted: 'text-white/70',
     accent: 'bg-gradient-to-r from-ocean-500 to-cyan-500', accentHover: 'hover:brightness-110',
   },
   // 3: 바다 영상 — 시네마틱 다크
@@ -71,7 +71,7 @@ export const THEMES: Record<number, SiteTheme> = {
     sectionBg1: 'bg-[#0a1628]', sectionBg2: 'bg-[#0e1d33]',
     bannerOverlay: 'from-[#020810]/90 via-[#020810]/60 to-ocean-600/70',
     ctaBg: 'bg-ocean-600', ctaText: 'text-white',
-    footerBg: 'bg-[#020810]', footerText: 'text-white', footerMuted: 'text-white/50',
+    footerBg: 'bg-[#020810]', footerText: 'text-white', footerMuted: 'text-white/70',
     accent: 'bg-white', accentHover: 'hover:bg-ocean-50',
   },
   // 4: 시네마틱 분할 — 블루 프리미엄
@@ -83,7 +83,7 @@ export const THEMES: Record<number, SiteTheme> = {
     sectionBg1: 'bg-[#020a18]', sectionBg2: 'bg-[#0a1e35]',
     bannerOverlay: 'from-[#020a18]/90 via-ocean-600/60 to-[#020a18]/80',
     ctaBg: 'bg-[#0a2a4a]', ctaText: 'text-white',
-    footerBg: 'bg-[#020a18]', footerText: 'text-white', footerMuted: 'text-white/50',
+    footerBg: 'bg-[#020a18]', footerText: 'text-white', footerMuted: 'text-white/70',
     accent: 'bg-white', accentHover: 'hover:bg-ocean-50',
   },
   // 5: 대담한 타이포 — 글로우 다크
@@ -95,7 +95,7 @@ export const THEMES: Record<number, SiteTheme> = {
     sectionBg1: 'bg-[#0a1628]', sectionBg2: 'bg-[#081828]',
     bannerOverlay: 'from-[#020a18]/90 via-ocean-600/50 to-[#020a18]/80',
     ctaBg: 'bg-gradient-to-br from-[#0a1628] to-ocean-600', ctaText: 'text-white',
-    footerBg: 'bg-[#020a18]', footerText: 'text-white', footerMuted: 'text-white/40',
+    footerBg: 'bg-[#020a18]', footerText: 'text-white', footerMuted: 'text-white/70',
     accent: 'bg-white', accentHover: 'hover:bg-ocean-50',
   },
   // 6: CJ 기업형 — 클린 화이트, 기업 신뢰감 (CJ씨푸드 참고)
@@ -107,7 +107,7 @@ export const THEMES: Record<number, SiteTheme> = {
     sectionBg1: 'bg-white', sectionBg2: 'bg-[#f8fafe]',
     bannerOverlay: 'from-[#003d6b]/85 via-[#003d6b]/65 to-[#003d6b]/40',
     ctaBg: 'bg-[#003d6b]', ctaText: 'text-white',
-    footerBg: 'bg-[#1c2d3f]', footerText: 'text-white', footerMuted: 'text-white/60',
+    footerBg: 'bg-[#1c2d3f]', footerText: 'text-white', footerMuted: 'text-white/75',
     accent: 'bg-[#003d6b]', accentHover: 'hover:bg-[#00507a]',
   },
 };

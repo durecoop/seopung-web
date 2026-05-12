@@ -54,9 +54,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-pretendard);
-  font-size: 16.5px;
-  line-height: 1.65;
-  letter-spacing: -0.01em;
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: -0.005em;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
@@ -64,7 +64,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  body { font-size: 17px; }
+  body { font-size: 16px; }
 }
 
 /* Smooth scroll */

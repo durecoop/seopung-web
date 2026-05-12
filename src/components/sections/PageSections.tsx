@@ -65,14 +65,14 @@ export default function PageSections({ theme: t }: Props) {
               <span className="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 font-montserrat text-base font-semibold uppercase tracking-[0.2em] text-ocean-200">
                 {copy.certLabel}
               </span>
-              <h2 className={`mt-4 text-5xl font-bold ${t.certText} md:text-6xl lg:text-7xl`}>
+              <h2 className={`mt-4 text-3xl font-bold tracking-tight ${t.certText} md:text-4xl lg:text-5xl`}>
                 {copy.certTitle} <span className="text-ocean-300">{copy.certTitleAccent}</span>
               </h2>
-              <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-ocean-200 md:text-2xl">
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ocean-100 md:text-lg">
                 {copy.certDesc}<br className="hidden md:block" />
                 <span className="font-semibold text-white">{copy.certDescBold}</span>
               </p>
-              <p className="mx-auto mt-3 max-w-2xl text-base text-ocean-200/80 md:text-lg">
+              <p className="mx-auto mt-3 max-w-2xl text-sm text-ocean-100/85 md:text-base">
                 대형 유통사가 요구하는 안전·품질 기준을 선제적으로 충족합니다
               </p>
             </div>
@@ -80,13 +80,13 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6">
               {CERT_BADGES.map((cert) => (
-                <div key={cert.name} className={`group flex flex-col items-center gap-3 rounded-2xl border ${t.certCardBorder} ${t.certCardBg} px-5 py-8 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-white/20 md:px-8 md:py-10`}>
-                  <div className="relative h-24 w-24 overflow-hidden rounded-xl bg-white/95 p-2 shadow-md md:h-28 md:w-28">
-                    <Image src={getImagePath(cert.icon)} alt={cert.name} fill className="object-contain p-1" sizes="112px" />
+                <div key={cert.name} className={`group flex flex-col items-center gap-2 rounded-xl border ${t.certCardBorder} ${t.certCardBg} px-5 py-7 backdrop-blur-sm transition-colors duration-300 hover:border-white/30 hover:bg-white/15 md:px-8 md:py-9`}>
+                  <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-white/95 p-2 shadow-sm md:h-24 md:w-24">
+                    <Image src={getImagePath(cert.icon)} alt={cert.name} fill className="object-contain p-1" sizes="96px" />
                   </div>
-                  <span className="font-montserrat text-2xl font-bold tracking-wide text-white md:text-3xl">{cert.name}</span>
-                  <span className="text-base font-medium text-ocean-200 md:text-lg">{cert.desc}</span>
-                  <span className="text-sm leading-relaxed text-ocean-300/80 md:text-base">{cert.detail}</span>
+                  <span className="font-montserrat text-xl font-bold tracking-wide text-white md:text-2xl">{cert.name}</span>
+                  <span className="text-sm font-medium text-ocean-100 md:text-base">{cert.desc}</span>
+                  <span className="text-xs leading-relaxed text-ocean-100/80 md:text-sm">{cert.detail}</span>
                 </div>
               ))}
             </div>
@@ -108,11 +108,11 @@ export default function PageSections({ theme: t }: Props) {
             <FadeIn>
               <div>
                 <span className="mb-4 inline-block font-montserrat text-base font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.aboutLabel}</span>
-                <h2 className={`mb-6 text-4xl font-bold leading-tight ${tp} sm:text-5xl md:text-6xl`}>
+                <h2 className={`mb-6 text-3xl font-bold leading-tight tracking-tight ${tp} sm:text-4xl md:text-5xl`}>
                   {copy.aboutTitle1}<br className="hidden sm:block" /> <span className="text-ocean-500">{copy.aboutTitle2}</span>
                 </h2>
-                <p className={`mb-6 text-xl leading-relaxed ${ts} md:text-2xl`}>{copy.aboutDesc1}</p>
-                <p className={`mb-8 text-lg leading-relaxed ${ts} md:text-xl`}>
+                <p className={`mb-6 text-base leading-relaxed ${ts} md:text-lg`}>{copy.aboutDesc1}</p>
+                <p className={`mb-8 text-base leading-relaxed ${ts} md:text-lg`}>
                   <span className={`font-semibold ${tp}`}>{copy.aboutDesc2Bold}</span>{' '}{copy.aboutDesc2}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -156,10 +156,10 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-4 inline-block font-montserrat text-base font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.prodLabel}</span>
-              <h2 className={`text-4xl font-bold ${tp} sm:text-5xl md:text-6xl lg:text-7xl`}>
+              <h2 className={`text-3xl font-bold tracking-tight ${tp} sm:text-4xl md:text-5xl`}>
                 {copy.prodTitle} <span className="text-ocean-500">{copy.prodTitleAccent}</span>
               </h2>
-              <p className={`mx-auto mt-5 max-w-xl text-xl leading-relaxed ${ts} whitespace-pre-line md:text-2xl`}>{copy.prodDesc}</p>
+              <p className={`mx-auto mt-5 max-w-xl text-base leading-relaxed ${ts} whitespace-pre-line md:text-lg`}>{copy.prodDesc}</p>
             </div>
           </FadeIn>
           <FadeIn>
@@ -205,10 +205,10 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.supplyLabel}</span>
-              <h2 className={`text-4xl font-bold ${tp} md:text-5xl lg:text-6xl`}>
+              <h2 className={`text-3xl font-bold tracking-tight ${tp} md:text-4xl lg:text-5xl`}>
                 {copy.supplyTitle} <span className="text-ocean-500">{copy.supplyTitleAccent}</span>
               </h2>
-              <p className={`mx-auto mt-5 max-w-xl text-xl ${ts}`}>{copy.supplyDesc}</p>
+              <p className={`mx-auto mt-5 max-w-xl text-base ${ts} md:text-lg`}>{copy.supplyDesc}</p>
             </div>
           </FadeIn>
           <FadeIn>
@@ -245,13 +245,14 @@ export default function PageSections({ theme: t }: Props) {
           <div className="mx-auto max-w-6xl px-6">
             <FadeIn>
               <div className="max-w-xl">
-                <h2 className="mb-5 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                <h2 className="mb-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
                   {copy.bannerTitle1}<br className="hidden md:block" /> <span className="text-ocean-200">{copy.bannerTitle2}</span>
                 </h2>
-                <p className="mb-8 text-xl leading-relaxed text-white/95 md:text-2xl whitespace-pre-line">{copy.bannerDesc}</p>
-                <Link href="/contact" className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-ocean-600 transition-all duration-300 hover:bg-ocean-50 hover:shadow-xl sm:text-xl">
+                <p className="mb-8 text-base leading-relaxed text-white/95 md:text-lg whitespace-pre-line">{copy.bannerDesc}</p>
+                <Link href="/contact" className="group inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-base font-bold text-ocean-600 shadow-md transition-all duration-300 hover:bg-ocean-50 hover:shadow-lg">
                   OEM 문의하기 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                 </Link>
+                <p className="mt-3 text-xs text-white/85 sm:text-sm">24시간 내 회신 · 샘플 무상 발송 · NDA 즉시 체결 가능</p>
               </div>
             </FadeIn>
           </div>
@@ -264,8 +265,8 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.partnerLabel}</span>
-              <h2 className={`text-4xl font-bold ${tp} md:text-5xl`}>{copy.partnerTitle} <span className="text-ocean-500">{copy.partnerTitleAccent}</span></h2>
-              <p className={`mt-5 text-xl ${ts}`}>{copy.partnerDesc}</p>
+              <h2 className={`text-3xl font-bold tracking-tight ${tp} md:text-4xl`}>{copy.partnerTitle} <span className="text-ocean-500">{copy.partnerTitleAccent}</span></h2>
+              <p className={`mt-5 text-base ${ts} md:text-lg`}>{copy.partnerDesc}</p>
             </div>
           </FadeIn>
           <FadeIn>
@@ -282,15 +283,17 @@ export default function PageSections({ theme: t }: Props) {
                 ))}
               </div>
             ) : (
-              <div className="mx-auto grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-3">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <PhotoNeeded
-                    key={i}
-                    ratio="16/9"
-                    tone={isDark ? 'dark' : 'light'}
-                    caption="파트너사 로고"
-                    hint="사용 동의 후 등록"
-                  />
+              <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {[
+                  { label: '대형마트 PB', desc: '냉동수산·밀키트 OEM' },
+                  { label: '외식 프랜차이즈', desc: '식자재·메뉴 공급' },
+                  { label: '밀키트 브랜드', desc: '간편식 HMR 생산' },
+                  { label: '누적 거래 10년+', desc: '장기 파트너십' },
+                ].map((seg) => (
+                  <div key={seg.label} className={`flex flex-col items-center rounded-xl border ${cardCls} px-5 py-6 text-center transition-colors duration-300 hover:border-ocean-500/30`}>
+                    <span className={`text-base font-bold ${tp} md:text-lg`}>{seg.label}</span>
+                    <span className={`mt-1.5 text-xs ${tm} md:text-sm`}>{seg.desc}</span>
+                  </div>
                 ))}
               </div>
             )}
@@ -306,22 +309,23 @@ export default function PageSections({ theme: t }: Props) {
         <div className="relative mx-auto max-w-4xl px-6">
           <FadeIn>
             <div className="text-center">
-              <h2 className={`mb-5 text-4xl font-bold leading-tight ${t.ctaText} sm:text-5xl md:text-6xl lg:text-7xl`}>
+              <h2 className={`mb-5 text-3xl font-bold leading-tight tracking-tight ${t.ctaText} sm:text-4xl md:text-5xl`}>
                 {copy.ctaTitle1}<br className="hidden sm:block" /> <span className="text-ocean-300">{copy.ctaTitle2}</span>
               </h2>
-              <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-ocean-200 md:text-2xl whitespace-pre-line">{copy.ctaDesc}</p>
+              <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-ocean-100 md:text-lg whitespace-pre-line">{copy.ctaDesc}</p>
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Link href="/contact" className="group inline-flex items-center gap-3 rounded-full bg-white px-10 py-5 text-xl font-bold text-ocean-600 shadow-xl transition-all duration-300 hover:bg-ocean-50 hover:shadow-2xl sm:text-2xl">
+                <Link href="/contact" className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-ocean-600 shadow-md transition-all duration-300 hover:bg-ocean-50 hover:shadow-lg sm:text-lg">
                   OEM 문의하기
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </Link>
                 {hasValue(COMPANY.phone) && (
-                  <a href={`tel:${COMPANY.phone}`} className="inline-flex items-center gap-2 text-xl font-semibold text-white/95 transition-colors hover:text-white">
-                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  <a href={`tel:${COMPANY.phone}`} className="inline-flex items-center gap-2 text-base font-semibold text-white/95 transition-colors hover:text-white sm:text-lg">
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                     {COMPANY.phone}
                   </a>
                 )}
               </div>
+              <p className="mt-5 text-xs text-ocean-100/85 sm:text-sm">24시간 내 회신 · 샘플 무상 발송 · NDA 즉시 체결 가능</p>
             </div>
           </FadeIn>
         </div>
