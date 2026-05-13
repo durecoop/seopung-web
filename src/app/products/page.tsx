@@ -367,20 +367,20 @@ export default function ProductsPage() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/55 to-black/40" />
             <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
               <FadeIn>
-                <p className="mb-4 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
+                <p className="mb-4 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-300">
                   {copy.ctaLabel}
                 </p>
-                <p className={`mb-10 text-2xl font-medium leading-relaxed ${c.text2} md:text-3xl md:leading-relaxed`}>
+                <p className="mb-10 text-2xl font-bold leading-relaxed text-white drop-shadow-md md:text-3xl md:leading-relaxed">
                   {copy.ctaText.split('\n').map((line, i) => (
                     <span key={i}>{i > 0 && <br />}{line}</span>
                   ))}
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-ocean-400 hover:shadow-lg hover:shadow-ocean-500/20"
+                  className="inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 font-semibold text-white shadow-lg shadow-ocean-500/30 transition-all duration-300 hover:bg-ocean-400 hover:shadow-xl"
                 >
                   {copy.ctaButton} &rarr;
                 </Link>
