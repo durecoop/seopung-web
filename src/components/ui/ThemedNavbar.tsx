@@ -68,8 +68,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
                 </span>
               </div>
               <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-[11px] sm:text-xs max-h-6 opacity-80' : 'text-[11px] sm:text-xs max-h-5 opacity-70'} ${textClass}`}>
-                <span className="sm:hidden">수산 가공 OEM</span>
-                <span className="hidden sm:inline">No.1 수산 가공 파트너</span>
+                HACCP·ASC 인증 수산 OEM
               </span>
             </div>
           </Link>
