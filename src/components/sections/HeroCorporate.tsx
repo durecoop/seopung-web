@@ -14,7 +14,7 @@ import { getImagePath } from '@/lib/utils';
 
 const SLIDES = [
   {
-    image: '/images/hero/main-1-group.jpg',
+    image: '/images/hero/main-1-team.jpg',
     tag: 'TEAM SEOPUNG',
     title: '여수의 새벽,\n우리의 화이팅!',
     desc: '직원 모두가 매일 만드는 — 식탁 위의 신선함과 안전',
@@ -191,29 +191,6 @@ export default function HeroCorporate() {
             >
               {slide.desc}
             </p>
-            <div
-              className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center hero-fadeup"
-              style={{ animationDelay: '0.8s' }}
-            >
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-7 py-3 text-base font-bold text-ocean-700 shadow-md transition-all hover:bg-ocean-50 hover:shadow-lg"
-              >
-                제품소개
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/70 px-7 py-3 text-base font-bold text-white transition-all hover:bg-white/10"
-              >
-                문의하기
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
           </div>
         </div>
 
