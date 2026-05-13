@@ -198,9 +198,11 @@ export interface Partner {
 }
 
 export const PARTNERS: Partner[] = [
-  { name: '푸드머스', logoPath: null, description: '전용 MG 품목 공급 · R&D 협력' },
-  { name: '풀무원', logoPath: null, description: 'ESG 경영 방향 정렬' },
-  { name: '농심엔지니어링', logoPath: null, description: 'AI 엑스레이 공동 개발 (2026)' },
+  { name: '푸드머스', logoPath: null, description: '전용 MG·R&D 협력' },
+  { name: '풀무원', logoPath: null, description: 'ESG 경영 정렬' },
+  { name: '쿠팡', logoPath: null, description: '온라인 유통 채널' },
+  { name: '두레생협', logoPath: null, description: '협동조합 유통' },
+  { name: '농심엔지니어링', logoPath: null, description: 'AI 엑스레이 공동개발' },
 ];
 
 /**

@@ -42,6 +42,67 @@ const VISIBLE_STATS = STAT_ENTRIES.filter((s) => hasValue(s.value));
 
 interface Props { theme: SiteTheme; }
 
+/* ─── 파트너 로고 (텍스트형 SVG, 공식 로고 사용 동의 전까지 임시) ─── */
+function PartnerLogoSvg({ name }: { name: string }) {
+  switch (name) {
+    case '풀무원':
+      return (
+        <svg viewBox="0 0 160 40" className="h-9 w-auto">
+          <text x="80" y="26" textAnchor="middle" fill="#2E7D32" fontSize="22" fontWeight="800" fontFamily="'Noto Sans KR', sans-serif">풀무원</text>
+          <rect x="40" y="32" width="80" height="2" rx="1" fill="#8BC34A" />
+        </svg>
+      );
+    case '푸드머스':
+      return (
+        <svg viewBox="0 0 160 40" className="h-9 w-auto">
+          <circle cx="22" cy="20" r="8" fill="none" stroke="#FF8F00" strokeWidth="2" />
+          <circle cx="22" cy="20" r="3" fill="#FF8F00" />
+          <text x="90" y="26" textAnchor="middle" fill="#E65100" fontSize="18" fontWeight="700" fontFamily="'Noto Sans KR', sans-serif">푸드머스</text>
+        </svg>
+      );
+    case '쿠팡':
+      return (
+        <svg viewBox="0 0 160 40" className="h-9 w-auto">
+          <text x="80" y="27" textAnchor="middle" fill="#00635A" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="1">Coupang</text>
+        </svg>
+      );
+    case '두레생협':
+      return (
+        <svg viewBox="0 0 180 40" className="h-9 w-auto">
+          <circle cx="24" cy="20" r="11" fill="none" stroke="#4CAF50" strokeWidth="2" />
+          <path d="M18 20c0-3 3-6 6-6s6 3 6 6" fill="none" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="24" cy="16" r="2" fill="#4CAF50" />
+          <text x="110" y="19" textAnchor="middle" fill="#2E7D32" fontSize="14" fontWeight="800" fontFamily="'Noto Sans KR', sans-serif">두레생협</text>
+          <text x="110" y="32" textAnchor="middle" fill="#66BB6A" fontSize="8" fontWeight="600" fontFamily="Arial, sans-serif">DURE COOP</text>
+        </svg>
+      );
+    case '농심엔지니어링':
+      return (
+        <svg viewBox="0 0 180 40" className="h-9 w-auto">
+          <path d="M14 12l6 8-6 8h6l6-8-6-8z" fill="#C8102E" />
+          <text x="106" y="26" textAnchor="middle" fill="#C8102E" fontSize="13" fontWeight="800" fontFamily="'Noto Sans KR', sans-serif">농심엔지니어링</text>
+        </svg>
+      );
+    case '홈플러스':
+      return (
+        <svg viewBox="0 0 160 40" className="h-9 w-auto">
+          <circle cx="22" cy="20" r="10" fill="none" stroke="#E31837" strokeWidth="2" />
+          <path d="M17 20h10M22 15v10" stroke="#E31837" strokeWidth="2.5" strokeLinecap="round" />
+          <text x="95" y="27" textAnchor="middle" fill="#E31837" fontSize="18" fontWeight="800" fontFamily="Arial, sans-serif">homeplus</text>
+        </svg>
+      );
+    case '이마트':
+      return (
+        <svg viewBox="0 0 160 40" className="h-9 w-auto">
+          <text x="80" y="26" textAnchor="middle" fill="#FFB300" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="1">emart</text>
+          <rect x="40" y="32" width="80" height="3" rx="1.5" fill="#FFB300" />
+        </svg>
+      );
+    default:
+      return <span className="font-bold text-gray-700">{name}</span>;
+  }
+}
+
 export default function PageSections({ theme: t }: Props) {
   const copy = SKIN_COPY[t.id] || SKIN_COPY[0];
   const isDark = t.id !== 0 && t.id !== 6;
@@ -233,34 +294,27 @@ export default function PageSections({ theme: t }: Props) {
             </div>
           </FadeIn>
           <FadeIn>
-            {PARTNERS.length > 0 ? (
-              <div className="flex flex-wrap items-center justify-center gap-5">
-                {PARTNERS.map((p) => (
-                  <div key={p.name} className={`flex h-20 w-40 items-center justify-center overflow-hidden rounded-xl border ${cardCls} px-4 transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+            <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {PARTNERS.map((p) => (
+                <div key={p.name} className={`flex flex-col items-center justify-between gap-3 rounded-xl border ${cardCls} px-4 py-6 text-center transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                  <div className="flex h-12 items-center justify-center">
                     {p.logoPath ? (
-                      <Image src={getImagePath(p.logoPath)} alt={p.name} width={160} height={48} className="h-10 w-auto object-contain" />
+                      <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={40} className="h-10 w-auto object-contain" />
                     ) : (
-                      <span className={`text-sm font-semibold ${tp}`}>{p.name}</span>
+                      <PartnerLogoSvg name={p.name} />
                     )}
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {[
-                  { label: '대형마트 PB', desc: '냉동수산·밀키트 OEM' },
-                  { label: '외식 프랜차이즈', desc: '식자재·메뉴 공급' },
-                  { label: '밀키트 브랜드', desc: '간편식 HMR 생산' },
-                  { label: '누적 거래 10년+', desc: '장기 파트너십' },
-                ].map((seg) => (
-                  <div key={seg.label} className={`flex flex-col items-center rounded-xl border ${cardCls} px-5 py-6 text-center transition-colors duration-300 hover:border-ocean-500/30`}>
-                    <span className={`text-base font-bold ${tp} md:text-lg`}>{seg.label}</span>
-                    <span className={`mt-1.5 text-xs ${tm} md:text-sm`}>{seg.desc}</span>
-                  </div>
-                ))}
-              </div>
-            )}
+                  <span className={`text-sm font-bold ${tp} md:text-base`}>{p.name}</span>
+                  {p.description && (
+                    <span className={`text-xs leading-snug ${tm}`}>{p.description}</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </FadeIn>
+          <p className={`mx-auto mt-8 max-w-2xl text-center text-xs ${tm} md:text-sm`}>
+            * 거래처 표기는 협력 관계 안내 목적이며, 로고 사용 권한은 각 회사에 있습니다.
+          </p>
         </div>
       </section>
 
