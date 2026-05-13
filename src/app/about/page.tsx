@@ -505,11 +505,11 @@ export default function AboutPage() {
                   <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
                     Why Seopung
                   </p>
-                  <h2 className={`text-3xl font-bold tracking-tight ${c.text} md:text-4xl`}>
-                    대형 OEM 사업자와 무엇이 다른가
+                  <h2 className={`text-3xl font-bold leading-tight tracking-tight ${c.text} md:text-4xl`}>
+                    한 발 빠르게,<br className="sm:hidden" /> <span className="text-ocean-500">두 발 가깝게</span>
                   </h2>
                   <p className={`mx-auto mt-4 max-w-2xl text-base ${c.text2} md:text-lg`}>
-                    중견 OEM 전문 기업의 장점 — 빠른 의사결정, 소량 다품종, 직매입 구조
+                    결정 속도 · 라인업 폭 · 원료 매입 — 거래처가 다시 찾는 서풍의 3가지 차이
                   </p>
                 </div>
               </Reveal>
