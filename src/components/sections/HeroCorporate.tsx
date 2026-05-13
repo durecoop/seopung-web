@@ -111,24 +111,6 @@ export default function HeroCorporate() {
         <div className="absolute inset-0 z-[11] bg-black/20" />
         <div className="absolute inset-0 z-[11] bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
-        {/* 로고 인장 (우상단) — 도자기 도장 스타일, '화이팅!' 시점 pulse */}
-        <div className="absolute right-4 top-24 z-30 hero-fadeup sm:right-6 md:right-10 md:top-28" style={{ animationDelay: '0.1s' }}>
-          <div className="hero-logo-pulse group relative">
-            {/* 외곽 링 (도장 테두리) */}
-            <div className="absolute inset-0 rounded-full ring-2 ring-white/50 ring-offset-2 ring-offset-transparent" />
-            {/* 인장 본체 */}
-            <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-white/92 shadow-2xl shadow-ocean-900/30 backdrop-blur-md md:h-28 md:w-28">
-              <div className="relative h-[78%] w-[78%]">
-                <Image src={getImagePath('/images/logo.png')} alt="서풍 인장" fill className="scale-[1.55] object-contain" sizes="112px" />
-              </div>
-            </div>
-            {/* 인장 아래 작은 텍스트 (도장 캡션) */}
-            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-center md:-bottom-8">
-              <p className="font-montserrat text-[10px] font-bold tracking-[0.2em] text-white drop-shadow-md md:text-xs">EST · 1995</p>
-            </div>
-          </div>
-        </div>
-
         {/* 텍스트 콘텐츠 — 중앙 정렬 */}
         <div className="relative z-20 flex h-full items-center justify-center">
           <div key={`slide-${current}`} className="mx-auto max-w-4xl px-6 text-center">
