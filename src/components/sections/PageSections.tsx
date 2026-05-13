@@ -80,13 +80,13 @@ export default function PageSections({ theme: t }: Props) {
           <FadeIn>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6">
               {CERT_BADGES.map((cert) => (
-                <div key={cert.name} className={`group flex flex-col items-center gap-2 rounded-xl border ${t.certCardBorder} ${t.certCardBg} px-5 py-7 backdrop-blur-sm transition-colors duration-300 hover:border-white/30 hover:bg-white/15 md:px-8 md:py-9`}>
-                  <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-white/95 p-2 shadow-sm md:h-24 md:w-24">
+                <div key={cert.name} className="group flex flex-col items-center gap-2 rounded-xl border border-white/25 bg-white/[0.08] px-5 py-7 backdrop-blur-sm transition-colors duration-300 hover:border-white/40 hover:bg-white/15 md:px-8 md:py-9">
+                  <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-white p-2 shadow-md md:h-24 md:w-24">
                     <Image src={getImagePath(cert.icon)} alt={cert.name} fill className="object-contain p-1" sizes="96px" />
                   </div>
-                  <span className="font-montserrat text-xl font-bold tracking-wide text-white md:text-2xl">{cert.name}</span>
-                  <span className="text-sm font-medium text-ocean-100 md:text-base">{cert.desc}</span>
-                  <span className="text-xs leading-relaxed text-ocean-100/80 md:text-sm">{cert.detail}</span>
+                  <span className="font-montserrat text-xl font-extrabold tracking-wide text-white drop-shadow md:text-2xl">{cert.name}</span>
+                  <span className="text-center text-sm font-semibold text-white md:text-base">{cert.desc}</span>
+                  <span className="text-center text-xs leading-relaxed text-white/85 md:text-sm">{cert.detail}</span>
                 </div>
               ))}
             </div>
@@ -312,7 +312,7 @@ export default function PageSections({ theme: t }: Props) {
               <h2 className={`mb-5 text-3xl font-bold leading-tight tracking-tight ${t.ctaText} sm:text-4xl md:text-5xl`}>
                 {copy.ctaTitle1}<br className="hidden sm:block" /> <span className="text-ocean-300">{copy.ctaTitle2}</span>
               </h2>
-              <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-ocean-100 md:text-lg whitespace-pre-line">{copy.ctaDesc}</p>
+              <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/95 md:text-lg whitespace-pre-line">{copy.ctaDesc}</p>
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Link href="/contact" className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-ocean-600 shadow-md transition-all duration-300 hover:bg-ocean-50 hover:shadow-lg sm:text-lg">
                   OEM 문의하기
@@ -325,7 +325,7 @@ export default function PageSections({ theme: t }: Props) {
                   </a>
                 )}
               </div>
-              <p className="mt-5 text-xs text-ocean-100/85 sm:text-sm">24시간 내 회신 · 샘플 무상 발송 · NDA 즉시 체결 가능</p>
+              <p className="mt-5 text-xs text-white/85 sm:text-sm">24시간 내 회신 · 샘플 무상 발송 · NDA 즉시 체결 가능</p>
             </div>
           </FadeIn>
         </div>
