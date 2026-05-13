@@ -104,7 +104,9 @@ export default function PageSections({ theme: t }: Props) {
 
       {/* ── COMPANY INTRO ── */}
       <section className={`relative overflow-hidden ${t.sectionBg1} py-24 md:py-32`}>
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--color-coral-400)_0%,_transparent_50%)] opacity-[0.06]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--color-gold-400)_0%,_transparent_40%)] opacity-[0.05]" />
+        <div className="relative mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <FadeIn>
               <div>
@@ -224,8 +226,9 @@ export default function PageSections({ theme: t }: Props) {
       </section>
 
       {/* ── PARTNERS ── */}
-      <section className={`${t.sectionBg1} py-24 md:py-32`}>
-        <div className="mx-auto max-w-6xl px-6">
+      <section className={`relative overflow-hidden ${t.sectionBg1} py-24 md:py-32`}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--color-ocean-300)_0%,_transparent_45%)] opacity-[0.07]" />
+        <div className="relative mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-14 text-center">
               <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.partnerLabel}</span>
