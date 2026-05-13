@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
-import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import { getImagePath } from '@/lib/utils';
 import type { ThemeColors } from '@/hooks/useTheme';
 

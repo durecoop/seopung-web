@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import FadeIn from '@/components/ui/FadeIn';
 import { getImagePath } from '@/lib/utils';
@@ -396,7 +395,7 @@ export default function TechnologyPage() {
               <div className="mx-auto max-w-5xl px-6">
                 <FadeIn>
                   <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                    {CERTS.map((cert, i) => (
+                    {CERTS.map((cert) => (
                       <div
                         key={cert.name}
                         className={`rounded-xl border ${c.cardBorder} ${c.cardBg} px-5 py-6 text-center transition-all duration-300 hover:border-ocean-500/30`}

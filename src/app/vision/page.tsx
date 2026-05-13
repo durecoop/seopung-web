@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
@@ -223,40 +223,6 @@ const VISION_PILLARS = [
     desc: '풀무원 ESG 경영 방향과 일치하는 친환경 생산 체계 구축 및 상생 협력',
   },
 ];
-
-/* ──────────────────────────────────────────────
-   Animated counter hook
-   ────────────────────────────────────────────── */
-function useCounter(target: number, duration = 2000) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setStarted(true); io.disconnect(); } },
-      { threshold: 0.3 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [started, target, duration]);
-
-  return { ref, count };
-}
 
 /* ──────────────────────────────────────────────
    Page component
@@ -528,7 +494,7 @@ export default function VisionPage() {
                     {/* Timeline line */}
                     <div className="absolute left-0 right-0 top-4 h-px bg-gradient-to-r from-ocean-500/40 via-gold-500/40 to-ocean-500/40" />
                     <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
-                      {BRANDS.map((brand, i) => (
+                      {BRANDS.map((brand) => (
                         <div key={brand.name} className="relative pt-8 text-center">
                           {/* Dot on timeline */}
                           <div className={`absolute left-1/2 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-gold-500 ${c.pageBg}`} />

@@ -97,6 +97,8 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // 라우트 변경 시 모바일 메뉴 자동 닫기 (브라우저 뒤로가기 등 대응)
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   const isOverlay = isHome && !scrolled;
@@ -118,7 +120,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
           transition: 'width 50ms linear',
           opacity: scrollProgress > 0 ? 1 : 0,
         }} />
-        <nav className={`mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-500 ${isOverlay ? 'py-5' : 'py-3'}`}>
+        <nav className={`mx-auto flex max-w-7xl items-center justify-between px-6 pr-16 lg:px-8 lg:pr-8 transition-all duration-500 ${isOverlay ? 'py-5' : 'py-3'}`}>
           <Link href="/" className="flex items-center gap-3">
             <div className={`relative overflow-hidden rounded-full bg-white shadow-lg transition-all duration-500 ${isOverlay ? 'h-16 w-16' : 'h-11 w-11'}`}>
               <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" fill className="scale-[1.75] object-contain" priority />
@@ -130,7 +132,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
                   HOMEPAGE
                 </span>
               </div>
-              <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-[11px] sm:text-xs max-h-6 opacity-80' : 'text-[11px] sm:text-xs max-h-5 opacity-70'} ${textClass}`}>
+              <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-xs sm:text-sm max-h-6 opacity-85' : 'text-xs sm:text-sm max-h-5 opacity-75'} ${textClass}`}>
                 HACCP·ASC 인증 수산 OEM
               </span>
             </div>
@@ -187,7 +189,10 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
         className={`fixed inset-0 z-[80] overflow-y-auto bg-white/98 backdrop-blur-lg transition-opacity duration-500 lg:hidden ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         aria-hidden={!mobileOpen}
       >
-        <div className="flex min-h-full flex-col items-center justify-center gap-2 px-6 pb-12 pt-24">
+        <div
+          className="flex min-h-full flex-col items-center justify-center gap-2 px-6 pt-24"
+          style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom))' }}
+        >
           {NAV_ITEMS.map((item, i) => {
             const active = isActive(item.href);
             return (

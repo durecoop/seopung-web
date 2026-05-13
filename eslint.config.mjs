@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Firebase Functions — Node CJS, 별도 ESLint 정책 적용
+    "functions/**",
   ]),
 ]);
 

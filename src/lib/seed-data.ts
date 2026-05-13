@@ -55,7 +55,7 @@ const SEED_GALLERY = [
   { imageUrl: '/images/facility/fish-scanner.jpg', label: '어류 스캔 절단기', category: '공장' },
   { imageUrl: '/images/facility/radiation-tester.jpg', label: '방사능 검사 장비', category: '공장' },
   { imageUrl: '/images/process/06-cold-storage.jpg', label: '냉동창고', category: '공장' },
-  { imageUrl: '/images/team/factory-team.jpg', label: '공장 전경', category: '공장' },
+  { imageUrl: '/images/team/factory-group.jpg', label: '공장 전경', category: '공장' },
   { imageUrl: '/images/hero/dawn-unloading.jpg', label: '새벽 하역', category: '위판장' },
   { imageUrl: '/images/auction/director-inspect.jpg', label: '원료 검수', category: '위판장' },
   { imageUrl: '/images/auction/auction-panorama.jpg', label: '위판장 전경', category: '위판장' },

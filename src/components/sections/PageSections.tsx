@@ -51,7 +51,6 @@ export default function PageSections({ theme: t }: Props) {
   const tm = isDark ? 'text-white/50' : 'text-gray-500';
   const cardCls = isDark ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200';
   const btnP = isDark ? 'bg-white text-gray-900 hover:bg-white/90' : `${t.accent} text-white ${t.accentHover}`;
-  const ringColor = isDark ? 'ring-[#0a1628]' : 'ring-white';
 
   return (
     <>
@@ -78,16 +77,39 @@ export default function PageSections({ theme: t }: Props) {
               </p>
             </div>
           </FadeIn>
+          {/* 핵심 3대 인증 — 크게 강조 */}
           <FadeIn>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6">
-              {CERT_BADGES.map((cert) => (
-                <div key={cert.name} className="group flex flex-col items-center gap-2 rounded-xl border border-white/25 bg-white/[0.08] px-5 py-7 backdrop-blur-sm transition-colors duration-300 hover:border-white/40 hover:bg-white/15 md:px-8 md:py-9">
-                  <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-white p-2 shadow-md md:h-24 md:w-24">
-                    <Image src={getImagePath(cert.icon)} alt={cert.name} fill className="object-contain p-1" sizes="96px" />
+            <div className="mb-6 grid grid-cols-1 gap-5 sm:grid-cols-3 md:gap-6">
+              {CERT_BADGES.slice(0, 3).map((cert) => (
+                <div
+                  key={cert.name}
+                  className="group relative flex flex-col items-center gap-3 overflow-hidden rounded-2xl border border-white/40 bg-white/[0.12] px-6 py-9 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/20 hover:shadow-2xl hover:shadow-white/10 md:py-11"
+                >
+                  {/* 골드 액센트 코너 */}
+                  <span className="absolute -right-6 -top-6 h-16 w-16 rotate-45 bg-gold-400/30" aria-hidden="true" />
+                  <div className="relative h-28 w-28 overflow-hidden rounded-2xl bg-white p-2.5 shadow-xl md:h-32 md:w-32">
+                    <Image src={getImagePath(cert.icon)} alt={cert.name} fill className="object-contain p-1.5" sizes="128px" />
                   </div>
-                  <span className="font-montserrat text-xl font-extrabold tracking-wide text-white drop-shadow md:text-2xl">{cert.name}</span>
-                  <span className="text-center text-sm font-semibold text-white md:text-base">{cert.desc}</span>
-                  <span className="text-center text-xs leading-relaxed text-white/85 md:text-sm">{cert.detail}</span>
+                  <span className="font-montserrat text-2xl font-black tracking-wide text-white drop-shadow-md md:text-3xl">{cert.name}</span>
+                  <span className="text-center text-base font-bold text-white md:text-lg">{cert.desc}</span>
+                  <span className="text-center text-sm leading-relaxed text-white/90 md:text-base">{cert.detail}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+          {/* 보조 인증 3종 — 작게 */}
+          <FadeIn>
+            <div className="grid grid-cols-3 gap-3 md:gap-4">
+              {CERT_BADGES.slice(3).map((cert) => (
+                <div
+                  key={cert.name}
+                  className="group flex flex-col items-center gap-2 rounded-xl border border-white/20 bg-white/[0.06] px-3 py-5 backdrop-blur-sm transition-colors duration-300 hover:border-white/35 hover:bg-white/12 md:px-5"
+                >
+                  <div className="relative h-14 w-14 overflow-hidden rounded-lg bg-white p-1.5 shadow-md md:h-16 md:w-16">
+                    <Image src={getImagePath(cert.icon)} alt={cert.name} fill className="object-contain p-1" sizes="64px" />
+                  </div>
+                  <span className="font-montserrat text-sm font-bold tracking-wide text-white drop-shadow md:text-base">{cert.name}</span>
+                  <span className="hidden text-center text-xs font-medium text-white/85 sm:block">{cert.desc}</span>
                 </div>
               ))}
             </div>
@@ -173,10 +195,10 @@ export default function PageSections({ theme: t }: Props) {
                     {p.image ? (
                       <>
                         <Image src={getImagePath(p.image)} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" sizes="(max-width: 768px) 50vw, 25vw" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                        <div className="absolute bottom-0 left-0 p-4">
-                          <h3 className="text-xl font-bold text-white md:text-2xl">{p.name}</h3>
-                          <p className="text-base text-white/85 md:text-lg">{p.desc}</p>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                          <h3 className="text-base font-bold leading-tight text-white drop-shadow-md sm:text-lg md:text-2xl">{p.name}</h3>
+                          <p className="mt-0.5 text-xs leading-snug text-white/90 sm:text-sm md:text-lg">{p.desc}</p>
                         </div>
                       </>
                     ) : (
@@ -207,14 +229,16 @@ export default function PageSections({ theme: t }: Props) {
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden md:h-[60vh]">
         <Image src={getImagePath('/images/hero/banner-fish.jpg')} alt="여수 위판장 신선 수산물" fill className="object-cover" sizes="100vw" />
         <div className={`absolute inset-0 bg-gradient-to-r ${t.bannerOverlay}`} />
+        {/* 추가 오버레이 — 모바일 가독성 */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-transparent md:bg-gradient-to-r md:from-black/35 md:via-black/10 md:to-transparent" />
         <div className="relative flex h-full items-center">
-          <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto w-full max-w-6xl px-6">
             <FadeIn>
-              <div className="max-w-xl">
-                <h2 className="mb-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              <div className="mx-auto max-w-xl text-center md:mx-0 md:text-left">
+                <h2 className="mb-5 text-3xl font-bold leading-tight tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl">
                   {copy.bannerTitle1}<br className="hidden md:block" /> <span className="text-ocean-200">{copy.bannerTitle2}</span>
                 </h2>
-                <p className="mb-8 text-base leading-relaxed text-white/95 md:text-lg whitespace-pre-line">{copy.bannerDesc}</p>
+                <p className="mb-8 text-base leading-relaxed text-white/95 drop-shadow md:text-lg whitespace-pre-line">{copy.bannerDesc}</p>
                 <Link href="/contact" className="group inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-base font-bold text-ocean-600 shadow-md transition-all duration-300 hover:bg-ocean-50 hover:shadow-lg">
                   OEM 문의하기 <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                 </Link>
@@ -242,7 +266,7 @@ export default function PageSections({ theme: t }: Props) {
                 <div key={p.name} className={`flex flex-col items-center justify-between gap-3 rounded-xl border ${cardCls} px-4 py-6 text-center transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
                   <div className="flex h-12 items-center justify-center">
                     {p.logoPath ? (
-                      <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={40} className="h-10 w-auto object-contain" />
+                      <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={40} className="h-10 max-w-full w-auto object-contain" sizes="(max-width:640px) 40vw, 140px" />
                     ) : (
                       <PartnerLogo name={p.name} />
                     )}

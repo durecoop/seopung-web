@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
-import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import PartnerLogo from '@/components/ui/PartnerLogo';
 import { useReveal } from '@/hooks/useReveal';
 import { getImagePath } from '@/lib/utils';

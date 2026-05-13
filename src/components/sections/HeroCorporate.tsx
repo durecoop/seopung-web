@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { getImagePath } from '@/lib/utils';
 
 /* ── CJ Seafood 스타일 히어로 ──
@@ -66,10 +65,7 @@ const INTERVAL = 3000;
 
 export default function HeroCorporate() {
   const [current, setCurrent] = useState(0);
-  const [ready, setReady] = useState(false);
   const [paused, setPaused] = useState(false);
-
-  useEffect(() => { setTimeout(() => setReady(true), 100); }, []);
 
   useEffect(() => {
     if (paused) return;
@@ -180,31 +176,59 @@ export default function HeroCorporate() {
             >
               {slide.desc}
             </p>
+
+            {/* CTA 버튼 — 1차: 샘플 요청, 2차: OEM 문의 */}
+            <div
+              className="flex flex-col items-center justify-center gap-3 hero-fadeup sm:flex-row sm:gap-4"
+              style={{ animationDelay: '0.8s' }}
+            >
+              <a
+                href="/sample-request"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gold-500 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-gold-500/30 transition-all duration-300 hover:bg-gold-400 hover:shadow-gold-400/40 sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
+              >
+                샘플 요청하기
+                <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/60 bg-white/10 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white/20 sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
+              >
+                OEM 문의
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* 슬라이드 인디케이터 + 일시정지 */}
-        <div className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2.5">
+        {/* 슬라이드 인디케이터 + 일시정지 — 터치 타깃 44px 확보 */}
+        <div className="absolute bottom-3 left-1/2 z-30 flex -translate-x-1/2 items-center gap-0.5">
           {SLIDES.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`h-2.5 w-2.5 rounded-full border border-white/60 transition-all duration-400 ${
-                i === current ? 'bg-white scale-110' : 'bg-white/30 hover:bg-white/50'
-              }`}
+              className="group flex h-11 w-11 items-center justify-center"
               aria-label={`슬라이드 ${i + 1}`}
-            />
+            >
+              <span
+                className={`block h-2.5 w-2.5 rounded-full border border-white/60 transition-all duration-400 ${
+                  i === current ? 'bg-white scale-110' : 'bg-white/30 group-hover:bg-white/50'
+                }`}
+              />
+            </button>
           ))}
           <button
             onClick={() => setPaused(!paused)}
-            className="ml-1.5 flex h-6 w-6 items-center justify-center rounded-full border border-white/40 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
+            className="ml-0.5 flex h-11 w-11 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/15 hover:text-white"
             aria-label={paused ? '재생' : '일시정지'}
           >
-            {paused ? (
-              <svg className="h-2.5 w-2.5" viewBox="0 0 10 12" fill="currentColor"><polygon points="1,0 10,6 1,12" /></svg>
-            ) : (
-              <svg className="h-2.5 w-2.5" viewBox="0 0 10 12" fill="currentColor"><rect x="0" y="0" width="3" height="12" /><rect x="7" y="0" width="3" height="12" /></svg>
-            )}
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/40">
+              {paused ? (
+                <svg className="h-2.5 w-2.5" viewBox="0 0 10 12" fill="currentColor"><polygon points="1,0 10,6 1,12" /></svg>
+              ) : (
+                <svg className="h-2.5 w-2.5" viewBox="0 0 10 12" fill="currentColor"><rect x="0" y="0" width="3" height="12" /><rect x="7" y="0" width="3" height="12" /></svg>
+              )}
+            </span>
           </button>
         </div>
 

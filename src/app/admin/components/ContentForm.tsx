@@ -39,6 +39,7 @@ export default function ContentForm({
     fields.forEach(f => {
       init[f.key] = src?.[f.key] ?? (f.type === 'number' ? 0 : f.type === 'checkbox' ? false : '');
     });
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setValues(init);
   }, [initial, fields]);
 

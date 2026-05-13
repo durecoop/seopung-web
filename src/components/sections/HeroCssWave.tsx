@@ -1,7 +1,9 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
+
+type Spray = { width: number; height: number; left: number; bottom: number; duration: number; delay: number };
 
 /**
  * 1. CSS 파도 — 거대한 파도 + 번개 효과 + 강렬한 그라데이션
@@ -9,6 +11,22 @@ import Link from 'next/link';
 export default function HeroCssWave() {
   const scrollDown = useCallback(() => {
     document.querySelector('#certifications')?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
+  // Spray particles: 마운트 후 클라이언트에서 한 번 생성 (렌더 중 Math.random 금지)
+  const [sprayParticles, setSprayParticles] = useState<Spray[]>([]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSprayParticles(
+      Array.from({ length: 40 }).map(() => ({
+        width: Math.random() * 4 + 2,
+        height: Math.random() * 4 + 2,
+        left: Math.random() * 100,
+        bottom: Math.random() * 40 + 5,
+        duration: Math.random() * 2 + 1.5,
+        delay: Math.random() * 3,
+      })),
+    );
   }, []);
 
   return (
@@ -44,17 +62,17 @@ export default function HeroCssWave() {
 
       {/* Spray particles */}
       <div className="pointer-events-none absolute inset-0">
-        {Array.from({ length: 40 }).map((_, i) => (
+        {sprayParticles.map((p, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-white"
             style={{
-              width: Math.random() * 4 + 2,
-              height: Math.random() * 4 + 2,
-              left: `${Math.random() * 100}%`,
-              bottom: `${Math.random() * 40 + 5}%`,
+              width: p.width,
+              height: p.height,
+              left: `${p.left}%`,
+              bottom: `${p.bottom}%`,
               opacity: 0,
-              animation: `sprayUp ${Math.random() * 2 + 1.5}s ${Math.random() * 3}s ease-out infinite`,
+              animation: `sprayUp ${p.duration}s ${p.delay}s ease-out infinite`,
             }}
           />
         ))}
