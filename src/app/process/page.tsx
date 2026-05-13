@@ -420,8 +420,8 @@ export default function ProcessPage() {
             {/* ── Hero ── */}
             <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
               <Image
-                src={getImagePath('/images/process/04-tunnel-freezer.jpg')}
-                alt="터널프리저 급속동결"
+                src={getImagePath('/images/food-web/pc0031187199.jpg')}
+                alt="서풍 청결 가공 라인 — 위생복 작업자"
                 fill
                 className="object-cover"
                 priority

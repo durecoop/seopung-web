@@ -308,7 +308,7 @@ export default function ResourcesPage() {
             {/* ── Hero ── */}
             <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center overflow-hidden">
               <Image
-                src={getImagePath('/images/facility/fish-scanner-3.jpg')}
+                src={getImagePath('/images/food-web/pc0031187533.jpg')}
                 alt={copy.heroTitle}
                 fill
                 className="object-cover"

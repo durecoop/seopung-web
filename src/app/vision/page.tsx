@@ -239,8 +239,8 @@ export default function VisionPage() {
           {/* ── Hero ── */}
           <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
             <Image
-              src={getImagePath('/images/team/factory-group.jpg')}
-              alt="서풍 공장 직원 단체사진"
+              src={getImagePath('/images/food-web/pc0031187509.jpg')}
+              alt="끝없이 펼쳐진 바다 — 서풍이 그리는 내일"
               fill
               className="object-cover"
               priority

@@ -312,8 +312,8 @@ export default function TechnologyPage() {
             {/* ── Page Hero ── */}
             <section className="relative h-[40vh] min-h-[320px] flex items-end">
               <Image
-                src={getImagePath('/images/facility/fish-scanner.jpg')}
-                alt="기술·설비"
+                src={getImagePath('/images/food-web/tica034m19010003.jpg')}
+                alt="서풍 기술·설비 — 위생복 작업자와 자동 라인"
                 fill
                 className="object-cover"
                 sizes="100vw"

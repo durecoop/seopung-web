@@ -267,8 +267,8 @@ export default function AboutPage() {
           {/* ── Hero ── */}
           <section className="relative flex h-[35vh] min-h-[320px] items-center justify-center overflow-hidden md:h-[40vh]">
             <Image
-              src={getImagePath('/images/team/factory-group.jpg')}
-              alt="서풍 공장 직원 단체 사진"
+              src={getImagePath('/images/team/office-group.jpg')}
+              alt="서풍 임직원 — 따뜻한 미소, 신뢰의 파트너"
               fill
               className="object-cover"
               priority

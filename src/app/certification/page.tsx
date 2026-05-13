@@ -399,8 +399,8 @@ export default function CertificationPage() {
           {/* ── Page Hero ── */}
           <section className="relative h-[40vh] min-h-[320px] flex items-end">
             <Image
-              src={getImagePath('/images/facility/radiation-tester-2.jpg')}
-              alt="품질·인증"
+              src={getImagePath('/images/stock/seafood-platter.jpg')}
+              alt="HACCP·ASC·MSC 인증 프리미엄 수산물"
               fill
               className="object-cover"
               sizes="100vw"

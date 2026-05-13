@@ -1,9 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
 import PhotoNeeded from '@/components/ui/PhotoNeeded';
+import { getImagePath } from '@/lib/utils';
 
 interface CaseStudy {
   client: string;
@@ -77,7 +79,14 @@ export default function CaseStudiesPage() {
         <>
           {/* ── Hero ── */}
           <section className="relative flex h-[35vh] min-h-[280px] items-center justify-center overflow-hidden md:h-[40vh]">
-            <PhotoNeeded fill tone="dark" caption="협력 사례 대표 컷" hint="공장 라인 또는 PB 패키지" />
+            <Image
+              src={getImagePath('/images/food-web/pc0031187507.jpg')}
+              alt="서풍 OEM 협력 사례 — 프리미엄 원물 가공"
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
             <div className="relative z-10 text-center px-6">
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-300">

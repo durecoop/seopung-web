@@ -200,8 +200,8 @@ export default function ProductsPage() {
           {/* ── Hero ── */}
           <section className="relative flex h-[40vh] min-h-[320px] items-center justify-center overflow-hidden">
             <Image
-              src={getImagePath('/images/process/04-tunnel-freezer.jpg')}
-              alt="수산 가공 제품 라인업"
+              src={getImagePath('/images/food-web/td06120004172.jpg')}
+              alt="서풍 OEM 수산물 진공포장 라인업"
               fill
               className="object-cover"
               priority
