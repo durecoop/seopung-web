@@ -14,19 +14,19 @@ import { getImagePath } from '@/lib/utils';
 
 const SLIDES = [
   {
-    image: '/images/food-web/td06120004185.jpg',
+    image: '/images/hero/main-1-group.jpg',
     tag: 'Certified Seafood OEM',
     title: '대형 유통사 PB가\n선택하는 수산 OEM',
     desc: 'HACCP · ASC · MSC · 이력추적 · 품질인증 — 5대 안전 인증 보유',
   },
   {
-    image: '/images/food-web/pc0031187199.jpg',
+    image: '/images/hero/main-2-auction.jpg',
     tag: 'One Platform',
     title: '여수 위판장 직매입,\n당일 가공·출하',
     desc: '중매인 직접 매입 → 가공 → 보관 → 유통 한 흐름. 중간 유통 마진 없음',
   },
   {
-    image: '/images/food-web/tica034m19010001.jpg',
+    image: '/images/hero/main-3-scanner.jpg',
     tag: 'Smart Factory',
     title: 'AI 검수·자동화\n수산 가공의 다음 기준',
     desc: 'AI 엑스레이 · 초분광 선별 · 스캔 자동절단 — 2026년 도입 중',
