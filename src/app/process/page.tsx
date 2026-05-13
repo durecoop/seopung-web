@@ -591,28 +591,42 @@ export default function ProcessPage() {
                   </div>
                 </Reveal>
 
-                <div className="grid gap-6 sm:grid-cols-3">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6">
                   {[
-                    { src: '/images/auction/mackerel.jpg', label: '고등어' },
-                    { src: '/images/auction/sea-bream-2.jpg', label: '참돔' },
-                    { src: '/images/auction/fish-variety.jpg', label: '다양한 어종' },
+                    { ko: '참조기', en: 'Yellow Croaker', use: '굴비·구이' },
+                    { ko: '삼치', en: 'Spanish Mackerel', use: '필렛·구이' },
+                    { ko: '고등어', en: 'Mackerel', use: '필렛·조림' },
+                    { ko: '갈치', en: 'Hairtail', use: '손질·조림' },
+                    { ko: '오징어', en: 'Squid', use: '손질·할복' },
+                    { ko: '아귀', en: 'Monkfish', use: '손질·찜' },
+                    { ko: '방어', en: 'Amberjack', use: '필렛·회' },
+                    { ko: '달고기', en: 'John Dory', use: '필렛' },
+                    { ko: '붕장어', en: 'Conger Eel', use: '손질·구이' },
+                    { ko: '서대', en: 'Sole', use: '필렛·세척' },
+                    { ko: '백조기', en: 'White Croaker', use: '비늘·필렛' },
+                    { ko: '돔', en: 'Sea Bream', use: '회·구이' },
                   ].map((fish, i) => (
-                    <Reveal key={fish.label} delay={i * 120}>
-                      <div className={`group relative aspect-[4/3] overflow-hidden rounded-2xl border ${c.cardBorder}`}>
-                        <Image
-                          src={getImagePath(fish.src)}
-                          alt={fish.label}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                        <div className="absolute bottom-4 left-5">
-                          <p className="text-lg font-bold text-white drop-shadow-md">{fish.label}</p>
+                    <Reveal key={fish.ko} delay={i * 40}>
+                      <div className={`group flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border ${c.cardBorder} bg-gradient-to-br from-ocean-50 via-white to-gold-50 p-3 text-center transition-all duration-300 hover:border-ocean-500/40 hover:shadow-md ${c.dark ? 'bg-gradient-to-br from-ocean-500/8 via-[#0e1d33] to-[#0a1628]' : ''}`}>
+                        <svg viewBox="0 0 64 32" className="h-8 w-auto text-ocean-500 transition-transform duration-300 group-hover:scale-110" fill="currentColor">
+                          <path d="M40 16c0-6 8-10 14-10 4 0 6 4 6 10s-2 10-6 10c-6 0-14-4-14-10z" opacity="0.85" />
+                          <path d="M40 16l-10-8v16l10-8z" opacity="0.65" />
+                          <path d="M22 14c-4 0-8 1-12 2 4 1 8 2 12 2 4 0 8-1 12-2-4-1-8-2-12-2z" opacity="0.4" />
+                          <circle cx="52" cy="14" r="1.5" fill="white" />
+                          <circle cx="52" cy="14" r="0.8" />
+                        </svg>
+                        <div>
+                          <p className={`text-sm font-bold leading-tight ${c.text} md:text-base`}>{fish.ko}</p>
+                          <p className="mt-0.5 font-montserrat text-[9px] font-medium uppercase tracking-wider text-ocean-500 md:text-[10px]">{fish.en}</p>
                         </div>
+                        <p className={`text-[10px] leading-tight ${c.textMuted} md:text-xs`}>{fish.use}</p>
                       </div>
                     </Reveal>
                   ))}
                 </div>
+                <p className={`mt-6 text-center text-xs ${c.textMuted} md:text-sm`}>
+                  ※ 위 12종은 대표 어종이며, 의뢰하시는 모든 어종에 대응합니다.
+                </p>
               </div>
             </section>
 
