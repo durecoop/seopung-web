@@ -15,28 +15,28 @@ const CATEGORIES = [
     name: '냉동수산가공',
     desc: '신선한 원료를 당일 가공하여 급속동결. IQF 터널프리저로 품질 유지.',
     items: ['고등어필렛', '삼치필렛', '갈치손질', '오징어손질', '아귀손질'],
-    image: '/images/process/04-tunnel-freezer.jpg',
+    image: '/images/food-web/tica034m19010001.jpg',
   },
   {
     id: 'mealkit',
     name: '밀키트·간편식',
     desc: '대형 유통사 PB 브랜드 OEM 생산. 소비자 트렌드에 맞춘 제품 개발.',
     items: ['수산물밀키트', '간편조리수산물', '양념수산물'],
-    image: '/images/products/mealkit.png',
+    image: '/images/food-web/pc0031182640.jpg',
   },
   {
     id: 'gulbi',
     name: '프리미엄 영광굴비',
     desc: '여수 직송 생물 참조기, 전통 아가미 섭간. 장인의 수작업으로 한 마리씩.',
     items: ['참조기굴비세트', '보리굴비', '선물세트'],
-    image: '/images/gulbi/drying-rack.jpg',
+    image: '/images/gulbi/gulbi-premium.jpg',
   },
   {
     id: 'sustainable',
     name: 'ASC·MSC 인증 제품',
     desc: '지속가능한 어업 인증 원료만 사용. 글로벌 유통 기준 충족.',
     items: ['ASC 인증 수산물', 'MSC 인증 수산물'],
-    image: '/images/products/asc-package.png',
+    image: '/images/food-web/pc0031187499.jpg',
   },
 ];
 
