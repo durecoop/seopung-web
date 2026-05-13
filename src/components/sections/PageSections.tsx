@@ -62,17 +62,17 @@ export default function PageSections({ theme: t }: Props) {
         <div className="relative mx-auto max-w-6xl px-6">
           <FadeIn>
             <div className="mb-16 text-center">
-              <span className="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 font-montserrat text-base font-semibold uppercase tracking-[0.2em] text-ocean-200">
+              <span className="mb-4 inline-block rounded-full border border-white/30 bg-white/15 px-5 py-2 font-montserrat text-base font-semibold uppercase tracking-[0.2em] text-white">
                 {copy.certLabel}
               </span>
-              <h2 className={`mt-4 text-3xl font-bold tracking-tight ${t.certText} md:text-4xl lg:text-5xl`}>
-                {copy.certTitle} <span className="text-ocean-300">{copy.certTitleAccent}</span>
+              <h2 className={`mt-4 text-3xl font-extrabold tracking-tight text-white drop-shadow-md md:text-4xl lg:text-5xl`}>
+                {copy.certTitle} <span className="text-gold-300">{copy.certTitleAccent}</span>
               </h2>
-              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ocean-100 md:text-lg">
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
                 {copy.certDesc}<br className="hidden md:block" />
                 <span className="font-semibold text-white">{copy.certDescBold}</span>
               </p>
-              <p className="mx-auto mt-3 max-w-2xl text-sm text-ocean-100/85 md:text-base">
+              <p className="mx-auto mt-3 max-w-2xl text-sm text-white/80 md:text-base">
                 대형 유통사가 요구하는 안전·품질 기준을 선제적으로 충족합니다
               </p>
             </div>
