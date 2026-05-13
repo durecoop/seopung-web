@@ -83,15 +83,15 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
           </li>
         </ul>
 
-        <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden" aria-label="메뉴">
+        <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="relative z-[60] flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden" aria-label="메뉴">
           <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? 'translate-y-2 rotate-45' : ''}`} />
           <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
           <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? '-translate-y-2 -rotate-45' : ''}`} />
         </button>
       </nav>
 
-      <div className={`fixed inset-0 z-40 bg-white/98 backdrop-blur-lg transition-all duration-500 lg:hidden ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <div className="flex h-full flex-col items-center justify-center gap-2">
+      <div className={`fixed inset-0 z-[55] overflow-y-auto bg-white/98 backdrop-blur-lg transition-all duration-500 lg:hidden ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className="flex min-h-full flex-col items-center justify-center gap-2 px-6 pb-12 pt-24">
           {NAV_ITEMS.map((item, i) => (
             <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
               className="py-3 text-xl font-medium text-gray-800 transition-all duration-500 hover:text-ocean-500"
