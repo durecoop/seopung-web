@@ -25,12 +25,6 @@ const SLIDES = [
     title: '여수 위판장 직매입,\n당일 가공·출하',
     desc: '중매인 직접 매입 → 가공 → 보관 → 유통 한 흐름. 중간 유통 마진 없음',
   },
-  {
-    image: '/images/hero/main-3-scanner.jpg',
-    tag: 'Smart Factory',
-    title: 'AI 검수·자동화\n수산 가공의 다음 기준',
-    desc: 'AI 엑스레이 · 초분광 선별 · 스캔 자동절단 — 2026년 도입 중',
-  },
 ];
 
 const VALUE_CARDS = [
