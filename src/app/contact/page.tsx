@@ -571,28 +571,87 @@ export default function ContactPage() {
               </Reveal>
 
               <Reveal delay={200}>
-                <div className={`mx-auto mb-6 max-w-5xl overflow-hidden rounded-2xl border ${c.cardBorder} shadow-2xl shadow-black/20`}>
+                {/* 카카오맵·네이버 지도 — 한국 지도 정확도 우선 메인 카드 */}
+                <div className="mx-auto mb-6 grid max-w-5xl gap-4 md:grid-cols-2">
+                  <a
+                    href="https://map.kakao.com/?q=전라남도%20여수시%20화양면%20석교로%20121"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex items-center gap-4 rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 transition-all duration-300 hover:border-yellow-500/40 hover:shadow-lg md:p-6`}
+                  >
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-gray-900 shadow-sm md:h-16 md:w-16">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-7 w-7 md:h-8 md:w-8">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <p className={`text-base font-bold ${c.text} md:text-lg`}>카카오맵으로 보기</p>
+                      <p className={`mt-0.5 text-sm ${c.text2}`}>대중교통·길찾기·로드뷰 가능</p>
+                    </div>
+                    <svg className={`h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1 ${c.text2}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://map.naver.com/p?c=15.00,0,0,0,dh&q=전라남도+여수시+화양면+석교로+121"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex items-center gap-4 rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 transition-all duration-300 hover:border-green-500/40 hover:shadow-lg md:p-6`}
+                  >
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-green-500 text-white shadow-sm md:h-16 md:w-16">
+                      <span className="font-montserrat text-xl font-extrabold md:text-2xl">N</span>
+                    </div>
+                    <div className="flex-1">
+                      <p className={`text-base font-bold ${c.text} md:text-lg`}>네이버 지도로 보기</p>
+                      <p className={`mt-0.5 text-sm ${c.text2}`}>거리뷰·실내지도·맛집 정보</p>
+                    </div>
+                    <svg className={`h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1 ${c.text2}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+
+                {/* 미리보기 지도 — 정확한 주소 검색 기반 */}
+                <div className={`mx-auto mb-12 max-w-5xl overflow-hidden rounded-2xl border ${c.cardBorder} shadow-xl shadow-black/15`}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.5!2d127.662!3d34.7396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356dd2a2a2a2a2a2%3A0x0!2z7KCE652864mE64-EIOyXrOyImOyLnCDshJ3qt5Dsho8gMTIx!5e0!3m2!1sko!2skr!4v1"
+                    src="https://www.google.com/maps?q=전라남도+여수시+화양면+석교로+121&t=m&z=15&output=embed"
                     className="w-full"
-                    style={{ border: 0, height: '480px' }}
+                    style={{ border: 0, height: '420px' }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="서풍 위치 - 전라남도 여수시 석교로 121"
+                    title="서풍 위치 - 전라남도 여수시 화양면 석교로 121"
                   />
                 </div>
-                <div className="mx-auto mb-12 flex max-w-5xl flex-wrap items-center justify-center gap-3">
-                  <a href="https://map.kakao.com/link/search/전라남도 여수시 석교로 121" target="_blank" rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 rounded-full border ${c.cardBorder} ${c.cardBg} px-5 py-2.5 text-sm font-medium ${c.text2} transition-all hover:border-gold-500/40 hover:text-ocean-500`}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
-                    카카오맵에서 보기
-                  </a>
-                  <a href="https://map.naver.com/v5/search/전라남도 여수시 석교로 121" target="_blank" rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 rounded-full border ${c.cardBorder} ${c.cardBg} px-5 py-2.5 text-sm font-medium ${c.text2} transition-all hover:border-gold-500/40 hover:text-ocean-500`}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" /></svg>
-                    네이버지도에서 보기
-                  </a>
+              </Reveal>
+
+              {/* 인근 지역·랜드마크 */}
+              <Reveal delay={250}>
+                <div className="mx-auto mb-10 max-w-5xl">
+                  <p className="mb-4 text-center font-montserrat text-xs font-bold uppercase tracking-[0.25em] text-ocean-500">
+                    Nearby
+                  </p>
+                  <h3 className={`mb-6 text-center text-xl font-bold ${c.text} md:text-2xl`}>
+                    인근 주요 지역
+                  </h3>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    {[
+                      { name: '여수 위판장', dist: '약 18 km', desc: '원료 매입처' },
+                      { name: '여수엑스포역', dist: '약 22 km', desc: 'KTX 정차' },
+                      { name: '여수항', dist: '약 25 km', desc: '여객·물류 거점' },
+                      { name: '여수공항', dist: '약 12 km', desc: '국내선' },
+                    ].map((p) => (
+                      <div key={p.name} className={`rounded-xl border ${c.cardBorder} ${c.cardBg} p-4 text-center transition-colors hover:border-ocean-400/40 md:p-5`}>
+                        <p className={`text-base font-bold ${c.text}`}>{p.name}</p>
+                        <p className="mt-1 font-montserrat text-sm font-bold text-ocean-500">{p.dist}</p>
+                        <p className={`mt-1 text-xs ${c.textMuted}`}>{p.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className={`mt-3 text-center text-xs ${c.textMuted}`}>
+                    ※ 거리는 도로 기준 직선거리 근사값입니다.
+                  </p>
                 </div>
               </Reveal>
 
