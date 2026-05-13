@@ -93,11 +93,29 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
       <div className={`fixed inset-0 z-40 bg-white/98 backdrop-blur-lg transition-all duration-500 lg:hidden ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex h-full flex-col items-center justify-center gap-2">
           {NAV_ITEMS.map((item, i) => (
-            <Link key={item.href} href={item.href} className="py-3 text-xl font-medium text-gray-800 hover:text-ocean-500"
+            <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
+              className="py-3 text-xl font-medium text-gray-800 transition-all duration-500 hover:text-ocean-500"
               style={{ transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms', opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)' }}>
               {item.label}
             </Link>
           ))}
+          <a
+            href="https://shop.seopung.co.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-ocean-500 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-ocean-500/25 transition-all duration-500 hover:bg-ocean-600"
+            style={{
+              transitionDelay: mobileOpen ? `${NAV_ITEMS.length * 60}ms` : '0ms',
+              opacity: mobileOpen ? 1 : 0,
+              transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
+            }}
+          >
+            🛒 쇼핑몰 바로가기
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          </a>
         </div>
       </div>
     </header>
