@@ -398,11 +398,11 @@ export default function ProcessPage() {
                 <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
                   <Reveal>
                     <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                      <PhotoNeeded
+                      <Image
+                        src={getImagePath('/images/auction/inspect-real.jpg')}
+                        alt="49호 중매인 원료 검수"
                         fill
-                        tone="light"
-                        caption="49호 중매인 원료 검수"
-                        hint="자연스러운 현장 작업 컷"
+                        className="object-cover"
                       />
                       <div className={`absolute bottom-6 left-6 rounded-xl px-4 py-2 backdrop-blur-sm ${c.dark ? 'bg-[#0a1628]/80' : 'bg-white/80'}`}>
                         <p className="font-montserrat text-sm font-bold text-ocean-500">No.49</p>
@@ -555,12 +555,13 @@ export default function ProcessPage() {
 
             {/* ── Atmospheric closing ── */}
             <section className="relative flex min-h-[420px] items-center justify-center overflow-hidden md:min-h-[520px]">
-              <PhotoNeeded
+              <Image
+                src={getImagePath('/images/auction/auction-real.jpg')}
+                alt="여수 위판장 전경"
                 fill
-                tone="dark"
-                caption="새벽 작업 현장"
-                hint="공장 또는 위판장 새벽 컷"
+                className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/30" />
               <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
                 <Reveal>
                   <blockquote className="text-2xl font-bold leading-snug md:text-3xl lg:text-4xl text-white drop-shadow-md">
