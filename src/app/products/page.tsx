@@ -4,39 +4,36 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import FadeIn from '@/components/ui/FadeIn';
+import SketchPlaceholder from '@/components/ui/SketchPlaceholder';
 import { getImagePath } from '@/lib/utils';
 
 /* ──────────────────────────────────────────────
    Data
    ────────────────────────────────────────────── */
-const CATEGORIES = [
+const CATEGORIES: { id: 'frozen' | 'mealkit' | 'gulbi' | 'sustainable'; name: string; desc: string; items: string[] }[] = [
   {
     id: 'frozen',
     name: '냉동수산가공',
     desc: '신선한 원료를 당일 가공하여 급속동결. IQF 터널프리저로 품질 유지.',
     items: ['고등어필렛', '삼치필렛', '갈치손질', '오징어손질', '아귀손질'],
-    image: '/images/food-web/tica034m19010001.jpg',
   },
   {
     id: 'mealkit',
     name: '밀키트·간편식',
     desc: '대형 유통사 PB 브랜드 OEM 생산. 소비자 트렌드에 맞춘 제품 개발.',
     items: ['수산물밀키트', '간편조리수산물', '양념수산물'],
-    image: '/images/food-web/pc0031182640.jpg',
   },
   {
     id: 'gulbi',
     name: '프리미엄 영광굴비',
     desc: '여수 직송 생물 참조기, 전통 아가미 섭간. 장인의 수작업으로 한 마리씩.',
     items: ['참조기굴비세트', '보리굴비', '선물세트'],
-    image: '/images/gulbi/gulbi-premium.jpg',
   },
   {
     id: 'sustainable',
     name: 'ASC·MSC 인증 제품',
     desc: '지속가능한 어업 인증 원료만 사용. 글로벌 유통 기준 충족.',
     items: ['ASC 인증 수산물', 'MSC 인증 수산물'],
-    image: '/images/food-web/pc0031187499.jpg',
   },
 ];
 
@@ -292,14 +289,13 @@ export default function ProductsPage() {
                 {CATEGORIES.map((cat, i) => (
                   <FadeIn key={cat.id} delay={i * 120}>
                     <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} transition-all duration-500 ${c.cardHover}`}>
-                      {/* Photo placeholder — 서풍에서 실제 사진 회신 예정 */}
-                      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-ocean-50 via-white to-gold-50">
-                        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(45deg, rgba(14,116,144,0.06) 1px, transparent 1px), linear-gradient(-45deg, rgba(14,116,144,0.06) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-                        <div className="relative z-10 px-6 text-center">
-                          <span className="inline-block rounded-full bg-ocean-500 px-3 py-1 font-montserrat text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-sm">서풍 요청</span>
-                          <p className="mt-3 text-base font-bold text-gray-800 md:text-lg">{cat.name} 대표 사진</p>
-                          <p className="mt-1 text-xs text-gray-500 md:text-sm">실제 제품 사진 회신 후 등록</p>
-                        </div>
+                      {/* 연필 스케치 placeholder — 실제 사진 회신 전까지 분위기 전달 */}
+                      <div className="relative aspect-[4/3]">
+                        <SketchPlaceholder
+                          sketch={cat.id}
+                          caption="사진 필요"
+                          hint={`${cat.name} 대표 사진 (서풍 요청)`}
+                        />
                       </div>
 
                       {/* Content */}
