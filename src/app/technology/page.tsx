@@ -435,7 +435,7 @@ export default function TechnologyPage() {
                     {
                       title: '수작업 + 기계 병행',
                       desc: '숙련 기술자의 수작업과 자동화 장비를 최적으로 조합',
-                      image: '/images/process/02-handwork.jpg',
+                      image: '/images/process/02-handwork-machine.jpg',
                       icon: null,
                     },
                     {
@@ -713,14 +713,27 @@ export default function TechnologyPage() {
                   </FadeIn>
                   <FadeIn>
                     <div className={`overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg}`}>
-                      <div className="relative aspect-[16/10] overflow-hidden">
-                        <Image
-                          src={getImagePath('/images/facility/safety-board-real.jpg')}
-                          alt="이물 관리 게시판"
-                          fill
-                          className="object-cover transition-transform duration-500 hover:scale-[1.02]"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-gold-500/10 via-white to-ocean-500/5">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="grid grid-cols-3 gap-4 px-6">
+                            {[
+                              { label: 'X-ray', color: 'text-ocean-500' },
+                              { label: '금속 검출', color: 'text-ocean-500' },
+                              { label: '시각 검수', color: 'text-ocean-500' },
+                            ].map((step) => (
+                              <div key={step.label} className="flex flex-col items-center gap-2">
+                                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-ocean-500/15">
+                                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.6} className={`h-7 w-7 ${step.color}`}>
+                                    <circle cx="16" cy="16" r="11" />
+                                    <path d="M12 16l3 3 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                                  </svg>
+                                </div>
+                                <span className="text-xs font-semibold text-gray-700">{step.label}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <span className="absolute right-4 top-4 rounded-full bg-gold-500/15 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gold-500">3 layers</span>
                       </div>
                       <div className="p-5">
                         <p className={`text-sm font-bold ${c.text}`}>이물 관리 체계</p>
