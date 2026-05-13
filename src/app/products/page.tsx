@@ -292,15 +292,14 @@ export default function ProductsPage() {
                 {CATEGORIES.map((cat, i) => (
                   <FadeIn key={cat.id} delay={i * 120}>
                     <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} transition-all duration-500 ${c.cardHover}`}>
-                      {/* Image */}
-                      <div className="relative aspect-[4/3] overflow-hidden">
-                        <Image
-                          src={getImagePath(cat.image)}
-                          alt={cat.name}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      {/* Photo placeholder — 서풍에서 실제 사진 회신 예정 */}
+                      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-ocean-50 via-white to-gold-50">
+                        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(45deg, rgba(14,116,144,0.06) 1px, transparent 1px), linear-gradient(-45deg, rgba(14,116,144,0.06) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                        <div className="relative z-10 px-6 text-center">
+                          <span className="inline-block rounded-full bg-ocean-500 px-3 py-1 font-montserrat text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-sm">서풍 요청</span>
+                          <p className="mt-3 text-base font-bold text-gray-800 md:text-lg">{cat.name} 대표 사진</p>
+                          <p className="mt-1 text-xs text-gray-500 md:text-sm">실제 제품 사진 회신 후 등록</p>
+                        </div>
                       </div>
 
                       {/* Content */}

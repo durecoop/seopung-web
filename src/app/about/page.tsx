@@ -344,8 +344,7 @@ export default function AboutPage() {
           {/* ── 1.5 숫자로 보는 서풍 ── */}
           {VISIBLE_NUMBER_STATS.length > 0 && (
             <section className="relative py-24 md:py-32">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
-              <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+                <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
                 <Reveal>
                   <div className="mb-16 text-center">
                     <p className="mb-3 font-montserrat text-sm font-semibold uppercase tracking-[0.25em] text-ocean-500">
@@ -369,7 +368,6 @@ export default function AboutPage() {
           {/* ── 2. 경영 철학 ── */}
           <section className="relative py-24 md:py-32">
             {/* Subtle background */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-navy-800)_0%,_transparent_70%)] opacity-40" />
             <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
               <Reveal>
                 <div className="mb-16 text-center">
@@ -385,7 +383,6 @@ export default function AboutPage() {
                   <Reveal key={p.title} delay={i * 150}>
                     <div className={`group relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 transition-all duration-500 ${c.cardHover} md:p-10`}>
                       {/* Hover glow */}
-                      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                       <div className="relative">
                         <div className="mb-6 inline-flex rounded-xl bg-ocean-500/10 p-3 text-ocean-400">
                           {p.icon}
@@ -446,7 +443,6 @@ export default function AboutPage() {
 
           {/* ── 4. One Platform ── */}
           <section className="relative overflow-hidden py-24 md:py-32">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--color-navy-800)_0%,_transparent_70%)] opacity-50" />
             <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
               <Reveal>
                 <div className="mb-16 text-center">
@@ -551,7 +547,6 @@ export default function AboutPage() {
 
           {/* ── 4.3 신뢰의 파트너 (Client Logos) ── */}
           <section className="relative py-24 md:py-32">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-800)_0%,_transparent_70%)] opacity-30" />
             <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
               <Reveal>
                 <div className="mb-12 text-center">
