@@ -574,7 +574,7 @@ export default function ContactPage() {
                 {/* 카카오맵·네이버 지도 — 한국 지도 정확도 우선 메인 카드 */}
                 <div className="mx-auto mb-6 grid max-w-5xl gap-4 md:grid-cols-2">
                   <a
-                    href="https://map.kakao.com/?q=전라남도%20여수시%20화양면%20석교로%20121"
+                    href="https://map.kakao.com/link/search/전라남도 여수시 화양면 석교로 121"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`group flex items-center gap-4 rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 transition-all duration-300 hover:border-yellow-500/40 hover:shadow-lg md:p-6`}
@@ -594,7 +594,7 @@ export default function ContactPage() {
                     </svg>
                   </a>
                   <a
-                    href="https://map.naver.com/p?c=15.00,0,0,0,dh&q=전라남도+여수시+화양면+석교로+121"
+                    href="https://map.naver.com/p/search/전라남도 여수시 화양면 석교로 121"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`group flex items-center gap-4 rounded-2xl border ${c.cardBorder} ${c.cardBg} p-5 transition-all duration-300 hover:border-green-500/40 hover:shadow-lg md:p-6`}
@@ -615,13 +615,13 @@ export default function ContactPage() {
                 {/* 미리보기 지도 — 정확한 주소 검색 기반 */}
                 <div className={`mx-auto mb-12 max-w-5xl overflow-hidden rounded-2xl border ${c.cardBorder} shadow-xl shadow-black/15`}>
                   <iframe
-                    src="https://www.google.com/maps?q=전라남도+여수시+화양면+석교로+121&t=m&z=15&output=embed"
+                    src="https://www.google.com/maps?q=전라남도+여수시+화양면+석교로+121&t=k&z=17&output=embed"
                     className="w-full"
                     style={{ border: 0, height: '420px' }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="서풍 위치 - 전라남도 여수시 화양면 석교로 121"
+                    title="서풍 위치 - 전라남도 여수시 화양면 석교로 121 (위성지도)"
                   />
                 </div>
               </Reveal>
