@@ -20,10 +20,10 @@ const SLIDES = [
     desc: 'HACCP · ASC · MSC · 이력추적 · 품질인증 — 5대 안전 인증 보유',
   },
   {
-    image: '/images/hero/main-2-auction.jpg',
-    tag: 'One Platform',
-    title: '여수 위판장 직매입,\n당일 가공·출하',
-    desc: '중매인 직접 매입 → 가공 → 보관 → 유통 한 흐름. 중간 유통 마진 없음',
+    image: '/images/hero/main-2-table.jpg',
+    tag: 'From Ocean to Table',
+    title: '여수 바다의 신선함,\n식탁까지 그대로',
+    desc: '당일 위판장 직매입 → 가공 → 유통 한 흐름. 신선함이 곧 맛이 됩니다',
   },
 ];
 
