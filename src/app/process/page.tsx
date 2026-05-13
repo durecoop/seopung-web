@@ -165,17 +165,12 @@ const FISH_GRID = [
   { src: '/images/auction/won-mackerel.jpg', label: '낙찰 대삼치' },
 ];
 
-interface GalleryImage {
-  src: string;
-  caption: string;
-}
-
 interface ProcessStep {
   number: string;
   title: string;
   desc: string;
-  images: { src: string; alt: string }[];
-  gallery?: GalleryImage[];
+  details: { label: string; value: string }[];
+  checks: string[];
 }
 
 const STEPS: ProcessStep[] = [
@@ -183,79 +178,73 @@ const STEPS: ProcessStep[] = [
     number: '01',
     title: '원료 입고',
     desc: '당일 위판장에서 수매한 신선 원료를 즉시 공장으로 입고합니다. 참조기·삼치·오징어·갈치·고등어·아귀·방어·달고기·붕장어를 비롯해 의뢰받는 모든 어종에 대응합니다.',
-    images: [
-      { src: '/images/process/01-raw-material.jpg', alt: '원료 입고' },
+    details: [
+      { label: '매입처', value: '여수 수산시장 위판장' },
+      { label: '매입자', value: '49호 중매인 (30년+)' },
+      { label: '입고 사이클', value: '당일 수매 → 당일 입고' },
+      { label: '운송', value: '콜드체인 직송' },
     ],
-    gallery: [
-      { src: '/images/process/01-weighing.jpg', caption: '원물 1미 1kg 이상 엄격 선별' },
-    ],
+    checks: ['어체 탄력·색택·비늘 상태', '신선도 등급 A 이상', '원산지 이력 등록', '원물 1미 1kg 이상 엄격 선별'],
   },
   {
     number: '02',
     title: '손질·가공',
     desc: '숙련된 기술자의 수작업과 어류 스캔 자동절단기를 병행하여 정밀 가공합니다. 오징어할복기, 비늘벗기는 기계 등 특화 장비를 활용합니다.',
-    images: [
-      { src: '/images/process/02-cutting-machine.jpg', alt: '자동절단기' },
-      { src: '/images/process/02-handwork.jpg', alt: '수작업 가공' },
+    details: [
+      { label: '핵심 설비', value: '어류 스캔 자동절단기' },
+      { label: '특화 장비', value: '오징어할복기 · 비늘제거기' },
+      { label: '작업 방식', value: '수작업 + 자동화 병행' },
+      { label: '위생 기준', value: '풀세트 위생복·마스크·장갑' },
     ],
-    gallery: [
-      { src: '/images/process/02-squid-handwork.jpg', caption: '오징어 수작업 손질' },
-      { src: '/images/process/02-squid-machine.jpg', caption: '오징어할복기 자동 가공' },
-      { src: '/images/process/02-croaker-hand.jpg', caption: '백조기 수작업 비늘 제거' },
-      { src: '/images/process/02-flatfish-hand.jpg', caption: '서대 수작업 손질' },
-    ],
+    checks: ['HACCP CCP 실시간 모니터링', '교차 오염 방지 동선', '스테인레스 도마·정밀 칼', '품종별 맞춤 손질'],
   },
   {
     number: '03',
     title: '세척·염장',
-    desc: '깨끗한 세척과 정확한 소금 간으로 최적의 맛을 만듭니다.',
-    images: [
-      { src: '/images/process/03-salting.jpg', alt: '염장 작업' },
-      { src: '/images/process/03-mackerel-wash.jpg', alt: '고등어 세척' },
+    desc: '다단계 세척과 정확한 소금 간으로 최적의 맛과 안전을 동시에 확보합니다.',
+    details: [
+      { label: '세척 방식', value: '스테인레스 다단계 수세' },
+      { label: '염장 원료', value: '천일염 (균일 염도)' },
+      { label: '미생물 관리', value: '샘플 검사 + 즉시 폐기 기준' },
+      { label: '운영 시간', value: '입고 당일 처리 원칙' },
     ],
-    gallery: [
-      { src: '/images/process/03-flatfish-wash.jpg', caption: '서대 세척' },
-      { src: '/images/process/03-salting-2.jpg', caption: '소금 간 디테일' },
-    ],
+    checks: ['세척수 미생물 모니터링', '염도계 측정', '대장균·살모넬라 검사', '히스타민·중금속 점검'],
   },
   {
     number: '04',
     title: '급속동결',
-    desc: '터널프리저(IQF)를 통해 -40°C에서 급속동결하여 세포 파괴 없이 신선도를 완벽하게 유지합니다.',
-    images: [
-      { src: '/images/process/04-tunnel-freezer.jpg', alt: '터널프리저' },
-      { src: '/images/process/04-freezer-belt.jpg', alt: '동결 벨트' },
+    desc: '터널프리저(IQF)를 통해 −35°C 이하 급속동결로 세포 파괴 없이 신선도를 완벽하게 유지합니다.',
+    details: [
+      { label: '핵심 설비', value: '터널프리저 IQF' },
+      { label: '동결 온도', value: '−35°C 이하' },
+      { label: '동결 시간', value: '15~30분 (어종별)' },
+      { label: '효과', value: '세포 파괴 최소화' },
     ],
-    gallery: [
-      { src: '/images/process/04-freezer-inside.jpg', caption: '터널프리저 내부' },
-      { src: '/images/process/04-freezer-control.jpg', caption: '온도 제어 패널' },
-    ],
+    checks: ['온도 자동 기록 (24/7)', '동결 시간 자동 제어', '벨트 적재 균일성', 'IQF 개별 동결 보장'],
   },
   {
     number: '05',
     title: '자동포장',
     desc: '로터리 포장기와 열선형 진공포장기로 위생적이고 효율적으로 포장합니다.',
-    images: [
-      { src: '/images/process/05-rotary-packer.jpg', alt: '로터리 포장기' },
-      { src: '/images/process/05-vacuum-packer.jpg', alt: '진공포장기' },
+    details: [
+      { label: '핵심 설비', value: '로터리 포장기 2대 + 열선형 진공포장기' },
+      { label: '포장 방식', value: '진공 포장 / 자동 충진' },
+      { label: '라벨링', value: '이력추적 바코드 자동 부착' },
+      { label: '품질 검사', value: '진공도·중량·라벨 자동' },
     ],
-    gallery: [
-      { src: '/images/process/05-rotary-detail.jpg', caption: '로터리 포장기 상세' },
-      { src: '/images/process/05-vacuum-detail.jpg', caption: '진공포장 작업' },
-      { src: '/images/process/05-vacuum-wide.jpg', caption: '포장 라인 전경' },
-    ],
+    checks: ['진공도 자동 측정', '중량 검수 (자동 분류)', '금속 검출기 통과', '이력 바코드 검증'],
   },
   {
     number: '06',
     title: '냉동보관·출하',
     desc: '체계적인 냉동창고 관리 시스템으로 출하까지 완벽한 콜드체인을 유지합니다.',
-    images: [
-      { src: '/images/process/06-cold-storage.jpg', alt: '냉동창고' },
+    details: [
+      { label: '보관 시설', value: '㈜대주냉장 (관계사)' },
+      { label: '보관 온도', value: '−18°C 이하 상시 유지' },
+      { label: '출하 원칙', value: 'FIFO (선입선출)' },
+      { label: '모니터링', value: '24/7 온도 자동 기록' },
     ],
-    gallery: [
-      { src: '/images/process/06-storage-rack.jpg', caption: '냉동창고 적재' },
-      { src: '/images/process/06-storage-boxes.jpg', caption: '체계적 박스 관리' },
-    ],
+    checks: ['적재 위치 시스템 관리', '입출고 이력 자동 기록', '출하 시 콜드체인 유지', '거래처별 맞춤 라벨'],
   },
 ];
 
@@ -378,34 +367,42 @@ function ProcessStepSection({ step, index, c }: { step: ProcessStep; index: numb
               <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-ocean-500/8 blur-3xl" />
               <div className="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-gold-500/8 blur-3xl" />
             </div>
-            <p className={`mt-3 text-center text-xs ${c.textMuted}`}>
-              ※ 실제 작업 사진은 아래 갤러리에서 확인하실 수 있습니다.
-            </p>
           </Reveal>
         </div>
 
-        {/* Extra photo gallery */}
-        {step.gallery && step.gallery.length > 0 && (
-          <Reveal delay={450}>
-            <div className={`mt-10 grid gap-3 ${step.gallery.length >= 4 ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4' : step.gallery.length === 3 ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-2'}`}>
-              {step.gallery.map((g) => (
-                <div
-                  key={g.src}
-                  className={`group relative aspect-[4/3] overflow-hidden rounded-xl border ${c.cardBorder}`}
-                >
-                  <Image
-                    src={getImagePath(g.src)}
-                    alt={g.caption}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/30' : 'from-black/15'} via-transparent to-transparent`} />
-                  <p className="absolute bottom-2 left-3 text-xs text-white drop-shadow">{g.caption}</p>
+        {/* 핵심 스펙 + 검사 항목 (사진 없이 정보로 전달) */}
+        <Reveal delay={450}>
+          <div className="mt-10 grid gap-6 lg:grid-cols-[3fr_2fr]">
+            {/* 스펙 카드 4개 */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {step.details.map((d) => (
+                <div key={d.label} className={`rounded-xl border ${c.cardBorder} ${c.cardBg} p-4 transition-colors duration-300 hover:border-ocean-500/30 md:p-5`}>
+                  <p className="font-montserrat text-[10px] font-bold uppercase tracking-wider text-ocean-500">
+                    {d.label}
+                  </p>
+                  <p className={`mt-1 text-sm font-semibold leading-snug ${c.text} md:text-base`}>{d.value}</p>
                 </div>
               ))}
             </div>
-          </Reveal>
-        )}
+
+            {/* 검사·관리 체크리스트 */}
+            <div className={`rounded-xl border ${c.cardBorder} ${c.sectionAlt} p-5 md:p-6`}>
+              <p className="mb-3 font-montserrat text-[10px] font-bold uppercase tracking-wider text-ocean-500">
+                Quality Checks
+              </p>
+              <ul className="space-y-2">
+                {step.checks.map((check) => (
+                  <li key={check} className={`flex items-start gap-2 text-sm ${c.text2}`}>
+                    <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{check}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </div>
   );
