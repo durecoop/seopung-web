@@ -144,11 +144,9 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
                   <Link
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
-                    className={`group relative inline-flex items-center px-4 py-2 text-base font-semibold rounded-full transition-all duration-300 ${
+                    className={`group relative inline-flex items-center px-4 py-2 text-base font-semibold transition-colors duration-300 ${
                       active
-                        ? isOverlay
-                          ? 'bg-white/15 text-white shadow-[0_0_24px_rgba(165,225,239,0.45)] backdrop-blur-sm'
-                          : 'bg-gradient-to-br from-ocean-50 to-ocean-200/40 text-ocean-600 shadow-sm ring-1 ring-ocean-200/60'
+                        ? isOverlay ? 'text-white' : 'text-ocean-600'
                         : `${textClass} ${isOverlay ? 'hover:text-white' : 'hover:text-ocean-500'}`
                     }`}
                   >
@@ -195,10 +193,8 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
             return (
               <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
                 aria-current={active ? 'page' : undefined}
-                className={`relative inline-flex items-center justify-center rounded-full px-6 py-3 text-xl font-medium transition-all duration-500 ${
-                  active
-                    ? 'bg-gradient-to-br from-ocean-50 to-ocean-200/40 text-ocean-600 ring-1 ring-ocean-200/60 shadow-sm'
-                    : 'text-gray-800 hover:text-ocean-500'
+                className={`relative inline-flex items-center justify-center px-6 py-3 text-xl font-medium transition-colors duration-500 ${
+                  active ? 'text-ocean-600' : 'text-gray-800 hover:text-ocean-500'
                 }`}
                 style={{ transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms', opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)' }}>
                 {item.label}
