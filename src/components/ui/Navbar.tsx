@@ -12,10 +12,10 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
+  { label: '품질·인증', href: '/certification' },
   { label: '회사소개', href: '/about' },
   { label: '생산공정', href: '/process' },
   { label: '기술·설비', href: '/technology' },
-  { label: '품질·인증', href: '/certification' },
   { label: '제품', href: '/products' },
   { label: '문의', href: '/contact' },
 ];

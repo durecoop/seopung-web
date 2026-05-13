@@ -15,10 +15,10 @@ const CERTIFICATIONS = [
 ];
 
 const QUICK_LINKS = [
+  { label: '품질·인증', href: '/certification' },
   { label: '회사소개', href: '/about' },
   { label: '생산공정', href: '/process' },
   { label: '기술·설비', href: '/technology' },
-  { label: '품질·인증', href: '/certification' },
   { label: '제품', href: '/products' },
   { label: 'OEM 사례', href: '/case-studies' },
   { label: '샘플 요청', href: '/sample-request' },
