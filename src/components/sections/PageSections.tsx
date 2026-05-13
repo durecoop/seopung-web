@@ -20,10 +20,10 @@ const CERT_BADGES = [
 ];
 
 const PRODUCTS: { name: string; image: string | null; desc: string }[] = [
-  { name: '냉동수산가공', image: null, desc: '고등어, 삼치, 갈치 등' },
-  { name: '프리미엄 굴비', image: null, desc: '영광 전통 방식 굴비' },
-  { name: '밀키트·HMR', image: null, desc: '간편식 OEM 생산' },
-  { name: '수산 선물세트', image: null, desc: '명절 프리미엄 세트' },
+  { name: '냉동수산가공', image: '/images/food-web/pc003673268_l.jpg', desc: '고등어, 삼치, 갈치 등' },
+  { name: '프리미엄 굴비', image: '/images/gulbi/gulbi-premium.jpg', desc: '영광 전통 방식 굴비' },
+  { name: '밀키트·HMR', image: '/images/food-web/pc0031188071.jpg', desc: '간편식 OEM 생산' },
+  { name: '수산 선물세트', image: '/images/food-web/pc0031182640.jpg', desc: '명절 프리미엄 세트' },
 ];
 
 const VALUES = [
@@ -205,7 +205,7 @@ export default function PageSections({ theme: t }: Props) {
 
       {/* ── BANNER ── */}
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden md:h-[60vh]">
-        <Image src={getImagePath('/images/food-web/pc0031187533.jpg')} alt="수산물 가공" fill className="object-cover" sizes="100vw" />
+        <Image src={getImagePath('/images/hero/banner-fish.jpg')} alt="여수 위판장 신선 수산물" fill className="object-cover" sizes="100vw" />
         <div className={`absolute inset-0 bg-gradient-to-r ${t.bannerOverlay}`} />
         <div className="relative flex h-full items-center">
           <div className="mx-auto max-w-6xl px-6">

@@ -15,9 +15,9 @@ import { getImagePath } from '@/lib/utils';
 const SLIDES = [
   {
     image: '/images/hero/main-1-group.jpg',
-    tag: 'Certified Seafood OEM',
-    title: '대형 유통사 PB가\n선택하는 수산 OEM',
-    desc: 'HACCP · ASC · MSC · 이력추적 · 품질인증 — 5대 안전 인증 보유',
+    tag: 'TEAM SEOPUNG',
+    title: '여수의 새벽,\n우리의 화이팅!',
+    desc: '직원 모두가 매일 만드는 — 식탁 위의 신선함과 안전',
   },
   {
     image: '/images/hero/main-2-table.jpg',
@@ -113,24 +113,41 @@ export default function HeroCorporate() {
 
         {/* 텍스트 콘텐츠 — 중앙 정렬 */}
         <div className="relative z-20 flex h-full items-center justify-center">
-          <div
-            className={`mx-auto max-w-4xl px-6 text-center transition-all duration-700 ${
-              ready ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
-          >
-            <span className="mb-5 inline-block border-b border-white/40 pb-1 font-montserrat text-xs font-semibold uppercase tracking-[0.3em] text-white/80 md:text-sm">
+          <div key={`slide-${current}`} className="mx-auto max-w-4xl px-6 text-center">
+            <span
+              className="mb-5 inline-block border-b border-white/40 pb-1 font-montserrat text-xs font-semibold uppercase tracking-[0.3em] text-white/85 md:text-sm hero-fadeup"
+              style={{ animationDelay: '0.05s' }}
+            >
               {slide.tag}
             </span>
-            <h1 className="mx-auto mb-5 max-w-3xl whitespace-pre-line text-3xl font-bold leading-[1.25] tracking-tight text-white sm:text-4xl md:text-5xl">
-              {slide.title}
+            <h1 className="mx-auto mb-5 max-w-3xl text-3xl font-bold leading-[1.2] tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl">
+              {slide.title.split('\n').map((line, i, arr) => (
+                <span
+                  key={i}
+                  className="block hero-fadeup"
+                  style={{ animationDelay: `${0.25 + i * 0.18}s` }}
+                >
+                  {i === arr.length - 1 && arr.length > 1 ? (
+                    <span className="bg-gradient-to-r from-gold-300 via-white to-gold-300 bg-clip-text text-transparent">{line}</span>
+                  ) : (
+                    line
+                  )}
+                </span>
+              ))}
             </h1>
-            <p className="mx-auto mb-8 max-w-2xl text-base text-white/90 md:text-lg">
+            <p
+              className="mx-auto mb-8 max-w-2xl text-base text-white/95 md:text-lg hero-fadeup"
+              style={{ animationDelay: '0.6s' }}
+            >
               {slide.desc}
             </p>
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <div
+              className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center hero-fadeup"
+              style={{ animationDelay: '0.8s' }}
+            >
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 bg-white px-7 py-3 text-base font-bold text-[#003d6b] transition-all hover:bg-gray-100"
+                className="inline-flex items-center gap-2 rounded-lg bg-white px-7 py-3 text-base font-bold text-ocean-700 shadow-md transition-all hover:bg-ocean-50 hover:shadow-lg"
               >
                 제품소개
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -139,7 +156,7 @@ export default function HeroCorporate() {
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-white/70 px-7 py-3 text-base font-bold text-white transition-all hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/70 px-7 py-3 text-base font-bold text-white transition-all hover:bg-white/10"
               >
                 문의하기
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
