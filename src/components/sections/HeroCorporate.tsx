@@ -112,7 +112,7 @@ export default function HeroCorporate() {
         <div className="absolute inset-0 z-[11] bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
         {/* 로고 워터마크 (중앙 상단) — '화이팅!' 시점에 함께 pulse 강조 */}
-        <div className="absolute left-1/2 top-24 z-30 -translate-x-1/2 hero-fadeup md:top-28" style={{ animationDelay: '0.1s' }}>
+        <div className="absolute left-1/2 top-32 z-30 -translate-x-1/2 hero-fadeup md:top-40" style={{ animationDelay: '0.1s' }}>
           <div className="hero-logo-pulse flex items-center gap-3 rounded-2xl bg-white/95 px-5 py-3 shadow-xl shadow-ocean-900/15 backdrop-blur-sm md:gap-4 md:px-6 md:py-3.5">
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-white md:h-14 md:w-14">
               <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" fill className="scale-[1.65] object-contain" sizes="56px" />
