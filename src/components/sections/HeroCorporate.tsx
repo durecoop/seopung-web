@@ -107,9 +107,9 @@ export default function HeroCorporate() {
           </div>
         ))}
 
-        {/* 오버레이 — CJ 스타일: 전체 어둡게 + 하단 그라디언트 */}
-        <div className="absolute inset-0 z-[11] bg-black/40" />
-        <div className="absolute inset-0 z-[11] bg-gradient-to-t from-black/30 via-transparent to-black/10" />
+        {/* 오버레이 — 가볍게 (사진 밝기 살리기) */}
+        <div className="absolute inset-0 z-[11] bg-black/20" />
+        <div className="absolute inset-0 z-[11] bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
         {/* 텍스트 콘텐츠 — 중앙 정렬 */}
         <div className="relative z-20 flex h-full items-center justify-center">
@@ -121,19 +121,58 @@ export default function HeroCorporate() {
               {slide.tag}
             </span>
             <h1 className="mx-auto mb-5 max-w-3xl text-3xl font-bold leading-[1.2] tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl">
-              {slide.title.split('\n').map((line, i, arr) => (
-                <span
-                  key={i}
-                  className="block hero-fadeup"
-                  style={{ animationDelay: `${0.25 + i * 0.18}s` }}
-                >
-                  {i === arr.length - 1 && arr.length > 1 ? (
-                    <span className="bg-gradient-to-r from-gold-300 via-white to-gold-300 bg-clip-text text-transparent">{line}</span>
-                  ) : (
-                    line
-                  )}
-                </span>
-              ))}
+              {(() => {
+                const lines = slide.title.split('\n');
+                // 화이팅 단어 특수 처리 (slide 1만)
+                if (current === 0 && lines.length === 2) {
+                  const [first, second] = lines;
+                  const match = second.match(/^(.*?)(화이팅!?)\s*$/);
+                  if (match) {
+                    const before = match[1];
+                    const fight = match[2];
+                    return (
+                      <>
+                        <span className="block hero-fadeup" style={{ animationDelay: '0.25s' }}>
+                          {first}
+                        </span>
+                        <span className="block hero-fadeup" style={{ animationDelay: '0.45s' }}>
+                          {before}
+                          <span className="relative inline-block">
+                            <span className="hero-pop bg-gradient-to-r from-gold-300 via-gold-200 to-gold-400 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(245,204,102,0.4)]" style={{ animationDelay: '0.85s' }}>
+                              {fight}
+                            </span>
+                            {/* 양 옆 sparkle */}
+                            <span className="absolute -left-7 -top-2 text-gold-300 hero-sparkle" style={{ animationDelay: '1.4s' }}>
+                              <svg className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0l2.4 8.4L24 12l-9.6 3.6L12 24l-2.4-8.4L0 12l9.6-3.6z" />
+                              </svg>
+                            </span>
+                            <span className="absolute -right-7 top-1 text-gold-300 hero-sparkle" style={{ animationDelay: '1.6s' }}>
+                              <svg className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0l2.4 8.4L24 12l-9.6 3.6L12 24l-2.4-8.4L0 12l9.6-3.6z" />
+                              </svg>
+                            </span>
+                          </span>
+                        </span>
+                      </>
+                    );
+                  }
+                }
+                // 기본 stagger fade-up (다른 슬라이드)
+                return lines.map((line, i, arr) => (
+                  <span
+                    key={i}
+                    className="block hero-fadeup"
+                    style={{ animationDelay: `${0.25 + i * 0.18}s` }}
+                  >
+                    {i === arr.length - 1 && arr.length > 1 ? (
+                      <span className="bg-gradient-to-r from-gold-300 via-white to-gold-300 bg-clip-text text-transparent">{line}</span>
+                    ) : (
+                      line
+                    )}
+                  </span>
+                ));
+              })()}
             </h1>
             <p
               className="mx-auto mb-8 max-w-2xl text-base text-white/95 md:text-lg hero-fadeup"
