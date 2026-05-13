@@ -47,50 +47,67 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
   const hamburgerColor = isOverlay && !mobileOpen ? 'bg-white' : 'bg-gray-800';
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${bgClass}`}>
-      <div className="absolute top-0 left-0 h-[2px] z-[60]" style={{
-        width: `${scrollProgress}%`,
-        background: 'linear-gradient(to right, var(--color-ocean-400), var(--color-ocean-500))',
-        transition: 'width 50ms linear',
-        opacity: scrollProgress > 0 ? 1 : 0,
-      }} />
-      <nav className={`mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-500 ${isOverlay ? 'py-5' : 'py-3'}`}>
-        <Link href="/" className="flex items-center gap-3">
-          <div className={`relative overflow-hidden rounded-full bg-white shadow-lg transition-all duration-500 ${isOverlay ? 'h-16 w-16' : 'h-11 w-11'}`}>
-            <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" fill className="scale-[1.75] object-contain" priority />
-          </div>
-          <div className="hidden sm:flex flex-col">
-            <span className={`font-bold tracking-wide transition-all duration-500 ${isOverlay ? 'text-xl' : 'text-lg'} ${textClass}`}>서풍</span>
-            <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-xs max-h-6 opacity-80' : 'text-[0px] max-h-0 opacity-0'} ${textClass}`}>
-              No.1 수산 가공 파트너
-            </span>
-          </div>
-        </Link>
+    <>
+      <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${bgClass}`}>
+        <div className="absolute top-0 left-0 h-[2px]" style={{
+          width: `${scrollProgress}%`,
+          background: 'linear-gradient(to right, var(--color-ocean-400), var(--color-ocean-500))',
+          transition: 'width 50ms linear',
+          opacity: scrollProgress > 0 ? 1 : 0,
+        }} />
+        <nav className={`mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 transition-all duration-500 ${isOverlay ? 'py-5' : 'py-3'}`}>
+          <Link href="/" className="flex items-center gap-3">
+            <div className={`relative overflow-hidden rounded-full bg-white shadow-lg transition-all duration-500 ${isOverlay ? 'h-16 w-16' : 'h-11 w-11'}`}>
+              <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" fill className="scale-[1.75] object-contain" priority />
+            </div>
+            <div className="flex flex-col leading-tight">
+              <span className={`font-bold tracking-wide transition-all duration-500 ${isOverlay ? 'text-xl' : 'text-lg'} ${textClass}`}>서풍</span>
+              <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-[11px] sm:text-xs max-h-6 opacity-80' : 'text-[11px] sm:text-xs max-h-5 opacity-70'} ${textClass}`}>
+                <span className="sm:hidden">수산 가공 OEM</span>
+                <span className="hidden sm:inline">No.1 수산 가공 파트너</span>
+              </span>
+            </div>
+          </Link>
 
-        <ul className="hidden items-center gap-1 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.href}>
-              <Link href={item.href} className={`relative px-4 py-2 text-base font-semibold transition-colors ${textClass} ${isOverlay ? 'hover:text-white' : 'hover:text-ocean-500'}`}>
-                {item.label}
-              </Link>
+          <ul className="hidden items-center gap-1 lg:flex">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className={`relative px-4 py-2 text-base font-semibold transition-colors ${textClass} ${isOverlay ? 'hover:text-white' : 'hover:text-ocean-500'}`}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <a href="https://shop.seopung.co.kr" target="_blank" rel="noopener noreferrer"
+                className="ml-2 rounded-lg bg-ocean-500 px-4 py-1.5 text-sm font-semibold text-white transition-all hover:bg-ocean-400">
+                쇼핑몰
+              </a>
             </li>
-          ))}
-          <li>
-            <a href="https://shop.seopung.co.kr" target="_blank" rel="noopener noreferrer"
-              className="ml-2 rounded-lg bg-ocean-500 px-4 py-1.5 text-sm font-semibold text-white transition-all hover:bg-ocean-400">
-              쇼핑몰
-            </a>
-          </li>
-        </ul>
+          </ul>
 
-        <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="relative z-[60] flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden" aria-label="메뉴">
-          <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-          <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? '-translate-y-2 -rotate-45' : ''}`} />
-        </button>
-      </nav>
+          {/* 데스크탑용 햄버거 placeholder 공간 확보 */}
+          <span className="h-11 w-11 lg:hidden" aria-hidden="true" />
+        </nav>
+      </header>
 
-      <div className={`fixed inset-0 z-[55] overflow-y-auto bg-white/98 backdrop-blur-lg transition-all duration-500 lg:hidden ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      {/* 햄버거 버튼 — header 밖, 최상위 z-index */}
+      <button
+        type="button"
+        onClick={() => setMobileOpen(!mobileOpen)}
+        className={`fixed right-5 z-[90] flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden transition-[top] duration-500 ${isOverlay ? 'top-7' : 'top-4'}`}
+        aria-label="메뉴"
+        aria-expanded={mobileOpen}
+      >
+        <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? 'translate-y-2 rotate-45' : ''}`} />
+        <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+        <span className={`h-0.5 w-6 rounded ${hamburgerColor} transition-all duration-300 ${mobileOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+      </button>
+
+      {/* 모바일 메뉴 — header 밖, 햄버거 바로 아래 z-index */}
+      <div
+        className={`fixed inset-0 z-[80] overflow-y-auto bg-white/98 backdrop-blur-lg transition-opacity duration-500 lg:hidden ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        aria-hidden={!mobileOpen}
+      >
         <div className="flex min-h-full flex-col items-center justify-center gap-2 px-6 pb-12 pt-24">
           {NAV_ITEMS.map((item, i) => (
             <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
@@ -118,6 +135,6 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
