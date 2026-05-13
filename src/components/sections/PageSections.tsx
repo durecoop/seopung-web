@@ -199,43 +199,6 @@ export default function PageSections({ theme: t }: Props) {
         </div>
       </section>
 
-      {/* ── SUPPLY STORY ── */}
-      <section className={`relative overflow-hidden ${t.sectionBg1} py-24 md:py-32`}>
-        <div className="mx-auto max-w-6xl px-6">
-          <FadeIn>
-            <div className="mb-14 text-center">
-              <span className="mb-4 inline-block font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-ocean-500">{copy.supplyLabel}</span>
-              <h2 className={`text-3xl font-bold tracking-tight ${tp} md:text-4xl lg:text-5xl`}>
-                {copy.supplyTitle} <span className="text-ocean-500">{copy.supplyTitleAccent}</span>
-              </h2>
-              <p className={`mx-auto mt-5 max-w-xl text-base ${ts} md:text-lg`}>{copy.supplyDesc}</p>
-            </div>
-          </FadeIn>
-          <FadeIn>
-            <div className="relative flex flex-col items-center gap-8 md:flex-row md:gap-0">
-              <div className="absolute left-[16.67%] right-[16.67%] top-[28px] hidden h-px bg-gradient-to-r from-ocean-500/60 via-ocean-400/40 to-ocean-500/60 md:block" />
-              {[
-                { time: '04:00', image: '/images/food-web/pc003673268_l.jpg', caption: '새벽 4시, 여수 위판장' },
-                { time: '08:00', image: '/images/food-web/pc0031182640.jpg', caption: '당일 입고, 즉시 가공' },
-                { time: '12:00', image: '/images/food-web/pc0031188071.jpg', caption: '체계적 품질 관리' },
-              ].map((item, i) => (
-                <div key={item.time} className="relative flex w-full flex-col items-center md:w-1/3 md:px-4">
-                  <div className="relative z-10 mb-4 flex flex-col items-center">
-                    <span className="font-montserrat text-xl font-bold text-ocean-500">{item.time}</span>
-                    <div className={`mt-1 h-3 w-3 rounded-full bg-ocean-500 ring-4 ${ringColor}`} />
-                  </div>
-                  <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg">
-                    <Image src={getImagePath(item.image)} alt={item.caption} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" sizes="(max-width: 768px) 100vw, 33vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
-                  <p className={`mt-3 text-center text-lg font-medium ${isDark ? 'text-white/80' : 'text-gray-700'}`}>{item.caption}</p>
-                  {i < 2 && <div className="my-2 text-ocean-500/60 md:hidden"><svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg></div>}
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
 
       {/* ── BANNER ── */}
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden md:h-[60vh]">
