@@ -5,6 +5,7 @@ import Image from 'next/image';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
 import PhotoNeeded from '@/components/ui/PhotoNeeded';
+import PartnerLogo from '@/components/ui/PartnerLogo';
 import { useReveal } from '@/hooks/useReveal';
 import { getImagePath } from '@/lib/utils';
 import { historyCrud, getCompanyInfo, type HistoryItem as HistType } from '@/lib/admin-store';
@@ -114,11 +115,11 @@ const ABOUT_COPY: Record<number, AboutCopy> = {
     teamDesc: '기존의 틀을 깨고, 수산업의 미래를 개척하는 선구자들이 함께합니다.',
   },
   6: {
-    heroSub: '30년의 도전과 혁신으로 성장하는 수산 기업',
+    heroSub: '수산에 새 기준을 만드는 젊고 패기 있는 OEM 파트너',
     ceoLabel: 'CEO MESSAGE',
     ceoHeading: '대표 인사말',
     ceoQuote: '매출 성장을 현장과 기술에 재투자하는 선순환 경영을 실천합니다. 멈추지 않는 도전과 혁신으로, 대한민국 수산 가공의 새로운 기준을 만들어가겠습니다.',
-    philosophyKeywords: ['도전', '혁신', '성장'],
+    philosophyKeywords: ['도전', '혁신', '패기'],
     numbersHeading: '숫자로 보는 서풍',
     mgmtPhiloLabel: 'Management Philosophy',
     mgmtPhiloHeading: '경영 철학',
@@ -563,36 +564,26 @@ export default function AboutPage() {
               </Reveal>
 
               <Reveal delay={100}>
-                {PARTNERS.length > 0 ? (
-                  <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-                    {PARTNERS.map((p) => (
-                      <div
-                        key={p.name}
-                        className={`group flex h-24 w-44 flex-shrink-0 items-center justify-center rounded-2xl border border-gold-500/20 ${c.cardBg} transition-all duration-500 hover:border-gold-500/40 ${c.cardHover} hover:shadow-lg hover:shadow-gold-500/5 `}
-                      >
+                <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                  {PARTNERS.map((p) => (
+                    <div key={p.name} className={`flex flex-col items-center justify-between gap-3 rounded-xl border ${c.cardBorder} ${c.cardBg} px-4 py-6 text-center transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
+                      <div className="flex h-12 items-center justify-center">
                         {p.logoPath ? (
-                          <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={48} className="h-10 w-auto object-contain" />
+                          <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={40} className="h-10 w-auto object-contain" />
                         ) : (
-                          <span className={`text-lg font-bold ${c.textMuted} transition-colors duration-500 group-hover:text-ocean-500`}>
-                            {p.name}
-                          </span>
+                          <PartnerLogo name={p.name} />
                         )}
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <PhotoNeeded
-                        key={i}
-                        ratio="16/9"
-                        tone="light"
-                        caption="파트너사 로고"
-                        hint="사용 동의 후 등록"
-                      />
-                    ))}
-                  </div>
-                )}
+                      <span className={`text-sm font-bold ${c.text} md:text-base`}>{p.name}</span>
+                      {p.description && (
+                        <span className={`text-xs leading-snug ${c.textMuted}`}>{p.description}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <p className={`mx-auto mt-6 max-w-2xl text-center text-xs ${c.textMuted} md:text-sm`}>
+                  * 거래처 표기는 협력 관계 안내 목적이며, 로고 사용 권한은 각 회사에 있습니다.
+                </p>
               </Reveal>
             </div>
           </section>
