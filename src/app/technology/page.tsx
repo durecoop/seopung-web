@@ -436,29 +436,52 @@ export default function TechnologyPage() {
                       title: '수작업 + 기계 병행',
                       desc: '숙련 기술자의 수작업과 자동화 장비를 최적으로 조합',
                       image: '/images/process/02-handwork.jpg',
+                      icon: null,
                     },
                     {
                       title: '스캔 기반 정밀 가공',
                       desc: '어류 스캔 절단기로 균일한 품질 확보',
-                      image: '/images/facility/fish-scanner-detail.jpg',
+                      image: null,
+                      icon: (
+                        <svg viewBox="0 0 64 64" fill="none" className="h-20 w-20 text-ocean-400" strokeWidth={1.5} stroke="currentColor">
+                          <rect x="8" y="14" width="48" height="36" rx="3" />
+                          <path d="M8 32h48" strokeDasharray="2 3" />
+                          <path d="M14 22h36M14 26h28M14 42h36M14 38h22" opacity="0.6" />
+                          <circle cx="48" cy="22" r="2" fill="currentColor" />
+                          <path d="M22 20l8 10-4 8M30 20l-8 10 4 8" opacity="0.5" />
+                        </svg>
+                      ),
                     },
                     {
                       title: '급속동결 & 자동 포장',
                       desc: '터널프리저 IQF와 로터리 포장기로 생산성 극대화',
-                      image: '/images/process/04-tunnel-freezer.jpg',
+                      image: null,
+                      icon: (
+                        <svg viewBox="0 0 64 64" fill="none" className="h-20 w-20 text-ocean-400" strokeWidth={1.5} stroke="currentColor">
+                          <path d="M32 8v48M8 32h48M16 16l32 32M48 16L16 48" strokeLinecap="round" />
+                          <circle cx="32" cy="32" r="6" fill="currentColor" opacity="0.15" />
+                          <path d="M30 6l2 2 2-2M30 58l2-2 2 2M6 30l2 2-2 2M58 30l-2 2 2 2" strokeLinecap="round" />
+                        </svg>
+                      ),
                     },
                   ].map((card, i) => (
                     <FadeIn key={card.title}>
                       <div className={`group overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-ocean-500/30 hover:shadow-lg hover:shadow-ocean-500/5`}>
                         <div className="relative aspect-[4/3] overflow-hidden">
-                          <Image
-                            src={getImagePath(card.image)}
-                            alt={card.title}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                          />
-                          <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-ocean-500/20 font-montserrat text-sm font-bold text-ocean-300">
+                          {card.image ? (
+                            <Image
+                              src={getImagePath(card.image)}
+                              alt={card.title}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-ocean-500/10 via-white to-ocean-500/5 transition-colors duration-300 group-hover:from-ocean-500/15">
+                              {card.icon}
+                            </div>
+                          )}
+                          <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-ocean-500/90 font-montserrat text-sm font-bold text-white shadow-sm">
                             {i + 1}
                           </div>
                         </div>
@@ -598,38 +621,146 @@ export default function TechnologyPage() {
                     <h2 className={`text-3xl font-bold ${c.text} md:text-4xl`}>
                       {copy.qualityTitle} <span className="text-ocean-500">{copy.qualityAccent}</span>
                     </h2>
+                    <p className={`mx-auto mt-4 max-w-2xl text-base ${c.text2} md:text-lg`}>
+                      원료 입고부터 완제품 출하까지, 4단계 품질 검증 체계로 안전을 확보합니다
+                    </p>
                   </div>
                 </FadeIn>
 
-                <div className="grid gap-6 md:grid-cols-2">
-                  {[
-                    {
-                      image: '/images/facility/radiation-lab.jpg',
-                      caption: '방사능 검사실 — Gamma Radiation Spectrometer 상시 가동',
-                    },
-                    {
-                      image: '/images/facility/safety-board.jpg',
-                      caption: '이물 관리 게시판 — 현장 안전 관리 강화',
-                    },
-                  ].map((photo) => (
-                    <FadeIn key={photo.caption}>
-                      <div className={`group overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg} transition-all duration-300 hover:border-ocean-500/30`}>
-                        <div className="relative aspect-[16/10] overflow-hidden">
-                          <Image
-                            src={getImagePath(photo.image)}
-                            alt={photo.caption}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
+                {/* 4단계 검증 흐름 */}
+                <FadeIn>
+                  <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {[
+                      {
+                        step: '01',
+                        title: '입고 검사',
+                        desc: '원료 방사능·이물·신선도 전수 검사',
+                        icon: (
+                          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+                            <path d="M16 4l10 6v8c0 6-4 10-10 10S6 24 6 18v-8l10-6z" />
+                            <path d="M12 16l3 3 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        ),
+                      },
+                      {
+                        step: '02',
+                        title: '가공 중 검사',
+                        desc: 'HACCP 핵심관리점(CCP) 실시간 모니터링',
+                        icon: (
+                          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+                            <circle cx="16" cy="16" r="11" />
+                            <path d="M16 8v8l5 3" strokeLinecap="round" />
+                          </svg>
+                        ),
+                      },
+                      {
+                        step: '03',
+                        title: '출하 전 검사',
+                        desc: '금속 검출·이물 X-ray·중량 자동 검사',
+                        icon: (
+                          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+                            <rect x="4" y="10" width="24" height="14" rx="2" />
+                            <path d="M10 14l4 6 4-4 4 8" strokeLinecap="round" strokeLinejoin="round" />
+                            <circle cx="22" cy="14" r="1.5" fill="currentColor" />
+                          </svg>
+                        ),
+                      },
+                      {
+                        step: '04',
+                        title: '이력 추적',
+                        desc: '전 품목 이력 추적관리 (2013년~)',
+                        icon: (
+                          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+                            <rect x="6" y="6" width="20" height="20" rx="2" />
+                            <path d="M10 12h12M10 16h12M10 20h8" strokeLinecap="round" />
+                            <path d="M22 20l3 3-3 3" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        ),
+                      },
+                    ].map((s) => (
+                      <div key={s.step} className={`relative overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg} p-6 transition-all duration-300 hover:border-ocean-500/40 hover:shadow-md`}>
+                        <div className="mb-4 flex items-center justify-between">
+                          <span className="font-montserrat text-2xl font-extrabold text-ocean-500/40">{s.step}</span>
+                          <div className="rounded-lg bg-ocean-500/10 p-2 text-ocean-500">{s.icon}</div>
                         </div>
-                        <div className="p-5">
-                          <p className={`text-sm font-medium leading-relaxed ${c.text2}`}>{photo.caption}</p>
-                        </div>
+                        <h3 className={`mb-2 text-base font-bold ${c.text} md:text-lg`}>{s.title}</h3>
+                        <p className={`text-sm leading-relaxed ${c.text2}`}>{s.desc}</p>
                       </div>
-                    </FadeIn>
-                  ))}
+                    ))}
+                  </div>
+                </FadeIn>
+
+                {/* 사진 2장 + 검사 체크리스트 */}
+                <div className="grid gap-6 lg:grid-cols-2">
+                  <FadeIn>
+                    <div className={`overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg}`}>
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
+                          src={getImagePath('/images/facility/radiation-tester-real.jpg')}
+                          alt="방사능 검사실"
+                          fill
+                          className="object-cover transition-transform duration-500 hover:scale-[1.02]"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                      <div className="p-5">
+                        <p className={`text-sm font-bold ${c.text}`}>방사능 검사실</p>
+                        <p className={`mt-1 text-xs ${c.text2} md:text-sm`}>
+                          Gamma Radiation Spectrometer 상시 가동 — 입고 원료 전수 검사
+                        </p>
+                      </div>
+                    </div>
+                  </FadeIn>
+                  <FadeIn>
+                    <div className={`overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg}`}>
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
+                          src={getImagePath('/images/facility/safety-board-real.jpg')}
+                          alt="이물 관리 게시판"
+                          fill
+                          className="object-cover transition-transform duration-500 hover:scale-[1.02]"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                      <div className="p-5">
+                        <p className={`text-sm font-bold ${c.text}`}>이물 관리 체계</p>
+                        <p className={`mt-1 text-xs ${c.text2} md:text-sm`}>
+                          현장 이물 주의 게시 + 다단계 검출 시스템 운영
+                        </p>
+                      </div>
+                    </div>
+                  </FadeIn>
                 </div>
+
+                {/* 검사 항목 체크리스트 */}
+                <FadeIn className="mt-10">
+                  <div className={`rounded-xl border ${c.cardBorder} ${c.cardBg} p-6 md:p-8`}>
+                    <h3 className={`mb-5 text-lg font-bold ${c.text} md:text-xl`}>
+                      <span className="text-ocean-500">10가지</span> 핵심 검사 항목
+                    </h3>
+                    <div className="grid gap-x-6 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-2">
+                      {[
+                        '방사능 (Gamma Spectrometer)',
+                        '이물 검출 (X-ray, 금속검출기)',
+                        '중량·규격 자동 측정',
+                        '미생물 검사 (대장균·살모넬라 외)',
+                        '히스타민·중금속',
+                        '온도 관리 (입고·가공·보관)',
+                        '냉동 상태 모니터링',
+                        '포장 진공도 검사',
+                        '라벨·바코드 검증',
+                        '원산지 이력 추적',
+                      ].map((item) => (
+                        <div key={item} className={`flex items-start gap-2 text-sm ${c.text2}`}>
+                          <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
 
                 <FadeIn className="mt-10">
                   <p className={`mx-auto max-w-3xl text-center leading-relaxed ${c.text2}`}>
