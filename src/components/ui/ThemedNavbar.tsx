@@ -61,7 +61,12 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
               <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" fill className="scale-[1.75] object-contain" priority />
             </div>
             <div className="flex flex-col leading-tight">
-              <span className={`font-bold tracking-wide transition-all duration-500 ${isOverlay ? 'text-xl' : 'text-lg'} ${textClass}`}>서풍</span>
+              <div className="flex items-baseline gap-1.5">
+                <span className={`font-bold tracking-wide transition-all duration-500 ${isOverlay ? 'text-xl' : 'text-lg'} ${textClass}`}>서풍</span>
+                <span className={`font-montserrat font-semibold tracking-wider transition-all duration-500 ${isOverlay ? 'text-xs' : 'text-[10px]'} ${isOverlay ? 'text-ocean-200' : 'text-ocean-500'}`}>
+                  HOMEPAGE
+                </span>
+              </div>
               <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-[11px] sm:text-xs max-h-6 opacity-80' : 'text-[11px] sm:text-xs max-h-5 opacity-70'} ${textClass}`}>
                 <span className="sm:hidden">수산 가공 OEM</span>
                 <span className="hidden sm:inline">No.1 수산 가공 파트너</span>
