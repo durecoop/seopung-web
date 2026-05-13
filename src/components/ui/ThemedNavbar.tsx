@@ -46,6 +46,11 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
   const textClass = isOverlay ? theme.navHeroText : theme.navText;
   const hamburgerColor = isOverlay && !mobileOpen ? 'bg-white' : 'bg-gray-800';
 
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname?.startsWith(href) ?? false;
+  };
+
   return (
     <>
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${bgClass}`}>
@@ -74,13 +79,45 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={`relative px-4 py-2 text-base font-semibold transition-colors ${textClass} ${isOverlay ? 'hover:text-white' : 'hover:text-ocean-500'}`}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={active ? 'page' : undefined}
+                    className={`group relative inline-flex items-center px-4 py-2 text-base font-semibold rounded-full transition-all duration-300 ${
+                      active
+                        ? isOverlay
+                          ? 'bg-white/15 text-white shadow-[0_0_24px_rgba(165,225,239,0.45)] backdrop-blur-sm'
+                          : 'bg-gradient-to-br from-ocean-50 to-ocean-200/40 text-ocean-600 shadow-sm ring-1 ring-ocean-200/60'
+                        : `${textClass} ${isOverlay ? 'hover:text-white' : 'hover:text-ocean-500'}`
+                    }`}
+                  >
+                    {item.label}
+                    {/* 활성 메뉴 — 하단 파도 인디케이터 */}
+                    {active && (
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 48 8"
+                        className={`pointer-events-none absolute -bottom-1.5 left-1/2 h-2 w-12 -translate-x-1/2 ${
+                          isOverlay ? 'text-ocean-200' : 'text-ocean-400'
+                        }`}
+                        fill="none"
+                      >
+                        <path
+                          d="M2 5 Q 10 1, 18 5 T 34 5 T 46 5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <a href="https://shop.seopung.co.kr" target="_blank" rel="noopener noreferrer"
                 className="ml-2 rounded-lg bg-ocean-500 px-4 py-1.5 text-sm font-semibold text-white transition-all hover:bg-ocean-400">
@@ -113,13 +150,31 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
         aria-hidden={!mobileOpen}
       >
         <div className="flex min-h-full flex-col items-center justify-center gap-2 px-6 pb-12 pt-24">
-          {NAV_ITEMS.map((item, i) => (
-            <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
-              className="py-3 text-xl font-medium text-gray-800 transition-all duration-500 hover:text-ocean-500"
-              style={{ transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms', opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)' }}>
-              {item.label}
-            </Link>
-          ))}
+          {NAV_ITEMS.map((item, i) => {
+            const active = isActive(item.href);
+            return (
+              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
+                aria-current={active ? 'page' : undefined}
+                className={`relative inline-flex items-center justify-center rounded-full px-6 py-3 text-xl font-medium transition-all duration-500 ${
+                  active
+                    ? 'bg-gradient-to-br from-ocean-50 to-ocean-200/40 text-ocean-600 ring-1 ring-ocean-200/60 shadow-sm'
+                    : 'text-gray-800 hover:text-ocean-500'
+                }`}
+                style={{ transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms', opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)' }}>
+                {item.label}
+                {active && (
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 48 8"
+                    className="pointer-events-none absolute -bottom-1 left-1/2 h-2 w-14 -translate-x-1/2 text-ocean-400"
+                    fill="none"
+                  >
+                    <path d="M2 5 Q 10 1, 18 5 T 34 5 T 46 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+              </Link>
+            );
+          })}
           <a
             href="https://shop.seopung.co.kr"
             target="_blank"
