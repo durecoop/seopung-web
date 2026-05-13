@@ -19,6 +19,8 @@ export const COMPANY = {
   phone: null as string | null,
   fax: null as string | null,
   email: null as string | null,
+  /** 문의·샘플 요청 접수 이메일 (mailto 발송 대상) */
+  inquiryEmail: 'seopoong3914@hanmail.net',
   tagline: '지속가능한 바다, 책임 있는 먹거리의 약속',
   description: '여수 위판장 직매입부터 가공·보관·유통까지 한 흐름으로 운영하는 수산 OEM 전문기업',
   vision: 'No.1 수산 가공 파트너',

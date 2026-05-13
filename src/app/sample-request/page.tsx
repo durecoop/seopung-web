@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ThemeLayout from '@/components/ui/ThemeLayout';
 import Reveal from '@/components/ui/FadeIn';
 import { saveInquiry, generateId, type Inquiry } from '@/lib/admin-store';
+import { COMPANY } from '@/lib/company-config';
 
 const CATEGORIES = [
   { key: 'frozen', label: '냉동수산가공', desc: '고등어·삼치·갈치·오징어·아귀 외' },
@@ -71,10 +72,26 @@ export default function SampleRequestPage() {
       read: false,
     };
     saveInquiry(inquiry);
+
+    // 이메일 클라이언트로 자동 전송
+    const subject = encodeURIComponent('홈페이지 / 쇼핑몰 문의 접수 — 샘플 요청');
+    const body = encodeURIComponent(
+      `[샘플 요청 접수]\n\n` +
+      `■ 회사명: ${form.company}\n` +
+      `■ 담당자: ${form.person}\n` +
+      `■ 연락처: ${form.phone}\n` +
+      `■ 이메일: ${form.email}\n` +
+      `■ 접수일시: ${new Date().toLocaleString('ko-KR')}\n\n` +
+      summary + `\n\n` +
+      `─────────────────────\n` +
+      `seopung.co.kr/sample-request 자동 발송\n`
+    );
+    window.location.href = `mailto:${COMPANY.inquiryEmail}?subject=${subject}&body=${body}`;
+
     setSubmitted(true);
     setForm({ company: '', person: '', phone: '', email: '', categories: [], quantity: '', address: '', purpose: '', nda: false });
     setErrors({});
-    setTimeout(() => setSubmitted(false), 4000);
+    setTimeout(() => setSubmitted(false), 6000);
   };
 
   return (
@@ -270,7 +287,7 @@ export default function SampleRequestPage() {
 
                   {submitted && (
                     <div className="rounded-xl border border-green-500/30 bg-green-500/10 px-5 py-3.5 text-center text-sm font-medium text-green-400">
-                      샘플 요청이 접수되었습니다. 24시간 내 담당자가 직접 회신드리고, 영업일 3~5일 이내 발송됩니다.
+                      샘플 요청이 접수되었습니다. 이메일 클라이언트가 열리면 <span className="font-bold">[보내기]</span>를 눌러 발송을 완료해주세요.
                     </div>
                   )}
 

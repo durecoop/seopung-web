@@ -208,10 +208,26 @@ export default function ContactPage() {
       read: false,
     };
     saveInquiry(inquiry);
+
+    // 이메일 클라이언트로 자동 전송 (제목·내용 prefill)
+    const subject = encodeURIComponent('홈페이지 / 쇼핑몰 문의 접수');
+    const body = encodeURIComponent(
+      `[홈페이지 문의 접수]\n\n` +
+      `■ 회사명: ${formData.company}\n` +
+      `■ 담당자: ${formData.person}\n` +
+      `■ 연락처: ${formData.phone}\n` +
+      `■ 이메일: ${formData.email}\n` +
+      `■ 접수일시: ${new Date().toLocaleString('ko-KR')}\n\n` +
+      `[문의 내용]\n${formData.message}\n\n` +
+      `─────────────────────\n` +
+      `seopung.co.kr 자동 발송\n`
+    );
+    window.location.href = `mailto:${COMPANY.inquiryEmail}?subject=${subject}&body=${body}`;
+
     setSubmitted(true);
     setFormData({ company: '', person: '', phone: '', email: '', message: '' });
     setErrors({});
-    setTimeout(() => setSubmitted(false), 3000);
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
@@ -465,7 +481,7 @@ export default function ContactPage() {
 
                     {submitted && (
                       <div className="rounded-xl border border-green-500/30 bg-green-500/10 px-5 py-3.5 text-center text-sm font-medium text-green-400">
-                        문의가 접수되었습니다. 빠른 시일 내 회신드리겠습니다.
+                        문의가 접수되었습니다. 이메일 클라이언트가 열리면 <span className="font-bold">[보내기]</span>를 눌러 발송을 완료해주세요.
                       </div>
                     )}
 
