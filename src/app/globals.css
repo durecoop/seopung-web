@@ -131,6 +131,37 @@ html {
   transform-origin: center;
 }
 
+/* ── Nav 활성 메뉴: 실시간 파도 애니메이션 ── */
+@keyframes navWaveSlide {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes navWaveBob {
+  0%, 100% { transform: translate3d(-25%, 0, 0); }
+  50%      { transform: translate3d(-25%, -1px, 0); }
+}
+@keyframes navShimmer {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  40%  { opacity: 0.9; }
+  100% { transform: translateX(220%); opacity: 0; }
+}
+.nav-wave-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+}
+.nav-wave-slow   { animation: navWaveSlide 6s linear infinite; }
+.nav-wave-medium { animation: navWaveSlide 4s linear infinite; }
+.nav-wave-fast   { animation: navWaveSlide 2.6s linear infinite; }
+.nav-shimmer     { animation: navShimmer 3.2s ease-in-out infinite; animation-delay: 1.2s; }
+
+/* 접근성 — 모션 감소 선호 시 정적으로 */
+@media (prefers-reduced-motion: reduce) {
+  .nav-wave-slow,
+  .nav-wave-medium,
+  .nav-wave-fast,
+  .nav-shimmer { animation: none; }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

@@ -16,6 +16,64 @@ const NAV_ITEMS = [
   { label: '문의', href: '/contact' },
 ];
 
+/**
+ * 활성 메뉴 하단 — 살아 움직이는 다층 파도 인디케이터.
+ * 두 겹의 sine 파형이 서로 다른 속도로 흐르고, 가장자리는 자연스럽게 페이드,
+ * 위로 미세한 shimmer(빛 반사)가 가끔 지나갑니다.
+ */
+function ActiveWave({ isOverlay, mobile = false }: { isOverlay: boolean; mobile?: boolean }) {
+  // 오버레이 상태(어두운 히어로 배경) vs 일반 상태
+  const c1 = isOverlay ? 'rgba(255,255,255,0.95)' : 'var(--color-ocean-500)';
+  const c2 = isOverlay ? 'rgba(165,225,239,0.85)' : 'var(--color-ocean-300)';
+  const shimmerColor = isOverlay ? 'rgba(255,255,255,0.9)' : 'var(--color-ocean-200)';
+
+  return (
+    <span
+      aria-hidden="true"
+      className={`nav-wave-mask pointer-events-none absolute left-1/2 -translate-x-1/2 overflow-hidden ${
+        mobile ? '-bottom-1.5 h-3 w-20' : '-bottom-2 h-2.5 w-16'
+      }`}
+    >
+      {/* 뒷 파도 — 옅고 느리게 */}
+      <svg
+        className="nav-wave-slow absolute inset-y-0 left-0 h-full w-[200%] opacity-70"
+        viewBox="0 0 200 10"
+        preserveAspectRatio="none"
+        fill="none"
+      >
+        <path
+          d="M0 6 Q 12.5 2 25 6 T 50 6 T 75 6 T 100 6 T 125 6 T 150 6 T 175 6 T 200 6"
+          stroke={c2}
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+      </svg>
+      {/* 앞 파도 — 진하고 빠르게 */}
+      <svg
+        className="nav-wave-medium absolute inset-y-0 left-0 h-full w-[200%]"
+        viewBox="0 0 200 10"
+        preserveAspectRatio="none"
+        fill="none"
+      >
+        <path
+          d="M0 7 Q 12.5 3.5 25 7 T 50 7 T 75 7 T 100 7 T 125 7 T 150 7 T 175 7 T 200 7"
+          stroke={c1}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+      </svg>
+      {/* 빛 반사 — shimmer */}
+      <span
+        className="nav-shimmer absolute top-0 h-full w-1/3"
+        style={{
+          background: `linear-gradient(90deg, transparent, ${shimmerColor} 50%, transparent)`,
+          filter: 'blur(1px)',
+        }}
+      />
+    </span>
+  );
+}
+
 export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -95,25 +153,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
                     }`}
                   >
                     {item.label}
-                    {/* 활성 메뉴 — 하단 파도 인디케이터 */}
-                    {active && (
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 48 8"
-                        className={`pointer-events-none absolute -bottom-1.5 left-1/2 h-2 w-12 -translate-x-1/2 ${
-                          isOverlay ? 'text-ocean-200' : 'text-ocean-400'
-                        }`}
-                        fill="none"
-                      >
-                        <path
-                          d="M2 5 Q 10 1, 18 5 T 34 5 T 46 5"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    )}
+                    {active && <ActiveWave isOverlay={isOverlay} />}
                   </Link>
                 </li>
               );
@@ -162,16 +202,7 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
                 }`}
                 style={{ transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms', opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)' }}>
                 {item.label}
-                {active && (
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 48 8"
-                    className="pointer-events-none absolute -bottom-1 left-1/2 h-2 w-14 -translate-x-1/2 text-ocean-400"
-                    fill="none"
-                  >
-                    <path d="M2 5 Q 10 1, 18 5 T 34 5 T 46 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                )}
+                {active && <ActiveWave isOverlay={false} mobile />}
               </Link>
             );
           })}
