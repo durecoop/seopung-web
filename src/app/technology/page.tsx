@@ -381,7 +381,7 @@ export default function TechnologyPage() {
                       매출 성장을 현장과 품질에 환원하는 <span className="font-bold text-ocean-500">선순환 재투자 경영</span>
                     </p>
                     <p className={`mt-2 text-sm ${c.text2}`}>
-                      푸드머스 매출액 기준 약 5~6% 수준의 꾸준한 설비 투자를 통해 생산 및 품질 설비를 고도화하고 있습니다.
+                      서풍은 매년 매출액의 5~6%를 설비·공법에 재투자하며, 생산 효율과 품질 안정성을 지속적으로 고도화하고 있습니다.
                     </p>
                   </div>
                 </FadeIn>
