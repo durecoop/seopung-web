@@ -19,7 +19,7 @@ const QUICK_LINKS = [
   { label: '회사소개', href: '/about' },
   { label: '생산공정', href: '/process' },
   { label: '기술·설비', href: '/technology' },
-  { label: '제품', href: '/products' },
+  { label: 'OEM 제품', href: '/products' },
   { label: 'OEM 사례', href: '/case-studies' },
   { label: '샘플 요청', href: '/sample-request' },
   { label: '스펙 다운로드', href: '/specs' },

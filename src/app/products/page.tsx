@@ -224,6 +224,40 @@ export default function ProductsPage() {
             <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.gradientFade}`} />
           </section>
 
+          {/* ── B2B/B2C 분리 안내 배너 ── */}
+          <section className="relative pt-12">
+            <div className="mx-auto max-w-5xl px-6 lg:px-8">
+              <FadeIn>
+                <div className={`flex flex-col items-start gap-3 rounded-xl border ${c.cardBorder} ${c.sectionAlt} p-5 sm:flex-row sm:items-center sm:justify-between md:p-6`}>
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 rounded-lg bg-gold-500/15 p-2 text-gold-500">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className={`text-sm font-bold ${c.text} md:text-base`}>본 페이지는 B2B OEM 제품 카탈로그입니다</p>
+                      <p className={`mt-0.5 text-xs ${c.text2} md:text-sm`}>
+                        개인 소비자 · 소량 구매는 공식 쇼핑몰 <span className="font-semibold text-ocean-500">서풍몰</span>에서 가능합니다
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href="https://shop.seopung.co.kr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-ocean-500 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-ocean-600 hover:shadow-md"
+                  >
+                    서풍몰 바로가기
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                  </a>
+                </div>
+              </FadeIn>
+            </div>
+          </section>
+
           {/* ── Intro ── */}
           <section className="relative py-24 md:py-32">
             <div className="mx-auto max-w-4xl px-6 lg:px-8">

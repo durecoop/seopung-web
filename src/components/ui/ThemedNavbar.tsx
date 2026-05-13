@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { label: '회사소개', href: '/about' },
   { label: '생산공정', href: '/process' },
   { label: '기술·설비', href: '/technology' },
-  { label: '제품', href: '/products' },
+  { label: 'OEM 제품', href: '/products' },
   { label: '문의', href: '/contact' },
 ];
 

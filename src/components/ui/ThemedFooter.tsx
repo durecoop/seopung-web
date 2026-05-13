@@ -10,7 +10,7 @@ const CERTS = ['HACCP', 'ASC', 'MSC', '수산물이력추적', '수산물품질�
 const LINKS = [
   { label: '품질·인증', href: '/certification' }, { label: '회사소개', href: '/about' },
   { label: '생산공정', href: '/process' }, { label: '기술·설비', href: '/technology' },
-  { label: '제품', href: '/products' }, { label: 'OEM 사례', href: '/case-studies' },
+  { label: 'OEM 제품', href: '/products' }, { label: 'OEM 사례', href: '/case-studies' },
   { label: '샘플 요청', href: '/sample-request' }, { label: '스펙 다운로드', href: '/specs' },
   { label: '문의', href: '/contact' },
 ];
