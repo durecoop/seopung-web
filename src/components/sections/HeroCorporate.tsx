@@ -111,6 +111,17 @@ export default function HeroCorporate() {
         <div className="absolute inset-0 z-[11] bg-black/20" />
         <div className="absolute inset-0 z-[11] bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
+        {/* 로고 워터마크 (좌상단) — 화이팅 톤 균형 + 회사 정체성 */}
+        <div className="absolute left-4 top-20 z-30 flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-2 shadow-lg backdrop-blur-sm hero-fadeup sm:left-6 md:left-10 md:top-24 md:gap-3 md:px-4 md:py-2.5" style={{ animationDelay: '0.1s' }}>
+          <div className="relative h-9 w-9 overflow-hidden rounded-full bg-white md:h-11 md:w-11">
+            <Image src={getImagePath('/images/logo.png')} alt="서풍 로고" fill className="scale-[1.65] object-contain" sizes="44px" />
+          </div>
+          <div className="leading-tight">
+            <p className="text-xs font-bold text-ocean-700 md:text-sm">영어조합법인 서풍</p>
+            <p className="font-montserrat text-[9px] font-semibold tracking-[0.15em] text-gray-500 md:text-[10px]">SEOPOONG · SINCE 1995</p>
+          </div>
+        </div>
+
         {/* 텍스트 콘텐츠 — 중앙 정렬 */}
         <div className="relative z-20 flex h-full items-center justify-center">
           <div key={`slide-${current}`} className="mx-auto max-w-4xl px-6 text-center">
