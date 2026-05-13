@@ -378,6 +378,52 @@ export default function ProcessPage() {
               <div className={`absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]' : 'from-white'} to-transparent`} />
             </section>
 
+            {/* ── 투명성 선언 ── */}
+            <section className="relative py-16 md:py-20">
+              <div className="mx-auto max-w-4xl px-6 lg:px-8">
+                <Reveal>
+                  <div className={`relative overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-12`}>
+                    <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ocean-500/10 blur-3xl" />
+                    <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-gold-500/10 blur-3xl" />
+                    <div className="relative">
+                      <p className="mb-3 font-montserrat text-xs font-bold uppercase tracking-[0.3em] text-ocean-500">
+                        Transparency Declaration
+                      </p>
+                      <h2 className={`text-2xl font-bold leading-snug ${c.text} md:text-3xl lg:text-4xl`}>
+                        다른 OEM 기업은 내부 공정을<br className="hidden sm:block" /> 공개하지 않습니다.
+                        <br />
+                        <span className="text-ocean-500">서풍은 자신 있습니다.</span>
+                      </h2>
+                      <p className={`mt-5 text-base leading-relaxed ${c.text2} md:text-lg`}>
+                        원료 수매부터 가공·동결·포장·보관까지 — 모든 프로세스를 투명하게 공개합니다.
+                        숨길 것이 없는 자신감이 거래처의 신뢰가 됩니다.
+                      </p>
+                      <div className={`mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold ${c.text2}`}>
+                        <span className="inline-flex items-center gap-2">
+                          <svg className="h-4 w-4 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          원료 출처 공개
+                        </span>
+                        <span className="inline-flex items-center gap-2">
+                          <svg className="h-4 w-4 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          공정 단계별 사진
+                        </span>
+                        <span className="inline-flex items-center gap-2">
+                          <svg className="h-4 w-4 text-ocean-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          현장 방문 환영
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </section>
+
             {/* ── 1. 원료 수매 ── */}
             <section className="relative py-24 md:py-32">
               <div className="mx-auto max-w-7xl px-6 lg:px-8">
