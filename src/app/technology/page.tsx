@@ -435,8 +435,15 @@ export default function TechnologyPage() {
                     {
                       title: '수작업 + 기계 병행',
                       desc: '숙련 기술자의 수작업과 자동화 장비를 최적으로 조합',
-                      image: '/images/process/02-handwork-machine.jpg',
-                      icon: null,
+                      image: null,
+                      icon: (
+                        <svg viewBox="0 0 64 64" fill="none" className="h-20 w-20 text-ocean-400" strokeWidth={1.5} stroke="currentColor">
+                          <path d="M20 32c0-3 1-5 3-7l4-4c1-1 3-1 4 0l3 3c1 1 1 3 0 4l-4 4-4 4M14 38l8 8M22 30l-8 8c-1 1-1 3 0 4l4 4c1 1 3 1 4 0l8-8" strokeLinecap="round" strokeLinejoin="round" />
+                          <circle cx="46" cy="22" r="9" />
+                          <path d="M46 17v5l3 3M40 13l-2-2M52 13l2-2M40 31l-2 2M52 31l2 2M37 22h-3M58 22h-3" strokeLinecap="round" />
+                          <path d="M30 26l8-4" strokeDasharray="2 2" />
+                        </svg>
+                      ),
                     },
                     {
                       title: '스캔 기반 정밀 가공',
