@@ -39,8 +39,8 @@ const COPY: Record<number, ProcessCopy> = {
     sourcingDesc: '새벽 위판장에서 시작되는 신선함. 30년 이상의 경험을 가진 중매인이 최고의 원료만을 선별합니다.',
     sourcingDirectorTitle: '새벽 위판장, 최적의 원료 수매',
     sourcingDirectorDesc: '매일 새벽 여수 수산시장 위판장에서 30년 이상의 경험을 가진 49호 중매인이 직접 원료를 감별하고 수매합니다. 어체의 탄력, 색택, 비늘 상태를 하나하나 확인하여 최상급 원료만을 선별합니다.',
-    speciesTitle: '다양한 어종, 전문적인 취급',
-    speciesDesc: '참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어 등 9종 이상의 어종을 전문적으로 취급합니다.',
+    speciesTitle: '모든 어종 대응, 전문 가공',
+    speciesDesc: '참조기·삼치·오징어·갈치·고등어·아귀·방어·달고기·붕장어를 비롯해 의뢰하시는 모든 어종에 대응합니다.',
     stepsLabel: '6-Step Process',
     stepsTitle: '6단계 생산 공정',
     stepsDesc: '원물 입고에서 출하까지, 철저한 위생관리와 최신 설비로 완벽한 품질을 보장합니다.',
@@ -57,8 +57,8 @@ const COPY: Record<number, ProcessCopy> = {
     sourcingDesc: '새벽 4시, 위판장의 전투가 시작된다. 30년 전사(戰士) 중매인이 최고의 원료만 쟁취합니다.',
     sourcingDirectorTitle: '새벽의 전장, 최강의 원료 확보',
     sourcingDirectorDesc: '매일 새벽, 경쟁자보다 먼저 위판장에 도착합니다. 49호 중매인의 30년 실전 경험이 최상급 원료를 가려냅니다. 망설이면 뺏긴다 — 속도와 판단력이 곧 경쟁력입니다.',
-    speciesTitle: '거친 바다가 키운 어종',
-    speciesDesc: '참조기부터 붕장어까지, 남해의 거친 파도를 이겨낸 9종 이상의 전투형 어종을 취급합니다.',
+    speciesTitle: '모든 어종, 거침없이 대응',
+    speciesDesc: '참조기부터 붕장어까지 — 남해의 모든 어종, 의뢰가 들어오면 어떤 어종이든 정면 돌파합니다.',
     stepsLabel: 'Combat Line',
     stepsTitle: '현장에서 증명된 6단계',
     stepsDesc: '입고에서 출하까지, 한 치의 빈틈도 없는 전투적 공정 라인.',
@@ -75,8 +75,8 @@ const COPY: Record<number, ProcessCopy> = {
     sourcingDesc: '경매 데이터 분석과 품질 이력 추적 시스템으로 최적의 원료를 확보합니다.',
     sourcingDirectorTitle: '경험 + 데이터, 정밀 수매 시스템',
     sourcingDirectorDesc: '30년 경력 49호 중매인의 현장 경험에 실시간 시세 데이터와 품질 이력 분석을 결합합니다. 감(感)이 아닌 데이터가 수매 의사결정을 뒷받침합니다.',
-    speciesTitle: '9+ 어종 자동 분류 시스템',
-    speciesDesc: '참조기, 삼치, 오징어 등 9종 이상의 어종을 스캔 기반으로 분류하고 이력을 추적합니다.',
+    speciesTitle: '전 어종 자동 분류 시스템',
+    speciesDesc: '참조기·삼치·오징어를 비롯한 모든 취급 어종을 스캔 기반으로 자동 분류·이력 추적합니다.',
     stepsLabel: 'Automated Pipeline',
     stepsTitle: '스마트 팩토리 6단계 파이프라인',
     stepsDesc: '각 공정 노드에서 실시간 데이터를 수집하여 품질·속도·효율을 동시에 최적화합니다.',
@@ -93,8 +93,8 @@ const COPY: Record<number, ProcessCopy> = {
     sourcingDesc: '동이 트기 전, 위판장에 울려 퍼지는 경매 소리. 30년 세월이 빚어낸 눈(目)으로 바다의 선물을 고릅니다.',
     sourcingDirectorTitle: '파도 소리와 함께 시작되는 선별',
     sourcingDirectorDesc: '매일 새벽, 여수 위판장에는 49호 중매인의 발자국이 가장 먼저 찍힙니다. 비늘의 윤기, 아가미의 붉은빛 — 30년의 세월이 쌓아올린 감각이 바다의 최고 선물만을 골라냅니다.',
-    speciesTitle: '바다가 보내준 아홉 가지 이야기',
-    speciesDesc: '참조기, 삼치, 오징어, 갈치... 남해의 거친 물결 속에서 자라난 어종 하나하나에 이야기가 있습니다.',
+    speciesTitle: '바다가 보내주는 모든 이야기',
+    speciesDesc: '참조기·삼치·오징어·갈치... 남해의 거친 물결 속에서 자라난 어종 하나하나, 그리고 새로 의뢰되는 어종까지 — 모든 이야기를 담아냅니다.',
     stepsLabel: 'Six Chapters',
     stepsTitle: '여섯 장(章)의 공정 이야기',
     stepsDesc: '원물이 식탁에 오르기까지, 서풍의 손길이 닿는 여섯 번의 순간.',
@@ -111,8 +111,8 @@ const COPY: Record<number, ProcessCopy> = {
     sourcingDesc: '최상급 원료만을 고집합니다. 30년 경력 전문 중매인의 엄격한 기준 — 타협은 없습니다.',
     sourcingDirectorTitle: '1등의 기준으로 선별하다',
     sourcingDirectorDesc: '매일 새벽, 49호 중매인이 위판장 최상급 원료를 독점적으로 확보합니다. 어체의 탄력, 색택, 비늘 — 모든 항목에서 A등급만을 수매합니다. 타협 없는 수매가 프리미엄의 시작입니다.',
-    speciesTitle: '9종+ 프리미엄 어종 라인업',
-    speciesDesc: '참조기, 삼치, 오징어, 갈치 등 대한민국 대표 어종을 최고 품질로 취급합니다.',
+    speciesTitle: '모든 프리미엄 어종 라인업',
+    speciesDesc: '참조기·삼치·오징어·갈치 등 대한민국 대표 어종부터 의뢰받는 어떤 어종까지 — 최고 품질로 응답합니다.',
     stepsLabel: 'Excellence Line',
     stepsTitle: '6단계 프리미엄 공정',
     stepsDesc: '모든 단계에서 최고를 추구합니다. 결과가 증명하는 대한민국 1등 공정.',
@@ -129,8 +129,8 @@ const COPY: Record<number, ProcessCopy> = {
     sourcingDesc: '남들이 오기 전에 도착하고, 남들이 보지 못하는 가치를 발견합니다. 30년 개척의 눈(目).',
     sourcingDirectorTitle: '아무도 가지 않은 새벽의 길',
     sourcingDirectorDesc: '매일 새벽, 49호 중매인은 누구보다 먼저 위판장에 섭니다. 30년간 수만 번의 경매에서 단련된 안목 — 남들이 지나치는 원석 같은 원료를 발견해냅니다.',
-    speciesTitle: '경계를 허문 9종+ 어종',
-    speciesDesc: '전통 어종부터 새로운 카테고리까지. 누구도 시도하지 않은 어종 조합으로 시장을 개척합니다.',
+    speciesTitle: '경계를 허문 모든 어종',
+    speciesDesc: '전통 어종부터 새로운 카테고리까지. 의뢰받은 어떤 어종이든 — 누구도 시도하지 않은 조합으로 시장을 개척합니다.',
     stepsLabel: 'New Standard',
     stepsTitle: '기존의 틀을 깬 6단계',
     stepsDesc: '관행에 안주하지 않습니다. 매 단계에서 새로운 기준을 세우는 개척형 공정.',
@@ -146,8 +146,8 @@ const COPY: Record<number, ProcessCopy> = {
     sourcingDesc: '새벽 위판장에서 시작되는 신선함. 30년 이상의 경험과 데이터가 최고의 원료를 선별합니다.',
     sourcingDirectorTitle: '새벽 4시, 최적의 원료 확보',
     sourcingDirectorDesc: '매일 새벽 여수 수산시장 위판장에서 30년 경력의 49호 중매인이 직접 원료를 감별합니다. 어체의 탄력, 색택, 비늘 상태를 하나하나 확인하여 최상급 원료만을 선별하고 수매합니다.',
-    speciesTitle: '9종+ 어종, 전문 가공 체계',
-    speciesDesc: '참조기, 삼치, 오징어, 갈치, 고등어, 아귀 등 각 어종에 최적화된 가공 방식을 적용합니다.',
+    speciesTitle: '모든 어종 대응, 어종 맞춤 가공',
+    speciesDesc: '참조기·삼치·오징어·갈치·고등어·아귀를 비롯해 의뢰하시는 모든 어종에 대응합니다. 어체 특성에 맞는 가공 방식을 매번 새로 설계합니다.',
     stepsLabel: '6-Step Process',
     stepsTitle: '6단계 One-Way 생산라인',
     stepsDesc: '원물 입고에서 출하까지, 교차 오염 없는 일방향 공정으로 품질과 속도를 동시에 잡습니다.',
@@ -182,7 +182,7 @@ const STEPS: ProcessStep[] = [
   {
     number: '01',
     title: '원료 입고',
-    desc: '당일 위판장에서 수매한 신선 원료를 즉시 공장으로 입고합니다. 참조기, 삼치, 오징어, 갈치, 고등어, 아귀, 방어, 달고기, 붕장어 등 다양한 어종을 취급합니다.',
+    desc: '당일 위판장에서 수매한 신선 원료를 즉시 공장으로 입고합니다. 참조기·삼치·오징어·갈치·고등어·아귀·방어·달고기·붕장어를 비롯해 의뢰받는 모든 어종에 대응합니다.',
     images: [
       { src: '/images/process/01-raw-material.jpg', alt: '원료 입고' },
     ],
@@ -262,9 +262,83 @@ const STEPS: ProcessStep[] = [
 /* ──────────────────────────────────────────────
    Process Step Component
    ────────────────────────────────────────────── */
+function StepIconSvg({ number }: { number: string }) {
+  const common = { fill: 'none' as const, stroke: 'currentColor', strokeWidth: 1.4, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+  switch (number) {
+    case '01': // 원료 입고
+      return (
+        <svg viewBox="0 0 96 96" className="h-28 w-28 text-ocean-400 md:h-36 md:w-36" {...common}>
+          <rect x="18" y="28" width="60" height="42" rx="3" />
+          <path d="M18 38h60M30 28v-6M66 28v-6" />
+          <path d="M30 50l6 6 16-16" />
+          <path d="M48 78l-6-4M48 78l6-4M48 78v-8" />
+        </svg>
+      );
+    case '02': // 가공
+      return (
+        <svg viewBox="0 0 96 96" className="h-28 w-28 text-ocean-400 md:h-36 md:w-36" {...common}>
+          <rect x="14" y="48" width="68" height="6" rx="2" />
+          <path d="M28 48v-6c0-3 2-5 5-5h30c3 0 5 2 5 5v6" />
+          <path d="M40 26l16 16M56 26L40 42" />
+          <circle cx="40" cy="26" r="3" />
+          <circle cx="56" cy="26" r="3" />
+          <path d="M22 64h52M22 70h52" opacity="0.4" />
+        </svg>
+      );
+    case '03': // 세척·염장
+      return (
+        <svg viewBox="0 0 96 96" className="h-28 w-28 text-ocean-400 md:h-36 md:w-36" {...common}>
+          <path d="M30 18c0 8-8 14-8 22 0 6 4 10 8 10s8-4 8-10c0-8-8-14-8-22z" />
+          <path d="M62 30c0 6-6 10-6 16 0 4 3 7 6 7s6-3 6-7c0-6-6-10-6-16z" />
+          <circle cx="22" cy="68" r="2" fill="currentColor" />
+          <circle cx="42" cy="74" r="2" fill="currentColor" />
+          <circle cx="62" cy="68" r="2" fill="currentColor" />
+          <circle cx="76" cy="78" r="2" fill="currentColor" />
+          <circle cx="30" cy="80" r="2" fill="currentColor" />
+        </svg>
+      );
+    case '04': // 급속동결
+      return (
+        <svg viewBox="0 0 96 96" className="h-28 w-28 text-ocean-400 md:h-36 md:w-36" {...common}>
+          <path d="M48 14v68M14 48h68M22 22l52 52M74 22L22 74" />
+          <path d="M44 18l4 4 4-4M44 78l4-4 4 4M18 44l4 4-4 4M78 44l-4 4 4 4" />
+          <path d="M34 26l4 4 4-4M58 26l-4 4-4-4M34 70l4-4 4 4M58 70l-4-4-4 4" opacity="0.6" />
+          <circle cx="48" cy="48" r="6" fill="currentColor" opacity="0.15" />
+        </svg>
+      );
+    case '05': // 자동 포장
+      return (
+        <svg viewBox="0 0 96 96" className="h-28 w-28 text-ocean-400 md:h-36 md:w-36" {...common}>
+          <path d="M16 30l32-12 32 12-32 12-32-12z" />
+          <path d="M16 30v36l32 12V42M80 30v36L48 78" />
+          <path d="M32 24l32 12" opacity="0.5" />
+          <path d="M48 54v18" strokeDasharray="2 2" />
+          <circle cx="48" cy="42" r="3" fill="currentColor" />
+        </svg>
+      );
+    case '06': // 냉동 보관
+      return (
+        <svg viewBox="0 0 96 96" className="h-28 w-28 text-ocean-400 md:h-36 md:w-36" {...common}>
+          <rect x="14" y="22" width="68" height="56" rx="3" />
+          <path d="M14 38h68M14 54h68M14 70h68" />
+          <path d="M30 30v40M50 30v40M70 30v40" opacity="0.5" />
+          <rect x="20" y="42" width="6" height="8" fill="currentColor" opacity="0.3" />
+          <rect x="36" y="42" width="6" height="8" fill="currentColor" opacity="0.3" />
+          <rect x="56" y="58" width="6" height="8" fill="currentColor" opacity="0.3" />
+          <rect x="72" y="42" width="6" height="8" fill="currentColor" opacity="0.3" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+const STEP_LABELS: Record<string, string> = {
+  '01': '원료 입고', '02': '가공', '03': '세척·염장', '04': '급속동결', '05': '자동 포장', '06': '냉동 보관',
+};
+
 function ProcessStepSection({ step, index, c }: { step: ProcessStep; index: number; c: ThemeColors }) {
   const isEven = index % 2 === 0;
-  const hasTwoImages = step.images.length > 1;
 
   return (
     <div className="relative py-16 md:py-24">
@@ -289,33 +363,24 @@ function ProcessStepSection({ step, index, c }: { step: ProcessStep; index: numb
             </div>
           </Reveal>
 
-          {/* Image side */}
+          {/* Image side — SVG 일러스트로 추상화 (오해 소지 최소화) */}
           <Reveal delay={300} className={!isEven ? 'lg:order-1' : ''}>
-            {hasTwoImages ? (
-              <div className="grid gap-4 sm:grid-cols-2">
-                {step.images.map((img) => (
-                  <div key={img.src} className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
-                    <Image
-                      src={getImagePath(img.src)}
-                      alt={img.alt}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${c.dark ? 'from-[#0a1628]/30' : 'from-black/15'} via-transparent to-transparent`} />
-                    <p className="absolute bottom-3 left-4 text-sm font-medium text-white drop-shadow">{img.alt}</p>
-                  </div>
-                ))}
+            <div className={`relative aspect-[16/10] overflow-hidden rounded-2xl border ${c.cardBorder} bg-gradient-to-br from-ocean-500/8 via-white to-gold-500/8 ${c.dark ? 'bg-gradient-to-br from-ocean-500/15 via-[#0e1d33] to-[#0a1628]' : ''}`}>
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                <StepIconSvg number={step.number} />
+                <div className="text-center">
+                  <p className="font-montserrat text-xs font-bold uppercase tracking-[0.3em] text-ocean-500">
+                    Step {step.number}
+                  </p>
+                  <p className={`mt-1.5 text-base font-bold ${c.text} md:text-lg`}>{STEP_LABELS[step.number]}</p>
+                </div>
               </div>
-            ) : (
-              <div className="group relative aspect-[16/10] overflow-hidden rounded-2xl">
-                <Image
-                  src={getImagePath(step.images[0].src)}
-                  alt={step.images[0].alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-            )}
+              <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-ocean-500/8 blur-3xl" />
+              <div className="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-gold-500/8 blur-3xl" />
+            </div>
+            <p className={`mt-3 text-center text-xs ${c.textMuted}`}>
+              ※ 실제 작업 사진은 아래 갤러리에서 확인하실 수 있습니다.
+            </p>
           </Reveal>
         </div>
 
