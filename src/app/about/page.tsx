@@ -265,16 +265,16 @@ export default function AboutPage() {
         return (
         <>
           {/* ── Hero ── */}
-          <section className="relative flex h-[35vh] min-h-[320px] items-center justify-center overflow-hidden md:h-[40vh]">
+          <section className="relative flex h-[50vh] min-h-[440px] items-end justify-center overflow-hidden px-4 pb-6 md:h-[40vh] md:min-h-0 md:items-center md:px-0 md:pb-0">
             <Image
               src={getImagePath('/images/team/office-group.jpg')}
               alt="서풍 임직원 — 따뜻한 미소, 신뢰의 파트너"
               fill
-              className="object-cover"
+              className="object-cover object-[center_22%] md:object-center"
               priority
             />
-            <div className="absolute inset-0 bg-black/20" />
-            <div className="relative z-10 inline-block rounded-2xl bg-white/90 px-8 py-6 text-center shadow-lg backdrop-blur-sm">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/10 md:bg-black/20 md:bg-none" />
+            <div className="relative z-10 inline-block rounded-2xl bg-white/90 px-6 py-5 text-center shadow-lg backdrop-blur-sm md:px-8 md:py-6">
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
                 About Us
               </p>
