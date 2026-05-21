@@ -265,16 +265,18 @@ export default function AboutPage() {
         return (
         <>
           {/* ── Hero ── */}
-          <section className="relative flex h-[50vh] min-h-[440px] items-end justify-center overflow-hidden px-4 pb-6 md:h-[60vh] md:min-h-[520px] md:pb-12 lg:pb-16">
-            <Image
-              src={getImagePath('/images/team/office-group.jpg')}
-              alt="서풍 임직원 — 따뜻한 미소, 신뢰의 파트너"
-              fill
-              className="object-cover object-[center_22%] md:object-[center_30%]"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/5" />
-            <div className="relative z-10 inline-block rounded-2xl bg-white/90 px-6 py-5 text-center shadow-lg backdrop-blur-sm md:px-10 md:py-7">
+          <section className="relative pb-6 md:flex md:h-[60vh] md:min-h-[520px] md:items-end md:justify-center md:overflow-hidden md:px-4 md:pb-12 md:pt-0 lg:pb-16">
+            <div className="relative aspect-[16/9] w-full md:absolute md:inset-0 md:aspect-auto md:h-full">
+              <Image
+                src={getImagePath('/images/team/office-group.jpg')}
+                alt="서풍 임직원 — 따뜻한 미소, 신뢰의 파트너"
+                fill
+                className="object-cover object-center md:object-[center_30%]"
+                priority
+              />
+              <div className="absolute inset-0 hidden bg-gradient-to-t from-black/55 via-black/15 to-black/5 md:block" />
+            </div>
+            <div className="relative z-10 mx-4 mt-6 rounded-2xl bg-white/95 px-6 py-5 text-center shadow-lg backdrop-blur-sm md:mx-0 md:mt-0 md:inline-block md:bg-white/90 md:px-10 md:py-7">
               <p className="mb-3 font-montserrat text-sm font-medium uppercase tracking-[0.3em] text-ocean-500">
                 About Us
               </p>
