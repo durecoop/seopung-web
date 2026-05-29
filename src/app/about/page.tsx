@@ -419,15 +419,15 @@ export default function AboutPage() {
                   const isRight = i % 2 === 0;
                   return (
                     <Reveal key={item.year} delay={i * 80}>
-                      <div className={`relative mb-12 flex items-start gap-8 pl-12 sm:pl-16 md:pl-0 ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                      <div className={`relative mb-20 flex items-start gap-8 pl-12 sm:pl-16 md:pl-0 ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                         {/* Content */}
-                        <div className={`md:w-1/2 ${isRight ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
-                          <span className="font-montserrat text-2xl font-bold text-ocean-500 md:text-3xl">{item.year}</span>
-                          <p className={`mt-2 ${c.text2}`}>{item.text}</p>
+                        <div className={`md:w-1/2 ${isRight ? 'md:pr-20 md:text-right' : 'md:pl-20 md:text-left'}`}>
+                          <span className="inline-block font-montserrat text-2xl font-bold text-ocean-500 md:text-3xl">{item.year}</span>
+                          <p className={`mt-3 leading-relaxed ${c.text2}`}>{item.text}</p>
                         </div>
 
                         {/* Dot */}
-                        <div className="absolute left-4 top-1 flex h-5 w-5 items-center justify-center md:left-1/2 md:-translate-x-1/2">
+                        <div className="absolute left-4 top-2 flex h-5 w-5 items-center justify-center md:left-1/2 md:-translate-x-1/2">
                           <div className="h-3 w-3 rounded-full bg-ocean-500 ring-4 ring-navy-950" />
                         </div>
 
@@ -563,9 +563,11 @@ export default function AboutPage() {
                 <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                   {PARTNERS.map((p) => (
                     <div key={p.name} className={`flex flex-col items-center justify-between gap-3 rounded-xl border ${c.cardBorder} ${c.cardBg} px-4 py-6 text-center transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                      <div className="flex h-12 items-center justify-center">
+                      <div className="flex h-16 w-full items-center justify-center">
                         {p.logoPath ? (
-                          <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={40} className="h-10 w-auto object-contain" />
+                          <div className="relative h-12 w-32">
+                            <Image src={getImagePath(p.logoPath)} alt={p.name} fill className="object-contain" />
+                          </div>
                         ) : (
                           <PartnerLogo name={p.name} />
                         )}

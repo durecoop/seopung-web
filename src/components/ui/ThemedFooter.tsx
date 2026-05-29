@@ -6,7 +6,7 @@ import { getImagePath } from '@/lib/utils';
 import type { SiteTheme } from '@/lib/themes';
 import { COMPANY, AFFILIATES as AFFILIATE_CONFIG, hasValue } from '@/lib/company-config';
 
-const CERTS = ['HACCP', 'ASC', 'MSC', '수산물이력추적', '수산물품질인증', 'ISO 22000'];
+const CERTS = ['HACCP', 'ASC', 'MSC', '수산물이력제', '수산물품질인증'];
 const LINKS = [
   { label: '품질·인증', href: '/certification' }, { label: '회사소개', href: '/about' },
   { label: '생산공정', href: '/process' }, { label: '기술·설비', href: '/technology' },

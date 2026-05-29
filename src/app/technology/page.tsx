@@ -199,7 +199,7 @@ const FOCUS_AREAS = [
       </svg>
     ),
     title: 'R&D 역량 강화',
-    desc: '기업부설 연구소 설립 및 푸드머스 전용 제품 개발 체계 구축',
+    desc: '기업부설 연구소 설립 및 B2C & B2B 전용 제품 개발 체계 구축',
     detail: '약 10년간 134품목 출시, 現 66개 품목 운영',
   },
   {
@@ -219,8 +219,8 @@ const FOCUS_AREAS = [
       </svg>
     ),
     title: '이물 Zero화',
-    desc: 'AI 초분광 등 첨단 기술을 현장에 도입하여 원료 기인성 이물 "Zero" 달성',
-    detail: '2026년 AI 초분광 검출기 약 2.5억 투자',
+    desc: 'AI-엑스레이, AI-초분광 등 이물제어 혁신 설비 도입을 통한 이물 "Zero" 달성',
+    detail: '2026년 상반기 AI-엑스레이 도입 진행중(약 2.0억), 하반기 AI-초분광 도입 검토중(약 2.5억)',
   },
   {
     icon: (
@@ -651,7 +651,7 @@ export default function TechnologyPage() {
                       {
                         step: '02',
                         title: '가공 중 검사',
-                        desc: 'HACCP 핵심관리점(CCP) 실시간 모니터링',
+                        desc: 'HACCP 중요관리점(CCP) 실시간 모니터링',
                         icon: (
                           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
                             <circle cx="16" cy="16" r="11" />
@@ -662,7 +662,7 @@ export default function TechnologyPage() {
                       {
                         step: '03',
                         title: '출하 전 검사',
-                        desc: '금속 검출·이물 X-ray·중량 자동 검사',
+                        desc: '금속검출(필수), AI-엑스레이(해당제품) 검사, 중량검사',
                         icon: (
                           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
                             <rect x="4" y="10" width="24" height="14" rx="2" />

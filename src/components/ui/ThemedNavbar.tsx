@@ -127,13 +127,10 @@ export default function ThemedNavbar({ theme }: { theme: SiteTheme }) {
             </div>
             <div className="flex flex-col leading-tight">
               <div className="flex items-baseline gap-1.5">
-                <span className={`font-bold tracking-wide transition-all duration-500 ${isOverlay ? 'text-xl' : 'text-lg'} ${textClass}`}>서풍</span>
-                <span className={`font-montserrat font-semibold tracking-wider transition-all duration-500 ${isOverlay ? 'text-xs' : 'text-[10px]'} ${isOverlay ? 'text-ocean-200' : 'text-ocean-500'}`}>
-                  HOMEPAGE
-                </span>
+                <span className={`font-bold tracking-wide transition-all duration-500 ${isOverlay ? 'text-lg' : 'text-base'} ${textClass}`}>영어조합법인 서풍</span>
               </div>
               <span className={`whitespace-nowrap font-medium transition-all duration-500 overflow-hidden ${isOverlay ? 'text-xs sm:text-sm max-h-6 opacity-85' : 'text-xs sm:text-sm max-h-5 opacity-75'} ${textClass}`}>
-                HACCP·ASC 인증 수산 OEM
+                HACCP·ASC·MSC 인증 수산 가공 전문업체
               </span>
             </div>
           </Link>

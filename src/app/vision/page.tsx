@@ -182,7 +182,7 @@ const PRIORITIES = [
       </svg>
     ),
     title: 'ESG 경영',
-    desc: '풀무원 ESG 경영 방향 반영, 친환경 생산 체계, 제조환경 선제적 대응',
+    desc: 'ESG 가치 체계 반영, 친환경 생산 체계 구축, 제조환경 선제적 대응',
   },
 ];
 
@@ -220,7 +220,7 @@ const VISION_PILLARS = [
       </svg>
     ),
     title: '파트너십 및 동반성장',
-    desc: '풀무원 ESG 경영 방향과 일치하는 친환경 생산 체계 구축 및 상생 협력',
+    desc: 'ESG 가치 체계와 일치하는 친환경 생산 체계 구축 및 상생 협력',
   },
 ];
 
@@ -350,51 +350,29 @@ export default function VisionPage() {
                 </div>
               </Reveal>
 
-              {/* ASC/MSC & Investment */}
-              <div className="grid gap-8 md:grid-cols-2">
-                <Reveal delay={200}>
-                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-10`}>
-                    <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">ASC / MSC 매출</p>
-                    <div className="grid grid-cols-2 gap-6">
-                      <div className="text-center">
-                        <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>2025년</p>
-                        <p className={`font-montserrat text-3xl font-bold ${c.text}`}>
-                          3.6<span className={`ml-1 text-sm font-normal ${c.text2}`}>억</span>
-                        </p>
-                      </div>
-                      <div className="text-center">
-                        <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>2026 목표</p>
-                        <p className="font-montserrat text-3xl font-bold text-ocean-500">
-                          12<span className={`ml-1 text-sm font-normal ${c.text2}`}>억</span>
-                        </p>
-                        <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-3 py-1 font-montserrat text-xs font-bold text-ocean-500">
-                          +330%
-                        </span>
-                      </div>
+              {/* ASC/MSC 매출 */}
+              <Reveal delay={200}>
+                <div className={`mx-auto max-w-3xl overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-10`}>
+                  <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">ASC / MSC 매출</p>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>2025년</p>
+                      <p className={`font-montserrat text-3xl font-bold ${c.text}`}>
+                        3.6<span className={`ml-1 text-sm font-normal ${c.text2}`}>억</span>
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>2026 목표</p>
+                      <p className="font-montserrat text-3xl font-bold text-ocean-500">
+                        12<span className={`ml-1 text-sm font-normal ${c.text2}`}>억</span>
+                      </p>
+                      <span className="mt-2 inline-block rounded-full bg-ocean-500/15 px-3 py-1 font-montserrat text-xs font-bold text-ocean-500">
+                        +330%
+                      </span>
                     </div>
                   </div>
-                </Reveal>
-
-                <Reveal delay={300}>
-                  <div className={`overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} p-8 md:p-10`}>
-                    <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-ocean-400">설비 투자</p>
-                    <div className="grid grid-cols-3 gap-4">
-                      {[
-                        { year: '2024', value: '8억' },
-                        { year: '2025', value: '7.4억' },
-                        { year: '2026', value: '~9억', highlight: true },
-                      ].map((item) => (
-                        <div key={item.year} className="text-center">
-                          <p className={`mb-2 font-montserrat text-sm ${c.text2}`}>{item.year}</p>
-                          <p className={`font-montserrat text-2xl font-bold ${item.highlight ? 'text-ocean-500' : c.text}`}>
-                            {item.value}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </Reveal>
-              </div>
+                </div>
+              </Reveal>
             </div>
           </section>
 
@@ -493,13 +471,13 @@ export default function VisionPage() {
                   <div className="relative">
                     {/* Timeline line */}
                     <div className="absolute left-0 right-0 top-4 h-px bg-gradient-to-r from-ocean-500/40 via-gold-500/40 to-ocean-500/40" />
-                    <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-5 md:gap-x-4">
                       {BRANDS.map((brand) => (
-                        <div key={brand.name} className="relative pt-8 text-center">
+                        <div key={brand.name} className="relative pt-10 text-center">
                           {/* Dot on timeline */}
                           <div className={`absolute left-1/2 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-gold-500 ${c.pageBg}`} />
-                          <p className="mb-1 font-montserrat text-sm font-bold text-ocean-500">{brand.year}</p>
-                          <p className={`mb-1 text-sm font-semibold ${c.text}`}>{brand.name}</p>
+                          <p className="mb-2 font-montserrat text-sm font-bold text-ocean-500">{brand.year}</p>
+                          <p className={`mb-1 text-sm font-semibold leading-snug ${c.text}`}>{brand.name}</p>
                           <p className={`text-xs ${c.text2}`}>{brand.sales}</p>
                         </div>
                       ))}

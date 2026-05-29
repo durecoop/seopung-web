@@ -16,7 +16,7 @@ export const COMPANY = {
   postalCode: null as string | null,
   bizNumber: '417-81-41979',
   foundedYear: null as string | null,
-  phone: null as string | null,
+  phone: '061-681-5171~2' as string | null,
   fax: null as string | null,
   email: null as string | null,
   /** 문의·샘플 요청 접수 이메일 (mailto 발송 대상) */
@@ -200,11 +200,10 @@ export interface Partner {
 }
 
 export const PARTNERS: Partner[] = [
-  { name: '푸드머스', logoPath: null, description: '전용 MG·R&D 협력' },
-  { name: '풀무원', logoPath: null, description: 'ESG 경영 정렬' },
-  { name: '쿠팡', logoPath: null, description: '온라인 유통 채널' },
-  { name: '두레생협', logoPath: null, description: '협동조합 유통' },
-  { name: '농심엔지니어링', logoPath: null, description: 'AI 엑스레이 공동개발' },
+  { name: '푸드머스', logoPath: '/images/partners/foodmerce.png', description: '전용 MG·R&D 협력' },
+  { name: '풀무원', logoPath: '/images/partners/pulmuone.svg', description: 'ESG 경영 정렬' },
+  { name: '쿠팡', logoPath: '/images/partners/coupang.svg', description: '온라인 유통 채널' },
+  { name: '두레생협', logoPath: '/images/partners/dure.svg', description: '협동조합 유통' },
 ];
 
 /**

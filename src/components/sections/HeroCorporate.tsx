@@ -14,15 +14,15 @@ import { getImagePath } from '@/lib/utils';
 const SLIDES = [
   {
     image: '/images/hero/main-1-team.jpg',
-    tag: 'TEAM SEOPUNG',
+    tag: 'TEAM SEOPOONG',
     title: '여수의 새벽,\n우리의 화이팅!',
-    desc: '직원 모두가 매일 만드는 — 식탁 위의 신선함과 안전',
+    desc: '직원 모두의 정직한 노력으로 지켜내는 신선함의 가치',
   },
   {
     image: '/images/hero/main-2-table.jpg',
     tag: 'From Ocean to Table',
-    title: '여수 바다의 신선함,\n식탁까지 그대로',
-    desc: '당일 위판장 직매입 → 가공 → 유통 한 흐름. 신선함이 곧 맛이 됩니다',
+    title: '청정바다 본연의 신선함,\n여수에서 식탁까지.',
+    desc: '당일 직매입의 신선함, 정교한 가공과 유통으로 최고의 맛이 됩니다.',
   },
 ];
 
@@ -35,8 +35,8 @@ const VALUE_CARDS = [
         <path d="M24 10c-2.5 0-4.8.7-6.8 1.8" stroke="#003d6b" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.4" />
       </svg>
     ),
-    title: '글로벌 인증',
-    desc: 'HACCP·ASC·MSC 등 글로벌 스탠다드를 갖춘\n대한민국 최고 수준의 품질 시스템',
+    title: '품질인증',
+    desc: 'HACCP·ASC·MSC 인증과 수산물 이력제 기반의\n글로벌 품질 시스템',
   },
   {
     icon: (
@@ -61,7 +61,7 @@ const VALUE_CARDS = [
   },
 ];
 
-const INTERVAL = 3000;
+const INTERVAL = 6000;
 
 export default function HeroCorporate() {
   const [current, setCurrent] = useState(0);

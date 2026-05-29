@@ -11,12 +11,11 @@ import { SKIN_COPY } from '@/lib/skin-copy';
 import { COMPANY, STATS, PARTNERS, hasValue } from '@/lib/company-config';
 
 const CERT_BADGES = [
-  { name: 'HACCP', icon: '/images/certs/haccp.png', desc: '식품안전관리인증', detail: '위해요소 중점관리 기준 적합' },
-  { name: 'ASC', icon: '/images/certs/asc.svg', desc: '양식수산물 국제인증', detail: '책임있는 양식 수산물 공급' },
-  { name: 'MSC', icon: '/images/certs/msc.png', desc: '지속가능어업 국제인증', detail: '지속가능한 어업 자원 관리' },
-  { name: '수산물이력추적', icon: '/images/certs/traceability.png', desc: '원산지 추적관리', detail: '생산부터 유통까지 완벽 추적' },
-  { name: '수산물품질인증', icon: '/images/certs/quality.png', desc: '국가품질인증', detail: '대한민국 국가 품질 인증 획득' },
-  { name: 'ISO 22000', icon: '/images/certs/iso22000.png', desc: '식품안전경영시스템', detail: '국제 식품안전 경영 시스템' },
+  { name: 'HACCP', icon: '/images/certs/haccp.png', desc: '식품안전관리인증', detail: '위해 방지를 위한 사전 예방적 식품안전관리체계' },
+  { name: 'ASC', icon: '/images/certs/asc.svg', desc: '양식 수산물 국제인증', detail: '책임 있는 양식 수산물 생산을 위한 글로벌 지속가능 수산 인증' },
+  { name: 'MSC', icon: '/images/certs/msc.svg', desc: '지속가능어업 국제인증', detail: '지속가능한 어업과 해양 자원 보호를 위한 관리' },
+  { name: '수산물이력제', icon: '/images/certs/traceability.png', desc: '수산물이력추적시스템', detail: '생산부터 유통까지 투명하게 관리하는 수산물 이력 추적 시스템' },
+  { name: '수산물품질인증', icon: '/images/certs/quality.png', desc: '수산물품질인증', detail: '수산물의 품질 향상과 소비자 보호를 위하여 우수한 품질의 수산물을 인증하는 제도' },
 ];
 
 const PRODUCTS: { name: string; image: string | null; desc: string }[] = [
@@ -97,9 +96,9 @@ export default function PageSections({ theme: t }: Props) {
               ))}
             </div>
           </FadeIn>
-          {/* 보조 인증 3종 — 작게 */}
+          {/* 보조 인증 2종 — 작게 */}
           <FadeIn>
-            <div className="grid grid-cols-3 gap-3 md:gap-4">
+            <div className="mx-auto grid max-w-2xl grid-cols-2 gap-3 md:gap-4">
               {CERT_BADGES.slice(3).map((cert) => (
                 <div
                   key={cert.name}
@@ -264,9 +263,11 @@ export default function PageSections({ theme: t }: Props) {
             <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {PARTNERS.map((p) => (
                 <div key={p.name} className={`flex flex-col items-center justify-between gap-3 rounded-xl border ${cardCls} px-4 py-6 text-center transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
-                  <div className="flex h-12 items-center justify-center">
+                  <div className="flex h-16 w-full items-center justify-center">
                     {p.logoPath ? (
-                      <Image src={getImagePath(p.logoPath)} alt={p.name} width={140} height={40} className="h-10 max-w-full w-auto object-contain" sizes="(max-width:640px) 40vw, 140px" />
+                      <div className="relative h-12 w-32">
+                        <Image src={getImagePath(p.logoPath)} alt={p.name} fill className="object-contain" sizes="128px" />
+                      </div>
                     ) : (
                       <PartnerLogo name={p.name} />
                     )}
