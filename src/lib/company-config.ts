@@ -201,9 +201,11 @@ export interface Partner {
 
 export const PARTNERS: Partner[] = [
   { name: '푸드머스', logoPath: '/images/partners/foodmerce.png', description: '전용 MG·R&D 협력' },
-  { name: '풀무원', logoPath: '/images/partners/pulmuone.svg', description: 'ESG 경영 정렬' },
-  { name: '쿠팡', logoPath: '/images/partners/coupang.svg', description: '온라인 유통 채널' },
-  { name: '두레생협', logoPath: '/images/partners/dure.svg', description: '협동조합 유통' },
+  { name: '풀무원', logoPath: '/images/partners/pulmuone.png', description: 'ESG 경영 정렬' },
+  { name: '쿠팡', logoPath: '/images/partners/coupang.png', description: '온라인 유통 채널' },
+  { name: '두레생협', logoPath: '/images/partners/dure.png', description: '협동조합 유통' },
+  { name: 'CJ프레시웨이', logoPath: '/images/partners/cj.png', description: '식자재 유통 파트너' },
+  { name: '웰스토리', logoPath: '/images/partners/welstory.png', description: '단체급식·식자재 공급' },
 ];
 
 /**

@@ -560,7 +560,7 @@ export default function AboutPage() {
               </Reveal>
 
               <Reveal delay={100}>
-                <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
                   {PARTNERS.map((p) => (
                     <div key={p.name} className={`flex flex-col items-center justify-between gap-3 rounded-xl border ${c.cardBorder} ${c.cardBg} px-4 py-6 text-center transition-all duration-300 hover:border-ocean-500/30 hover:shadow-md`}>
                       <div className="flex h-16 w-full items-center justify-center">
