@@ -8,7 +8,7 @@ import PhotoNeeded from '@/components/ui/PhotoNeeded';
 import { getImagePath } from '@/lib/utils';
 import type { SiteTheme } from '@/lib/themes';
 import { SKIN_COPY } from '@/lib/skin-copy';
-import { COMPANY, STATS, PARTNERS, hasValue } from '@/lib/company-config';
+import { COMPANY, PARTNERS, hasValue } from '@/lib/company-config';
 
 const CERT_BADGES = [
   { name: 'HACCP', icon: '/images/certs/haccp.png', desc: '식품안전관리인증', detail: '위해 방지를 위한 사전 예방적 식품안전관리체계' },
@@ -24,21 +24,6 @@ const PRODUCTS: { name: string; image: string | null; desc: string }[] = [
   { name: '밀키트·HMR', image: '/images/food-web/pc0031188071.jpg', desc: '간편식 OEM 생산' },
   { name: '수산 선물세트', image: '/images/food-web/pc0031182640.jpg', desc: '명절 프리미엄 세트' },
 ];
-
-const VALUES = [
-  { label: '글로벌 인증', desc: 'HACCP · ASC · MSC 보유' },
-  { label: 'One Platform', desc: '수매·가공·보관·유통 일원화' },
-  { label: '대형 유통 납품', desc: '검증된 OEM 파트너십' },
-  { label: '지속가능 수산', desc: '책임있는 양식 · 어업' },
-];
-
-const STAT_ENTRIES: { value: string | null; label: string }[] = [
-  { value: STATS.annualRevenue, label: '연 매출' },
-  { value: STATS.developedItems, label: '개발 품목' },
-  { value: STATS.activeItems, label: '운영 품목' },
-  { value: STATS.fishSpeciesCount, label: '취급 어종' },
-];
-const VISIBLE_STATS = STAT_ENTRIES.filter((s) => hasValue(s.value));
 
 interface Props { theme: SiteTheme; }
 
@@ -135,27 +120,10 @@ export default function PageSections({ theme: t }: Props) {
                 <h2 className={`mb-6 text-3xl font-bold leading-tight tracking-tight ${tp} sm:text-4xl md:text-5xl`}>
                   {copy.aboutTitle1}<br className="hidden sm:block" /> <span className="text-ocean-500">{copy.aboutTitle2}</span>
                 </h2>
-                <p className={`mb-6 text-base leading-relaxed ${ts} md:text-lg`}>{copy.aboutDesc1}</p>
+                <p className={`mb-6 whitespace-pre-line text-base leading-relaxed ${ts} md:text-lg`}>{copy.aboutDesc1}</p>
                 <p className={`mb-8 text-base leading-relaxed ${ts} md:text-lg`}>
                   <span className={`font-semibold ${tp}`}>{copy.aboutDesc2Bold}</span>{' '}{copy.aboutDesc2}
                 </p>
-                <div className="grid grid-cols-2 gap-4">
-                  {VISIBLE_STATS.length > 0 ? (
-                    VISIBLE_STATS.map((s) => (
-                      <div key={s.label} className={`rounded-xl border ${cardCls} px-4 py-5 text-center`}>
-                        <span className="block font-montserrat text-3xl font-bold text-ocean-500 md:text-4xl">{s.value}</span>
-                        <span className={`mt-1 block text-base font-medium ${tm}`}>{s.label}</span>
-                      </div>
-                    ))
-                  ) : (
-                    VALUES.map((v) => (
-                      <div key={v.label} className={`rounded-xl border ${cardCls} px-4 py-5`}>
-                        <span className={`block text-lg font-bold ${tp} md:text-xl`}>{v.label}</span>
-                        <span className={`mt-1 block text-sm ${tm}`}>{v.desc}</span>
-                      </div>
-                    ))
-                  )}
-                </div>
                 <Link href="/about" className="group mt-8 inline-flex items-center gap-2 text-lg font-semibold text-ocean-500 transition-colors hover:text-ocean-400">
                   {copy.aboutCta} <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                 </Link>

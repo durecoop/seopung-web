@@ -15,7 +15,7 @@ const SEED_NEWS = [
 const SEED_CERTIFICATIONS = [
   { name: 'HACCP', year: '2008년 최초 인증', description: '위해요소중점관리기준. 원료부터 출하까지 전 공정의 위해요소를 사전 관리합니다.', status: '유효' },
   { name: '수산물 이력추적', year: '2013년', description: '원료 입고부터 출하까지 전 과정을 기록·관리하여 문제 발생 시 신속히 원인을 추적합니다.', status: '유효' },
-  { name: '수산물 품질인증', year: '', description: '국립수산물품질관리원의 품질인증 제도로, 우수한 수산물에 부여됩니다.', status: '준비중' },
+  { name: '수산물 품질인증', year: '2025년', description: '국립수산물품질관리원의 품질인증 제도로, 우수한 수산물에 부여됩니다.', status: '유효' },
   { name: 'ASC 인증', year: '2024년', description: '책임 있는 양식 수산물 인증. 환경·사회적 책임을 다하는 양식장에서 생산된 수산물입니다.', status: '유효' },
   { name: 'MSC 인증', year: '2024년', description: '지속가능한 어업 인증. 해양 생태계를 보전하면서 어획한 수산물에 부여됩니다.', status: '유효' },
   { name: 'FSSC 22000', year: '2026년 추진 예정', description: 'ISO 22000 기반의 글로벌 식품안전 인증 체계로, 국제적 수준의 식품안전 관리를 증명합니다.', status: '준비중' },
@@ -31,7 +31,7 @@ const SEED_EQUIPMENT = [
 ];
 
 const SEED_INVESTMENTS = [
-  { year: '~2024', label: '~2024년', items: '터널프리져, 포션커터기, 까스성형기 등', amount: '' },
+  { year: '~2023', label: '~2023년', items: '터널프리져, 포션커터기, 까스성형기 등', amount: '' },
   { year: '2024', label: '2024년', items: '멀티박 포장기, 오징어 할복기, 오징어 절단기, 방사선 검사기 등', amount: '8억원' },
   { year: '2025', label: '2025년', items: '로터리 포장기 2대, 어류 스캔 자동 절단기 등', amount: '7.4억원' },
   { year: '2026', label: '2026년', items: 'AI 엑스레이(2억), AI 초분광(2.5억), 전처리 자동화(3.5억), 오븐 구이기(0.9억)', amount: '약 9억원', highlight: true },

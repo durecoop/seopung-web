@@ -153,16 +153,6 @@ const CERTIFICATIONS: CertificationItem[] = [
     status: 'acquired',
   },
   {
-    icon: <QualityBadge />,
-    name: '수산물 품질인증',
-    year: '',
-    desc: '수산물의 품질 향상과 소비자 보호를 위하여 우수한 품질의 수산물을 인증하는 제도입니다. 안전하고 우수한 수산물임을 국가가 보증합니다.',
-    photo: null,
-    logo: '/images/certs/quality.png',
-    badge: null,
-    status: 'preparing',
-  },
-  {
     icon: <AscBadge />,
     name: 'ASC 인증',
     year: '2024년',
@@ -183,12 +173,22 @@ const CERTIFICATIONS: CertificationItem[] = [
     status: 'acquired',
   },
   {
+    icon: <QualityBadge />,
+    name: '수산물 품질인증',
+    year: '2025년',
+    desc: '수산물의 품질 향상과 소비자 보호를 위하여 우수한 품질의 수산물을 인증하는 제도입니다. 안전하고 우수한 수산물임을 국가가 보증합니다.',
+    photo: null,
+    logo: '/images/certs/quality.png',
+    badge: null,
+    status: 'acquired',
+  },
+  {
     icon: <FsscBadge />,
     name: 'FSSC 22000',
     year: '2026년 추진 예정',
     desc: '전 세계 식품 기업이 따르는 최고 수준의 글로벌 식품안전 관리 시스템 인증입니다. 글로벌 HACCP과 함께 2026년내 인증을 추진합니다.',
     photo: null,
-    logo: null,
+    logo: '/images/certs/fssc.jpg',
     badge: 'COMING SOON',
     status: 'preparing',
   },
@@ -200,6 +200,7 @@ const QUALITY_TIMELINE = [
   { year: '2011', title: 'HACCP 기반 품질위생관리 체계 안정화', desc: '' },
   { year: '2013', title: '수산물 이력추적관리 시스템 도입', desc: '' },
   { year: '2024', title: 'ASC & MSC 지속가능 수산물 인증 획득', desc: '' },
+  { year: '2025', title: '수산물 품질인증 획득', desc: '' },
   { year: '2026', title: 'FSSC 22000 및 글로벌 HACCP 추진 예정', desc: '', upcoming: true },
 ];
 
@@ -537,7 +538,11 @@ export default function CertificationPage() {
 
                       <div className="mb-5 flex items-start gap-4 sm:gap-5 opacity-80">
                         <div className="flex-shrink-0">
-                          {cert.icon}
+                          {cert.logo ? (
+                            <div className="relative h-14 w-14 overflow-hidden rounded-xl bg-white p-1.5 shadow-lg shadow-black/20">
+                              <Image src={getImagePath(cert.logo)} alt={cert.name} fill className="object-contain" />
+                            </div>
+                          ) : cert.icon}
                         </div>
                         <div className="min-w-0 flex-1 pr-14 sm:pr-16">
                           <h3 className={`text-lg sm:text-xl font-bold ${c.text} truncate`}>{cert.name}</h3>

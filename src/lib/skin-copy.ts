@@ -326,7 +326,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
     aboutLabel: 'ABOUT SEOPOONG',
     aboutTitle1: '30년의 노하우,',
     aboutTitle2: '멈추지 않는 진화',
-    aboutDesc1: '1995년 여수에서 시작한 서풍은 끊임없는 도전과 혁신으로 성장해왔습니다. AI 스마트 팩토리 구축, 글로벌 품질 인증, 신제품 개발까지 — 변화보다 한발 앞선 혁신이 서풍의 경쟁력입니다.',
+    aboutDesc1: '1995년 여수에서 시작한 서풍은 끊임없는 도전과 혁신으로 성장해왔습니다. AI 스마트 팩토리 구축, 글로벌 품질 인증, 신제품 개발까지.\n변화보다 한발 앞선 혁신이 서풍의 경쟁력입니다.',
     aboutDesc2: '파트너의 성공을 함께 만들어가는 것이 서풍이 추구하는 가치입니다.',
     aboutDesc2Bold: 'HACCP·ASC·MSC 인증 기반의 체계적인 품질 시스템과 안정적인 수산 및 수산가공 OEM 파트너십.',
     aboutCta: '서풍 스토리 보기',
@@ -353,7 +353,7 @@ export const SKIN_COPY: Record<number, SkinCopy> = {
     partnerDesc: '10년 이상 함께해온 대한민국 대표 유통 파트너사',
 
     ctaTitle1: '다음 도전을',
-    ctaTitle2: '함께 시작합시다',
+    ctaTitle2: '귀사와 함께 합니다',
     ctaDesc: 'OEM 납품, 신제품 개발, 전략적 파트너십.\n서풍과 함께라면 가능합니다.',
     ctaCta: '시작하기',
   },

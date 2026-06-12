@@ -247,8 +247,8 @@ const FOCUS_AREAS = [
 /* ─── Timeline data (PPT Slide 4) ─── */
 const TIMELINE = [
   {
-    year: '~2024',
-    label: '~2024년',
+    year: '~2023',
+    label: '~2023년',
     items: '터널프리져, 포션커터기, 까스성형기 등',
     amount: '',
   },
@@ -267,8 +267,8 @@ const TIMELINE = [
   {
     year: '2026',
     label: '2026년',
-    items: 'AI 초분광, 전처리 자동화, 특수 해동기, 오븐 구이기 등',
-    amount: '약 6.9억원',
+    items: 'AI 엑스레이(2억), AI 초분광(2.5억), 전처리 자동화(3.5억), 오븐 구이기(0.9억)',
+    amount: '약 9억원',
     highlight: true,
   },
   {
@@ -281,9 +281,10 @@ const TIMELINE = [
 
 /* ─── 2026 investment items ─── */
 const INVEST_2026 = [
+  { label: 'AI 엑스레이', amount: '2', unit: '억' },
   { label: 'AI 초분광', amount: '2.5', unit: '억' },
   { label: '전처리 자동화', amount: '3.5', unit: '억' },
-  { label: '오븐 설비', amount: '0.9', unit: '억' },
+  { label: '오븐 구이기', amount: '0.9', unit: '억' },
 ];
 
 /* ─── 인증 현황 ─── */
@@ -291,6 +292,7 @@ const CERTS = [
   { name: 'HACCP', desc: '전 식품유형 인증', year: '2011~' },
   { name: 'ASC·MSC', desc: '지속가능 수산물 인증', year: '2024~' },
   { name: '수산물 이력제', desc: '전품목 확대 적용', year: '2013~' },
+  { name: '수산물 품질인증', desc: '우수 수산물 국가 인증', year: '2025~' },
   { name: 'FSSC 22000', desc: '글로벌 식품안전 인증', year: '2026 추진' },
 ];
 
@@ -394,7 +396,7 @@ export default function TechnologyPage() {
             <section className="border-t border-gray-200 py-20 md:py-24">
               <div className="mx-auto max-w-5xl px-6">
                 <FadeIn>
-                  <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
                     {CERTS.map((cert) => (
                       <div
                         key={cert.name}
@@ -585,7 +587,7 @@ export default function TechnologyPage() {
 
                 <FadeIn>
                   <div className={`overflow-hidden rounded-2xl border border-gold-500/20 ${c.cardBg}`}>
-                    <div className="grid grid-cols-3">
+                    <div className="grid grid-cols-2 md:grid-cols-4">
                       {INVEST_2026.map((item, i) => (
                         <div
                           key={item.label}
@@ -606,7 +608,7 @@ export default function TechnologyPage() {
                     <div className={`border-t border-gold-500/20 bg-ocean-500/5 px-6 py-5 text-center`}>
                       <span className={`text-sm ${c.text2}`}>총 투자 예정 </span>
                       <span className="font-montserrat text-2xl font-bold text-ocean-500 md:text-3xl">
-                        약 6.9<span className="ml-0.5 text-lg">억원</span>
+                        약 9<span className="ml-0.5 text-lg">억원</span>
                       </span>
                     </div>
                   </div>

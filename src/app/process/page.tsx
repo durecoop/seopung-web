@@ -212,14 +212,14 @@ const STEPS: ProcessStep[] = [
   {
     number: '04',
     title: '급속동결',
-    desc: '터널프리저(IQF)를 통해 −35°C 이하 급속동결로 세포 파괴 없이 신선도를 완벽하게 유지합니다.',
+    desc: '터널프리저(IQF)를 통해 −30°C 이하 급속동결로 세포 파괴 없이 신선도를 완벽하게 유지합니다.',
     details: [
       { label: '핵심 설비', value: '터널프리저 IQF' },
-      { label: '동결 온도', value: '−35°C 이하' },
+      { label: '동결 온도', value: '−30°C 이하' },
       { label: '동결 시간', value: '15~30분 (어종별)' },
       { label: '효과', value: '세포 파괴 최소화' },
     ],
-    checks: ['온도 자동 기록 (24/7)', '동결 시간 자동 제어', '벨트 적재 균일성', 'IQF 개별 동결 보장'],
+    checks: ['온도 자동 기록', '동결 시간 자동 제어', '벨트 적재 균일성', 'IQF 개별 동결 보장'],
   },
   {
     number: '05',
@@ -240,8 +240,8 @@ const STEPS: ProcessStep[] = [
     details: [
       { label: '보관 시설', value: '㈜대주냉장 (관계사)' },
       { label: '보관 온도', value: '−18°C 이하 상시 유지' },
-      { label: '출하 원칙', value: 'FIFO (선입선출)' },
-      { label: '모니터링', value: '24/7 온도 자동 기록' },
+      { label: '출하 원칙', value: 'FIFO (First In-First Out, 선입선출)' },
+      { label: '모니터링', value: '온도 자동 기록' },
     ],
     checks: ['적재 위치 시스템 관리', '입출고 이력 자동 기록', '출하 시 콜드체인 유지', '거래처별 맞춤 라벨'],
   },
@@ -451,7 +451,7 @@ export default function ProcessPage() {
                         Transparency Declaration
                       </p>
                       <h2 className={`text-2xl font-bold leading-snug ${c.text} md:text-3xl lg:text-4xl`}>
-                        다른 OEM 기업은 내부 공정을<br className="hidden sm:block" /> 공개하지 않습니다.
+                        귀사의 방문을 환영합니다.<br className="hidden sm:block" /> 서풍은 원료~완제품까지 모든 것을 공개합니다.
                         <br />
                         <span className="text-ocean-500">서풍은 자신 있습니다.</span>
                       </h2>

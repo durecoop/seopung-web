@@ -112,7 +112,7 @@ const CONTACT_COPY: Record<number, ContactCopy> = {
     promiseDesc3: '한 번도 본 적 없는 샘플을 무상으로 보내드립니다',
   },
   6: {
-    heroTitle: '함께 만들어봅시다',
+    heroTitle: '귀사와 함께 만들겠습니다',
     heroSub: 'OEM 납품 · 신제품 개발 · 파트너십',
     formSectionLabel: 'Get Started',
     formSectionHeading: '문의 및 회사 정보',

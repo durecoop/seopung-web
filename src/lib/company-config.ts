@@ -183,10 +183,10 @@ export interface Affiliate {
 }
 
 export const AFFILIATES: Affiliate[] = [
+  { name: '중매인 49호', role: 'Purchase', description: '원료 매입' },
+  { name: '㈜대주냉장', role: 'Storage', description: '냉동·보관' },
   { name: '영어조합법인 서풍', role: 'Manufacturing', description: '수산물 제조·가공' },
   { name: '㈜여수유통', role: 'Distribution', description: '유통·물류' },
-  { name: '㈜대주냉장', role: 'Storage', description: '냉동·보관' },
-  { name: '중매인 49호', role: 'Purchase', description: '원료 매입' },
 ];
 
 /**

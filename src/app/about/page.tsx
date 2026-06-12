@@ -125,7 +125,7 @@ const ABOUT_COPY: Record<number, AboutCopy> = {
     partnerHeading: '함께 성장하는 파트너',
     partnerSub: '10년 이상 함께 도전해온 신뢰의 파트너사',
     teamHeading: '서풍을 만드는 사람들',
-    teamDesc: '원료 수매, 기술 혁신, 품질관리 — 각 분야 전문가들이 하나의 팀으로 도전합니다.',
+    teamDesc: '원료 수매, 제조가공, 품질관리, 상품개발 등 각 분야 전문가들이 하나의 팀으로 도전합니다.',
   },
 };
 
@@ -515,15 +515,15 @@ export default function AboutPage() {
                 <div className={`overflow-hidden rounded-xl border ${c.cardBorder} ${c.cardBg}`}>
                   <div className={`grid grid-cols-[1.2fr_1fr_1fr] gap-0 border-b ${c.cardBorder}`}>
                     <div className={`px-5 py-4 text-sm font-semibold ${c.textMuted}`}>비교 항목</div>
-                    <div className={`px-5 py-4 text-center text-sm font-semibold ${c.textMuted}`}>대형 OEM 사업자</div>
+                    <div className={`px-5 py-4 text-center text-sm font-semibold ${c.textMuted}`}>타사 OEM 사업자</div>
                     <div className="px-5 py-4 text-center text-sm font-bold text-ocean-500">서풍</div>
                   </div>
                   {[
                     { item: '최소 발주량 (MOQ)', big: '수만 팩 단위', us: '소량 OEM 가능' },
-                    { item: '신제품 개발 사이클', big: '평균 6~12개월', us: '평균 5개월' },
+                    { item: '신제품 개발 사이클', big: '평균 6~12개월', us: '평균 3개월' },
                     { item: '의사결정 속도', big: '다단계 결재', us: '담당자 직접 응대' },
                     { item: '원료 매입 구조', big: '다단계 유통', us: '여수 위판장 직매입' },
-                    { item: '인증 보유', big: '기본 인증', us: 'HACCP · ASC · MSC · 이력추적' },
+                    { item: '인증 보유', big: '기본 인증', us: 'HACCP · ASC · MSC · 수산물 이력추적 · 수산물 품질인증' },
                     { item: '소품종 다품종 대응', big: '제한적', us: '강점 영역' },
                   ].map((row, i, arr) => (
                     <div
@@ -600,9 +600,9 @@ export default function AboutPage() {
 
               <div className="grid gap-6 md:grid-cols-3">
                 {[
-                  { image: '/images/team/factory-group.jpg', caption: '공장 팀', desc: '위생복 착용, 철저한 위생관리' },
-                  { image: '/images/team/auction-group.jpg', caption: '위판장 팀', desc: '새벽부터 원료 수매' },
-                  { image: '/images/team/office-group.jpg', caption: '사무실', desc: '품질관리와 제품개발' },
+                  { image: '/images/team/factory-group.jpg', caption: '생산 운영팀', desc: '프리미엄 수산가공 제품 생산 및 위생적 관리' },
+                  { image: '/images/team/auction-group.jpg', caption: '수매팀', desc: '신선한 원료 선별 수매' },
+                  { image: '/images/team/office-group.jpg', caption: '경영지원팀', desc: '상품개발, 영업관리, 품질관리' },
                 ].map((member, i) => (
                   <Reveal key={member.caption} delay={i * 150}>
                     <div className={`group overflow-hidden rounded-2xl border ${c.cardBorder} ${c.cardBg} transition-all duration-500 hover:border-ocean-400/30`}>
