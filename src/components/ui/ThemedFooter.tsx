@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getImagePath } from '@/lib/utils';
 import type { SiteTheme } from '@/lib/themes';
 import { COMPANY, AFFILIATES as AFFILIATE_CONFIG, hasValue } from '@/lib/company-config';
+import VisitorCounter from '@/components/ui/VisitorCounter';
 
 const CERTS = ['HACCP', 'ASC', 'MSC', '수산물이력제', '수산물품질인증'];
 const LINKS = [
@@ -81,8 +82,9 @@ export default function ThemedFooter({ theme: t }: { theme: SiteTheme }) {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-6 py-5">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-5 sm:flex-row sm:justify-between">
           <p className={`text-center text-sm ${t.footerMuted}`}>Copyright &copy; 2026 {COMPANY.name}. All rights reserved.</p>
+          <VisitorCounter className={`text-xs ${t.footerMuted}`} />
         </div>
       </div>
     </footer>
